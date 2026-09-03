@@ -1,0 +1,152 @@
+protocol_version: 1
+experiment:
+  name: stage8b_run_to_walk_pilot1
+  training_seed: 20261231
+  physical_envs: 1024
+  cohort_size: 512
+  iterations: 100
+  device: cuda:0
+source:
+  state: RUN_LOW
+  speeds_mps: [2.6, 2.8]
+  probabilities: [0.50, 0.50]
+  hold_seconds: 1.0
+  speed_error_max_mps: 0.20
+  heading_error_max_rad: 0.12
+  preparation_timeout_seconds: 23.0
+  periodic_running_required: true
+  consecutive_safe_cycles_min: 3
+  alternating_landing_ratio_min: 0.80
+  valid_landing_ratio_min: 0.80
+  phase_sampling: natural_unbalanced
+target:
+  state: WALK
+  speed_mps: 1.2
+  heading: preserve_source
+  yaw_rate: fixed_heading_correction
+  turn_command: zero
+rollout:
+  control_timestep_seconds: 0.02
+  horizon_steps: 256
+  horizon_seconds: 5.12
+  timeout_steps: 250
+  timeout_seconds: 5.0
+  minimum_jerk_seconds: 1.4
+  success_terminal: true
+  failure_terminal: true
+  timeout_truncation: true
+  success_bootstrap: zero
+  failure_bootstrap: zero
+  timeout_bootstrap: zero
+ppo:
+  gamma: 0.99
+  gae_lambda: 0.95
+  learning_rate: 0.001
+  entropy_coefficient: 0.008
+  clip_parameter: 0.2
+  value_loss_coefficient: 1.0
+  max_gradient_norm: 1.0
+  epochs: 5
+  minibatches: 4
+  schedule: fixed
+  optimizer: adam
+  use_clipped_value_loss: true
+  normalize_advantage: true
+  normalize_advantage_per_minibatch: false
+  use_adaptive_learning_rate: false
+  desired_kl: 0.0
+actor:
+  class_name: RunToWalkTransitionActor152
+  observation_dimension: 152
+  action_dimension: 37
+  action_scale: 0.5
+  parent_checkpoint: logs/rsl_rl/physical_ai_g1_command_skills/2026-07-19_22-02-41_pilot_turn90_right_residual_from_model0/model_0.pt
+  parent_sha256: 60675a79187ef00935069f3bf85293e72477fa1d408b80d3325232d805b0d266
+  initialization: strict_deep_copy
+  trainable_routes: [command_encoder, state_adapter, residual_head]
+  frozen_routes: [running_base, other_skill_routes]
+critic:
+  initialization: new
+  initialization_seed: 20261232
+  architecture: [152, 256, 128, 1]
+  activation: elu
+  learning_rate: 0.001
+  optimizer_group: transition_critic
+exploration:
+  policy: reset_trainable
+  initial_std: 0.25
+  std_trainable: true
+  abort_min: 0.05
+  abort_max: 0.75
+completion:
+  detector: stage8a_run_to_walk_v1
+  target_speed_tolerance_mps: 0.20
+  heading_error_max_rad: 0.12
+  run_periodic_cycle_ended: true
+  excessive_flight_allowed: false
+  walk_compatible_contact_required: true
+  walk_contract_hold_seconds: 0.40
+  fall_allowed: false
+  reverse_velocity_failure_allowed: false
+  dangerous_slip_allowed: false
+  impact_failure_allowed: false
+  long_dwell_saturation_allowed: false
+  bonus: 10.0
+  bonus_max_fires_per_segment: 1
+reward:
+  speed_reduction_progress: 1.0
+  walk_speed_tracking: 2.0
+  speed_overshoot: -0.5
+  reverse_velocity: -1.0
+  heading_tracking: 1.0
+  lateral_velocity: -0.5
+  upright: -1.0
+  excessive_tilt: -1.0
+  excessive_flight_reduction: 0.25
+  valid_landing: 1.0
+  run_cycle_termination: 2.0
+  flight_frequency_reduction: 0.25
+  vertical_velocity: -0.2
+  walk_compatible_contact: 0.25
+  stable_support: 0.5
+  walk_contract_progress: 2.0
+  walk_acceptance: 2.0
+  fall: -200.0
+  torso_contact: -200.0
+  dangerous_slip: -0.25
+  impact: -0.10
+  ankle_effort_dwell: -0.10
+  knee_velocity_dwell: -0.10
+  joint_limit: -1.0
+  action_rate: -0.005
+  entry_run_action_alignment: -0.02
+  exit_walk_action_alignment: -0.02
+  walk_acceptance_bonus: 10.0
+reward_thresholds:
+  speed_tracking_scale_mps: 0.30
+  overshoot_below_target_mps: 0.20
+  reverse_velocity_mps: -0.10
+  heading_tracking_scale_rad: 0.12
+  lateral_velocity_scale_mps: 0.20
+  excessive_tilt_rad: 0.20
+  safe_flight_min_seconds: 0.04
+  safe_flight_max_seconds: 0.16
+  slip_speed_mps: 0.8
+  impact_force_newtons: 3500.0
+  saturation_ratio: 0.95
+  saturation_dwell_seconds: 0.20
+  completion_hold_seconds: 0.40
+  entry_alignment_window_steps: 5
+  exit_alignment_speed_error_mps: 0.30
+indexing:
+  mode: selected_env_ids_ordered
+  gather_expression: full_obs[selected_env_ids]
+  scatter_expression: full_action[selected_env_ids] = transition_action
+  boolean_mask_order_dependency_allowed: false
+runtime:
+  cli_overrides_allowed: false
+  environment_variable_overrides_allowed: false
+  runtime_defaults_allowed: false
+  runtime_action_blend: false
+  config_validation_required: true
+  execution_lock: STAGE8B_VALIDATE_ONLY

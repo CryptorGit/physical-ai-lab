@@ -1,0 +1,59 @@
+{
+  "kinematic_feasible": false,
+  "dynamic_feasible": false,
+  "classification": "OPTIMIZATION_FAILURE",
+  "path_failure_count": 4,
+  "path_failures": [
+    {
+      "row": 62,
+      "type": "obstacle_collision",
+      "pairs": [
+        {
+          "geom": null,
+          "body": "left_ankle_roll_link",
+          "distance_m": -0.010635442911056583
+        }
+      ]
+    },
+    {
+      "row": 75,
+      "type": "obstacle_collision",
+      "pairs": [
+        {
+          "geom": null,
+          "body": "right_knee_link",
+          "distance_m": -0.004861294397698794
+        }
+      ]
+    },
+    {
+      "row": 76,
+      "type": "obstacle_collision",
+      "pairs": [
+        {
+          "geom": null,
+          "body": "right_knee_link",
+          "distance_m": -0.0023272487649807494
+        }
+      ]
+    },
+    {
+      "row": 130,
+      "type": "obstacle_collision",
+      "pairs": [
+        {
+          "geom": null,
+          "body": "right_ankle_roll_link",
+          "distance_m": -0.012729474257414674
+        }
+      ]
+    }
+  ],
+  "max_support_error_m": 0.0050172972769417885,
+  "max_swing_error_m": 0.0012354503411802157,
+  "max_base_dynamics_residual": 66.69553970925199,
+  "max_effort_utilization": 1.783557821806872,
+  "max_velocity_utilization": 0.25507609061771713,
+  "max_friction_utilization": 0.999145273329094,
+  "min_normal_force_n": 0.00010000000000000026
+}

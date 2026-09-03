@@ -1,0 +1,7 @@
+{
+  "failure_rate": 0.0,
+  "threshold_l2": 6.0,
+  "entry_p95": 3.4164509892463686,
+  "exit_p95": 0.6609292030334473,
+  "previous_action_mismatch": 0
+}

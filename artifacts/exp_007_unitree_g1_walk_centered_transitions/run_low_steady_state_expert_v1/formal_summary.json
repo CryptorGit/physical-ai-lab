@@ -1,0 +1,103 @@
+{
+  "protocol": "RUN_STATE_CONTRACT_CONDITIONED",
+  "allocation": "first 13 valid states per speed from four frozen seed pools",
+  "seeds": [
+    20261021,
+    20261022,
+    20261023,
+    20261024
+  ],
+  "episodes": 52,
+  "overall": {
+    "episodes": 52,
+    "run_hold_success_rate": 0.75,
+    "periodic_running_success_rate": 1.0,
+    "fall_rate": 0.0,
+    "heading_error_p95_rad": 0.1231114249676466,
+    "forward_speed_error_mean_mps": 0.02351612746772715,
+    "actual_speed_mean_mps": 2.697482405663817,
+    "path_drift_mean_max_m": 2.08180784032895,
+    "flight_fraction_mean": 0.31311145213888353,
+    "safe_cycles_mean": 22.75,
+    "dangerous_slip_failure_rate": 0.0,
+    "impact_failure_rate": 0.0,
+    "long_dwell_saturation_failure_rate": 0.0,
+    "action_discontinuity_failure_rate": 0.0
+  },
+  "per_speed": {
+    "2.4": {
+      "episodes": 13,
+      "run_hold_success_rate": 1.0,
+      "periodic_running_success_rate": 1.0,
+      "fall_rate": 0.0,
+      "heading_error_p95_rad": 0.10861555337905884,
+      "forward_speed_error_mean_mps": 0.022048760759334245,
+      "actual_speed_mean_mps": 2.3957789619756067,
+      "path_drift_mean_max_m": 1.6162223265721247,
+      "flight_fraction_mean": 0.31498177632840973,
+      "safe_cycles_mean": 22.46153846153846,
+      "dangerous_slip_failure_rate": 0.0,
+      "impact_failure_rate": 0.0,
+      "long_dwell_saturation_failure_rate": 0.0,
+      "action_discontinuity_failure_rate": 0.0,
+      "gate_pass": true
+    },
+    "2.6": {
+      "episodes": 13,
+      "run_hold_success_rate": 1.0,
+      "periodic_running_success_rate": 1.0,
+      "fall_rate": 0.0,
+      "heading_error_p95_rad": 0.11420953273773193,
+      "forward_speed_error_mean_mps": 0.023511874842684903,
+      "actual_speed_mean_mps": 2.6012146511348635,
+      "path_drift_mean_max_m": 1.94013224198268,
+      "flight_fraction_mean": 0.3157490888164205,
+      "safe_cycles_mean": 27.923076923076923,
+      "dangerous_slip_failure_rate": 0.0,
+      "impact_failure_rate": 0.0,
+      "long_dwell_saturation_failure_rate": 0.0,
+      "action_discontinuity_failure_rate": 0.0,
+      "gate_pass": true
+    },
+    "2.8": {
+      "episodes": 13,
+      "run_hold_success_rate": 0.9230769230769231,
+      "periodic_running_success_rate": 1.0,
+      "fall_rate": 0.0,
+      "heading_error_p95_rad": 0.11807618141174317,
+      "forward_speed_error_mean_mps": 0.024270193283648902,
+      "actual_speed_mean_mps": 2.8029340986964937,
+      "path_drift_mean_max_m": 2.1282907265883226,
+      "flight_fraction_mean": 0.3115288701323614,
+      "safe_cycles_mean": 19.692307692307693,
+      "dangerous_slip_failure_rate": 0.0,
+      "impact_failure_rate": 0.0,
+      "long_dwell_saturation_failure_rate": 0.0,
+      "action_discontinuity_failure_rate": 0.0,
+      "gate_pass": true
+    },
+    "3.0": {
+      "episodes": 13,
+      "run_hold_success_rate": 0.07692307692307693,
+      "periodic_running_success_rate": 1.0,
+      "fall_rate": 0.0,
+      "heading_error_p95_rad": 0.12556965798139574,
+      "forward_speed_error_mean_mps": 0.024233680985240542,
+      "actual_speed_mean_mps": 2.9900019108483047,
+      "path_drift_mean_max_m": 2.642586066172673,
+      "flight_fraction_mean": 0.31018607327834263,
+      "safe_cycles_mean": 20.923076923076923,
+      "dangerous_slip_failure_rate": 0.0,
+      "impact_failure_rate": 0.0,
+      "long_dwell_saturation_failure_rate": 0.0,
+      "action_discontinuity_failure_rate": 0.0,
+      "gate_pass": false
+    }
+  },
+  "classification": "PARTIAL_PASS",
+  "supported_command_points_mps": [
+    2.4,
+    2.6,
+    2.8
+  ]
+}

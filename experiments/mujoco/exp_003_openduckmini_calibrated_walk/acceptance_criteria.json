@@ -1,0 +1,38 @@
+{
+  "status": "required before any autonomous floor deployment",
+  "simulation": {
+    "episode_seconds": 30,
+    "seeds_per_command": 20,
+    "commands": [
+      [0.0, 0.0, 0.0],
+      [0.1, 0.0, 0.0],
+      [-0.1, 0.0, 0.0],
+      [0.0, 0.1, 0.0],
+      [0.0, -0.1, 0.0],
+      [0.0, 0.0, 0.6],
+      [0.0, 0.0, -0.6]
+    ],
+    "required": {
+      "fall_rate": 0.0,
+      "minimum_upright": 0.85,
+      "minimum_base_height_m": 0.12,
+      "maximum_primary_velocity_error_mps": 0.04,
+      "maximum_orthogonal_velocity_mps": 0.04,
+      "maximum_yaw_rate_error_radps": 0.2,
+      "maximum_stop_drift_m": 0.03,
+      "joint_target_limit_violations": 0,
+      "head_target_peak_rad": 0.0,
+      "minimum_single_support_rate": 0.1,
+      "maximum_flight_rate": 0.15
+    }
+  },
+  "hardware_staging": [
+    "torque-off target conversion audit",
+    "suspended low-amplitude single-step observation replay",
+    "suspended 5-second policy run with emergency stop",
+    "tethered floor stand and stop validation",
+    "tethered straight walk",
+    "tethered reverse, lateral, and yaw validation",
+    "untethered validation only after all prior gates pass"
+  ]
+}

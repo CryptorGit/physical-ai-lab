@@ -1,0 +1,18 @@
+{
+  "threshold_frozen_before_formal": true,
+  "rule": "1.5 * max(direct hard-switch p99, steady STAND/WALK per-step p99)",
+  "threshold_l2": 5.861402750015259,
+  "baseline": {
+    "entry_action_jump_l2_p95": 3.896965742111206,
+    "exit_action_jump_l2_p95": 1.5555206537246704,
+    "entry_discontinuity_failure_rate": 0.0,
+    "exit_discontinuity_failure_rate": 0.0
+  },
+  "formal": {
+    "entry_action_jump_l2_p95": 0.866020679473877,
+    "exit_action_jump_l2_p95": 1.7461979389190674,
+    "entry_discontinuity_failure_rate": 0.0,
+    "exit_discontinuity_failure_rate": 0.0
+  },
+  "per_joint_max_and_action_rate": "episodes.csv"
+}

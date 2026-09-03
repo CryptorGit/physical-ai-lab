@@ -1,0 +1,11 @@
+{
+  "classification": "OPTIMIZATION_FAILURE",
+  "kinematic_waypoint_feasible": true,
+  "collision_free_complete_path": false,
+  "dynamic_feasible": false,
+  "physical_infeasibility_proven": false,
+  "summary": "All 11 contact-constrained IK waypoints converged within soft joint limits and the sampled keypoint path exceeded 0.07m clearance, but the complete interpolated trajectory retained 4 ankle/knee proxy-mesh collisions. Contact-force feasibility failed at 40/162 knots; maximum effort utilization was 1.7836 and maximum floating-base residual was 66.70N. This limited parameterization cannot establish existence or non-existence of a full dynamically feasible trajectory.",
+  "step_over_status": "NOT_SUPPORTED",
+  "reopen_step_over": false,
+  "recommended_next": "sparse whole-body direct collocation with authoritative Isaac USD collision distances, or a dedicated stepping controller/policy; do not extend the current base-actor or pose-offset searches"
+}

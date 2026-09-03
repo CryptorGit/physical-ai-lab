@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "type": "MotionCommand",
+  "fields": {
+    "target_speed_mps": "finite float >= 0",
+    "target_heading_w_rad": "finite float, world heading",
+    "target_yaw_rate_radps": "finite float",
+    "posture": ["STAND", "UPRIGHT", "CROUCH"],
+    "crouch_depth_m": "finite float; 0 except CROUCH; referenced range 0.08..0.10"
+  },
+  "user_commands": [
+    "STAND",
+    "WALK(speed)",
+    "RUN(speed)",
+    "TURN(angle, speed)",
+    "STOP",
+    "CROUCH(depth)",
+    "STAND_UP"
+  ],
+  "stage0_execution_enabled": false,
+  "invalid_or_unsupported_behavior": "fail_closed",
+  "turn_is_continuous_command": true
+}

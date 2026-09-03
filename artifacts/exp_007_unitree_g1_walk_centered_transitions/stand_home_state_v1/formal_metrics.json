@@ -1,0 +1,169 @@
+{
+  "stage": 1,
+  "status": "PASS",
+  "eligible_for_stage2": true,
+  "episodes": 50,
+  "metrics": {
+    "episodes": 50,
+    "settle_success_rate": 0.98,
+    "settle_time_mean_s": 1.03632652759552,
+    "stand_hold_success_rate": 0.98,
+    "fall_rate": 0.02,
+    "torso_contact_rate": 0.0,
+    "final_double_support_rate": 0.98,
+    "double_support_fraction": 0.98,
+    "single_support_fraction": 0.0,
+    "flight_fraction": 0.0,
+    "support_switch_count_mean": 0.0,
+    "prolonged_single_support_rate": 0.0,
+    "dangerous_support_failure_rate": 0.0,
+    "horizontal_speed_mean_mps": 0.006718055695095973,
+    "horizontal_speed_p95_mps": 0.01334766335785389,
+    "horizontal_speed_pooled_p95_mps": 0.013217688538134098,
+    "horizontal_speed_max_mps": 0.06290072202682495,
+    "vertical_speed_mean_mps": 0.01948970049545169,
+    "vertical_speed_p95_mps": 0.02027402922511101,
+    "yaw_rate_abs_mean_rps": 0.00440769381254371,
+    "yaw_rate_abs_p95_rps": 0.01476135866716504,
+    "pelvis_height_mean_m": 0.6448290368318559,
+    "pelvis_height_range_mean_m": 0.0018034660816192627,
+    "pelvis_vertical_range_mean_m": 0.0018034660816192627,
+    "horizontal_drift_mean_m": 0.018319158030856993,
+    "horizontal_drift_max_m": 0.0382298669196788,
+    "final_horizontal_speed_mean_mps": 0.005648086853325367,
+    "final_vertical_speed_abs_mean_mps": 0.019632107205688955,
+    "roll_abs_mean_rad": 0.026753397777397186,
+    "roll_abs_p95_rad": 0.032407349944114684,
+    "roll_abs_max_rad": 0.05853968858718872,
+    "pitch_abs_mean_rad": 0.05794137076605112,
+    "pitch_abs_p95_rad": 0.0629142726957798,
+    "pitch_abs_max_rad": 0.08694799989461899,
+    "projected_gravity_error_mean_rad": 0.0640242415749468,
+    "left_contact_fraction": 0.98,
+    "right_contact_fraction": 0.98,
+    "foot_slip_mean_mps": 0.005643383749367785,
+    "foot_slip_p95_mps": 0.008404207713901997,
+    "unstable_contact_switching_rate": 0.0,
+    "contact_asymmetry_mean": 0.0,
+    "both_feet_airborne_event_count": 0.0,
+    "joint_velocity_saturation_fraction": 0.0,
+    "torque_saturation_fraction": 0.0,
+    "ankle_torque_saturation_fraction": 0.0,
+    "knee_velocity_saturation_fraction": 0.0,
+    "joint_limit_proximity_max": 0.717697024345398,
+    "saturation_failure_rate": 0.0,
+    "joint_limit_failure_rate": 0.0,
+    "action_magnitude_mean": 4.725504935240746,
+    "action_magnitude_p95": 4.734473752975464,
+    "action_magnitude_max": 4.923871040344238,
+    "action_rate_mean_per_s": 0.07025043847821279,
+    "action_rate_p95_per_s": 0.3422588765621185,
+    "run_contribution_norm_max": 0.0,
+    "transition_bridge_norm_max": 0.0,
+    "scripted_offset_norm_max": 0.0,
+    "action_routing_failure_rate": 0.0
+  },
+  "thresholds": {
+    "settle_success_rate_min": 0.95,
+    "stand_hold_success_rate_min": 0.95,
+    "fall_rate_max": 0.02,
+    "horizontal_speed_mean_mps_max": 0.05,
+    "horizontal_speed_p95_mps_max": 0.1,
+    "pelvis_height_range_mean_m_max": 0.04,
+    "flight_fraction_exact": 0.0,
+    "dangerous_support_failure_rate_max": 0.05,
+    "saturation_failure_rate_max": 0.05,
+    "final_double_support_rate_min": 0.95
+  },
+  "retention": {
+    "status": "RETAINED",
+    "metrics": {
+      "settle_success_rate": {
+        "exp006": 0.98,
+        "exp007": 0.98,
+        "absolute_difference": 0.0,
+        "percentage_point_drop": 0.0
+      },
+      "stand_hold_success_rate": {
+        "exp006": 0.98,
+        "exp007": 0.98,
+        "absolute_difference": 0.0,
+        "percentage_point_drop": 0.0
+      },
+      "fall_rate": {
+        "exp006": 0.02,
+        "exp007": 0.02,
+        "absolute_difference": 0.0,
+        "percentage_point_drop": 0.0
+      },
+      "horizontal_speed_mean_mps": {
+        "exp006": 0.006718055695095973,
+        "exp007": 0.006718055695095973,
+        "absolute_difference": 0.0,
+        "percentage_point_drop": null
+      },
+      "horizontal_speed_p95_mps": {
+        "exp006": 0.01334766335785389,
+        "exp007": 0.01334766335785389,
+        "absolute_difference": 0.0,
+        "percentage_point_drop": null
+      },
+      "flight_fraction": {
+        "exp006": 0.0,
+        "exp007": 0.0,
+        "absolute_difference": 0.0,
+        "percentage_point_drop": 0.0
+      },
+      "final_double_support_rate": {
+        "exp006": 0.98,
+        "exp007": 0.98,
+        "absolute_difference": 0.0,
+        "percentage_point_drop": 0.0
+      },
+      "saturation_failure_rate": {
+        "exp006": 0.0,
+        "exp007": 0.0,
+        "absolute_difference": 0.0,
+        "percentage_point_drop": 0.0
+      }
+    },
+    "checks": {
+      "settle_drop_lt_5pp": true,
+      "hold_drop_lt_5pp": true,
+      "fall_worsening_le_2pp": true,
+      "saturation_worsening_lt_5pp": true,
+      "speed_p95_within_gate": true,
+      "flight_remains_zero": true
+    },
+    "evaluation_condition_difference": {
+      "exp006_hold_s": 6.0,
+      "exp007_hold_s": 8.0,
+      "otherwise_same_task_seed_reset_and_checkpoint": true,
+      "interpretation": "Comparable; exp_007 uses a strictly longer observation window."
+    }
+  },
+  "failure_counts": {
+    "episodes": 50,
+    "primary_failure_counts": {
+      "fall": 1,
+      "none": 49
+    },
+    "all_failure_flag_counts": {
+      "action_routing_failure": 0,
+      "fall": 1,
+      "torso_contact": 0,
+      "stand_settle_failure": 1,
+      "timeout": 0,
+      "stand_hold_failure": 1,
+      "flight_failure": 0,
+      "dangerous_support_loss": 0,
+      "double_support_failure": 1,
+      "saturation_failure": 0,
+      "joint_limit_failure": 0,
+      "posture_failure": 0,
+      "excessive_horizontal_motion": 0,
+      "excessive_vertical_motion": 0,
+      "foot_slip_failure": 0
+    }
+  }
+}

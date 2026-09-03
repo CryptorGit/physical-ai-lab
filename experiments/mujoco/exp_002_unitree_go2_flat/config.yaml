@@ -1,0 +1,99 @@
+# Unitree Go2の地球平面歩行実験
+
+experiment:
+  id: exp_002_unitree_go2_flat
+  seed: 42
+
+
+model:
+  # physical-ai-lab直下から見たMuJoCoシーン
+  relative_path: shared/models/mujoco_menagerie/unitree_go2/scene.xml
+
+  # 胴体のbody名
+  base_body_name: base
+
+  # 初期姿勢を保存したkeyframe名
+  # scene.xmlにhomeが存在すれば使用する
+  keyframe_name: home
+
+
+physics:
+  # 地球重力
+  gravity: [0.0, 0.0, -9.80665]
+
+  # 物理演算の時間刻み
+  timestep: 0.002
+
+  # 同じ行動を維持する物理ステップ数
+  # 制御周期は0.002秒 × 10 = 0.02秒、つまり50Hz
+  frame_skip: 10
+
+
+episode:
+  # 1エピソードの最大時間
+  max_seconds: 10.0
+
+  # 胴体がこの高さを下回れば転倒
+  minimum_base_height: 0.18
+
+  # 胴体が高く跳びすぎた場合も異常終了
+  maximum_base_height: 0.60
+
+  # 初期関節角へ加えるランダムノイズ
+  joint_position_noise: 0.02
+
+  # 初期関節速度へ加えるランダムノイズ
+  joint_velocity_noise: 0.02
+
+
+command:
+  # 現段階ではまず低速前進を目標とする
+  target_forward_velocity: 0.30
+
+
+action:
+  # 方策出力は-1～1
+  # それを初期関節角からの変位へ変換する
+  position_scale: 0.35
+
+  # 関節位置制御用の比例ゲイン
+  kp: 35.0
+
+  # 関節位置制御用の微分ゲイン
+  kd: 1.0
+
+
+reward:
+  # 生存報酬
+  alive: 0.50
+
+  # 胴体を水平に保つ報酬
+  upright: 1.00
+
+  # 目標前進速度へ近づく報酬
+  forward_velocity: 1.50
+
+  # 横方向へ流れることへの罰則
+  lateral_velocity_cost: 0.20
+
+  # 胴体が激しく回転することへの罰則
+  angular_velocity_cost: 0.05
+
+  # 大きな行動への罰則
+  action_cost: 0.01
+
+  # 前回から行動が急変することへの罰則
+  action_rate_cost: 0.02
+
+
+training:
+  # 最初は配線確認用
+  total_timesteps: 100000
+
+  learning_rate: 0.0003
+  n_steps: 2048
+  batch_size: 256
+  n_epochs: 10
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2

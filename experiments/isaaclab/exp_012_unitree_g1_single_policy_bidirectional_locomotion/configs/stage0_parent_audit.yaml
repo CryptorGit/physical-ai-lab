@@ -1,0 +1,4 @@
+checkpoint: logs/rsl_rl/physical_ai_g1_flat_run/2026-07-17_21-40-39_stage2_1024_750/model_4246.pt
+sha256: 734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621
+require_optimizer: true
+strict: true

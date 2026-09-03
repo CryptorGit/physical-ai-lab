@@ -1,0 +1,7 @@
+{
+  "stage2_standing_checkpoint": "logs\\rsl_rl\\physical_ai_g1_flat_run\\2026-07-17_21-40-39_stage2_1024_750\\model_4246.pt",
+  "stage4_and_skill_checkpoint": "logs\\rsl_rl\\physical_ai_g1_command_skills\\2026-07-20_14-34-35_pilot_stop_stage_a_braking\\model_31.pt",
+  "crouch_checkpoint": "artifacts\\exp_006_unitree_g1_command_skills\\crouch_standing_option_stage2_model4246\\model_0.pt",
+  "stop_overlay": "preserved prototype; not required by formal sequences",
+  "training_performed_for_command_system_v1": false
+}

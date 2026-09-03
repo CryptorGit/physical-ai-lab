@@ -1,0 +1,87 @@
+1
+00:00:00,000 --> 00:00:05,000
+EXP013 W1B-R2 | Direction: 0 deg
+
+2
+00:00:05,000 --> 00:00:10,000
+EXP013 W1B-R2 | Direction: 22.5 deg
+
+3
+00:00:10,000 --> 00:00:15,000
+EXP013 W1B-R2 | Direction: 45 deg
+
+4
+00:00:15,000 --> 00:00:20,000
+EXP013 W1B-R2 | Direction: 67.5 deg
+
+5
+00:00:20,000 --> 00:00:25,000
+EXP013 W1B-R2 | Direction: 90 deg
+
+6
+00:00:25,000 --> 00:00:30,000
+EXP013 W1B-R2 | Direction: 112.5 deg
+
+7
+00:00:30,000 --> 00:00:35,000
+EXP013 W1B-R2 | Direction: 135 deg
+
+8
+00:00:35,000 --> 00:00:40,000
+EXP013 W1B-R2 | Direction: 157.5 deg
+
+9
+00:00:40,000 --> 00:00:45,000
+EXP013 W1B-R2 | Direction: 180 deg
+
+10
+00:00:45,000 --> 00:00:50,000
+EXP013 W1B-R2 | Direction: 202.5 deg
+
+11
+00:00:50,000 --> 00:00:55,000
+EXP013 W1B-R2 | Direction: 225 deg
+
+12
+00:00:55,000 --> 00:01:00,000
+EXP013 W1B-R2 | Direction: 247.5 deg
+
+13
+00:01:00,000 --> 00:01:05,000
+EXP013 W1B-R2 | Direction: 270 deg
+
+14
+00:01:05,000 --> 00:01:10,000
+EXP013 W1B-R2 | Direction: 292.5 deg
+
+15
+00:01:10,000 --> 00:01:15,000
+EXP013 W1B-R2 | Direction: 315 deg
+
+16
+00:01:15,000 --> 00:01:20,000
+EXP013 W1B-R2 | Direction: 337.5 deg
+
+17
+00:01:20,000 --> 00:01:25,000
+EXP013 W1B-R2 | Pure yaw left
+
+18
+00:01:25,000 --> 00:01:30,000
+EXP013 W1B-R2 | Pure yaw right
+
+19
+00:01:30,000 --> 00:01:35,000
+EXP013 W1B-R2 | Forward moving turn left
+
+20
+00:01:35,000 --> 00:01:40,000
+EXP013 W1B-R2 | Forward moving turn right
+
+21
+00:01:40,000 --> 00:01:45,000
+EXP013 W1B-R2 | Rear moving turn left
+
+22
+00:01:45,000 --> 00:01:50,000
+EXP013 W1B-R2 | Rear moving turn right

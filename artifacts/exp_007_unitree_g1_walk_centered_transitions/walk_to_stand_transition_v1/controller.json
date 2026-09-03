@@ -1,0 +1,5 @@
+{
+  "type": "LEARNED_TRANSITION_EXPERT",
+  "runtime_action_blend": false,
+  "deceleration_ramp_s": 1.6
+}

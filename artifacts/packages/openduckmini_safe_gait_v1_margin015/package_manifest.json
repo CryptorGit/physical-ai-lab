@@ -1,0 +1,542 @@
+{
+  "assets": {
+    "reference": {
+      "file_id": "reference",
+      "sha256": "26b4a80d3800c79f731035ffc310aea8d7b8da177674871c7fe412d2741ef6ad"
+    },
+    "safety_contract": {
+      "file_id": "contract",
+      "sha256": "3b2c378589cb937fe6b3517f351ff9d36883d7ca7b30e36f55400980572133c1"
+    },
+    "scene": {
+      "dependency_file_ids": [
+        "scene_robot_model",
+        "scene_mesh_000",
+        "scene_mesh_001",
+        "scene_mesh_002",
+        "scene_mesh_003",
+        "scene_mesh_004",
+        "scene_mesh_005",
+        "scene_mesh_006",
+        "scene_mesh_007",
+        "scene_mesh_008",
+        "scene_mesh_009",
+        "scene_mesh_010",
+        "scene_mesh_011",
+        "scene_mesh_012",
+        "scene_mesh_013",
+        "scene_mesh_014",
+        "scene_mesh_015",
+        "scene_mesh_016",
+        "scene_mesh_017",
+        "scene_mesh_018",
+        "scene_mesh_019",
+        "scene_mesh_020",
+        "scene_mesh_021",
+        "scene_mesh_022",
+        "scene_mesh_023",
+        "scene_mesh_024",
+        "scene_mesh_025",
+        "scene_mesh_026",
+        "scene_mesh_027"
+      ],
+      "file_id": "scene",
+      "sha256": "92ede737aebfdb1ab266764e9b1de114b246a5d85fa2cf0335878fa0b6915a39"
+    }
+  },
+  "controller": {
+    "allowed_experts": [
+      "compound",
+      "forward",
+      "lateral_left",
+      "lateral_right",
+      "reverse",
+      "reverse_turn_left",
+      "reverse_turn_right",
+      "stand",
+      "yaw_left",
+      "yaw_right"
+    ],
+    "atomic_maneuvers": {
+      "reverse_turn_left": {
+        "action_blending": "PROHIBITED",
+        "command": [
+          -0.03,
+          0.0,
+          0.2
+        ],
+        "enter_via": "stand",
+        "exit_via": "stand",
+        "profile_interpolation": "PROHIBITED"
+      },
+      "reverse_turn_right": {
+        "action_blending": "PROHIBITED",
+        "command": [
+          -0.04,
+          0.0,
+          -0.2
+        ],
+        "enter_via": "stand",
+        "exit_via": "stand",
+        "profile_interpolation": "PROHIBITED"
+      }
+    },
+    "class_name": "SafeGaitRouter",
+    "command_envelope": {
+      "axes": [
+        "vx",
+        "vy",
+        "yaw_rate"
+      ],
+      "enforcement": "clip_before_slew_and_routing",
+      "maximum": [
+        0.1,
+        0.16,
+        1.0
+      ],
+      "minimum": [
+        -0.075,
+        -0.16,
+        -1.0
+      ],
+      "units": [
+        "meter/second",
+        "meter/second",
+        "radian/second"
+      ]
+    },
+    "dynamic_model_lookup": false,
+    "module_file_id": "router",
+    "prohibited_experts": [
+      "all_direction_v59",
+      "all_direction_v60",
+      "omnidirectional_v59",
+      "omnidirectional_v60",
+      "v59",
+      "v60"
+    ],
+    "runtime_target_safety": {
+      "applies_to": "all_leg_joint_targets",
+      "function_name": "apply_final_target_safety",
+      "limit_source": "safety_contract.safe_joint_limits_rad",
+      "module_file_id": "target_safety",
+      "operation": "clip(target, lower + margin, upper - margin)",
+      "post_clamp_limit_violations_required": 0,
+      "required": true,
+      "runtime_target_safety_margin_rad": 0.015,
+      "stage": "final_before_actuator_application"
+    },
+    "type": "SafeGaitRouter",
+    "unknown_expert_behavior": "REJECT"
+  },
+  "corrections": {
+    "reverse_profile": {
+      "applies_to_experts": [
+        "reverse"
+      ],
+      "base_model_id": "base_v22",
+      "file_id": "reverse_profile",
+      "kind": "feedforward_periodic_reference_profile",
+      "release_id": "optimized_reverse_exact_safe_v1",
+      "residual_scale": 0.0
+    },
+    "reverse_turn_left_profile": {
+      "applies_to_experts": [
+        "reverse_turn_left"
+      ],
+      "file_id": "reverse_turn_left_profile",
+      "kind": "atomic_periodic_reference_profile",
+      "release_id": "optimized_reverse_left_exact_safe_v1",
+      "validated_command": [
+        -0.03,
+        0.0,
+        0.2
+      ]
+    },
+    "reverse_turn_right_profile": {
+      "applies_to_experts": [
+        "reverse_turn_right"
+      ],
+      "file_id": "reverse_turn_right_profile",
+      "kind": "atomic_periodic_reference_profile",
+      "release_id": "optimized_backward_right_turn_gait_legacy",
+      "validated_command": [
+        -0.04,
+        0.0,
+        -0.2
+      ]
+    },
+    "yaw_right_policy_command_offset": {
+      "applies_to_experts": [
+        "yaw_right"
+      ],
+      "axis": "yaw_rate",
+      "kind": "policy_observation_command_offset",
+      "operation": "add",
+      "requested_command_unchanged": true,
+      "stage": "before_policy_inference",
+      "units": "radian/second",
+      "value": -0.3
+    }
+  },
+  "experiment": "exp_004_openduckmini_safe_gait_experts",
+  "integrity": {
+    "algorithm": "sha256",
+    "files": {
+      "base_v22_onnx": {
+        "path": "models/base_v22.onnx",
+        "sha256": "f7a2731330cd3be52858989b021423a5f363cc4a8f9850512281da745a7617c0",
+        "size_bytes": 884094
+      },
+      "contract": {
+        "path": "contracts/contract.json",
+        "sha256": "3b2c378589cb937fe6b3517f351ff9d36883d7ca7b30e36f55400980572133c1",
+        "size_bytes": 6364
+      },
+      "reference": {
+        "path": "simulation/reference.pkl",
+        "sha256": "26b4a80d3800c79f731035ffc310aea8d7b8da177674871c7fe412d2741ef6ad",
+        "size_bytes": 2387819
+      },
+      "reverse_profile": {
+        "path": "corrections/optimized_backward_gait.json",
+        "sha256": "fd2f3a6c129ed0c37a9014dbad1813764cca35cdb54dc0b63d39f82b925e2306",
+        "size_bytes": 1661
+      },
+      "reverse_turn_left_profile": {
+        "path": "corrections/optimized_backward_left_turn_gait.json",
+        "sha256": "474d5fe1b25859167d53aa70eac496986414ea759a4b3293c7f064dc7e1c870a",
+        "size_bytes": 1658
+      },
+      "reverse_turn_right_profile": {
+        "path": "corrections/optimized_backward_right_turn_gait.json",
+        "sha256": "1db80d8763ca991813954a3297f4a67c8e076265a0bbb2b9f8a10a518ff9a0ba",
+        "size_bytes": 1121
+      },
+      "router": {
+        "path": "runtime/router.py",
+        "sha256": "7d1e00064291744df49dce4986a34b4ef775f78ebf01331f8ca48f5cfe0efb8a",
+        "size_bytes": 19124
+      },
+      "scene": {
+        "path": "simulation/xmls/scene_flat_terrain_backlash_hardware_safe_calibrated.xml",
+        "sha256": "92ede737aebfdb1ab266764e9b1de114b246a5d85fa2cf0335878fa0b6915a39",
+        "size_bytes": 1551
+      },
+      "scene_mesh_000": {
+        "path": "simulation/xmls/assets/antenna.stl",
+        "sha256": "8d18ff3ed5dc5beb89c15b95fc886e4d57f5fd8f76969532fe83f679eb0f08e6",
+        "size_bytes": 5284
+      },
+      "scene_mesh_001": {
+        "path": "simulation/xmls/assets/body_back.stl",
+        "sha256": "7166e8ccd5aa659566bf84c659a36c33248740a18d1eb04b0e34904dde71e733",
+        "size_bytes": 5284
+      },
+      "scene_mesh_002": {
+        "path": "simulation/xmls/assets/body_front.stl",
+        "sha256": "5c98c85f91a979df57ecda622b64f35689efd2d076df0ca584186daf773cb47c",
+        "size_bytes": 5284
+      },
+      "scene_mesh_003": {
+        "path": "simulation/xmls/assets/body_middle_bottom.stl",
+        "sha256": "3f91cfeeffc197d39a5e11e26811825cbffdaedcc3eea0f4195d701f994eb203",
+        "size_bytes": 5284
+      },
+      "scene_mesh_004": {
+        "path": "simulation/xmls/assets/body_middle_top.stl",
+        "sha256": "0929c3d0c45b9b41273b1333655c467bec994f6489df5ea2c7c1298e4c4d7d39",
+        "size_bytes": 5284
+      },
+      "scene_mesh_005": {
+        "path": "simulation/xmls/assets/foot_bottom_pla.stl",
+        "sha256": "4290199f08b3e8eb4ecd4f07c32c4d77ecf82839396ccd7d6062eea96cef8e6d",
+        "size_bytes": 5284
+      },
+      "scene_mesh_006": {
+        "path": "simulation/xmls/assets/foot_bottom_tpu.stl",
+        "sha256": "dfa3c58757e1d838b462d225c2dbfbb517e8fc57e3c6a9979c4894c801386e8a",
+        "size_bytes": 1684
+      },
+      "scene_mesh_007": {
+        "path": "simulation/xmls/assets/foot_side.stl",
+        "sha256": "3d564b42ef9c2bae340fd0b06cfadfe905c713ff84ad40b21d4181128d225138",
+        "size_bytes": 5184
+      },
+      "scene_mesh_008": {
+        "path": "simulation/xmls/assets/foot_top.stl",
+        "sha256": "0712dd6aec2e6d6c821b8bfcd0ba71bf7c8017f63889de5f6847e62814624a40",
+        "size_bytes": 5284
+      },
+      "scene_mesh_009": {
+        "path": "simulation/xmls/assets/head.stl",
+        "sha256": "e81b30c44d10d93194091d5fbb65bd4ccb6bd4e9504c027344c247d2ffc6eaf4",
+        "size_bytes": 5284
+      },
+      "scene_mesh_010": {
+        "path": "simulation/xmls/assets/head_bot_sheet.stl",
+        "sha256": "39cdafc528646e1ca627b357e8f9886a9f51df3d53dcfd566d3b7979fd592953",
+        "size_bytes": 5284
+      },
+      "scene_mesh_011": {
+        "path": "simulation/xmls/assets/head_pitch_to_yaw.stl",
+        "sha256": "a45c8dc5fb75ec001fd1e94185db635c60aa68f163482395d6c55db4ac678238",
+        "size_bytes": 5284
+      },
+      "scene_mesh_012": {
+        "path": "simulation/xmls/assets/head_yaw_to_roll.stl",
+        "sha256": "3a94ac2824e94326565a3e07f8794c9246c90f78c119a4577835b9c70745557b",
+        "size_bytes": 5284
+      },
+      "scene_mesh_013": {
+        "path": "simulation/xmls/assets/left_antenna_holder.stl",
+        "sha256": "01536add58f330d36fd9c63c4a6caeb414a1d931a27e501f63567a0785f93d23",
+        "size_bytes": 5284
+      },
+      "scene_mesh_014": {
+        "path": "simulation/xmls/assets/left_cache.stl",
+        "sha256": "8b50aa42f2f34b1e99c0702e6d6d64ee1b0a7fa7e856d97558b2388310930f85",
+        "size_bytes": 5284
+      },
+      "scene_mesh_015": {
+        "path": "simulation/xmls/assets/left_knee_to_ankle_left_sheet.stl",
+        "sha256": "e69aff1a7baeedd18676348ea72d185229722f8b1348bb5b2ffcafc7de9715bf",
+        "size_bytes": 5284
+      },
+      "scene_mesh_016": {
+        "path": "simulation/xmls/assets/left_knee_to_ankle_right_sheet.stl",
+        "sha256": "2518ec33ff2b018304b80026603d3f88e8e41f27474b5f43f1f7e4b5e10c1461",
+        "size_bytes": 5084
+      },
+      "scene_mesh_017": {
+        "path": "simulation/xmls/assets/left_roll_to_pitch.stl",
+        "sha256": "1af14b0e3bef3298d20f3d5b985848aaf9dc69097c8b449c43fc63181ee01d66",
+        "size_bytes": 5284
+      },
+      "scene_mesh_018": {
+        "path": "simulation/xmls/assets/leg_spacer.stl",
+        "sha256": "4f23745dac3598daf9bf6089e3864a318d091a5613af8544aecf3e68d6a6772e",
+        "size_bytes": 5284
+      },
+      "scene_mesh_019": {
+        "path": "simulation/xmls/assets/neck_left_sheet.stl",
+        "sha256": "2dc8e910a537509a018191c4e2a0b535b78c4ff822b6d2cf39f34427c83e38a6",
+        "size_bytes": 5284
+      },
+      "scene_mesh_020": {
+        "path": "simulation/xmls/assets/neck_right_sheet.stl",
+        "sha256": "afd4c04b1081a0a68d92a017fabc16d093f1ddeed52a212b5e50585cc2bb928e",
+        "size_bytes": 5284
+      },
+      "scene_mesh_021": {
+        "path": "simulation/xmls/assets/right_antenna_holder.stl",
+        "sha256": "39604b35cbe5f0070371fc460e51f89b09c20a06c003bff9cf87f7685234648a",
+        "size_bytes": 5284
+      },
+      "scene_mesh_022": {
+        "path": "simulation/xmls/assets/right_cache.stl",
+        "sha256": "391a1477b223cea4bbea37a64d154188294093c677cc52f62880ec7f001f061e",
+        "size_bytes": 5284
+      },
+      "scene_mesh_023": {
+        "path": "simulation/xmls/assets/right_roll_to_pitch.stl",
+        "sha256": "22d3e6f5e0afd386bc0bf288077ae99f3822f82ea4c1e6e47bd36fdcc21d1599",
+        "size_bytes": 5184
+      },
+      "scene_mesh_024": {
+        "path": "simulation/xmls/assets/roll_motor_bottom.stl",
+        "sha256": "3dc60095901ac2332cfb798dcd53149c2e98abeb636637f6bd7e8b9757fa9ecf",
+        "size_bytes": 5284
+      },
+      "scene_mesh_025": {
+        "path": "simulation/xmls/assets/roll_motor_top.stl",
+        "sha256": "89872314b73e926dc1a37dc4d0d4756bf74e82316a8f207cb160924ec0372e62",
+        "size_bytes": 5284
+      },
+      "scene_mesh_026": {
+        "path": "simulation/xmls/assets/trunk_bottom.stl",
+        "sha256": "d2382a154ccb241911225a560cf49985d363d476699a9198eb4ad9d5bfbb5e36",
+        "size_bytes": 5284
+      },
+      "scene_mesh_027": {
+        "path": "simulation/xmls/assets/trunk_top.stl",
+        "sha256": "943a7c75a81ede71fc985ecc37ccd8efec05b9be604302e04af8c9fa3a516c16",
+        "size_bytes": 5284
+      },
+      "scene_robot_model": {
+        "path": "simulation/xmls/open_duck_mini_v2_backlash_hardware_safe_calibrated.xml",
+        "sha256": "5dd10ce3da0238fdfbeaaada9d5dc6ca64dccdbf10fe478b3e8ac73a85ec2699",
+        "size_bytes": 25999
+      },
+      "target_safety": {
+        "path": "runtime/target_safety.py",
+        "sha256": "218d3c835df274ca18892069a455efdd0f43868bbe38915ce251ff2eca3b1568",
+        "size_bytes": 3690
+      }
+    }
+  },
+  "manifest_kind": "openduckmini_safe_gait_router_package",
+  "models": {
+    "base_v22": {
+      "file_id": "base_v22_onnx",
+      "interface": {
+        "action_count": 14,
+        "head_action_indices_masked_after_inference": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "input_name": "obs",
+        "observation_count": 101
+      },
+      "release_id": "openduckmini_calibrated_hybrid_v22",
+      "source_role": "frozen_base_v22"
+    }
+  },
+  "package_id": "openduckmini-safe-gait-v1-margin015",
+  "routes": {
+    "compound": {
+      "correction_ids": [],
+      "model_id": "base_v22"
+    },
+    "forward": {
+      "correction_ids": [],
+      "model_id": "base_v22"
+    },
+    "lateral_left": {
+      "correction_ids": [],
+      "model_id": "base_v22"
+    },
+    "lateral_right": {
+      "correction_ids": [],
+      "model_id": "base_v22"
+    },
+    "reverse": {
+      "correction_ids": [
+        "reverse_profile"
+      ],
+      "model_id": "base_v22"
+    },
+    "reverse_turn_left": {
+      "correction_ids": [
+        "reverse_turn_left_profile"
+      ],
+      "model_id": "base_v22"
+    },
+    "reverse_turn_right": {
+      "correction_ids": [
+        "reverse_turn_right_profile"
+      ],
+      "model_id": "base_v22"
+    },
+    "stand": {
+      "correction_ids": [],
+      "model_id": "base_v22"
+    },
+    "yaw_left": {
+      "correction_ids": [],
+      "model_id": "base_v22"
+    },
+    "yaw_right": {
+      "correction_ids": [
+        "yaw_right_policy_command_offset"
+      ],
+      "model_id": "base_v22"
+    }
+  },
+  "safety": {
+    "hardware_deployment": "PROHIBITED",
+    "head_action_indices": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "head_action_value_after_inference": 0.0,
+    "reachable_model_ids": [
+      "base_v22"
+    ],
+    "rejected_candidates": {
+      "learned_reverse_1m_res012": {
+        "mean_lateral_velocity": 0.0464,
+        "mean_vx": -0.0163,
+        "status": "REJECTED",
+        "trainer_episode_horizon": 1000,
+        "trainer_mean_episode_length": 73.94
+      },
+      "legacy_reverse_turn_left_m005_p020": {
+        "episodes": 20,
+        "falls": 1,
+        "status": "REJECTED"
+      }
+    },
+    "rejected_lineages": [
+      "v59",
+      "v60"
+    ],
+    "rejected_lineages_reachable": false,
+    "reverse_release_decision": {
+      "acceptance": {
+        "episodes": 20,
+        "falls": 0,
+        "head_target_violations": 0,
+        "joint_target_limit_violations": 0,
+        "max_orthogonal_velocity": 0.027385,
+        "max_primary_error": 0.03584,
+        "mean_vx": -0.045729,
+        "passed": true,
+        "seconds_per_episode": 30
+      },
+      "base_model_id": "base_v22",
+      "feedforward_profile_release_id": "optimized_reverse_exact_safe_v1",
+      "residual_scale": 0.0,
+      "status": "ADOPTED_SIMULATION_ONLY",
+      "validated_command": [
+        -0.075,
+        0.0,
+        0.0
+      ]
+    },
+    "reverse_turn_release_decisions": {
+      "reverse_turn_left": {
+        "episodes": 20,
+        "falls": 0,
+        "head_target_violations": 0,
+        "joint_target_limit_violations": 0,
+        "mean_vx": -0.01412,
+        "mean_yaw_rate": 0.1426,
+        "passed": true,
+        "profile_release_id": "optimized_reverse_left_exact_safe_v1",
+        "seconds_per_episode": 30,
+        "status": "ADOPTED_SIMULATION_ONLY",
+        "validated_command": [
+          -0.03,
+          0.0,
+          0.2
+        ]
+      },
+      "reverse_turn_right": {
+        "episodes": 20,
+        "falls": 0,
+        "head_target_violations": 0,
+        "joint_target_limit_violations": 0,
+        "mean_vx": -0.02322,
+        "mean_yaw_rate": -0.07174,
+        "passed": true,
+        "profile_release_id": "optimized_backward_right_turn_gait_legacy",
+        "seconds_per_episode": 30,
+        "status": "ADOPTED_SIMULATION_ONLY",
+        "validated_command": [
+          -0.04,
+          0.0,
+          -0.2
+        ]
+      }
+    },
+    "runtime_final_leg_target_clamp_required": true,
+    "runtime_target_safety_margin_rad": 0.015,
+    "simulation_use_only": true
+  },
+  "schema_version": 1
+}

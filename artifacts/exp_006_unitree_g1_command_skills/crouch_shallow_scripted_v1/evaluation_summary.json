@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "supported_depth_range_m": [0.08, 0.10],
+  "formal_episode_count": 50,
+  "formal_success_rate": 1.0,
+  "settle_success_rate": 1.0,
+  "down_reached_rate": 1.0,
+  "depth_error_mean_m": 0.0006010128557682037,
+  "depth_error_p95_m": 0.0013368278741836548,
+  "hold_success_rate": 1.0,
+  "return_success_rate": 1.0,
+  "stand_hold_success_rate": 1.0,
+  "return_height_error_m": 0.0015462773603283,
+  "fall_rate": 0.0,
+  "dangerous_contact_failure_rate": 0.0,
+  "saturation_failure_rate": 0.0,
+  "unsupported_commands_safely_rejected": 15,
+  "run_turn_stop_action_invariance": true
+}

@@ -1,0 +1,6 @@
+{
+  "policy": "HARD_SWITCH_AFTER_COMPLETION",
+  "runtime_action_blend": false,
+  "global_previous_action": "previous actually applied final action",
+  "startup_route_requires_valid_stand_contract": true
+}

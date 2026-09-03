@@ -1,0 +1,1100 @@
+結論
+
+最初に、判断を明確にします。
+
+1. 【確認済み】CUDA 12.3 runtime + CUDA 13.3対応driver + RTX 5090という組み合わせ自体は、非対応ではありません。
+    NVIDIAドライバには後方互換性があり、JAXのCUDA 12 wheelも十分に新しいドライバ上で動作する前提です。したがって、「ドライバがCUDA 13.3だからCUDA 12.3 runtimeが止まる」という説明は弱いです。 
+2. 【確認済み】JAX 0.5.3 / jaxlib 0.5.3は、Python 3.12上のMuJoCo 3.11.0公式ロックと一致しています。
+    少なくとも「JAX 0.5.3だからMuJoCo 3.11.0では非対応」という話ではありません。 
+3. 【確認済み】現在のNumPy 2.5.1は、MuJoCo 3.11.0のPython 3.12向け公式ロックであるNumPy 2.1.3から外れています。
+    ただし、これがGPUコンパイル／実行停止の直接原因である可能性は低いです。環境が公式再現構成ではないという意味では重要ですが、第一容疑者ではありません。 
+4. 【有力仮説】本件は「CUDA 12対13」そのものより、BlackwellでのJAX/XLAコード生成・モジュールロード・PTX JIT・実際にロードされたCUDAライブラリの組み合わせに起因している可能性が高いです。
+5. 【未確認】v23の停止点はXLAコンパイルではありません。
+    v23ではB=1とB=2のcompile完了ログまで出ています。したがって、その実行について「XLA compile hang」と呼ぶのは事実と矛盾します。候補は次のいずれかです。
+    * コンパイル済み実行ファイルのロード
+    * GPUへの初回dispatch
+    * PTXからcubinへのdriver JIT
+    * block_until_ready()相当の同期
+    * device_get
+    * 比較処理
+    * JSONシリアライズ
+    * ログに出ていない別shape／別関数の追加コンパイル
+
+JAXは非同期dispatchを行うため、Python関数が返っていてもGPU実行が完了しているとは限りません。明示的にblock_until_ready()またはホスト読み出しを挟まない限り、停止点を確定できません。 
+
+あなたが今もっとも避けるべき誤りは、compileログの直後で止まったから、コンパイラが止まったと決め打ちすることです。現状のログ粒度では根本原因を局所化できていません。
+
+⸻
+
+1. 既知の非推奨・非対応・既知不具合
+
+1.1 CUDA 12.3 runtimeと610系ドライバ
+
+【確認済み】正式な非対応ではありません。
+
+JAXのCUDA 12 wheelはCUDA 12.3でビルドされ、CUDA 12.1以降をサポートする構成です。必要な最低ドライバより610系ドライバは十分に新しいです。また、NVIDIAは新しいドライバで古いCUDA Toolkit向けにビルドされたアプリケーションを動かす後方互換性を提供しています。 
+
+ただし、JAX公式ではWSL2上のNVIDIA GPUをExperimental扱いにしています。これは「動作しない」という意味ではありませんが、Linuxネイティブと同等の保証範囲ではないということです。 
+
+判定は次のとおりです。
+
+項目	判定
+CUDA 12.3 runtimeをCUDA 13.3対応driverで動かす	対応範囲
+RTX 5090でCUDA 12系wheelを動かす	原理上対応
+WSL2上のJAX GPU	JAX公式ではExperimental
+この組み合わせだけを原因と断定	根拠不足
+
+1.2 RTX 5090／BlackwellとCUDA 12
+
+【確認済み】RTX 5090 Laptop GPUはBlackwell世代です。 
+
+CUDA 12.8は、Blackwell向けのsm_100、sm_101、sm_120をコンパイラで正式に扱う最初のCUDA 12系リリースです。CUDA 12.8以前にビルドされたコードでも、適切なPTXが含まれていれば、ドライバがBlackwell向けcubinへJITコンパイルして動作できます。 
+
+ここで重要なのは、あなたの表示している「JAX runtime CUDA 12.3」だけでは、次が分からないことです。
+
+* 実際のptxasバージョン
+* nvidia-cuda-nvcc-cu12
+* nvidia-cuda-runtime-cu12
+* cuBLAS、cuDNN、cuSolver、cuSparse等の実バージョン
+* wheel内またはpip依存のどのライブラリがロードされたか
+* LD_LIBRARY_PATHによってシステム側ライブラリに差し替わっていないか
+* native sm_120 cubinを使っているのか、PTX JITなのか
+
+JAX 0.5.3のCUDA依存には、すべてを一点固定するのではなく下限指定になっているものがあります。したがって、jax、jaxlib、plugin、pjrtが0.5.3で揃っていても、CUDA関連の推移依存全体が同一の既知構成である保証はありません。 
+
+これは現状でもっとも大きな盲点です。
+
+1.3 MuJoCo 3.11.0とJAX 0.5.3
+
+【確認済み】この組み合わせはMuJoCo側の公式ロックに含まれています。
+
+MuJoCo 3.11.0のロックは概ね次の構成です。
+
+Python	JAX / jaxlib	CUDA plugin / pjrt	NumPy
+< 3.13	0.5.3	0.5.3	2.1.3
+>= 3.13	0.8.3	0.8.3	2.4.4
+
+したがって、現在のJAX 0.5.3は非対応ではありません。ただし、NumPy 2.5.1とCUDA推移依存を含め、環境全体は公式ロックの完全再現ではありません。
+
+また、mujoco-mjx==3.11.0自体はJAXを狭く固定しておらず、Python 3.10以降をサポートしています。 
+
+1.4 Blackwellで報告されているJAX/XLA問題
+
+以下は一次情報上、関連性があります。ただし、本件と同一症状ではありません。
+
+RTX 5090＋同じ610.43.02ドライバでXid 31
+
+【確認済み】 RTX 5090、ドライバ610.43.02、CUDA 13.3、JAX 0.10.1付近で、約20個の異なるJITコンパイル後にGPU Xid 31が発生する未解決報告があります。 
+
+本件との違い
+
+* あなたのテストは約3コンパイルです。
+* 現時点でXid 31は確認されていません。
+* 問題側はCUDA 13 plugin/JAX 0.10.1で、あなたはCUDA 12/JAX 0.5.3です。
+
+したがって、Blackwell＋610系ドライバに問題が存在し得る証拠ではありますが、本件の直接証拠ではありません。
+
+RTX 5090でのdelay-kernel timer警告
+
+OpenXLAには、RTX 5090でクロック周波数の仮定が不適切なためタイマー警告や遅延が発生する報告があります。しかし、報告者はPTX JITとnative sm_120双方を比較し、PTX JIT自体を原因から外しています。これは主に性能測定系の問題であり、今回の数分間停止とは一致しません。 
+
+sm_120でのsilent miscompile
+
+JAX 0.10.2ではRTX 5090上の特定のGEMM融合で、デフォルトautotuneによるsilent miscompileの報告があります。 
+
+これは停止ではありません。ただし、あなたの「ビット単位で厳密評価する」という要件にとって重要です。
+autotuneレベルやTriton GEMM等のXLAフラグを変えて通す方法は、結果を変え得るため復旧策として採用してはいけません。
+
+1.5 MJX 3.11.0固有の同一hang
+
+【未確認】
+
+一次情報を確認した範囲では、次の完全一致報告は見つかっていません。
+
+* RTX 5090
+* WSL2
+* MJX 3.11.0
+* JAX 0.5.3
+* B=1／B=2のmjx.step
+* compile完了後またはcompile途中でGPU利用率0%のまま停止
+
+MuJoCo 3.11.0の公式changelogにも、これと明確に一致する修正項目はありませんでした。これは「バグではない」という意味ではなく、既知問題として特定できていないという意味です。 
+
+⸻
+
+2. 「CUDA 12.3 runtime + CUDA 13.3 driver + RTX 5090」は有力原因か
+
+確認済みの事実
+
+* 新しいドライバで古いCUDA runtimeを動かすことはNVIDIAの対応範囲です。 
+* JAX CUDA 12 wheelの使用条件上、610系ドライバは十分に新しいです。 
+* Blackwell native code生成はCUDA 12.8以降で本格対応します。 
+* それ以前のtoolkitで生成されたPTXも、適切なPTXが含まれていればdriver JITで動作できます。 
+* JAXの4パッケージが0.5.3でも、実際のnvidia-*依存やロードライブラリは未確定です。 
+
+有力仮説
+
+もっとも妥当なのは、以下の複合要因です。
+
+Blackwell上で、JAX/XLA 0.5.3が生成したプログラムを、実際にインストールされたCUDA 12系ライブラリと610系ドライバがロード／JIT／実行する経路のどこかで停止している。
+
+つまり、
+
+* 「CUDA 12.3だから駄目」
+* 「CUDA 13.3ドライバだから駄目」
+* 「RTX 5090だから駄目」
+
+のどれか単独ではなく、特定バージョン間の相互作用が有力です。
+
+また、v24だけcompile完了ログが出なかった理由として、persistent cache、CUDA compute cache、compile順序、shape特殊化、ホストメモリ状態などの差も考えられます。
+
+未確認
+
+現時点では以下が欠けています。
+
+* .lower()の終了時刻
+* .compile()の終了時刻
+* compiled executable呼び出しが返ったか
+* 最初のGPU同期が返ったか
+* device_getが返ったか
+* CUDA module load／PTX JITが発生したか
+* GPU Xidが発生していないか
+* 実際にロードされたlibcuda、libcudart、cuBLAS等
+* Pythonスレッドが何を実行または待機しているか
+
+したがって、現段階での評価は次です。
+
+仮説	評価
+CUDA 12 runtimeをCUDA 13 driverで動かしていること自体	原因として弱い
+Blackwell＋古めのJAX/XLAコード生成経路	有力
+pip内CUDA依存とシステムCUDAの混在	有力、未確認
+PTX JIT／module load／CUDA cache	有力、未確認
+WSL2＋610系driver固有問題	中程度。Xid確認前は断定不可
+MuJoCoとMJXのバージョン不一致	否定済み
+NumPy 2.5.1単独	低いが除去すべきノイズ
+PPOやOpenDuck環境コード	上流mjx.stepまで切り出しているため優先度低
+
+⸻
+
+3. 現環境を壊さない推奨venv
+
+現在のvenvには一切インストールしないでください。
+また、同じvenv内でCUDA 12 pluginをCUDA 13 pluginに差し替えるのも禁止です。残存ファイルや依存解決差が入り、比較不能になります。
+
+C0：現行公式ロック再現用
+
+これは「現在とほぼ同じだが、MuJoCo 3.11.0公式ロックへ厳密に戻した対照環境」です。
+
+python3.12 -m venv "$HOME/.venvs/openduck-mjx311-jax053-cu12"
+source "$HOME/.venvs/openduck-mjx311-jax053-cu12/bin/activate"
+python -m pip install --upgrade pip
+python -m pip install \
+  "numpy==2.1.3" \
+  "jax[cuda12]==0.5.3" \
+  "jaxlib==0.5.3" \
+  "jax-cuda12-plugin==0.5.3" \
+  "jax-cuda12-pjrt==0.5.3" \
+  "mujoco==3.11.0" \
+  "mujoco-mjx==3.11.0"
+python -m pip check
+python -m pip freeze --all | tee manifest.lock.txt
+
+Braxは入れません。
+今回の最小テストにBraxは不要です。変数を増やすだけです。MJXはMuJoCo側で直接検証してください。MuJoCo公式もMJXをJAXベースの実装として提供しており、旧Brax physicsは主経路ではありません。 
+
+C0の意味
+
+* C0が通る
+    → 現venvのNumPy、CUDA推移依存、外部ライブラリ混在、cache等が原因候補です。
+* C0も止まる
+    → JAX 0.5.3＋Blackwell経路、driver、WSL2、MJX loweringへ絞れます。
+
+R1：第一推奨復旧候補
+
+MuJoCo 3.11.0の新しい公式ロックに合わせます。
+
+python3.13 -m venv "$HOME/.venvs/openduck-mjx311-jax083-cu12"
+source "$HOME/.venvs/openduck-mjx311-jax083-cu12/bin/activate"
+python -m pip install --upgrade pip
+python -m pip install \
+  "numpy==2.4.4" \
+  "jax[cuda12]==0.8.3" \
+  "jaxlib==0.8.3" \
+  "jax-cuda12-plugin==0.8.3" \
+  "jax-cuda12-pjrt==0.8.3" \
+  "mujoco==3.11.0" \
+  "mujoco-mjx==3.11.0"
+python -m pip check
+python -m pip freeze --all | tee manifest.lock.txt
+
+これは、Python 3.13向けMuJoCo 3.11.0公式ロックと一致します。JAX 0.8.3にはCUDA 12とCUDA 13の双方のwheelがあります。 
+
+JAX 0.6.0以降のCUDA 12 buildはCUDA 12.8系へ移行しており、Blackwell native target対応の観点では0.5.3より明確に適しています。 
+
+R2：CUDA 12対13の識別用
+
+R1とは別venvにします。
+
+python3.13 -m venv "$HOME/.venvs/openduck-mjx311-jax083-cu13"
+source "$HOME/.venvs/openduck-mjx311-jax083-cu13/bin/activate"
+python -m pip install --upgrade pip
+python -m pip install \
+  "numpy==2.4.4" \
+  "jax[cuda13]==0.8.3" \
+  "jaxlib==0.8.3" \
+  "jax-cuda13-plugin==0.8.3" \
+  "jax-cuda13-pjrt==0.8.3" \
+  "mujoco==3.11.0" \
+  "mujoco-mjx==3.11.0"
+python -m pip check
+python -m pip freeze --all | tee manifest.lock.txt
+
+R1とR2の違いはCUDA plugin世代だけです。これにより、「新しいJAX/XLAなら通る」のか、「CUDA 13 pluginでなければ通らない」のかを分離できます。
+
+ただし、CUDA 13を無条件に安全と見なしてはいけません。CUDA 13.3の公式release notesには、sm_120/sm_121における一部strided batched GEMMの範囲外アクセス問題も記載されています。MJX上流stepと直接一致するとは限りませんが、CUDA 13を“正解”として先入観で採用する理由はありません。 
+
+推奨実行順
+
+1. C0
+2. R1
+3. R2
+4. それでも全滅した場合だけ、別venvでより新しいJAXを診断
+
+JAX 0.11.0など最新版へ直行するのは悪手です。変更変数が増え、MuJoCoの公式ロックからも外れます。まず0.8.3で切り分けるべきです。 
+
+⸻
+
+4. 最初に実行すべきGPU smoke test
+
+テストは次の3段階に分けます。
+
+Gate 1：JAX単体
+
+* GPU backend
+* .lower()
+* .compile()
+* dispatch
+* block_until_ready
+* device_get
+* B=1／B=2の単純な整数演算
+* fresh-process再現性
+
+整数演算を先に使うのは、浮動小数点の演算順序問題とGPU実行基盤問題を分離するためです。
+
+Gate 2：最小MJX接触モデル
+
+* plane
+* free joint付きsphere
+* mjx.step 10回
+* B=1とB=2 lane 1の厳密比較
+* 同じcompiled executableの再実行比較
+
+Gate 3：OpenDuckMini canonical reset
+
+既存のcanonical B=2 resetからlane 1を切り出し、同一のpolicy actionではなく、最終的にdata.ctrlへ入るactuator controlを使って比較します。
+
+policy actionからctrlへの変換をテスト内に残すと、原因範囲が再び広がります。
+
+⸻
+
+停止点を確定する計測ラッパー
+
+以下を現在の最小再現コードへ組み込んでください。
+
+from __future__ import annotations
+import faulthandler
+import hashlib
+import json
+import signal
+import time
+from typing import Any, Callable
+import jax
+import numpy as np
+from jax import lax, tree_util
+from mujoco import mjx
+faulthandler.enable()
+faulthandler.register(signal.SIGUSR1, all_threads=True, chain=False)
+faulthandler.dump_traceback_later(60, repeat=True)
+def emit(stage: str, **fields: Any) -> None:
+    record = {
+        "stage": stage,
+        "monotonic_ns": time.monotonic_ns(),
+        **fields,
+    }
+    print(json.dumps(record, sort_keys=True, default=str), flush=True)
+def sync_tree(tree: Any) -> None:
+    """Wait for every JAX output buffer."""
+    for leaf in tree_util.tree_leaves(tree):
+        block = getattr(leaf, "block_until_ready", None)
+        if block is not None:
+            block()
+def compile_executable(
+    label: str,
+    jitted_fn: Any,
+    *args: Any,
+) -> Any:
+    emit(f"{label}.lower.start")
+    lowered = jitted_fn.lower(*args)
+    emit(f"{label}.lower.done")
+    emit(f"{label}.compile.start")
+    executable = lowered.compile()
+    emit(f"{label}.compile.done")
+    return executable
+def execute_executable(
+    label: str,
+    executable: Any,
+    *args: Any,
+) -> Any:
+    emit(f"{label}.execute.call")
+    result = executable(*args)
+    emit(f"{label}.dispatch.returned")
+    emit(f"{label}.block.start")
+    sync_tree(result)
+    emit(f"{label}.block.done")
+    emit(f"{label}.device_get.start")
+    host_result = jax.device_get(result)
+    emit(f"{label}.device_get.done")
+    return host_result
+def _array_bytes(value: Any) -> tuple[tuple[int, ...], str, bytes] | None:
+    if isinstance(value, (np.ndarray, np.generic, bool, int, float, complex)):
+        array = np.ascontiguousarray(np.asarray(value))
+        return array.shape, array.dtype.str, array.tobytes(order="C")
+    return None
+def exact_tree_report(left: Any, right: Any) -> dict[str, Any]:
+    left_items, left_def = tree_util.tree_flatten_with_path(left)
+    right_items, right_def = tree_util.tree_flatten_with_path(right)
+    mismatches: list[dict[str, Any]] = []
+    digest = hashlib.sha256()
+    if left_def != right_def:
+        return {
+            "equal": False,
+            "reason": "pytree_definition_mismatch",
+            "left_def": str(left_def),
+            "right_def": str(right_def),
+        }
+    for (left_path, left_value), (right_path, right_value) in zip(
+        left_items,
+        right_items,
+        strict=True,
+    ):
+        path = tree_util.keystr(left_path)
+        left_array = _array_bytes(left_value)
+        right_array = _array_bytes(right_value)
+        if left_array is not None and right_array is not None:
+            left_shape, left_dtype, left_bytes = left_array
+            right_shape, right_dtype, right_bytes = right_array
+            digest.update(path.encode())
+            digest.update(str(left_shape).encode())
+            digest.update(left_dtype.encode())
+            digest.update(left_bytes)
+            if (
+                left_shape != right_shape
+                or left_dtype != right_dtype
+                or left_bytes != right_bytes
+            ):
+                mismatches.append(
+                    {
+                        "path": path,
+                        "left_shape": left_shape,
+                        "right_shape": right_shape,
+                        "left_dtype": left_dtype,
+                        "right_dtype": right_dtype,
+                        "left_sha256": hashlib.sha256(left_bytes).hexdigest(),
+                        "right_sha256": hashlib.sha256(right_bytes).hexdigest(),
+                    }
+                )
+        elif repr(left_value) != repr(right_value):
+            mismatches.append(
+                {
+                    "path": path,
+                    "left": repr(left_value),
+                    "right": repr(right_value),
+                }
+            )
+    return {
+        "equal": not mismatches,
+        "left_tree_sha256": digest.hexdigest(),
+        "mismatch_count": len(mismatches),
+        "mismatches": mismatches[:20],
+    }
+def build_rollout(model: Any) -> Any:
+    def rollout(data: Any, ctrl: Any) -> Any:
+        def substep(_: int, state: Any) -> Any:
+            state = state.replace(ctrl=ctrl)
+            return mjx.step(model, state)
+        return lax.fori_loop(0, 10, substep, data)
+    return jax.jit(rollout)
+def run_strict_probe(
+    model: Any,
+    data_b1: Any,
+    ctrl_b1: Any,
+    data_b2: Any,
+    ctrl_b2: Any,
+    take_lane1_from_host_b2: Callable[[Any], Any],
+    compile_order: tuple[str, str] = ("B1", "B2"),
+) -> dict[str, Any]:
+    emit(
+        "environment",
+        jax_version=jax.__version__,
+        backend=jax.default_backend(),
+        devices=[str(device) for device in jax.devices()],
+        compile_order=compile_order,
+    )
+    rollout = build_rollout(model)
+    inputs = {
+        "B1": (data_b1, ctrl_b1),
+        "B2": (data_b2, ctrl_b2),
+    }
+    executables: dict[str, Any] = {}
+    for label in compile_order:
+        executables[label] = compile_executable(
+            label,
+            rollout,
+            *inputs[label],
+        )
+    b1_first = execute_executable(
+        "B1.first",
+        executables["B1"],
+        *inputs["B1"],
+    )
+    b1_second = execute_executable(
+        "B1.second",
+        executables["B1"],
+        *inputs["B1"],
+    )
+    b2_first = execute_executable(
+        "B2.first",
+        executables["B2"],
+        *inputs["B2"],
+    )
+    b2_second = execute_executable(
+        "B2.second",
+        executables["B2"],
+        *inputs["B2"],
+    )
+    reports = {
+        "B1_repeat": exact_tree_report(b1_first, b1_second),
+        "B2_repeat": exact_tree_report(b2_first, b2_second),
+        "B1_vs_B2_lane1": exact_tree_report(
+            b1_first,
+            take_lane1_from_host_b2(b2_first),
+        ),
+    }
+    final = {
+        "status": (
+            "PASS"
+            if all(report["equal"] for report in reports.values())
+            else "FAIL"
+        ),
+        "reports": reports,
+    }
+    emit("result", result=final)
+    return final
+
+呼び出し上の注意
+
+take_lane1_from_host_b2には、あなたが現在使っている検証済みlane抽出関数を渡してください。
+
+安易に、
+
+x[1:2] if x.shape[0] == 2 else x
+
+だけで全pytreeを処理すると、batch次元ではない先頭長2の構造フィールドまで切る危険があります。ここを雑に処理すると、比較試験そのものが壊れます。
+
+⸻
+
+最小MJX接触モデルの例
+
+import jax
+import jax.numpy as jnp
+import mujoco
+import numpy as np
+from mujoco import mjx
+XML = """
+<mujoco model="minimal_contact">
+  <option timestep="0.002" gravity="0 0 -9.81"/>
+  <worldbody>
+    <geom type="plane" size="1 1 0.1"/>
+    <body pos="0 0 0.055">
+      <freejoint/>
+      <geom type="sphere" size="0.05" mass="1.0"/>
+    </body>
+  </worldbody>
+</mujoco>
+"""
+host_model = mujoco.MjModel.from_xml_string(XML)
+model = mjx.put_model(host_model)
+def make_one(z: jax.Array):
+    data = mjx.make_data(model)
+    return data.replace(qpos=data.qpos.at[2].set(z))
+data_b2 = jax.vmap(make_one)(
+    jnp.asarray([0.060, 0.055], dtype=jnp.float32)
+)
+def verified_device_lane1(tree):
+    # この最小モデル専用。OpenDuckでは既存の検証済みselectorを使うこと。
+    return jax.tree.map(
+        lambda x: (
+            x[1:2]
+            if isinstance(x, jax.Array)
+            and x.ndim > 0
+            and x.shape[0] == 2
+            else x
+        ),
+        tree,
+    )
+data_b1 = verified_device_lane1(data_b2)
+ctrl_b2 = jnp.zeros((2, host_model.nu), dtype=jnp.float32)
+ctrl_b1 = ctrl_b2[1:2]
+def verified_host_lane1(tree):
+    return jax.tree.map(
+        lambda x: (
+            x[1:2]
+            if isinstance(x, np.ndarray)
+            and x.ndim > 0
+            and x.shape[0] == 2
+            else x
+        ),
+        tree,
+    )
+run_strict_probe(
+    model=model,
+    data_b1=data_b1,
+    ctrl_b1=ctrl_b1,
+    data_b2=data_b2,
+    ctrl_b2=ctrl_b2,
+    take_lane1_from_host_b2=verified_host_lane1,
+)
+
+⸻
+
+実行時の隔離設定
+
+各venv・各runごとに独立したcacheディレクトリを作ります。
+
+RUN_ROOT="$PWD/diagnostics/$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$RUN_ROOT/jax-cache" "$RUN_ROOT/cuda-cache"
+env \
+  -u XLA_FLAGS \
+  -u LD_LIBRARY_PATH \
+  JAX_PLATFORM_NAME=gpu \
+  JAX_LOG_COMPILES=1 \
+  JAX_COMPILATION_CACHE_DIR="$RUN_ROOT/jax-cache" \
+  CUDA_CACHE_PATH="$RUN_ROOT/cuda-cache" \
+  timeout \
+    --signal=USR1 \
+    --kill-after=30s \
+    600s \
+  python -u strict_mjx_probe.py \
+  >"$RUN_ROOT/stdout.log" \
+  2>"$RUN_ROOT/stderr.log"
+echo "$?" >"$RUN_ROOT/exit_code.txt"
+
+LD_LIBRARY_PATHを外すのは、JAX pip wheelが意図したCUDAライブラリではなく、WSL内の別CUDAライブラリを拾う事態を防ぐためです。JAX公式もLD_LIBRARY_PATHによるCUDA library overrideに注意を促しています。 
+
+ただし、これはpip CUDA wheelを使用する隔離venvでのみ行ってください。
+
+⸻
+
+合格条件
+
+単に1回JSONが出れば合格ではありません。
+
+各venvで最低限、次を満たす必要があります。
+
+1. 同じcompiled B=1 executableを2回実行し、bitwise一致
+2. 同じcompiled B=2 executableを2回実行し、bitwise一致
+3. B=1とB=2 lane 1がbitwise一致
+4. fresh processで3回一致
+5. B=1→B=2 compile順で一致
+6. B=2→B=1 compile順でも一致
+7. 空のJAX／CUDA cacheからのcold runで一致
+8. 同一cacheを使ったwarm runでも一致
+9. tiny MJXとOpenDuck canonicalの両方で一致
+10. すべてGPU backendで実行
+
+B=1とB=2はshapeが違うため、XLA上は別プログラムです。したがってcross-shape bitwise equalityはJAX一般の保証ではなく、あなたが設定した追加の受け入れ条件です。
+
+これは問題ありません。
+ただし、失敗した場合は「誤差が小さいから採用」ではなく、そのstackはあなたの要件に不適合として棄却すべきです。
+
+⸻
+
+5. Persistent compilation cache、XLA_FLAGS、CUDA pluginの扱い
+
+5.1 JAX persistent compilation cache
+
+JAXのpersistent cache keyには、HLO、jaxlibバージョン、関連XLA flags、device configurationなどが含まれます。 
+
+安全な扱いは次です。
+
+採用する扱い
+
+* venvごとに別cacheディレクトリ
+* CUDA 12／CUDA 13で別cache
+* JAX 0.5.3／0.8.3で別cache
+* XLA flags変更ごとに別cache
+* 最初の検証は空cache
+* cold run合格後に同一cacheでwarm run
+* cacheディレクトリとmanifestをrun artifactに保存
+
+採用しない扱い
+
+* 既存の全体cacheを削除して現環境まで巻き込む
+* 異なるvenvで同じcacheを共有
+* warm cacheで通ったから直ったと判断
+* driver更新前後で同じcacheを使う
+
+JAXの公開されたcache key構成にdriver versionが必ず含まれるとは限りません。したがって、driver変更前後でcacheを共有するのは危険です。これは公開仕様からの保守的推論です。 
+
+5.2 CUDA compute cache
+
+NVIDIA driver側にもPTX JIT結果等を保存するCUDA cacheがあります。
+
+安全な設定は、
+
+CUDA_CACHE_PATH="$RUN_ROOT/cuda-cache"
+
+としてrunごとに隔離することです。NVIDIAはCUDA_CACHE_PATH、CUDA_CACHE_DISABLE、CUDA_FORCE_PTX_JIT等を公式に提供しています。 
+
+CUDA_CACHE_DISABLE=1は診断用です。通常運用の解決策にはしません。
+
+5.3 CUDA_FORCE_PTX_JIT=1
+
+これはBlackwell互換性確認のための一回限りの診断です。
+
+CUDA_FORCE_PTX_JIT=1 \
+CUDA_CACHE_PATH="$RUN_ROOT/cuda-cache-ptx" \
+python -u strict_mjx_probe.py
+
+意味は次のとおりです。
+
+* 通る
+    → PTXが含まれ、driver JIT経路が少なくとも動く
+* 明確な互換性エラーになる
+    → 必要なPTXが含まれていない可能性
+* 同じ場所で止まる
+    → PTX JIT経路を含むmodule load／driver側を疑う
+
+ただし、これを恒久設定にしてはいけません。
+検証後は必ずunsetします。NVIDIAも互換性検査後に解除するよう説明しています。 
+
+逆に、
+
+CUDA_DISABLE_PTX_JIT=1
+
+を使えばnative cubinだけで動作可能か確認できます。これも診断専用です。
+
+5.4 XLA_FLAGS
+
+ベースラインでは、
+
+env -u XLA_FLAGS
+
+にしてください。
+
+特に次のような設定を「通すための修正」に使ってはいけません。
+
+* GEMM autotune level変更
+* Triton GEMMの有効化／無効化
+* fusionの変更
+* fast-math関連
+    -演算再結合関連
+* deterministic operation関連
+* TF32経路変更
+* latency hiding scheduler変更
+* compiler optimization level変更
+
+これらは生成kernelや演算順を変え、物理状態のbit列を変える可能性があります。
+
+診断用として許されるのは、例えば次です。
+
+XLA_FLAGS="--xla_dump_to=$RUN_ROOT/xla-dump"
+
+これはHLOや生成物を保存するための観測設定です。ただし、設定値は必ずmanifestへ残してください。
+
+5.5 CUDA_LAUNCH_BLOCKING=1
+
+CUDA_LAUNCH_BLOCKING=1
+
+は非同期実行の停止点を特定する診断として有効です。
+
+ただし、最終合格試験はこの設定なしで行います。スケジューリングを変えた状態だけで通っても、通常運用の再現性が確認されたことにはなりません。
+
+5.6 CUDA plugin更新
+
+pluginだけ更新してはいけません。
+
+次を一単位として、新しいvenvでまとめて変更します。
+
+* jax
+* jaxlib
+* jax-cudaXX-plugin
+* jax-cudaXX-pjrt
+
+また、バージョン更新後は生成HLO、lowering、kernel選択が変わり得ます。
+したがって、0.5.3と0.8.3の出力hashが一致しないこと自体を不具合とは判定できません。
+
+比較すべきなのは、
+
+* 同一stack内のfresh-process再現性
+* 同一stack内のB=1／B=2 lane一致
+
+です。
+
+合格したstackは、次まで固定してください。
+
+python -m pip freeze --all > manifest.lock.txt
+python -m pip check > pip-check.txt
+
+可能ならwheelも保存し、SHA-256を記録します。
+
+⸻
+
+6. 採用してはいけない対処
+
+次は復旧ではなく、問題の隠蔽です。
+
+* CPUで通ったので採用
+* allcloseの許容差を広げる
+* bitwise gateを削除
+* B=2検証を削除してB=1だけ使う
+* timeoutを無制限に延ばして待つ
+* warm cacheで一度通ったので採用
+* jax_disable_jit=True
+* solver iteration数の変更
+* timestepの変更
+* contact設定の変更
+* OpenDuckモデルの簡略化を最終解決とする
+* jax_enable_x64を変更して通す
+* XLA autotuneやfusion設定を変更して通す
+* MJX-JAXから別実装へ切り替えて同じ物理だと扱う
+* 現venvへ上書きインストール
+* CUDA 12 pluginとCUDA 13 pluginを同居させる
+* いきなりWindows／WSL／GPU driverを更新またはdowngrade
+* GPU再現性確認前にPPOを再開
+
+特にdriver変更は最後です。システム全体を動かす破壊的な変数であり、現時点ではdriver原因の証拠が足りません。
+
+⸻
+
+7. 次に集めるべきログと診断コマンド
+
+優先度P0：実際のパッケージと環境変数
+
+最初にこれを保存してください。
+
+RUN_ROOT="$PWD/diagnostics/inventory-$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$RUN_ROOT"
+python -m pip freeze --all \
+  >"$RUN_ROOT/pip-freeze.txt"
+python -m pip check \
+  >"$RUN_ROOT/pip-check.txt" 2>&1
+env | sort | grep -E \
+'^(JAX|XLA|CUDA|NVIDIA|LD_|TF_|MUJOCO)' \
+  >"$RUN_ROOT/relevant-env.txt"
+uname -a \
+  >"$RUN_ROOT/uname.txt"
+cat /proc/version \
+  >"$RUN_ROOT/proc-version.txt"
+nvidia-smi -q \
+  >"$RUN_ROOT/nvidia-smi-q.txt"
+
+JAXとNVIDIAパッケージだけを一覧化します。
+
+python - <<'PY' | tee "$RUN_ROOT/python-packages.txt"
+from importlib import metadata
+prefixes = (
+    "jax",
+    "nvidia-",
+    "mujoco",
+    "numpy",
+    "brax",
+)
+for dist in sorted(
+    metadata.distributions(),
+    key=lambda d: (d.metadata.get("Name") or "").lower(),
+):
+    name = dist.metadata.get("Name") or ""
+    if name.lower().startswith(prefixes):
+        print(f"{name}=={dist.version}")
+PY
+
+JAX環境情報も取得します。
+
+python - <<'PY' | tee "$RUN_ROOT/jax-environment.txt"
+import jax
+print("jax:", jax.__version__)
+print("backend:", jax.default_backend())
+print("devices:", jax.devices())
+try:
+    jax.print_environment_info()
+except Exception as exc:
+    print("print_environment_info failed:", repr(exc))
+PY
+
+実際のCUDA toolchain候補を確認します。
+
+{
+  echo "PATH=$PATH"
+  echo "LD_LIBRARY_PATH=${LD_LIBRARY_PATH-}"
+  command -v ptxas || true
+  ptxas --version || true
+  command -v nvlink || true
+  nvlink --version || true
+  command -v nvcc || true
+  nvcc --version || true
+  python -m pip list --format=freeze | grep '^nvidia-' || true
+} | tee "$RUN_ROOT/cuda-toolchain.txt"
+
+ここで見るもの
+
+* CUDA 12とCUDA 13のnvidia-*が混在していないか
+* LD_LIBRARY_PATHに/usr/local/cuda-*が入っていないか
+* pip wheelのptxasではなくシステムptxasを使っていないか
+* jax-cuda12-pluginとjax-cuda13-pluginが同居していないか
+
+⸻
+
+優先度P1：停止フェーズの確定
+
+前述のラッパーで、必ず以下を別ログにします。
+
+1. lower.start
+2. lower.done
+3. compile.start
+4. compile.done
+5. execute.call
+6. dispatch.returned
+7. block.start
+8. block.done
+9. device_get.start
+10. device_get.done
+11. compare開始／終了
+12. JSON開始／終了
+
+判定は明確です。
+
+最後のログ	疑う場所
+lower.start	Python tracing、MJX lowering、shape/static構造
+compile.start	XLA compile、ptxas、compile cache
+compile.done	compile後のexecutable loadまたは次処理
+execute.call	executable launch／module load
+dispatch.returned後、block.doneなし	GPU kernel、driver、device sync
+block.done後、device_get.doneなし	D2H転送、buffer状態
+device_get.done後	比較処理／シリアライズ
+60秒ごとの同一Python stack	ホスト側ループまたはロック
+Python stackは待機、Xidあり	driver／GPU障害
+
+⸻
+
+優先度P2：停止中のプロセス状態
+
+停止中のPIDに対して実行します。
+
+PID=<python_pid>
+ps -L -p "$PID" \
+  -o pid,tid,psr,pcpu,stat,wchan:40,comm
+cat "/proc/$PID/stack" 2>/dev/null || true
+strace -ff -ttT \
+  -p "$PID" \
+  -o "$RUN_ROOT/strace" 
+
+py-spyを別の診断venvまたはユーザー領域へ入れられるなら、
+
+py-spy dump --pid "$PID" --native \
+  >"$RUN_ROOT/py-spy-native.txt"
+
+を使います。
+
+特に次を見ます。
+
+* futex待ち
+* file lock待ち
+* cache書き込み
+* ptxas子プロセス待ち
+* XLA compiler内部でCPUループ
+* CUDA driver API呼び出し待ち
+
+GPU側は、
+
+nvidia-smi dmon -s pucm -d 1 \
+  >"$RUN_ROOT/nvidia-smi-dmon.txt"
+
+を取得します。
+
+GPU利用率0%は、「GPUが原因ではない」ことを意味しません。module load、driver JIT、ホストコンパイル、同期待ちでは0%になり得ます。ただし、単独では何の証明にもなりません。
+
+⸻
+
+優先度P3：XidとWindows側GPUイベント
+
+WSL側でまず確認します。
+
+dmesg -T | grep -Ei \
+  'NVRM|Xid|dxg|cuda|gpu' \
+  >"$RUN_ROOT/dmesg-gpu.txt"
+
+Windows側ではPowerShellから直近のGPU関連イベントを採取します。
+
+Get-WinEvent -FilterHashtable @{
+    LogName   = 'System'
+    StartTime = (Get-Date).AddHours(-2)
+} |
+Where-Object {
+    $_.ProviderName -match 'nvlddmkm|Display|DxgKrnl'
+} |
+Format-List TimeCreated, Id, ProviderName, LevelDisplayName, Message
+
+Xid 31、Xid 43、device reset、TDR等が出ていれば、driver／GPU側仮説の優先度が一気に上がります。
+
+⸻
+
+優先度P4：ライブラリロード元
+
+tiny JAX smokeで一度だけ取得します。
+
+LD_DEBUG=libs \
+python -u jax_gpu_smoke.py \
+  >"$RUN_ROOT/ld-debug-stdout.txt" \
+  2>"$RUN_ROOT/ld-debug-libs.txt"
+
+ログ量が多いので、後から絞ります。
+
+grep -Ei \
+'libcuda|libcudart|cublas|cudnn|cusolver|cusparse|nvjitlink' \
+"$RUN_ROOT/ld-debug-libs.txt" \
+  >"$RUN_ROOT/loaded-cuda-libs.txt"
+
+ここでpip環境外の/usr/local/cudaや、意図しないCUDA 13／12ライブラリがロードされていれば、かなり有力な原因です。
+
+⸻
+
+優先度P5：PTX／cache識別
+
+tiny JAX、tiny MJXの順に、以下を別runとして行います。
+
+1. 通常cold cache
+2. 通常warm cache
+3. CUDA_CACHE_DISABLE=1
+4. CUDA_FORCE_PTX_JIT=1
+5. CUDA_DISABLE_PTX_JIT=1
+
+すべて別ディレクトリ、別ログ、別JSONにします。
+
+これらは診断であり、最終採用設定にはしません。
+
+⸻
+
+優先度P6：XLA dump／Nsight Systems
+
+停止フェーズがcompileまたはexecutionまで絞れた後に実施します。
+
+XLA_FLAGS="--xla_dump_to=$RUN_ROOT/xla-dump" \
+python -u strict_mjx_probe.py
+
+実行フェーズまで到達して止まるなら、
+
+nsys profile \
+  --trace=cuda,nvtx,osrt \
+  --output="$RUN_ROOT/mjx-probe" \
+  python -u strict_mjx_probe.py
+
+を使用します。
+
+compute-sanitizerは非常に重いため、OpenDuck全体ではなくtiny MJXで再現した場合に限定します。
+
+⸻
+
+非破壊の復旧判断フロー
+
+P0 inventory採取
+  |
+  +-- CUDA依存混在あり
+  |      -> C0で公式ロック再構築
+  |
+  +-- 混在なし
+         -> Gate 1: JAX単体
+                |
+                +-- hang/fail
+                |      -> JAX/XLA・CUDA plugin・driver・WSL層
+                |
+                +-- pass
+                       -> Gate 2: tiny MJX
+                              |
+                              +-- hang/fail
+                              |      -> MJX lowering/contact/solverとXLAの相互作用
+                              |
+                              +-- pass
+                                     -> Gate 3: OpenDuck canonical
+                                            |
+                                            +-- hang
+                                            |      -> OpenDuck model構造、
+                                            |         static fields、shape、
+                                            |         actuator/control経路
+                                            |
+                                            +-- bitwise failのみ
+                                                   -> shape依存codegen
+                                                      としてstack棄却
+
+venvの採用判定は次です。
+
+C0	R1	R2	判断
+PASS	未実施	未実施	現venv汚染／依存差が主因
+FAIL	PASS	未実施	JAX 0.5.3／旧CUDA 12 build経路が主因候補
+FAIL	FAIL	PASS	CUDA 12 plugin経路固有の可能性が高い
+FAIL	FAIL	FAIL	driver／WSL2／モデル固有loweringを優先調査
+JAX単体から全FAIL	-	-	MuJoCoではなくJAX／CUDA／driver層
+JAX単体PASS、tiny MJX FAIL	-	-	MJX/XLA lowering層
+tiny MJX PASS、OpenDuckのみFAIL	-	-	OpenDuck model/data/control構造
+
+⸻
+
+一次情報URL
+
+ユーザー指定どおり、直接URLも併記します。
+
+JAX
+
+* Installation / CUDA / WSL2
+    https://docs.jax.dev/en/latest/installation.html
+* Async dispatch
+    https://docs.jax.dev/en/latest/async_dispatch.html
+* Persistent compilation cache
+    https://docs.jax.dev/en/latest/persistent_compilation_cache.html
+* Changelog
+    https://docs.jax.dev/en/latest/changelog.html
+* RTX 5090・610.43.02・Xid 31
+    https://github.com/jax-ml/jax/issues/38548
+* RTX 5090・silent miscompile
+    https://github.com/jax-ml/jax/issues/39336
+
+OpenXLA
+
+* RTX 5090 delay-kernel timer issue
+    https://github.com/openxla/xla/issues/39255
+
+NVIDIA
+
+* Blackwell compatibility guide
+    https://docs.nvidia.com/cuda/blackwell-compatibility-guide/index.html
+* CUDA 12.8 release notes
+    https://docs.nvidia.com/cuda/archive/12.8.0/cuda-toolkit-release-notes/index.html
+* CUDA current release notes
+    https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html
+* CUDA environment variables
+    https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/environment-variables.html
+* Open GPU kernel module issue corresponding to Xid 31
+    https://github.com/NVIDIA/open-gpu-kernel-modules/issues/1208
+
+MuJoCo / MJX
+
+* MJX documentation
+    https://mujoco.readthedocs.io/en/3.11.0/mjx.html
+* MuJoCo 3.11.0 MJX JAX requirements
+    https://github.com/google-deepmind/mujoco/blob/3.11.0/mjx/requirements.txt
+* MuJoCo 3.11.0 CUDA requirements
+    https://github.com/google-deepmind/mujoco/blob/3.11.0/mjx/cuda_requirements.txt
+* MJX package metadata
+    https://github.com/google-deepmind/mujoco/blob/3.11.0/mjx/pyproject.toml
+
+現時点での最優先は、driver更新ではなく、P0の実依存採取と、phase境界を入れたC0／R1のtiny smokeです。そこを飛ばしてCUDA 13や新しいJAXへ移ると、通ったとしても原因を失い、再び同じ問題が出たときに何も説明できなくなります。

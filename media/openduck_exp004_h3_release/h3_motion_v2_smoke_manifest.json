@@ -1,0 +1,176 @@
+{
+  "title": "OpenDuckMini exp_004 H3 release gait showcase",
+  "video": "media/openduck_exp004_h3_release/h3_motion_v2_smoke.mp4",
+  "video_sha256": "6858ff77352d4ba59118ec7d2355ff43053fc097cd22f3ab7cd142664551949b",
+  "video_size_bytes": 1162682,
+  "cover": "media/openduck_exp004_h3_release/h3_motion_v2_smoke_cover.png",
+  "cover_sha256": "2148ab61ac153420ce9f3ebd875711ef34e11d405eb088b6167a67e24938c9ab",
+  "render": {
+    "width": 1280,
+    "height": 720,
+    "fps": 25,
+    "simulation_seconds": 6.0,
+    "title_and_close_seconds": 1.2000000000000002,
+    "simulation_frame_count": 150,
+    "offscreen_backend": "egl",
+    "camera_reference": "world_fixed_at_exact_home_reset"
+  },
+  "disclosure": {
+    "simulation_only": true,
+    "release_status": "ADOPTED_SIMULATION_ONLY",
+    "hardware_deployment": "PROHIBITED",
+    "not_new_qualification_evidence": true,
+    "independent_exact_home_reset_per_motion": true,
+    "joint_noise_scale": 0.0,
+    "initial_base_speed": 0.0,
+    "metric_warmup_seconds": 1.5,
+    "formal_policy_observation_mapping_used": true,
+    "continuous_transition_claimed": false
+  },
+  "package": {
+    "path": "experiments/mujoco/exp_004_openduckmini_safe_gait_experts/artifacts/router_packages/exp004-safe-gait-router-h3-release-20260808-v1",
+    "package_id": "exp004-safe-gait-router-h3-release-20260808-v1",
+    "manifest_sha256": "44b64ad794d83c518ec7deeac14b18d6afcbcccafa235359c3d8075cd25334fd",
+    "formal_release_evidence_sha256": "95819b5bc1d0827a5ad779542a6f98c4aaebacf5f55a8303c0b5a14fba501674",
+    "base_v22_sha256": "f7a2731330cd3be52858989b021423a5f363cc4a8f9850512281da745a7617c0",
+    "verified_before_render": true
+  },
+  "showcase_audit": {
+    "segments": 1,
+    "central_motion_acceptance_passed": 1,
+    "control_samples": 300,
+    "physics_substeps": 3000,
+    "leg_joint_samples": 30000,
+    "minimum_signed_progress_ratio": 0.7727267065063829,
+    "qpos_limit_violations": 0,
+    "target_limit_violations": 0,
+    "unauthorized_target_margin_violations": 0,
+    "target_slew_violations": 0,
+    "nonfinite_samples": 0,
+    "fall_samples": 0,
+    "prohibited_route_steps": 0,
+    "command_clip_events": 0,
+    "maximum_qpos_excess_rad": 0.0,
+    "reset_audits_passed": 1,
+    "control_first_startup_audits_passed": 1,
+    "backward_exit_recovery_audits_passed": 1
+  },
+  "segments": [
+    {
+      "name": "forward",
+      "label": "\u524d\u9032 / FORWARD",
+      "physical_command": [
+        0.05,
+        0.0,
+        0.0
+      ],
+      "policy_observation_command": [
+        0.1,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "forward",
+      "expected_policy_role": "forward",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          0.05,
+          0.0,
+          0.0
+        ],
+        "physical_command": [
+          0.05,
+          0.0,
+          0.0
+        ],
+        "mean_effective_command": [
+          0.050000000000000114,
+          0.0,
+          0.0
+        ],
+        "mean_policy_observation_command": [
+          0.10000000000000023,
+          0.0,
+          0.0
+        ],
+        "mean_local_velocity_xyz": [
+          0.03863633532531915,
+          0.017948285680969706,
+          0.00031743349431191653
+        ],
+        "mean_local_yaw_rate": 0.13226408838511844,
+        "commanded_linear_speed": 0.05,
+        "projected_primary_velocity": 0.03863633532531915,
+        "primary_velocity_error": 0.011363664674680855,
+        "signed_orthogonal_velocity": 0.017948285680969706,
+        "absolute_orthogonal_velocity": 0.017948285680969706,
+        "yaw_rate_error": 0.13226408838511844,
+        "uncommanded_yaw_rate": 0.13226408838511844,
+        "displacement_xyz": [
+          0.17337809132082818,
+          0.16856736732757865,
+          0.017108618970859718
+        ],
+        "planar_displacement": 0.24181588011916064,
+        "minimum_height_m": 0.18201165144698575,
+        "minimum_upright": 0.9858820293352463,
+        "single_support_rate": 0.3233333333333333,
+        "flight_rate": 0.0,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.3466666666666667,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    }
+  ],
+  "source": {
+    "builder": "media/openduck_exp004_h3_release/build_h3_release_showcase.py",
+    "builder_sha256": "28577288e1ff50cfa719d663cfb19173d50f71db86e35dae4cd4922ad73fb372",
+    "git_head": "a61f451ecbf86bb35baca45b68a403d26790070f"
+  }
+}

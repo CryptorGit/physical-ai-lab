@@ -1,0 +1,8 @@
+6efb7dd392d5e48e4b772606dc7a30354b13a38f6814ae63be20ad6db6c8200b  controller_config.json
+ee80c672a6d49cd1b834ed235da3456e30678139ba009edeeb1610b8aa3d23b1  evaluation_summary.json
+97aca305866686fcb4d2c4d75565d653fa72e61dc247cd6786d5c061ee863696  retention_preflight.json
+e352ae83d44bc6bd1fcf8cfa1eab963da996b7c673ff1d5e0758f2c444afb6f7  README.md
+b7393b2ecf077431b9bda4a88e12adfa0c8d4fe5703b1b0bef5a190fa846ea88  ../../../experiments/isaaclab/exp_006_unitree_g1_command_skills/src/g1_command_skills/scripted_land.py
+8d940ab80356b2cac30d48615e4aec23aac904bd5390900122904ab489f55201  ../../../experiments/isaaclab/exp_006_unitree_g1_command_skills/scripts/evaluate_land_shallow.py
+e3338d9a9dcd1a7082b7aced0b32c8c738e1fcdc3e8ead55d97039532179b376  ../../../results/exp_006_unitree_g1_command_skills/land_shallow/baseline_final/summary.json
+c281a1d160bf6729eabef6454a9d9f028f0113e1e10ad853527d5474c9bfef4a  ../../../results/exp_006_unitree_g1_command_skills/land_shallow/pilot_final/summary.json

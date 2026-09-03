@@ -1,0 +1,7 @@
+{
+  "start_time": "2026-08-03T07:07:32.0187272+09:00",
+  "hard_deadline": "2026-08-03T19:07:32.0187272+09:00",
+  "finalization_start": "2026-08-03T18:22:32.0187272+09:00",
+  "timezone": "Asia/Tokyo",
+  "new_training_forbidden_at_or_after_finalization_start": true
+}

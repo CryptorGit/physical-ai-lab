@@ -1,0 +1,39 @@
+protocol_version: 1
+experiment:
+  name: exp_009_stage1_single_head_interference_diagnosis
+  seed: 20270310
+  device: cuda:0
+dataset:
+  stage0_path: results/exp_009_unitree_g1_unified_walk_run_student/stage0_multiteacher_distillation/teacher_dataset.parquet
+  dagger_path: results/exp_009_unitree_g1_unified_walk_run_student/stage0_multiteacher_distillation/dagger_dataset.parquet
+  split_source: stage0_grouped_episode_seed_trajectory
+  diagnostic_max_rows_per_regime_split: 120000
+  nearest_neighbor_rows_per_regime: 20000
+  identity_probe_rows_per_regime_split: 40000
+training:
+  optimizer: adamw
+  batch_size: 8192
+  learning_rate: 0.0003
+  epochs: 10
+  action_huber_delta: 0.1
+  action_loss_weight: 1.0
+  action_delta_loss_weight: 0.25
+  weight_decay: 0.00001
+  gradient_clip_norm: 1.0
+  initialization: deterministic_kaiming_uniform
+architectures:
+  small: [123, 256, 128, 128, 37]
+  medium: [123, 512, 256, 256, 37]
+  large: [123, 512, 512, 256, 37]
+context_conditions:
+  A_123D: 0
+  B_progress: 1
+  C_elapsed_remaining: 2
+  D_full_29D: 29
+  E_teacher_identity: 3
+runtime:
+  ppo_training: false
+  reward_optimization: false
+  production_controller_update: false
+  capability_update: false
+

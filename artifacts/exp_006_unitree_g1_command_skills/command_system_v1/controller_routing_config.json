@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "observation_dimension": 152,
+  "policy_skill_one_hot_dimension": 6,
+  "stand_is_external_controller_state": true,
+  "controller_families": {
+    "RUNNING_FAMILY": [
+      "RUN",
+      "TURN"
+    ],
+    "STANDING_FAMILY": [
+      "STAND",
+      "CROUCH_SHALLOW"
+    ],
+    "PROTOTYPE": [
+      "STOP"
+    ]
+  },
+  "base_options": {
+    "RUN": "stage4_running",
+    "TURN": "stage4_running",
+    "STOP": "stage4_running_plus_stop_prototype",
+    "STAND": "stage2_model4246",
+    "CROUCH_SHALLOW": "stage2_model4246"
+  },
+  "actions": {
+    "STAND": "stage2_action",
+    "CROUCH_SHALLOW": "stage2_action + scripted_shallow_v1_offset"
+  },
+  "zero_offset_outside_owner": true,
+  "fail_closed": true
+}

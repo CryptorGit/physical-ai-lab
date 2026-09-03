@@ -1,0 +1,100 @@
+{
+  "stage": "Stage 2W-B",
+  "mode": "formal-full",
+  "label": "full_range_formal_candidate",
+  "checkpoint": "logs\\rsl_rl\\physical_ai_g1_walk_centered\\2026-07-23_23-18-22_stage2wb_stabilization_pilot2_1024_100\\model_100.pt",
+  "checkpoint_sha256": "9098eaea68d1e5f818b87a499f53c17ccc97c3dbb1afa7a7604ed3dcaa3ef7fa",
+  "seed": 20260809,
+  "controller": {
+    "mode": "FixedTarget",
+    "k_heading": 0.8,
+    "k_yaw_rate": 0.1,
+    "yaw_rate_limit": 0.3,
+    "low_pass_alpha": 0.15,
+    "slew_limit": 0.01
+  },
+  "overall": {
+    "episodes": 50,
+    "success_rate": 0.96,
+    "fall_rate": 0.0,
+    "heading_error_p95_rad": 0.08734187483787537,
+    "speed_error_mean_mps": 0.03819530772686004,
+    "path_drift_failure_rate": 0.02,
+    "slip_failure_rate": 0.0,
+    "flight_failure_rate": 0.0,
+    "saturation_failure_rate": 0.0,
+    "yaw_reversal_frequency_mean_hz": 0.016,
+    "yaw_command_saturation_fraction_mean": 0.00064,
+    "action_rate_p95": 89.23468780517578
+  },
+  "per_speed": {
+    "0.6": {
+      "episodes": 13,
+      "success_rate": 1.0,
+      "heading_error_p95_rad": 0.029468119144439697,
+      "speed_error_mean_mps": 0.013285950675377476,
+      "path_drift_failure_rate": 0.0,
+      "fall_rate": 0.0,
+      "slip_failure_rate": 0.0,
+      "flight_failure_rate": 0.0,
+      "saturation_failure_rate": 0.0,
+      "yaw_reversal_frequency_mean_hz": 0.015384615384615385,
+      "action_rate_p95": 76.04107666015625
+    },
+    "0.8": {
+      "episodes": 13,
+      "success_rate": 0.9230769230769231,
+      "heading_error_p95_rad": 0.03134285286068916,
+      "speed_error_mean_mps": 0.027124787015181357,
+      "path_drift_failure_rate": 0.0,
+      "fall_rate": 0.0,
+      "slip_failure_rate": 0.0,
+      "flight_failure_rate": 0.0,
+      "saturation_failure_rate": 0.0,
+      "yaw_reversal_frequency_mean_hz": 0.03076923076923077,
+      "action_rate_p95": 79.90213012695312
+    },
+    "1.0": {
+      "episodes": 12,
+      "success_rate": 0.9166666666666666,
+      "heading_error_p95_rad": 0.05014777183532715,
+      "speed_error_mean_mps": 0.04834840379158656,
+      "path_drift_failure_rate": 0.08333333333333333,
+      "fall_rate": 0.0,
+      "slip_failure_rate": 0.0,
+      "flight_failure_rate": 0.0,
+      "saturation_failure_rate": 0.0,
+      "yaw_reversal_frequency_mean_hz": 0.0,
+      "action_rate_p95": 83.83008575439453
+    },
+    "1.2": {
+      "episodes": 12,
+      "success_rate": 1.0,
+      "heading_error_p95_rad": 0.04850006103515625,
+      "speed_error_mean_mps": 0.0670204125722249,
+      "path_drift_failure_rate": 0.0,
+      "fall_rate": 0.0,
+      "slip_failure_rate": 0.0,
+      "flight_failure_rate": 0.0,
+      "saturation_failure_rate": 0.0,
+      "yaw_reversal_frequency_mean_hz": 0.016666666666666666,
+      "action_rate_p95": 89.33103942871094
+    }
+  },
+  "gate_checks": {
+    "overall_success_ge_0_95": true,
+    "each_speed_success_ge_0_90": true,
+    "fall_le_0_02": true,
+    "heading_p95_le_0_12": true,
+    "speed_error_mean_le_0_20": true,
+    "path_drift_failure_le_0_05": true,
+    "saturation_failure_le_0_05": true,
+    "slip_failure_le_0_05": true,
+    "flight_failure_le_0_05": true
+  },
+  "gate_pass": true,
+  "failure_counts": {
+    "none": 48,
+    "heading_failure": 2
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "schema_version": 5,
+  "experiment": "exp_007_unitree_g1_walk_centered_transitions",
+  "stage": "8E",
+  "status": "PARTIAL_SUCCESS_ASYMMETRIC_STATE_GRAPH",
+  "eligible_for_stage1": true,
+  "eligible_for_stage2": true,
+  "eligible_for_stage3": true,
+  "eligible_for_stage4": true,
+  "eligible_for_stage5": true,
+  "eligible_for_stage6": true,
+  "capabilities": {
+    "STAND": {
+      "status": "PASS",
+      "role": "HOME_STATE",
+      "expert": "stage2_model_4246",
+      "artifact": "artifacts/exp_007_unitree_g1_walk_centered_transitions/stand_home_state_v1"
+    },
+    "WALK": {
+      "status": "PASS",
+      "role": "STEADY_STATE",
+      "expert": "walk_steady_state_expert_v1",
+      "supported_speeds_mps": [
+        0.6,
+        0.8,
+        1.0,
+        1.2
+      ],
+      "artifact": "artifacts/exp_007_unitree_g1_walk_centered_transitions/walk_steady_state_expert_v1"
+    },
+    "STAND_TO_WALK": {
+      "status": "PASS",
+      "controller": "stand_to_walk_transition_v1",
+      "supported_target_speeds_mps": [
+        0.6,
+        0.8,
+        1.0,
+        1.2
+      ],
+      "artifact": "artifacts/exp_007_unitree_g1_walk_centered_transitions/stand_to_walk_transition_v1"
+    },
+    "WALK_TO_STAND": {
+      "status": "PASS",
+      "controller": "walk_to_stand_transition_v1",
+      "controller_type": "LEARNED_TRANSITION_EXPERT",
+      "supported_source_speeds_mps": [
+        0.6,
+        0.8,
+        1.0,
+        1.2
+      ],
+      "artifact": "artifacts/exp_007_unitree_g1_walk_centered_transitions/walk_to_stand_transition_v1"
+    },
+    "STAND_WALK_ROUND_TRIP": {
+      "status": "PASS",
+      "evaluation_protocol": "STATE_CONTRACT_CONDITIONED",
+      "startup_recovery": "NOT_INCLUDED",
+      "supported_walk_commands_mps": [
+        0.6,
+        0.8,
+        1.0,
+        1.2
+      ],
+      "router": "modular_state_graph_v1",
+      "artifact": "artifacts/exp_007_unitree_g1_walk_centered_transitions/stand_walk_round_trip_state_conditioned_v1"
+    },
+    "RESET_TO_STAND": {
+      "status": "NOT_IMPLEMENTED",
+      "source": "UNINITIALIZED",
+      "target": "STAND"
+    },
+    "RUN_LOW": {
+      "status": "PASS",
+      "evaluation_classification": "PASS_LIMITED",
+      "role": "STEADY_STATE",
+      "expert": "run_low_steady_state_expert_v1",
+      "supported_commands_mps": [
+        2.4,
+        2.6,
+        2.8
+      ],
+      "unsupported_commands_mps": [
+        3.0
+      ],
+      "artifact": "artifacts/exp_007_unitree_g1_walk_centered_transitions/run_low_steady_state_expert_v1"
+    },
+    "WALK_TO_RUN": {
+      "status": "PASS_LIMITED",
+      "source_state": "WALK",
+      "source_command_mps": 1.2,
+      "target_state": "RUN_LOW",
+      "supported_target_commands_mps": [
+        2.6,
+        2.8
+      ],
+      "unsupported_target_commands_mps": [
+        2.4
+      ],
+      "controller": "walk_to_run_transition_v1",
+      "controller_interface": "152D",
+      "training_protocol": "IN_PLACE_TRANSITION_ONLY_PPO",
+      "unsupported_reason_2_4": "COMPLETION_SAFETY_TRADEOFF_AFTER_TWO_PILOTS",
+      "artifact": "artifacts/exp_007_unitree_g1_walk_centered_transitions/walk_to_run_transition_v1"
+    },
+    "RUN_TO_WALK": {
+      "status": "NO_GO_V1",
+      "source_state": "RUN_LOW",
+      "source_commands_mps": [
+        2.6,
+        2.8
+      ],
+      "target_state": "WALK",
+      "target_command_mps": 1.2,
+      "direct_switch": "FAIL",
+      "learned_transition": "FAIL",
+      "failure_class": "TARGET_WALK_BASIN_RETENTION_FAILURE",
+      "supporting_failure": "WALK_ACQUISITION_REWARD_NOT_REACHABLE",
+      "maximum_pilots_reached": true,
+      "artifact": "NOT_CREATED"
+    },
+    "GRAPH_BASED_STOP": {
+      "status": "BLOCKED_BY_RUN_TO_WALK"
+    },
+    "FULL_BIDIRECTIONAL_LOCOMOTION_GRAPH": {
+      "status": "NOT_ACHIEVED"
+    }
+  },
+  "claims": {
+    "expert_provenance": "PASS",
+    "shared_stand_walk_expert": "NO_GO_RETRAIN",
+    "modular_state_graph": "SPECIFICATION_FROZEN",
+    "walk_steady_state": "PASS",
+    "stand_to_walk_transition": "PASS",
+    "walk_to_stand_transition": "PASS",
+    "stand_walk_round_trip_reset_inclusive": "FAIL",
+    "stand_walk_round_trip_state_conditioned": "PASS",
+    "reset_to_stand": "NOT_IMPLEMENTED",
+    "run_low_steady_state": "PARTIAL_PASS",
+    "run_turn": "FORMAL_EVALUATION_PENDING",
+    "walk_run_transition": "PASS_LIMITED_2P6_2P8",
+    "run_walk_transition": "NO_GO_V1",
+    "graph_based_stop": "BLOCKED_BY_RUN_TO_WALK",
+    "full_bidirectional_locomotion_graph": "NOT_ACHIEVED",
+    "overall_exp007": "PARTIAL_SUCCESS_ASYMMETRIC_STATE_GRAPH",
+    "transition_bridge": "NOT_IMPLEMENTED"
+  },
+  "not_supported_v1": [
+    "CROUCH_DEEP",
+    "STEP_OVER",
+    "LAND",
+    "FALL_RECOVERY",
+    "HARDWARE_TRANSFER",
+    "TURN_IN_PLACE",
+    "DIRECT_STOP_FROM_5_MPS"
+  ]
+}

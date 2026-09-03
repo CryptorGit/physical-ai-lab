@@ -1,0 +1,165 @@
+{
+  "experiment": "exp_015_qmini_population_bodily_world_model",
+  "source_type": "UNITREE_OFFICIAL_QMINI",
+  "repository_url": "https://github.com/unitreerobotics/Qmini",
+  "commit": "f6f3fef723f8bb434f9d2679dfb6053b0aca93a8",
+  "commit_date": "2025-09-17T16:11:42+08:00",
+  "commit_subject": "update DIY doc",
+  "expected_audited_commit": "f6f3fef723f8bb434f9d2679dfb6053b0aca93a8",
+  "commit_matches_expected": true,
+  "source_license": "CC BY-NC-SA 4.0",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "789ddfa0b76d03d49e8056f388632aad1d049318ef705f9975e6dab10510bed2",
+      "bytes": 2852
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "047d2259741a3ebb30d8c8a43d4ba79b5b229a069acd1d2bea49f22b297d8e98",
+      "bytes": 21286
+    },
+    {
+      "path": "urdf/Qmini.urdf",
+      "sha256": "4d1454510bf403fb0740a7a682fc1883ada0ecbdced844530dd98d484a618215",
+      "bytes": 10311
+    },
+    {
+      "path": "Qmini_DIY.pdf",
+      "sha256": "52137301d4eec81615ae9d3e1336dce635cb17ff205559382739015959c37538",
+      "bytes": 7694476
+    },
+    {
+      "path": "STEP_file/Qmini_v1_0.STEP.zip",
+      "sha256": "04b05d0906867d75779009e6d6b8acb75ecade3aa15f413434f2f2ffdc6ec265",
+      "bytes": 86772038
+    },
+    {
+      "path": "STEP_file/Qmini_v2_0.STEP.zip",
+      "sha256": "5c14ab87e7bd752b0da0a1559f38daf32609e3709107707fa75d04a952ecc540",
+      "bytes": 87810635
+    },
+    {
+      "path": "urdf/meshes/base_link.STL",
+      "sha256": "9c12f0d0f42b99033b665bd90b70b7c70bdbd8ce46b977f60467923ab917f7e5",
+      "bytes": 7872984
+    },
+    {
+      "path": "urdf/meshes/LL_ankle.STL",
+      "sha256": "2bcbc3d32fbd422303c2d613740e8ab7515e9bcf4807b83eaf80330f00b4b42a",
+      "bytes": 809984
+    },
+    {
+      "path": "urdf/meshes/LL_hip_pitch.STL",
+      "sha256": "9781019259bbc5402895d8b921c5acf2e80f1affc58949040cce8ffbb81cfcd7",
+      "bytes": 3429284
+    },
+    {
+      "path": "urdf/meshes/LL_hip_roll.STL",
+      "sha256": "295d22664df7a7c1c12ad2700814c058ce5c7986f2045326e602e222034c18f6",
+      "bytes": 326784
+    },
+    {
+      "path": "urdf/meshes/LL_hip_yaw.STL",
+      "sha256": "de3b44d683da0be84b8b1b50d3828ba21ded74a5a86f41c10c2f2f74d8a4f537",
+      "bytes": 1724084
+    },
+    {
+      "path": "urdf/meshes/LL_knee.STL",
+      "sha256": "d142856a8eadfd376edc521b09ec5f199ad35a7614bc0f8d87df7445e125cf9f",
+      "bytes": 1515084
+    },
+    {
+      "path": "urdf/meshes/RL_ankle.STL",
+      "sha256": "869aa0c582386243f409604f66d6c8763b66a00a78162057dc74d3bca6906648",
+      "bytes": 809884
+    },
+    {
+      "path": "urdf/meshes/RL_hip_pitch.STL",
+      "sha256": "afbff5e72a186706481229d8063da02eb9b43f617b04a76bc075025c02ca1492",
+      "bytes": 3435384
+    },
+    {
+      "path": "urdf/meshes/RL_hip_roll.STL",
+      "sha256": "9ff2557060f6d8fb3c55040db10b58e76ff6428ace0e9ab2afce0dbf01e3855f",
+      "bytes": 327784
+    },
+    {
+      "path": "urdf/meshes/RL_hip_yaw.STL",
+      "sha256": "d78a5080bc2b68fbe9d6887dea934a335b35f2cd6f6cef8e88d6b717d8641ee4",
+      "bytes": 1727684
+    },
+    {
+      "path": "urdf/meshes/RL_knee.STL",
+      "sha256": "a6e09a7054538b848bb19b2d5c6f9d016b64dedab2a93de9ab236c4163c90fcc",
+      "bytes": 1517584
+    }
+  ],
+  "urdf_sha256": "4d1454510bf403fb0740a7a682fc1883ada0ecbdced844530dd98d484a618215",
+  "qmini_contract_status": "PASS",
+  "qmini_contract_failures": [],
+  "mechanical_contract": {
+    "motor_count_documented": 11,
+    "locomotion_motor_count_documented": 10,
+    "neck_motor_documented_as": "RESERVED_FOR_CUSTOM_EXPANSIONS",
+    "default_reference_board": "Raspberry Pi 4 Model B",
+    "imu_documented": "GY-91 MPU9250+BMP280 10DOF",
+    "motor_model_documented": "Unitree 8010",
+    "exact_joint_count_in_current_urdf": 10,
+    "exact_joint_order_in_current_urdf": [
+      "LL-joint1",
+      "LL-joint2",
+      "LL-joint3",
+      "LL-joint4",
+      "LL-joint5",
+      "RL-joint1",
+      "RL-joint2",
+      "RL-joint3",
+      "RL-joint4",
+      "RL-joint5"
+    ],
+    "neck_joint_in_current_urdf": null,
+    "transmission_count_in_current_urdf": 0,
+    "foot_collision_links": [
+      "LL_ankle",
+      "RL_ankle"
+    ],
+    "links_without_collision_geometry": [
+      "LL_hip_roll",
+      "LL_hip_yaw",
+      "RL_hip_roll",
+      "RL_hip_yaw"
+    ],
+    "step_files": [
+      "STEP_file/Qmini_v1_0.STEP.zip",
+      "STEP_file/Qmini_v2_0.STEP.zip"
+    ],
+    "bom_and_diy_source": "Qmini_DIY.pdf"
+  },
+  "source_audit_findings": [
+    "Current official URDF has 10 revolute joints and no neck joint.",
+    "README/DIY material documents 11 physical 8010 motors, with one neck motor reserved for expansion.",
+    "Current official URDF has no transmission tags or actuator/controller definitions.",
+    "Current official URDF contains no joint dynamics tags; official PD values are UNKNOWN.",
+    "Current official URDF collision meshes are absent for both hip_yaw and hip_roll link pairs.",
+    "The official source does not publish nominal 8010 torque, velocity, reduction, or gear-ratio values."
+  ],
+  "roboTamer_references": {
+    "training_repository": "https://github.com/vsislab/RoboTamer4Qmini",
+    "training_main_commit": "1aed648115fbaf49b86751edd293d94dbb2b3fc5",
+    "deployment_repository": "https://github.com/vsislab/RoboTamerSdk4Qmini",
+    "deployment_main_commit": "f4cfb4c96d8649480d0cc7da63a10fb9ff302589",
+    "simulator": "Isaac Gym Preview 1.0rc3+",
+    "training_framework_status": "README_SAYS_NOT_MAINTAINED",
+    "reference_policy_format": "ONNX",
+    "reference_deployment": "C++ ONNX Runtime on Linux edge",
+    "reference_pd": "5 joint-pattern gains explicitly labelled ROBOTAMER_REFERENCE",
+    "reference_schema": "12 actions / 43 observations per stack / 3 stacks = 129",
+    "compatibility": "NOT_DIRECTLY_TRANSFERABLE_TO_CURRENT_OFFICIAL_URDF"
+  },
+  "readme_presence_checks": {
+    "mentions_11_motors": true,
+    "mentions_10_locomotion": true,
+    "mentions_RoboTamer4Qmini": true
+  }
+}

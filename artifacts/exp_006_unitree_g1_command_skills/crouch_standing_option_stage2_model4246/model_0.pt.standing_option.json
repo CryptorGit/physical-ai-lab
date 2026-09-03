@@ -1,0 +1,12 @@
+{
+  "parent": "C:\\Users\\user\\workspace\\physical-ai-lab\\logs\\rsl_rl\\physical_ai_g1_command_skills\\2026-07-20_14-34-35_pilot_stop_stage_a_braking\\model_31.pt",
+  "standing_checkpoint": "C:\\Users\\user\\workspace\\physical-ai-lab\\logs\\rsl_rl\\physical_ai_g1_flat_run\\2026-07-17_21-40-39_stage2_1024_750\\model_4246.pt",
+  "standing_candidate": "stage2_fastwalk_model4246",
+  "standing_gate": "C:\\Users\\user\\workspace\\physical-ai-lab\\results\\exp_006_unitree_g1_command_skills\\standing_base_candidates\\stage2_fastwalk_model4246\\gate.json",
+  "standing_base_frozen": true,
+  "crouch_route_reinitialized": true,
+  "crouch_initial_residual_bitwise_zero": true,
+  "run_turn_stop_routes_preserved": true,
+  "optimizer_reset": true,
+  "iteration_reset": 0
+}

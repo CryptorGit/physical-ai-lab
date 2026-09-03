@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "experiment": "exp_007_unitree_g1_walk_centered_transitions",
+  "stage": 0,
+  "training_allowed": false,
+  "expert_fine_tuning_allowed": false,
+  "bridge_training_allowed": false,
+  "same_episode_walk_run_switch_allowed": false,
+  "formal_transition_evaluation_allowed": false,
+  "canonical_state_excludes": [
+    "absolute_world_x",
+    "absolute_world_y"
+  ]
+}

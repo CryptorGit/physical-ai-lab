@@ -1,0 +1,289 @@
+{
+  "title": "OpenDuckMini exp_004 H3 release gait showcase",
+  "video": "media/openduck_exp004_h3_release/openduckmini_h3_release_showcase.mp4",
+  "video_sha256": "d7395e1a37aa248f9b8a6389d01b2eb0d1b9ecf208cb706f81496cc84b369bbe",
+  "video_size_bytes": 11486315,
+  "cover": "media/openduck_exp004_h3_release/openduckmini_h3_release_showcase_cover.png",
+  "cover_sha256": "c16138fb8cd0707b954a24927ce5ac065508dd40e86e22389c0cf09942be56aa",
+  "render": {
+    "width": 1280,
+    "height": 720,
+    "fps": 25,
+    "simulation_seconds": 90.0,
+    "title_and_close_seconds": 5.8,
+    "simulation_frame_count": 1239,
+    "offscreen_backend": "egl"
+  },
+  "disclosure": {
+    "simulation_only": true,
+    "release_status": "ADOPTED_SIMULATION_ONLY",
+    "hardware_deployment": "PROHIBITED",
+    "not_new_qualification_evidence": true
+  },
+  "package": {
+    "path": "experiments/mujoco/exp_004_openduckmini_safe_gait_experts/artifacts/router_packages/exp004-safe-gait-router-h3-release-20260808-v1",
+    "package_id": "exp004-safe-gait-router-h3-release-20260808-v1",
+    "manifest_sha256": "44b64ad794d83c518ec7deeac14b18d6afcbcccafa235359c3d8075cd25334fd",
+    "formal_release_evidence_sha256": "95819b5bc1d0827a5ad779542a6f98c4aaebacf5f55a8303c0b5a14fba501674",
+    "base_v22_sha256": "f7a2731330cd3be52858989b021423a5f363cc4a8f9850512281da745a7617c0",
+    "verified_before_render": true
+  },
+  "showcase_audit": {
+    "segments": 21,
+    "control_samples": 4500,
+    "physics_substeps": 45000,
+    "leg_joint_samples": 450000,
+    "qpos_limit_violations": 0,
+    "target_limit_violations": 0,
+    "unauthorized_target_margin_violations": 0,
+    "target_slew_violations": 0,
+    "nonfinite_samples": 0,
+    "fall_samples": 0,
+    "prohibited_route_steps": 0,
+    "command_clip_events": 0,
+    "maximum_qpos_excess_rad": 0.0,
+    "reset_audit_passed": true,
+    "control_first_startup_audit_passed": true,
+    "backward_exit_recovery_audit_passed": true,
+    "backward_exit_recovery_events": 3,
+    "backward_exit_recovery_active_ticks": 39
+  },
+  "segments": [
+    {
+      "name": "intro_stand",
+      "label": "\u958b\u59cb\u59ff\u52e2 / STAND",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 1.5,
+      "expected_route": "stand"
+    },
+    {
+      "name": "forward",
+      "label": "\u524d\u9032 / FORWARD",
+      "physical_command": [
+        0.05,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 4.0,
+      "expected_route": "forward"
+    },
+    {
+      "name": "stand_after_forward",
+      "label": "\u5b89\u5168\u9077\u79fb / GUARDED STAND",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 5.0,
+      "expected_route": "stand"
+    },
+    {
+      "name": "reverse",
+      "label": "\u5f8c\u9032 / REVERSE",
+      "physical_command": [
+        -0.05,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 4.5,
+      "expected_route": "reverse"
+    },
+    {
+      "name": "stand_after_reverse",
+      "label": "\u5b89\u5168\u9077\u79fb / GUARDED STAND",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 5.0,
+      "expected_route": "stand"
+    },
+    {
+      "name": "lateral_left",
+      "label": "\u5de6\u6a2a\u6b69\u304d / LATERAL LEFT",
+      "physical_command": [
+        0.0,
+        0.06,
+        0.0
+      ],
+      "duration_seconds": 3.5,
+      "expected_route": "lateral_left"
+    },
+    {
+      "name": "stand_after_lateral_left",
+      "label": "\u5b89\u5168\u9077\u79fb / GUARDED STAND",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 5.0,
+      "expected_route": "stand"
+    },
+    {
+      "name": "lateral_right",
+      "label": "\u53f3\u6a2a\u6b69\u304d / LATERAL RIGHT",
+      "physical_command": [
+        0.0,
+        -0.06,
+        0.0
+      ],
+      "duration_seconds": 3.5,
+      "expected_route": "lateral_right"
+    },
+    {
+      "name": "stand_after_lateral_right",
+      "label": "\u5b89\u5168\u9077\u79fb / GUARDED STAND",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 5.0,
+      "expected_route": "stand"
+    },
+    {
+      "name": "yaw_left",
+      "label": "\u5de6\u65cb\u56de / YAW LEFT",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.3
+      ],
+      "duration_seconds": 3.5,
+      "expected_route": "yaw_left"
+    },
+    {
+      "name": "stand_after_yaw_left",
+      "label": "\u5b89\u5168\u9077\u79fb / GUARDED STAND",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 5.0,
+      "expected_route": "stand"
+    },
+    {
+      "name": "yaw_right",
+      "label": "\u53f3\u65cb\u56de / YAW RIGHT",
+      "physical_command": [
+        0.0,
+        0.0,
+        -0.3
+      ],
+      "duration_seconds": 3.5,
+      "expected_route": "yaw_right"
+    },
+    {
+      "name": "stand_after_yaw_right",
+      "label": "\u5b89\u5168\u9077\u79fb / GUARDED STAND",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 5.0,
+      "expected_route": "stand"
+    },
+    {
+      "name": "reverse_turn_left",
+      "label": "\u5f8c\u9032\u5de6\u65cb\u56de / REVERSE TURN LEFT",
+      "physical_command": [
+        -0.03,
+        0.0,
+        0.2
+      ],
+      "duration_seconds": 4.0,
+      "expected_route": "reverse_turn_left"
+    },
+    {
+      "name": "stand_after_reverse_turn_left",
+      "label": "\u5b89\u5168\u9077\u79fb / GUARDED STAND",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 5.0,
+      "expected_route": "stand"
+    },
+    {
+      "name": "reverse_turn_right",
+      "label": "\u5f8c\u9032\u53f3\u65cb\u56de / REVERSE TURN RIGHT",
+      "physical_command": [
+        -0.04,
+        0.0,
+        -0.2
+      ],
+      "duration_seconds": 4.0,
+      "expected_route": "reverse_turn_right"
+    },
+    {
+      "name": "stand_after_reverse_turn_right",
+      "label": "\u5b89\u5168\u9077\u79fb / GUARDED STAND",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 5.0,
+      "expected_route": "stand"
+    },
+    {
+      "name": "forward_turn_left",
+      "label": "\u524d\u9032\u5de6\u65cb\u56de / FORWARD TURN LEFT",
+      "physical_command": [
+        0.04,
+        0.0,
+        0.3
+      ],
+      "duration_seconds": 4.0,
+      "expected_route": "compound"
+    },
+    {
+      "name": "stand_after_forward_turn_left",
+      "label": "\u5b89\u5168\u9077\u79fb / GUARDED STAND",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 5.0,
+      "expected_route": "stand"
+    },
+    {
+      "name": "forward_turn_right",
+      "label": "\u524d\u9032\u53f3\u65cb\u56de / FORWARD TURN RIGHT",
+      "physical_command": [
+        0.04,
+        0.0,
+        -0.22
+      ],
+      "duration_seconds": 4.0,
+      "expected_route": "compound"
+    },
+    {
+      "name": "final_stand",
+      "label": "\u5b8c\u4e86\u59ff\u52e2 / FINAL STAND",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 5.0,
+      "expected_route": "stand"
+    }
+  ],
+  "source": {
+    "builder": "media/openduck_exp004_h3_release/build_h3_release_showcase.py",
+    "builder_sha256": "6ec342164317506e69f37afb70ba256275e23af99ea1e61d3e7fa443ab90cbd9",
+    "git_head": "a61f451ecbf86bb35baca45b68a403d26790070f"
+  }
+}

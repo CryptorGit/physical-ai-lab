@@ -1,0 +1,31 @@
+{
+  "protocol": "STATE_CONTRACT_CONDITIONED",
+  "seeds": [
+    20260931,
+    20260932,
+    20260933
+  ],
+  "episodes": 180,
+  "metrics": {
+    "episodes": 180,
+    "stand_to_walk_completion_rate": 1.0,
+    "walk_takeover_rate": 1.0,
+    "walk_hold_rate": 1.0,
+    "full_success_rate": 1.0,
+    "fall_rate": 0.0,
+    "long_dwell_saturation_failure_rate": 0.0,
+    "dangerous_slip_rate": 0.0,
+    "excessive_flight_rate": 0.0,
+    "action_discontinuity_failure_rate": 0.0,
+    "walk_heading_p95_rad": 0.06200148481875658,
+    "previous_action_mismatch_rate": 0.0,
+    "walk_to_stand_completion_rate": 1.0,
+    "stand_takeover_rate": 1.0,
+    "final_stand_hold_rate": 1.0,
+    "reverse_motion_failure_rate": 0.0,
+    "final_speed_p95_mps": 0.013477901043370367,
+    "final_double_support_rate": 1.0,
+    "final_stand_flight_rate": 0.0
+  },
+  "gate_pass": true
+}

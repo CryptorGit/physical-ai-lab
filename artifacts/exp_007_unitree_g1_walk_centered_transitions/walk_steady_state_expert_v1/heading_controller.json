@@ -1,0 +1,10 @@
+{
+  "name": "Stage2W_Current_FixedTarget",
+  "mode": "FixedTarget",
+  "k_heading": 0.8,
+  "k_yaw_rate": 0.1,
+  "yaw_rate_limit_radps": 0.3,
+  "low_pass_alpha": 0.15,
+  "slew_limit_radps_per_control_step": 0.01,
+  "selection_reason": "Best controller-only success and heading/path performance; lower bandwidth degraded recovery."
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "supported": [
+    "RUN->RUN",
+    "RUN->TURN",
+    "TURN->RUN",
+    "TURN->TURN",
+    "STAND->STAND",
+    "STAND->CROUCH_SHALLOW",
+    "CROUCH_SHALLOW->STAND",
+    "CROUCH_SHALLOW->CROUCH_SHALLOW"
+  ],
+  "unsupported": [
+    "RUN->STAND",
+    "TURN->STAND",
+    "RUN->CROUCH_SHALLOW",
+    "TURN->CROUCH_SHALLOW",
+    "STAND->RUN",
+    "CROUCH_SHALLOW->RUN"
+  ],
+  "unsupported_reason": "CROSS_BASE_FAMILY_TRANSITION_UNRESOLVED",
+  "implicit_stop_insertion": false
+}

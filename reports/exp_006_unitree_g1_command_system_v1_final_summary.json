@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "experiment": "exp_006_unitree_g1_command_skills",
+  "system": "command_system_v1",
+  "status": "PASS",
+  "git_revision_at_generation": "49bbff1",
+  "scope": "Isaac Sim only; not a hardware performance claim",
+  "skills": {
+    "RUN": {"status": "PASS"},
+    "TURN": {"status": "PASS"},
+    "STAND": {"status": "PASS"},
+    "CROUCH_SHALLOW": {"status": "PASS", "supported_depth_m": [0.08, 0.10], "controller": "scripted_shallow_v1"},
+    "STOP": {"status": "PROTOTYPE", "formal_gate_pass": false},
+    "CROUCH_DEEP": {"status": "NOT_SUPPORTED", "reason": "DEEP_CROUCH_RETURN_UNRESOLVED"},
+    "STEP_OVER": {"status": "NOT_SUPPORTED", "reason": "OPTIMIZATION_FAILURE"},
+    "LAND": {"status": "NOT_SUPPORTED", "supported_range_m": null, "observed_standing_drop_tolerance_m": 0.02}
+  },
+  "controller_families": {
+    "RUNNING_FAMILY": ["RUN", "TURN"],
+    "STANDING_FAMILY": ["STAND", "CROUCH_SHALLOW"],
+    "PROTOTYPE": ["STOP"]
+  },
+  "supported_transitions": ["RUN->RUN", "RUN->TURN", "TURN->RUN", "TURN->TURN", "STAND->STAND", "STAND->CROUCH_SHALLOW", "CROUCH_SHALLOW->STAND", "CROUCH_SHALLOW->CROUCH_SHALLOW"],
+  "unsupported_transitions": ["RUN->STAND", "TURN->STAND", "RUN->CROUCH_SHALLOW", "TURN->CROUCH_SHALLOW", "STAND->RUN", "CROUCH_SHALLOW->RUN"],
+  "formal_metrics": {
+    "STAND_50": {"settle_success_rate": 0.98, "hold_success_rate": 0.98, "fall_rate": 0.02, "speed_mean_mps": 0.0067180557, "speed_p95_mps": 0.0133476634, "flight_fraction": 0.0, "final_double_support_rate": 0.98, "saturation_failure_rate": 0.0},
+    "RUN_TURN_RUN_50": {"sequence_success_rate": 0.92, "pre_run_success_rate": 1.0, "turn_success_rate": 1.0, "run_recovery_success_rate": 1.0, "fall_rate": 0.0, "final_heading_error_rad": 0.0114896894},
+    "STAND_CROUCH_STAND_50": {"sequence_success_rate": 1.0, "crouch_success_rate": 1.0, "return_success_rate": 1.0, "final_stand_hold_success_rate": 1.0, "fall_rate": 0.0, "dangerous_contact_failure_rate": 0.0, "saturation_failure_rate": 0.0, "depth_error_mean_m": 0.0006010129},
+    "unsupported_requests": {"count": 55, "safe_rejection_rate": 1.0, "action_bitwise_unchanged": true, "maximum_action_discontinuity": 0.0}
+  },
+  "artifacts": {
+    "command_system": "artifacts/exp_006_unitree_g1_command_skills/command_system_v1",
+    "crouch": "artifacts/exp_006_unitree_g1_command_skills/crouch_shallow_scripted_v1"
+  },
+  "checkpoints": {
+    "stage2_standing": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-17_21-40-39_stage2_1024_750/model_4246.pt",
+    "run_turn_stop": "logs/rsl_rl/physical_ai_g1_command_skills/2026-07-20_14-34-35_pilot_stop_stage_a_braking/model_31.pt"
+  },
+  "hashes": {
+    "stage2_sha256": "734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621",
+    "run_turn_stop_sha256": "2326db6d8c68b6f495af5f2054b39a783f144850a6877b74097a8c4af03d61e1",
+    "protected_58_tensor_hash": "c903898bd8422b00d8187d9f86a7c1fc8ed33b9d2d54aa734aa8eba70db47f2a"
+  },
+  "known_limitations": ["sim_only", "STOP_formal_gate_unmet", "cross_family_transition_unresolved", "CROUCH_DEEP_not_supported", "STEP_OVER_not_supported", "LAND_not_supported", "not_a_single_integrated_neural_network"],
+  "next_experiment": "exp_007_unitree_g1_walk_centered_transitions"
+}

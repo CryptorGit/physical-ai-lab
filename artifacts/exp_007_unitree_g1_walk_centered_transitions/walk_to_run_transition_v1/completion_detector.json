@@ -1,0 +1,15 @@
+{
+  "speed_ratio_min": 0.75,
+  "speed_error_max_mps": 0.2,
+  "heading_max_rad": 0.12,
+  "flight_events_min": 4,
+  "safe_cycles_min": 3,
+  "alternating_landing_ratio_min": 0.8,
+  "valid_landing_ratio_min": 0.8,
+  "mean_flight_seconds": [
+    0.04,
+    0.16
+  ],
+  "safety_required": true,
+  "unchanged_from_stage7r8": true
+}

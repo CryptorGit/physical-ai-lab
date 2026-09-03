@@ -1,0 +1,47 @@
+{
+  "frozen": true,
+  "selection_partition": "validation only",
+  "heldout_policy": "once after model/contract freeze; never used for fallback",
+  "static_group_gate": {
+    "mse_max": 0.001,
+    "cosine_min": 0.98
+  },
+  "dual_mode_classification_min": 0.99,
+  "practical_stand": {
+    "hold_s": 2.0,
+    "mean_speed_max": 0.08,
+    "mean_abs_yaw_max": 0.08,
+    "fall_max": 0.02,
+    "dangerous_slip_max": 0.05,
+    "impact_max": 0.05
+  },
+  "formal_points": {
+    "stand_to_walk": {
+      "endpoint_min": 0.95,
+      "acquisition_0p20s_min": 0.9,
+      "fall_max": 0.02
+    },
+    "moving_yaw": {
+      "endpoint_min": 0.9,
+      "acquisition_min": 0.85,
+      "fall_max": 0.05
+    },
+    "walk_to_stand": {
+      "practical_stop_min": 0.95,
+      "fall_max": 0.02
+    }
+  },
+  "local_neighborhood": {
+    "direction_delta_deg": [
+      -5,
+      5
+    ],
+    "yaw_delta": [
+      -0.03,
+      0.03
+    ],
+    "pass_min": 0.9,
+    "minimum_endpoint_strictly_positive": true,
+    "minimum_acquisition_strictly_positive": true
+  }
+}

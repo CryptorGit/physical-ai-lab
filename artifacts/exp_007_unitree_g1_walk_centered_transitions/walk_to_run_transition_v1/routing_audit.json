@@ -1,0 +1,14 @@
+{
+  "active_production_controllers": 1,
+  "controller_overlap": 0,
+  "previous_action_mismatch": 0,
+  "action_routing_mismatch": 0,
+  "source_prefix_stored_steps": 0,
+  "invalid_state_action": 0,
+  "runtime_action_blend": false,
+  "unsupported_2_4": {
+    "command_supported": false,
+    "transition_started": false,
+    "failure_class": "unsupported_walk_to_run_target"
+  }
+}

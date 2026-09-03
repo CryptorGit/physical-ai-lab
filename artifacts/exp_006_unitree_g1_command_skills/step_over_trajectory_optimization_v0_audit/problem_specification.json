@@ -1,0 +1,22 @@
+{
+  "scope": "fixed-left-lead 5cm STEP_OVER feasibility audit only",
+  "production_integration": false,
+  "learning_executed": false,
+  "initial_condition": "fixed Stage-2 model_4246 zero-command standing state after 2.0s settle",
+  "environment": {"terrain": "flat", "disturbance": false, "perception_error": false},
+  "obstacle": {"shape": "cuboid", "height_m": 0.05, "depth_m": 0.06, "width_m": 2.2,
+    "front_x_m": 0.29, "rear_x_m": 0.35, "contract_landing_target_x_m": 0.41,
+    "optimized_conservative_landing_x_m": 0.50, "clearance_m": 0.07},
+  "authoritative_keypoints_body_m": {
+    "toe": [0.06383880963290349, 0.0, -0.025807180037281774],
+    "sole": [0.04321213238651294, 0.0, -0.025807180037281774],
+    "heel": [0.022585455140122387, 0.0, -0.025807180037281774]
+  },
+  "constraints": ["hard and 5% soft joint limits", "Isaac velocity and effort limits",
+    "fixed support-foot keypoints", "positive normal contact force", "mu=0.6 circular friction cone",
+    "no both-feet-airborne phase", "toe/sole/heel clearance >=0.07m", "whole-link obstacle collision query",
+    "final double support and standing pose proximity"],
+  "acceptance": {"collision_count": 0, "max_effort_utilization": 1.0,
+    "max_velocity_utilization": 1.0, "max_friction_utilization": 1.0,
+    "base_dynamics_residual_n": 5.0, "isaac_replay_required": true}
+}

@@ -1,0 +1,17 @@
+{
+  "parent_checkpoint": "artifacts/exp_006_unitree_g1_command_skills/crouch_standing_option_stage2_model4246/model_0.pt",
+  "parent_checkpoint_sha256": "aaf7f266075253f61686c6b6dc6f79fd6d25e8df57ae188be37f8ae36018f3da",
+  "standing_base": "stage2_fastwalk_model4246",
+  "legacy_geometry_commit": "1ae8462",
+  "scripted_step_over_sha256": "9f32ee6d77967168b7d5441e31ffb2951e9408e783b29148fcb3f7623bcb5a58",
+  "result_sha256": {
+    "scene_geometry": "ea41c489c8c6f2196eae7e57aba9dd7f17f870577bddaf53f7af4732079519c3",
+    "authority_summary": "24a7f4c3d501017e9ece6ae9262c58034f37f175d728705f57bfded1017fd2dc",
+    "weight_shift_summary": "76c572092cbff0d0205d0bb4df7af7f6e4cc45457d4319ebb3271aa232414ed4",
+    "pose_chain_summary": "df2a25f50eac486d2a2e2241e6b0b656191b238a7c4cbb1f5f5f7ebe14a998cc",
+    "guarded_20ep_summary": "db612c52638e3eb07a69d27ac9bcc3b4136facfb2e003ad8578a4576963b108f",
+    "retention_preflight": "259da74e450864c03e4eabd02c89e4b3f5c0aed5cc585ca866039b4c33999055"
+  },
+  "ppo_training_performed": false,
+  "existing_skill_artifacts_modified": false
+}

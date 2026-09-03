@@ -1,0 +1,23 @@
+{
+  "controller": "walk_to_run_transition_v1",
+  "interface": "152D",
+  "action_dimension": 37,
+  "action_scale": 0.5,
+  "supported_targets_mps": [
+    2.6,
+    2.8
+  ],
+  "unsupported_targets_mps": [
+    2.4
+  ],
+  "unsupported_reason_2_4": "COMPLETION_SAFETY_TRADEOFF_AFTER_TWO_PILOTS",
+  "source_walk_expert": [
+    "logs/rsl_rl/physical_ai_g1_walk_centered/2026-07-23_23-18-22_stage2wb_stabilization_pilot2_1024_100/model_100.pt",
+    "9098eaea68d1e5f818b87a499f53c17ccc97c3dbb1afa7a7604ed3dcaa3ef7fa"
+  ],
+  "target_run_expert": [
+    "logs/rsl_rl/physical_ai_g1_command_skills/2026-07-19_22-02-41_pilot_turn90_right_residual_from_model0/model_0.pt",
+    "60675a79187ef00935069f3bf85293e72477fa1d408b80d3325232d805b0d266"
+  ],
+  "source_git_revision": "d77ab325b6813bfda05ba5d4b0b2c3c1942a6234"
+}

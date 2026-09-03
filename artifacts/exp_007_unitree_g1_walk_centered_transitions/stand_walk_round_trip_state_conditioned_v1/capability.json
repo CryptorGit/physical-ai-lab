@@ -1,0 +1,57 @@
+{
+  "name": "STAND_WALK_ROUND_TRIP",
+  "status": "PASS",
+  "evaluation_protocol": "STATE_CONTRACT_CONDITIONED",
+  "startup_recovery": "NOT_INCLUDED",
+  "reset_to_stand": "NOT_IMPLEMENTED",
+  "supported_walk_commands_mps": [
+    0.6,
+    0.8,
+    1.0,
+    1.2
+  ],
+  "models": {
+    "stage2_model_4246": "734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621",
+    "stand_to_walk_transition_v1": "511b3c832e2c7bc54f348391db79d4ac57d1ceda10a6907549a50da093a9c36e",
+    "walk_steady_state_expert_v1": "9098eaea68d1e5f818b87a499f53c17ccc97c3dbb1afa7a7604ed3dcaa3ef7fa",
+    "walk_to_stand_transition_v1": "bb1bf713119b7980cfac4c1f43eb0d415bc32abe97a54509ee45d13061e858bd"
+  },
+  "formal_metrics": {
+    "episodes": 180,
+    "stand_to_walk_completion_rate": 1.0,
+    "walk_takeover_rate": 1.0,
+    "walk_hold_rate": 1.0,
+    "full_success_rate": 1.0,
+    "fall_rate": 0.0,
+    "long_dwell_saturation_failure_rate": 0.0,
+    "dangerous_slip_rate": 0.0,
+    "excessive_flight_rate": 0.0,
+    "action_discontinuity_failure_rate": 0.0,
+    "walk_heading_p95_rad": 0.06200148481875658,
+    "previous_action_mismatch_rate": 0.0,
+    "walk_to_stand_completion_rate": 1.0,
+    "stand_takeover_rate": 1.0,
+    "final_stand_hold_rate": 1.0,
+    "reverse_motion_failure_rate": 0.0,
+    "final_speed_p95_mps": 0.013477901043370367,
+    "final_double_support_rate": 1.0,
+    "final_stand_flight_rate": 0.0
+  },
+  "zero_point_six_revalidation": {
+    "decision": "RETAIN_0P6",
+    "metrics": {
+      "episodes": 150,
+      "stand_to_walk_completion_rate": 1.0,
+      "walk_takeover_rate": 1.0,
+      "walk_hold_rate": 1.0,
+      "full_success_rate": 0.96,
+      "fall_rate": 0.0,
+      "long_dwell_saturation_failure_rate": 0.04,
+      "dangerous_slip_rate": 0.0,
+      "excessive_flight_rate": 0.0,
+      "action_discontinuity_failure_rate": 0.0,
+      "walk_heading_p95_rad": 0.047892834804952156,
+      "previous_action_mismatch_rate": 0.0
+    }
+  }
+}

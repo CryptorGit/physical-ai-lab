@@ -1,0 +1,47 @@
+{
+  "scene": "C:\\Users\\user\\workspace\\physical-ai-lab\\experiments\\mujoco\\exp_004_openduckmini_safe_gait_experts\\artifacts\\generated_playground\\playground\\open_duck_mini_v2\\xmls\\scene_flat_terrain_backlash_hardware_safe_calibrated.xml",
+  "reference_data": "C:\\Users\\user\\workspace\\physical-ai-lab\\experiments\\mujoco\\exp_004_openduckmini_safe_gait_experts\\artifacts\\generated_playground\\playground\\open_duck_mini_v2\\data\\polynomial_coefficients_calibrated.pkl",
+  "success": false,
+  "message": "Maximum number of iterations has been exceeded.",
+  "evaluations": 1056,
+  "parameters": {
+    "joint_amplitude_scales": [
+      4.6993669003871315,
+      2.2732315841386592,
+      5.192350136946019,
+      2.6633420728927635,
+      1.073932461156394,
+      2.0899275706495897,
+      0.4043818179643246,
+      1.2816681102496916,
+      5.822072701221569,
+      5.738017560877719
+    ],
+    "phase_rate": 2.8227789318414365
+  },
+  "metrics": {
+    "cost": 4.208390601522804,
+    "elapsed_seconds": 8.0,
+    "fell": false,
+    "velocity_xyz": [
+      -0.05305206308398507,
+      0.017763477289779644,
+      0.0017934034942619914
+    ],
+    "steady_mean_local_velocity_xyz": [
+      -0.05461307932429708,
+      0.027247250041436938,
+      -0.002304651613149664
+    ],
+    "steady_mean_local_angular_velocity_xyz": [
+      -0.005574067207425082,
+      0.030000037091782145,
+      0.0513875157628938
+    ],
+    "minimum_upright": 0.9943411015637679,
+    "minimum_height": 0.18196493016819912,
+    "left_contact_rate": 0.745,
+    "right_contact_rate": 0.8275,
+    "single_support_rate": 0.4275
+  }
+}

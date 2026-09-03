@@ -1,0 +1,28 @@
+"""Evaluate fail-closed STEP_OVER v0 after reachability rejects the pose chain."""
+from __future__ import annotations
+import argparse,csv,json,sys
+from importlib import metadata
+from pathlib import Path
+import gymnasium as gym,torch
+from rsl_rl.runners import OnPolicyRunner
+ROOT=Path(__file__).resolve().parents[1];REPO=ROOT.parents[2];sys.path[:0]=[str(ROOT/"src"),str(REPO/"experiments/isaaclab/exp_005_unitree_g1_flat_run/src")]
+import isaaclab_tasks,g1_flat_run.tasks,g1_command_skills.tasks  # noqa:E402,F401
+from g1_command_skills.command_observation import coherent_step_over_observation  # noqa:E402
+from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper  # noqa:E402
+from isaaclab_rl.rsl_rl.utils import handle_deprecated_rsl_rl_cfg  # noqa:E402
+from isaaclab_tasks.utils import add_launcher_args,launch_simulation,resolve_task_config,setup_preset_cli  # noqa:E402
+p=argparse.ArgumentParser();p.add_argument("--checkpoint",required=True);p.add_argument("--output",required=True);p.add_argument("--episodes-per-lead",type=int,default=10);p.add_argument("--seed",type=int,default=20260725);add_launcher_args(p);a,h=setup_preset_cli(p);sys.argv=[sys.argv[0]]+h
+def mean(x):return sum(x)/len(x) if x else 0.
+def main():
+ out=Path(a.output).resolve();out.mkdir(parents=True,exist_ok=True);n=2*a.episodes_per_lead;cfg,ac=resolve_task_config("Isaac-Motion-Flat-G1-Command-StepOverAudit-Eval-v0","rsl_rl_cfg_entry_point");cfg.scene.num_envs=n;cfg.seed=a.seed
+ with launch_simulation(cfg,a):
+  raw=gym.make("Isaac-Motion-Flat-G1-Command-StepOverAudit-Eval-v0",cfg=cfg);w=RslRlVecEnvWrapper(raw,clip_actions=ac.clip_actions);e=raw.unwrapped;ac.device=e.device;ac=handle_deprecated_rsl_rl_cfg(ac,metadata.version("rsl-rl-lib"));run=OnPolicyRunner(w,ac.to_dict(),log_dir=None,device=ac.device);run.load(str(Path(a.checkpoint).resolve(strict=True)),load_cfg={"actor":True,"critic":False,"optimizer":False,"iteration":False,"rnd":False});actor=run.alg.actor;robot=e.scene["robot"];contact=e.scene.sensors["contact_forces"];obstacle=e.scene.sensors["step_obstacle_contact"];fids,fn=robot.find_bodies(["left_ankle_roll_link","right_ankle_roll_link"],preserve_order=True);sids=[contact.body_names.index(x) for x in fn];allj,_=robot.find_joints(".*");w.reset();dt=float(e.step_dt);steps=round(6/dt);active=torch.ones(n,dtype=torch.bool,device=e.device);air_run=torch.zeros(n,device=e.device);air_max=air_run.clone();single_run=air_run.clone();single_max=air_run.clone();collision=torch.zeros(n,dtype=torch.bool,device=e.device);vs=torch.zeros(n,device=e.device);ts=vs.clone();step_norm=torch.zeros(n,device=e.device);crouch_norm=step_norm.clone()
+  for _ in range(steps):
+   obs=w.get_observations();left=coherent_step_over_observation(obs,lead_foot="left");right=coherent_step_over_observation(obs,lead_foot="right");left["policy"][a.episodes_per_lead:]=right["policy"][a.episodes_per_lead:];comp=actor.diagnostic_components(left);_,_,done,_=w.step(comp["action_mean"]);active&=~done.bool();forces=contact.data.net_forces_w_history.torch[:,:,sids,:].norm(dim=-1).amax(dim=1)>5;air=~forces.any(dim=1);single=forces.sum(dim=1)==1;air_run=torch.where(air,air_run+1,torch.zeros_like(air_run));air_max=torch.maximum(air_max,air_run);single_run=torch.where(single,single_run+1,torch.zeros_like(single_run));single_max=torch.maximum(single_max,single_run);collision|=obstacle.data.net_forces_w_history.torch.norm(dim=-1).amax(dim=(1,2))>5;vr=robot.data.joint_vel.torch[:,allj].abs()/robot.data.joint_vel_limits.torch[:,allj].abs().clamp_min(1e-6);tr=robot.data.applied_torque.torch[:,allj].abs()/robot.data.joint_effort_limits.torch[:,allj].abs().clamp_min(1e-6);vs+=(vr>=.95).any(dim=1);ts+=(tr>=.95).any(dim=1);step_norm=torch.maximum(step_norm,torch.linalg.vector_norm(comp["scripted_step_over_offset"],dim=1));crouch_norm=torch.maximum(crouch_norm,torch.linalg.vector_norm(comp["scripted_crouch_offset"],dim=1))
+  rows=[]
+  for i in range(n):rows.append({"episode":i,"lead_foot":"left" if i<a.episodes_per_lead else "right","requested_obstacle_height_m":.05,"command_supported":False,"primitive_started":False,"phase_max":0,"failure_class":"unsupported_obstacle","fall":not bool(active[i]),"obstacle_collision":bool(collision[i]),"maximum_both_feet_airborne_duration_s":float(air_max[i]*dt),"maximum_single_support_duration_s":float(single_max[i]*dt),"velocity_saturation_fraction":float(vs[i]/steps),"torque_saturation_fraction":float(ts[i]/steps),"step_over_offset_norm_max":float(step_norm[i]),"crouch_offset_norm_max":float(crouch_norm[i]),"standing_maintained":bool(active[i] and not collision[i] and air_max[i]*dt<=.1)})
+  f=open(out/"episodes.csv","w",newline="",encoding="utf-8");dw=csv.DictWriter(f,fieldnames=list(rows[0]));dw.writeheader();dw.writerows(rows);f.close();by={}
+  for side in ("left","right"):
+   q=[x for x in rows if x["lead_foot"]==side];by[side]={"count":len(q),"skill_success_rate":0.,"safe_rejection_rate":mean([float(x["standing_maintained"]) for x in q]),"fall_rate":mean([float(x["fall"]) for x in q]),"collision_rate":mean([float(x["obstacle_collision"]) for x in q]),"saturation_failure_rate":mean([float(x["velocity_saturation_fraction"]>.05 or x["torque_saturation_fraction"]>.05) for x in q])}
+  summary={"controller":"scripted_step_over_v0_guarded","supported_obstacle_range_m":None,"status":"NOT_SUPPORTED","failure_reason_counts":{"unsupported_obstacle":n},"by_lead":by,"condition_3_executed":False,"condition_3_reason":"left/right 5 cm pose-chain prerequisite failed"};(out/"summary.json").write_text(json.dumps(summary,indent=2)+"\n");print(json.dumps(summary,indent=2));raw.close()
+if __name__=="__main__":main()

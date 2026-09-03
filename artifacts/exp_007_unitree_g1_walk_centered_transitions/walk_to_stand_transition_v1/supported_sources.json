@@ -1,0 +1,9 @@
+{
+  "discrete_source_speeds_mps": [
+    0.6,
+    0.8,
+    1.0,
+    1.2
+  ],
+  "continuous_range_claimed": false
+}

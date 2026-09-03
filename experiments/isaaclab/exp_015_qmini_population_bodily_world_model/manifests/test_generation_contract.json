@@ -1,0 +1,37 @@
+{
+  "schema_version": "exp015.transition.v1",
+  "observation_dim": 41,
+  "action_dim": 10,
+  "observation_fields": [
+    "base_linear_velocity_b[3]",
+    "base_angular_velocity_b[3]",
+    "projected_gravity_b[3]",
+    "joint_position[10]",
+    "joint_velocity[10]",
+    "previous_actually_applied_action[10]",
+    "left_foot_contact[1]",
+    "right_foot_contact[1]"
+  ],
+  "required_separate_fields": ["action_proposed", "action_applied"],
+  "hidden_analysis_fields": [
+    "friction", "wind_xy", "fatigue_left", "fatigue_right"
+  ],
+  "intervention_horizons_policy_steps": [1, 5, 10, 25],
+  "minimum_macro_actions": 3,
+  "macro_speed_source": "FORMAL_MEASURED_QMINI_SAFE_RANGE",
+  "randomness": {
+    "per_episode_seed": true,
+    "snapshot_rng_state": true,
+    "same_snapshot_same_action_same_rng_replay_required": true
+  },
+  "reward": {
+    "stored_separately": true,
+    "teacher_specific_reward_as_input": false,
+    "teacher_id_as_input": false
+  },
+  "training": {
+    "world_model_training": false,
+    "ppo_training": false,
+    "teacher_training": false
+  }
+}

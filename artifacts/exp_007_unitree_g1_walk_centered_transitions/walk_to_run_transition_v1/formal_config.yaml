@@ -1,0 +1,39 @@
+protocol_version: 1
+stage: 7R9
+evaluation_mode: deterministic
+training_enabled: false
+optimizer_updates: 0
+checkpoint:
+  path: results/exp_007_unitree_g1_walk_centered_transitions/stage7r8_walk_to_run_pilot2_saturation/checkpoints/model_100.pt
+  sha256: d94a94409ed9651734ae8ebc85313b827a809de139135115e833c76ca3bb9fd0
+  interface_observation_dimension: 152
+  interface_action_dimension: 37
+  action_scale: 0.5
+source:
+  state: WALK
+  command_mps: 1.2
+  hold_seconds: 1.0
+  speed_error_max_mps: 0.20
+  heading_error_max_rad: 0.12
+targets:
+  supported_formal_mps: [2.6, 2.8]
+  excluded_mps: [2.4]
+  excluded_reason: COMPLETION_SAFETY_TRADEOFF_AFTER_TWO_PILOTS
+seeds: [20261221, 20261222, 20261223]
+valid_episodes_per_seed_per_target: 50
+attempts_per_seed_per_target: 60
+transition:
+  minimum_jerk_duration_seconds: 1.4
+  timeout_seconds: 5.0
+  runtime_action_blend: false
+  deterministic_actor: true
+takeover:
+  controller: run_low_steady_state_expert_v1
+  hold_seconds: 5.0
+randomization:
+  reset_joint_noise: existing_eval_default
+  initial_small_yaw_error: existing_eval_default
+  source_support_phase: natural_occupancy
+  command_delivery_step: source_contract_completion
+  source_walk_hold_duration: existing_fixed_contract
+  ready_waiting_time: natural_occupancy

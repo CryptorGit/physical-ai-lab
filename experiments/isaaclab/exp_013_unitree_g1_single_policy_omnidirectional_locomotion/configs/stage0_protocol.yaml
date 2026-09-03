@@ -1,0 +1,23 @@
+experiment: exp_013_unitree_g1_single_policy_omnidirectional_locomotion
+status: ACTIVE
+stage: 0
+policy_mode: frozen_deterministic
+runtime_contract:
+  checkpoints: 1
+  actors: 1
+  gaussian_heads: 1
+  router: false
+  action_blending: false
+command:
+  frame: body
+  variables: [vx_cmd, vy_cmd, yaw_rate_cmd, gait_cmd]
+gates:
+  - command_contract
+  - parent_selection
+  - anchor_baseline
+  - directional_baselines
+training:
+  ppo_updates: 0
+  supervised_updates: 0
+  dagger_rounds: 0
+  checkpoint_updates: 0

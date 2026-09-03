@@ -1,0 +1,10 @@
+{
+  "abort_on": [
+    "fall",
+    "torso contact",
+    "unsafe saturation",
+    "timeout"
+  ],
+  "timeout_s": 4.0,
+  "never_force_STAND_before_completion": true
+}

@@ -1,0 +1,103 @@
+{
+  "schema_version": 4,
+  "architecture": "MODULAR_EXPERT_STATE_GRAPH",
+  "home_state": "STAND",
+  "startup_state": "UNINITIALIZED",
+  "routing_policy": "HARD_SWITCH_AFTER_COMPLETION",
+  "fail_closed": true,
+  "states": {
+    "UNINITIALIZED": {
+      "kind": "SYSTEM_STARTUP",
+      "controller": "startup_diagnostic_only",
+      "status": "DIAGNOSTIC_ONLY"
+    },
+    "STAND": {
+      "kind": "STEADY_STATE",
+      "controller": "stage2_model_4246",
+      "status": "PASS"
+    },
+    "WALK": {
+      "kind": "STEADY_STATE",
+      "controller": "walk_steady_state_expert_v1",
+      "status": "PASS"
+    },
+    "RUN": {
+      "kind": "STEADY_STATE",
+      "controller": "run_steady_state_expert_pending",
+      "status": "FORMAL_EVALUATION_PENDING"
+    },
+    "CROUCH_HOLD": {
+      "kind": "STEADY_STATE",
+      "controller": "crouch_hold_controller_pending",
+      "status": "FORMAL_EVALUATION_PENDING"
+    }
+  },
+  "transitions": {
+    "RESET_TO_STAND": {
+      "source": "UNINITIALIZED",
+      "target": "STAND",
+      "controller": "startup_recovery_not_implemented",
+      "status": "NOT_IMPLEMENTED"
+    },
+    "STAND_TO_WALK": {
+      "source": "STAND",
+      "target": "WALK",
+      "controller": "stand_to_walk_transition_v1",
+      "status": "PASS",
+      "supported_target_speeds_mps": [
+        0.6,
+        0.8,
+        1.0,
+        1.2
+      ]
+    },
+    "WALK_TO_STAND": {
+      "source": "WALK",
+      "target": "STAND",
+      "controller": "walk_to_stand_transition_v1",
+      "controller_type": "LEARNED_TRANSITION_EXPERT",
+      "status": "PASS",
+      "supported_source_speeds_mps": [
+        0.6,
+        0.8,
+        1.0,
+        1.2
+      ]
+    },
+    "WALK_TO_RUN": {
+      "source": "WALK",
+      "target": "RUN",
+      "controller": "walk_to_run_expert_pending",
+      "status": "NOT_IMPLEMENTED"
+    },
+    "RUN_TO_WALK": {
+      "source": "RUN",
+      "target": "WALK",
+      "controller": "run_to_walk_expert_pending",
+      "status": "NOT_IMPLEMENTED"
+    },
+    "STAND_TO_CROUCH": {
+      "source": "STAND",
+      "target": "CROUCH_HOLD",
+      "controller": "stand_to_crouch_expert_pending",
+      "status": "NOT_IMPLEMENTED"
+    },
+    "CROUCH_TO_STAND": {
+      "source": "CROUCH_HOLD",
+      "target": "STAND",
+      "controller": "crouch_to_stand_expert_pending",
+      "status": "NOT_IMPLEMENTED"
+    }
+  },
+  "continuous_commands": [
+    "target_speed_mps",
+    "target_heading_w_rad",
+    "target_yaw_rate_radps"
+  ],
+  "turn_is_state": false,
+  "unsupported_edge_behavior": {
+    "command_supported": false,
+    "transition_started": false,
+    "action": "KEEP_CURRENT_CONTROLLER"
+  }
+}

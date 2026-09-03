@@ -1,0 +1,6 @@
+cd "$HOME\workspace\physical-ai-lab"
+$isaac=Join-Path $HOME "workspace\IsaacLab\isaaclab.bat"
+foreach($seed in 20261221,20261222,20261223) {
+  & $isaac -p .\experiments\isaaclab\exp_007_unitree_g1_walk_centered_transitions\scripts\evaluate_walk_to_run.py --mode formal --seed $seed --episodes-per-target 60 --target-speeds 2.6 2.8 --output .\results\exp_007_unitree_g1_walk_centered_transitions\stage7r9_walk_to_run_limited_formal\reproduction --label "seed_$seed" --stand .\logs\rsl_rl\physical_ai_g1_flat_run\2026-07-17_21-40-39_stage2_1024_750\model_4246.pt --stand-to-walk .\logs\rsl_rl\physical_ai_g1_walk_centered\2026-07-23_23-47-23_stage3_stand_to_walk_pilot1_validrun_1024_100\model_0.pt --walk .\logs\rsl_rl\physical_ai_g1_walk_centered\2026-07-23_23-18-22_stage2wb_stabilization_pilot2_1024_100\model_100.pt --run .\logs\rsl_rl\physical_ai_g1_command_skills\2026-07-19_22-02-41_pilot_turn90_right_residual_from_model0\model_0.pt --transition-checkpoint .\results\exp_007_unitree_g1_walk_centered_transitions\stage7r8_walk_to_run_pilot2_saturation\checkpoints\model_100.pt --headless
+}
+.\experiments\isaaclab\exp_007_unitree_g1_walk_centered_transitions\scripts\play_walk_to_run_152d.ps1 -RunSpeed 2.6 -TransitionCheckpoint ".\results\exp_007_unitree_g1_walk_centered_transitions\stage7r8_walk_to_run_pilot2_saturation\checkpoints\model_100.pt"

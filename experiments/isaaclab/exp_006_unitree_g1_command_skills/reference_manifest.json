@@ -1,0 +1,78 @@
+{
+  "experiment": "exp_006_unitree_g1_command_skills",
+  "archived_experiment": {
+    "path": "experiments/isaaclab/exp_006_unitree_g1_hurdle",
+    "git_commit": "1ae8462",
+    "artifact_roots_preserved": [
+      "logs/rsl_rl/physical_ai_g1_hurdle",
+      "results/exp_006_unitree_g1_hurdle"
+    ]
+  },
+  "selected_warm_start": {
+    "path": "artifacts/exp_005_unitree_g1_flat_run/g1_periodic_run_stage4_best.pt",
+    "sha256": "90d1a360587142d7e312db00a281505a027ecb221733eea6451a885868f6ccc9",
+    "size_bytes": 2027701,
+    "reason": "2.3-2.6 m/s periodic running matches the low/medium-speed integration regime"
+  },
+  "rejected_primary_candidates": [
+    {
+      "path": "artifacts/exp_005_unitree_g1_flat_run/g1_5mps_stage9_best.pt",
+      "sha256": "ce3eeef50b588f457bf1fe2b89189bf4323b7bc31086fb90b0573aada1be19ba",
+      "reason": "5 m/s gait is outside the initial command distribution"
+    },
+    {
+      "path": "logs/rsl_rl/physical_ai_g1_hurdle/2026-07-18_17-55-45_stage3_course_alignment_lr1e4_1024_50plus50/model_98.pt",
+      "sha256": "17e33eade0d24d4ef091aa74065e1b5bbcb76418128069434b528523a9080bf0",
+      "reason": "course-local alignment observations are less general than the unchanged 123-D flat-run state prefix"
+    }
+  ],
+  "observation_transfer": {
+    "source_dim": 123,
+    "target_dim": 152,
+    "legacy_columns_exact_copy": [0, 122],
+    "actor_transfer": "mlp.* copied exactly to frozen base_mlp.*; six independent encoder/adapter/head routes; all residual output layers zero",
+    "critic_new_command_columns_zero_initialized": [123, 151],
+    "optimizer_reset": true,
+    "iteration_reset": 0
+  },
+  "control_structure": {
+    "actor_class": "g1_command_skills.models:G1CommandResidualActor",
+    "base_actor": "frozen exp_005 Stage 4 MLP",
+    "skill_command_encoders": {"count": 6, "shape": [29, 64, 32], "shared_trainable_network": false},
+    "skill_state_adapters": {"count": 6, "shape": [123, 128, 64], "shared_trainable_network": false},
+    "residual_heads": 6,
+    "residual_bound": 0.25,
+    "cross_fade_s": 0.4,
+    "turn_trainable_route": 2,
+    "run_route_frozen_during_turn": true
+  },
+  "rehearsal": {
+    "turn": {"run": 0.3, "turn": 0.7},
+    "stop": {"run": 0.2, "turn": 0.2, "stop": 0.6},
+    "sequence": {"run": 0.1, "turn": 0.1, "stop": 0.1, "sequence": 0.7}
+  },
+  "run_path_command": {
+    "observation_dim_unchanged": 152,
+    "lookahead_local_xy_command_columns": [14, 15],
+    "path_state_command_columns": {
+      "signed_lateral_error_m": 17,
+      "path_forward_velocity_mps": 18,
+      "path_lateral_velocity_mps": 19,
+      "curvature_per_m": 20
+    },
+    "lookahead_distance_m": 1.0,
+    "lateral_dead_zone_m": 0.2,
+    "course_deviation_threshold_m": 0.75
+  },
+  "turn_command_and_evaluation": {
+    "turn_command_columns": {"commanded_angle_rad": 14, "actual_accumulated_yaw_rad": 15},
+    "target_heading_fixed_at_turn_entry": true,
+    "yaw_accumulation": "sum(wrap(current_world_yaw - previous_world_yaw))",
+    "success_final_angle_error_rad": 0.12,
+    "evaluation_cycle": ["left_45", "right_45", "left_90", "right_90"],
+    "initial_curriculum": {"angles_deg": [45], "max_abs_yaw_rate_rad_s": 0.45, "turn_duration_s": 4.5},
+    "full_curriculum_requires_45_gate": true,
+    "run_retention_minimum": 0.95
+  },
+  "isaac_lab_commit_observed": "ffff603eaf"
+}

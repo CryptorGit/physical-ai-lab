@@ -1,0 +1,9 @@
+{
+  "active_controller": "candidate_A_RUN_only",
+  "turn_contribution": 0,
+  "stop_contribution": 0,
+  "transition_contribution": 0,
+  "scripted_offset": 0,
+  "controller_overlap": 0,
+  "previous_action_mismatch_count": 0
+}

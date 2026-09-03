@@ -1,0 +1,40 @@
+{
+  "status": "FROZEN_WITH_REFERENCE_LABELS",
+  "actuator_assignment_source": "UNITREE_OFFICIAL_QMINI_URDF",
+  "joint_order_source": "UNITREE_OFFICIAL_QMINI_URDF",
+  "simulator_effort_limit_semantics": "URDF_JOINT_LIMIT_NOT_MOTOR_NOMINAL",
+  "simulator_velocity_limit_semantics": "URDF_JOINT_LIMIT_NOT_MOTOR_NOMINAL",
+  "effort_limits_nm": "GENERATED_FROM_OFFICIAL_URDF",
+  "velocity_limits_rads": "GENERATED_FROM_OFFICIAL_URDF",
+  "isaaclab_imported_joint_name_pattern": ".*<official_name with hyphen removed>.*_ZC$",
+  "isaaclab_raw_order": [
+    "tn__LLjoint1_ZC", "tn__RLjoint1_ZC",
+    "tn__LLjoint2_ZC", "tn__RLjoint2_ZC",
+    "tn__LLjoint3_ZC", "tn__RLjoint3_ZC",
+    "tn__LLjoint4_ZC", "tn__RLjoint4_ZC",
+    "tn__LLjoint5_ZC", "tn__RLjoint5_ZC"
+  ],
+  "official_to_isaaclab_index": [0, 2, 4, 6, 8, 1, 3, 5, 7, 9],
+  "control_order_adapter": "qmini_asset.official_to_isaaclab_joint_indices",
+  "kp": {
+    "values": [55.0, 105.0, 75.0, 45.0, 30.0, 55.0, 105.0, 75.0, 45.0, 30.0],
+    "source": "ROBOTAMER_REFERENCE",
+    "official_qmini_value": "UNKNOWN",
+    "freeze_status": "PROVISIONAL_UNTIL_IMPORT_AND_CALIBRATION"
+  },
+  "kd": {
+    "values": [0.3, 2.5, 0.3, 0.5, 0.25, 0.3, 2.5, 0.3, 0.5, 0.25],
+    "source": "ROBOTAMER_REFERENCE",
+    "official_qmini_value": "UNKNOWN",
+    "freeze_status": "PROVISIONAL_UNTIL_IMPORT_AND_CALIBRATION"
+  },
+  "action": {
+    "representation": "joint_target_radians",
+    "action_dim": 10,
+    "applied_action": "after_contract_limit_clipping",
+    "normalized_mapping": "URDF_LIMIT_MIDPOINT_AND_HALF_RANGE_DERIVED",
+    "scalar_action_scale": "UNKNOWN_NOT_USED"
+  },
+  "motor_model": "UNKNOWN",
+  "neck_actuator": "EXCLUDED_CURRENT_OFFICIAL_URDF_HAS_NO_NECK_JOINT"
+}

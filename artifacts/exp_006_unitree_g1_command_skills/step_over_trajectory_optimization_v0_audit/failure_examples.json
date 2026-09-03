@@ -1,0 +1,270 @@
+{
+  "path": [
+    {
+      "row": 62,
+      "type": "obstacle_collision",
+      "pairs": [
+        {
+          "geom": null,
+          "body": "left_ankle_roll_link",
+          "distance_m": -0.010635442911056583
+        }
+      ]
+    },
+    {
+      "row": 75,
+      "type": "obstacle_collision",
+      "pairs": [
+        {
+          "geom": null,
+          "body": "right_knee_link",
+          "distance_m": -0.004861294397698794
+        }
+      ]
+    },
+    {
+      "row": 76,
+      "type": "obstacle_collision",
+      "pairs": [
+        {
+          "geom": null,
+          "body": "right_knee_link",
+          "distance_m": -0.0023272487649807494
+        }
+      ]
+    },
+    {
+      "row": 130,
+      "type": "obstacle_collision",
+      "pairs": [
+        {
+          "geom": null,
+          "body": "right_ankle_roll_link",
+          "distance_m": -0.012729474257414674
+        }
+      ]
+    }
+  ],
+  "dynamics": [
+    {
+      "solver_success": false,
+      "base_dynamics_residual_norm": 20.618092179425364,
+      "max_effort_utilization": 1.783557821806872,
+      "max_effort_joint": "right_ankle_pitch_joint",
+      "max_velocity_utilization": 0.2173480754196988,
+      "max_velocity_joint": "right_knee_joint",
+      "max_friction_cone_utilization": 0.998523717684709,
+      "min_normal_force_n": 0.00022163814932305763,
+      "row": 77
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 14.255772146465507,
+      "max_effort_utilization": 1.5427465176070436,
+      "max_effort_joint": "right_ankle_pitch_joint",
+      "max_velocity_utilization": 0.006848696121061924,
+      "max_velocity_joint": "torso_joint",
+      "max_friction_cone_utilization": 0.998720286929268,
+      "min_normal_force_n": 0.00010182707031379835,
+      "row": 17
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 25.41786444975125,
+      "max_effort_utilization": 1.5201903407133064,
+      "max_effort_joint": "left_ankle_pitch_joint",
+      "max_velocity_utilization": 0.17519780187104814,
+      "max_velocity_joint": "right_knee_joint",
+      "max_friction_cone_utilization": 0.9965466669992572,
+      "min_normal_force_n": 0.00010000000000000026,
+      "row": 82
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 14.13655123659377,
+      "max_effort_utilization": 1.5051118905440817,
+      "max_effort_joint": "right_ankle_pitch_joint",
+      "max_velocity_utilization": 0.009974106723890508,
+      "max_velocity_joint": "torso_joint",
+      "max_friction_cone_utilization": 0.9962285280346154,
+      "min_normal_force_n": 0.00010000000000000026,
+      "row": 16
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 11.759796173409173,
+      "max_effort_utilization": 1.4695159876180606,
+      "max_effort_joint": "right_ankle_pitch_joint",
+      "max_velocity_utilization": 0.0039488728977031115,
+      "max_velocity_joint": "torso_joint",
+      "max_friction_cone_utilization": 0.9974480479374978,
+      "min_normal_force_n": 0.00010014416160383049,
+      "row": 18
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 26.32159470722729,
+      "max_effort_utilization": 1.4228374816637368,
+      "max_effort_joint": "left_ankle_pitch_joint",
+      "max_velocity_utilization": 0.017988673500416295,
+      "max_velocity_joint": "right_knee_joint",
+      "max_friction_cone_utilization": 0.994408913275025,
+      "min_normal_force_n": 0.00010000000147355453,
+      "row": 87
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 44.53386847230938,
+      "max_effort_utilization": 1.4187066567266415,
+      "max_effort_joint": "left_ankle_pitch_joint",
+      "max_velocity_utilization": 0.14475846918943222,
+      "max_velocity_joint": "right_knee_joint",
+      "max_friction_cone_utilization": 0.9976640557866947,
+      "min_normal_force_n": 0.00010000000000869359,
+      "row": 83
+    },
+    {
+      "solver_success": false,
+      "base_dynamics_residual_norm": 0.003873934309072353,
+      "max_effort_utilization": 1.351160038140796,
+      "max_effort_joint": "left_ankle_pitch_joint",
+      "max_velocity_utilization": 0.0028145750229082384,
+      "max_velocity_joint": "right_knee_joint",
+      "max_friction_cone_utilization": 0.9929435381326152,
+      "min_normal_force_n": 0.0018300728540827024,
+      "row": 88
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 56.01210498032592,
+      "max_effort_utilization": 1.3405286871927609,
+      "max_effort_joint": "left_ankle_pitch_joint",
+      "max_velocity_utilization": 0.11081041103403595,
+      "max_velocity_joint": "right_knee_joint",
+      "max_friction_cone_utilization": 0.9984484935087764,
+      "min_normal_force_n": 0.00010000000307358615,
+      "row": 84
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 47.906937730759836,
+      "max_effort_utilization": 1.3332500329534258,
+      "max_effort_joint": "left_ankle_pitch_joint",
+      "max_velocity_utilization": 0.043871219852454416,
+      "max_velocity_joint": "right_knee_joint",
+      "max_friction_cone_utilization": 0.9936359265328563,
+      "min_normal_force_n": 0.00010000005373319936,
+      "row": 86
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 11.678251387520792,
+      "max_effort_utilization": 1.3327887265532845,
+      "max_effort_joint": "right_ankle_pitch_joint",
+      "max_velocity_utilization": 0.013029790318519188,
+      "max_velocity_joint": "torso_joint",
+      "max_friction_cone_utilization": 0.9978161323059623,
+      "min_normal_force_n": 0.00010000529725122663,
+      "row": 15
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 57.503005775104405,
+      "max_effort_utilization": 1.307513795020435,
+      "max_effort_joint": "left_ankle_pitch_joint",
+      "max_velocity_utilization": 0.0760876992026066,
+      "max_velocity_joint": "right_knee_joint",
+      "max_friction_cone_utilization": 0.9964497242035075,
+      "min_normal_force_n": 0.00010000000028715439,
+      "row": 85
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 7.220620285873103,
+      "max_effort_utilization": 1.3029039658805912,
+      "max_effort_joint": "right_ankle_pitch_joint",
+      "max_velocity_utilization": 0.22632494448897567,
+      "max_velocity_joint": "right_knee_joint",
+      "max_friction_cone_utilization": 0.9981569551838307,
+      "min_normal_force_n": 0.00010000000000507941,
+      "row": 78
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 6.388119330306527,
+      "max_effort_utilization": 1.2343881704131348,
+      "max_effort_joint": "right_ankle_pitch_joint",
+      "max_velocity_utilization": 0.001619170506093158,
+      "max_velocity_joint": "torso_joint",
+      "max_friction_cone_utilization": 0.9940682913792542,
+      "min_normal_force_n": 0.00010000000021043568,
+      "row": 19
+    },
+    {
+      "solver_success": false,
+      "base_dynamics_residual_norm": 0.0013792439114577095,
+      "max_effort_utilization": 1.2263217222260645,
+      "max_effort_joint": "right_ankle_pitch_joint",
+      "max_velocity_utilization": 0.03104491393966688,
+      "max_velocity_joint": "left_hip_pitch_joint",
+      "max_friction_cone_utilization": 0.9702550963727062,
+      "min_normal_force_n": 30.212119685507723,
+      "row": 23
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 0.0007905856320961776,
+      "max_effort_utilization": 1.2214241785873616,
+      "max_effort_joint": "left_ankle_pitch_joint",
+      "max_velocity_utilization": 0.02914052679711531,
+      "max_velocity_joint": "left_knee_joint",
+      "max_friction_cone_utilization": 0.4296845362500109,
+      "min_normal_force_n": 39.84228765630216,
+      "row": 103
+    },
+    {
+      "solver_success": false,
+      "base_dynamics_residual_norm": 0.0015509087355458108,
+      "max_effort_utilization": 1.2107277768039524,
+      "max_effort_joint": "right_ankle_pitch_joint",
+      "max_velocity_utilization": 0.048542756252346816,
+      "max_velocity_joint": "left_hip_pitch_joint",
+      "max_friction_cone_utilization": 0.9699443690727824,
+      "min_normal_force_n": 25.838271136955374,
+      "row": 24
+    },
+    {
+      "solver_success": false,
+      "base_dynamics_residual_norm": 0.0016706185623957747,
+      "max_effort_utilization": 1.1588977796549957,
+      "max_effort_joint": "left_ankle_pitch_joint",
+      "max_velocity_utilization": 0.04556499953990632,
+      "max_velocity_joint": "left_knee_joint",
+      "max_friction_cone_utilization": 0.9658558173259617,
+      "min_normal_force_n": 24.20831244177391,
+      "row": 104
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 0.0015746746244825111,
+      "max_effort_utilization": 1.1324948328163909,
+      "max_effort_joint": "left_ankle_pitch_joint",
+      "max_velocity_utilization": 0.013025949766452669,
+      "max_velocity_joint": "left_knee_joint",
+      "max_friction_cone_utilization": 0.8895332361466413,
+      "min_normal_force_n": 27.629303544537585,
+      "row": 102
+    },
+    {
+      "solver_success": true,
+      "base_dynamics_residual_norm": 0.0008087230769832929,
+      "max_effort_utilization": 1.1099264033188356,
+      "max_effort_joint": "right_ankle_pitch_joint",
+      "max_velocity_utilization": 0.01387721959515054,
+      "max_velocity_joint": "left_hip_pitch_joint",
+      "max_friction_cone_utilization": 0.7090032707720442,
+      "min_normal_force_n": 41.097495381710395,
+      "row": 22
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "system": "command_system_v1",
+  "status": "PASS",
+  "skills": {
+    "RUN": {
+      "status": "PASS"
+    },
+    "TURN": {
+      "status": "PASS"
+    },
+    "STOP": {
+      "status": "PROTOTYPE",
+      "formal_gate_pass": false
+    },
+    "STAND": {
+      "status": "PASS"
+    },
+    "CROUCH_SHALLOW": {
+      "status": "PASS",
+      "supported_depth_m": [
+        0.08,
+        0.1
+      ],
+      "controller": "scripted_shallow_v1"
+    },
+    "CROUCH_DEEP": {
+      "status": "NOT_SUPPORTED",
+      "reason": "DEEP_CROUCH_RETURN_UNRESOLVED"
+    },
+    "STEP_OVER": {
+      "status": "NOT_SUPPORTED",
+      "reason": "OPTIMIZATION_FAILURE"
+    },
+    "LAND": {
+      "status": "NOT_SUPPORTED",
+      "supported_range_m": null,
+      "observed_standing_drop_tolerance_m": 0.02,
+      "observation_is_not_a_skill_claim": true
+    }
+  },
+  "supported_transitions": [
+    "RUN->RUN",
+    "RUN->TURN",
+    "TURN->RUN",
+    "TURN->TURN",
+    "STAND->STAND",
+    "STAND->CROUCH_SHALLOW",
+    "CROUCH_SHALLOW->STAND",
+    "CROUCH_SHALLOW->CROUCH_SHALLOW"
+  ],
+  "unsupported_transitions": [
+    "RUN->STAND",
+    "TURN->STAND",
+    "RUN->CROUCH_SHALLOW",
+    "TURN->CROUCH_SHALLOW",
+    "STAND->RUN",
+    "CROUCH_SHALLOW->RUN"
+  ],
+  "controller_families": {
+    "RUNNING_FAMILY": [
+      "RUN",
+      "TURN"
+    ],
+    "STANDING_FAMILY": [
+      "STAND",
+      "CROUCH_SHALLOW"
+    ],
+    "PROTOTYPE": [
+      "STOP"
+    ]
+  },
+  "cross_family_transition_status": "CROSS_BASE_FAMILY_TRANSITION_UNRESOLVED"
+}

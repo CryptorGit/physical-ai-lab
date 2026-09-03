@@ -1,0 +1,13 @@
+{
+  "authoritative_simulator": "Isaac Lab / PhysX",
+  "authoritative_usd": "Isaac/IsaacLab/Robots/Unitree/G1/g1.usd",
+  "captured_joint_count": 37,
+  "captured_generalized_mass_matrix_shape": [43, 43],
+  "captured_foot_jacobian_shape": [2, 6, 43],
+  "terrain_static_friction": 1.0,
+  "terrain_dynamic_friction": 1.0,
+  "trajectory_proxy": "MuJoCo Menagerie G1 scene.xml, 29 actuated joints",
+  "mujoco_version": "3.8.0",
+  "scipy_version": "1.17.0",
+  "model_mismatch_note": "Isaac limits and foot keypoints are authoritative. MuJoCo full-link collision meshes are used conservatively and are not claimed bitwise-identical to the Isaac USD."
+}

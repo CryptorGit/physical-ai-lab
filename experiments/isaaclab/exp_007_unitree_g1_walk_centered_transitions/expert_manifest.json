@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "experiment": "exp_007_unitree_g1_walk_centered_transitions",
+  "selection_policy": "immutable references only; no checkpoint is copied or modified",
+  "experts": {
+    "WALK_STAND": {
+      "checkpoint": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-17_21-40-39_stage2_1024_750/model_4246.pt",
+      "sha256": "734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621",
+      "checkpoint_iteration": 4246,
+      "source_experiment": "exp_005_unitree_g1_flat_run",
+      "source_stage": "stage2_1024_750",
+      "observation_dimension": 123,
+      "action_dimension": 37,
+      "roles": ["STAND", "WALK"]
+    },
+    "RUN": {
+      "selected_candidate": "A",
+      "selection_reason": "RUN/TURN-specific parent; eligible only if audit proves bitwise equality with command_system_v1 candidate B",
+      "checkpoint": "logs/rsl_rl/physical_ai_g1_command_skills/2026-07-19_22-02-41_pilot_turn90_right_residual_from_model0/model_0.pt",
+      "sha256": "60675a79187ef00935069f3bf85293e72477fa1d408b80d3325232d805b0d266",
+      "checkpoint_iteration": 0,
+      "source_experiment": "exp_006_unitree_g1_command_skills",
+      "observation_dimension": 152,
+      "legacy_observation_dimension": 123,
+      "command_observation_dimension": 29,
+      "action_dimension": 37,
+      "roles": ["RUN_LOW", "RUN_TURN"]
+    },
+    "RUN_CANDIDATE_B": {
+      "checkpoint": "logs/rsl_rl/physical_ai_g1_command_skills/2026-07-20_14-34-35_pilot_stop_stage_a_braking/model_31.pt",
+      "sha256": "2326db6d8c68b6f495af5f2054b39a783f144850a6877b74097a8c4af03d61e1",
+      "checkpoint_iteration": 31,
+      "formal_provenance": "artifacts/exp_006_unitree_g1_command_skills/command_system_v1/skill_provenance.json",
+      "purpose": "candidate equivalence and direct STOP baseline only",
+      "production_expert": false
+    },
+    "CROUCH_SHALLOW": {
+      "artifact": "artifacts/exp_006_unitree_g1_command_skills/crouch_shallow_scripted_v1",
+      "controller_source": "experiments/isaaclab/exp_006_unitree_g1_command_skills/src/g1_command_skills/scripted_crouch.py",
+      "controller_sha256": "3f3df1b10c26c77779e12c19e2c93152ca777f548197c48a7ba5c268440d140d",
+      "pose_lookup_sha256": "5b149c5fc333a4754ee60ec8978583660c69f2e8c0fb7f77c803eb1a1ea5cad1",
+      "supported_depth_m": [0.08, 0.10],
+      "reference_only": true
+    },
+    "DIRECT_STOP_BASELINE": {
+      "checkpoint_ref": "RUN_CANDIDATE_B",
+      "checkpoint": "logs/rsl_rl/physical_ai_g1_command_skills/2026-07-20_14-34-35_pilot_stop_stage_a_braking/model_31.pt",
+      "sha256": "2326db6d8c68b6f495af5f2054b39a783f144850a6877b74097a8c4af03d61e1",
+      "production_expert": false,
+      "reference_only": true
+    }
+  },
+  "weights_trainable": false,
+  "bridge_connected_to_production": false
+}

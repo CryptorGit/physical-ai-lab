@@ -1,0 +1,23 @@
+1
+00:00:00,000 --> 00:00:05,000
+One checkpoint controls standing and low-speed walking.
+
+2
+00:00:05,000 --> 00:00:09,000
+At the same target speed, a scalar gait command selects the gait.
+
+3
+00:00:09,000 --> 00:00:16,500
+The same actor accelerates into periodic running and decelerates again.
+
+4
+00:00:16,500 --> 00:00:21,000
+No expert routing. No checkpoint switching. No action blending.
+
+5
+00:00:21,000 --> 00:00:25,000
+The policy returns to walking and reaches a practical stop.
+
+6
+00:00:25,000 --> 00:00:28,000
+Remaining limitation: the strict static-contact standing gate.

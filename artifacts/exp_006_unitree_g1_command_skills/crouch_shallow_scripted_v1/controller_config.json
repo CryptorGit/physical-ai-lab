@@ -1,0 +1,17 @@
+{
+  "controller": "scripted_shallow_v1",
+  "skill": "CROUCH_SHALLOW",
+  "supported_depth_min_m": 0.08,
+  "supported_depth_max_m": 0.10,
+  "unsupported_command_mode": "reject",
+  "debug_clamp_available": true,
+  "debug_clamp_counts_as_success": false,
+  "standing_base": "stage2_fastwalk_model4246",
+  "learned_crouch_residual_enabled": false,
+  "composition": "frozen_stage2_standing_base_action + scripted_crouch_pose_offset",
+  "down_interpolation": "minimum_jerk",
+  "return_interpolation": "minimum_jerk",
+  "pose_interpolation": "piecewise_linear_in_measured_pelvis_depth",
+  "deep_crouch_status": "NOT_SUPPORTED",
+  "deep_crouch_reason": "DEEP_CROUCH_RETURN_UNRESOLVED"
+}

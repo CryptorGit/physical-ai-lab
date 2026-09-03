@@ -1,0 +1,16 @@
+{
+  "method": "staged constrained IK warm-start plus minimum-jerk multiple shooting and inverse-dynamics contact-wrench feasibility",
+  "kinematic_solver": "scipy.optimize.least_squares trust-region reflective",
+  "kinematic_max_function_evaluations": 500,
+  "contact_force_solver": "bounded nonlinear least-squares with positive-normal/circular-friction-cone parameterization",
+  "dynamics_source": "MuJoCo mj_inverse, checked against Isaac-captured limits",
+  "automatic_differentiation": false,
+  "finite_difference": true,
+  "reason": "SciPy and MuJoCo were already installed; CasADi, Pinocchio, IPOPT and NLopt were unavailable, so no new large dependency was introduced",
+  "decision_variables": ["floating pelvis pose", "15 leg/waist joint positions", "joint velocity",
+    "joint acceleration", "fixed bounded phase durations", "support contact point forces"],
+  "objective_terms": ["support pose error", "swing pose error", "COM over support",
+    "roll/pitch", "standing deviation", "contact force norm"],
+  "limitations": ["phase durations were selected from bounded trials, not jointly optimized",
+    "MuJoCo collision meshes are a proxy for the Isaac USD", "contact force solve is knot-wise rather than a single sparse NLP"]
+}

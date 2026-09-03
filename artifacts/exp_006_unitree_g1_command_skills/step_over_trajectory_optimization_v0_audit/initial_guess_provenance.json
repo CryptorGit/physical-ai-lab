@@ -1,0 +1,9 @@
+{
+  "stage2_checkpoint": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-17_21-40-39_stage2_1024_750/model_4246.pt",
+  "captured_state": "robot_state_isaac.json",
+  "kinematic_model": "shared/models/mujoco_menagerie/unitree_g1/scene.xml",
+  "initialization": "Stage-2 joint state mapped by joint name; arbitrary world yaw removed; feet centered in robot-local frame; pelvis height shifted so authoritative foot keypoints touch ground",
+  "warm_start_order": ["right weight shift", "left front/apex/rear/landing", "double support transfer",
+    "right front/apex/rear/landing", "double support recovery"],
+  "candidate_landing_change": "0.41m produced persistent full-link collision; one bounded conservative retry used 0.50m without changing obstacle geometry"
+}

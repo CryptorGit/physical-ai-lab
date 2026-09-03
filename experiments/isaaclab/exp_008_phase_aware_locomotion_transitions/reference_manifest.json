@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "experiment": "exp_008_phase_aware_locomotion_transitions",
+  "source_experiment": "exp_007_unitree_g1_walk_centered_transitions",
+  "source_experiment_status": "PARTIAL_SUCCESS_ASYMMETRIC_STATE_GRAPH",
+  "stage8c_results": "results/exp_007_unitree_g1_walk_centered_transitions/stage8c_run_to_walk_pilot1_execution",
+  "stage8d_results": "results/exp_007_unitree_g1_walk_centered_transitions/stage8d_run_to_walk_pilot2_walk_acquisition",
+  "stage8e_results": "results/exp_007_unitree_g1_walk_centered_transitions/stage8e_run_to_walk_v1_closure",
+  "checkpoint": "results/exp_007_unitree_g1_walk_centered_transitions/stage8c_run_to_walk_pilot1_execution/checkpoints/model_10.pt",
+  "checkpoint_sha256": "f54ead0da2a192e238e1fd6dbcb48670fb785f7ef7e7766c64d0dfbf06eba263",
+  "source_speeds_mps": [
+    2.6,
+    2.8
+  ],
+  "target_walk_speed_mps": 1.2,
+  "walk_contract_steps": 20,
+  "control_timestep_seconds": 0.02,
+  "exp007_files_mutable": false
+}

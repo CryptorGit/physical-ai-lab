@@ -1,0 +1,28 @@
+{
+  "schema_version": 2,
+  "experiment": "exp_007_unitree_g1_walk_centered_transitions",
+  "log_root": "logs/rsl_rl/physical_ai_g1_walk_centered",
+  "result_root": "results/exp_007_unitree_g1_walk_centered_transitions",
+  "artifact_root": "artifacts/exp_007_unitree_g1_walk_centered_transitions",
+  "stand_home_state_v1": "artifacts/exp_007_unitree_g1_walk_centered_transitions/stand_home_state_v1",
+  "stage1_stand_formal": "results/exp_007_unitree_g1_walk_centered_transitions/stage1_stand_formal",
+  "exp006_command_system_artifact": "artifacts/exp_006_unitree_g1_command_skills/command_system_v1",
+  "exp006_skill_provenance": "artifacts/exp_006_unitree_g1_command_skills/command_system_v1/skill_provenance.json",
+  "exp006_final_report": "reports/exp_006_unitree_g1_command_system_v1_final_report_ja.md",
+  "exp006_formal_run_turn_summary": "results/exp_006_unitree_g1_command_skills/command_system_v1/run_turn_run_formal_50/summary.json",
+  "exp006_candidate_a_turn_summary": "results/exp_006_unitree_g1_command_skills/checkpoint_sweeps/turn/2026-07-19_22-02-41_pilot_turn90_right_residual_from_model0/model_0/turn/normal/summary.json",
+  "robot_state_reference": "artifacts/exp_006_unitree_g1_command_skills/step_over_trajectory_optimization_v0_audit/robot_state_isaac.json",
+  "fixed_cases": [
+    "nominal_standing_state",
+    "zero_velocity_command",
+    "walk_0.5_mps",
+    "walk_1.0_mps",
+    "walk_1.5_mps",
+    "run_2.4_mps",
+    "run_2.6_mps",
+    "turn_left_45_deg",
+    "turn_right_45_deg",
+    "turn_left_90_deg",
+    "turn_right_90_deg"
+  ]
+}

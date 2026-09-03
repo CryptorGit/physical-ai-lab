@@ -1,0 +1,31 @@
+{
+  "name": "Exp014ExplicitMotionModeCommandV1",
+  "frozen": true,
+  "physical_command_frame": "body",
+  "physical_command_units": [
+    "m/s",
+    "m/s",
+    "rad/s"
+  ],
+  "mode_order": [
+    "STAND",
+    "WALK",
+    "RUN"
+  ],
+  "legacy_gait": {
+    "STAND": 0,
+    "WALK": 0,
+    "RUN": 1
+  },
+  "request_semantics": "target mode changes immediately before velocity ramp advances",
+  "time_since_mode_change": "zero at mode change; divide by 3.0 seconds and clamp to one",
+  "ramp_progress": "zero at command-ramp start; one at ramp end",
+  "previous_command": "immediately preceding control-step physical command",
+  "command_delta": "current physical command minus preceding command",
+  "forbidden": [
+    "future command",
+    "future trajectory",
+    "teacher ID",
+    "condition ID"
+  ]
+}

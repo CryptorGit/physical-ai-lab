@@ -1,0 +1,9 @@
+{
+  "path": "logs\\rsl_rl\\physical_ai_g1_walk_centered\\2026-07-24_06-37-46_stage4_walk_to_stand_pilot1_1024_100\\model_0.pt",
+  "artifact_copy": "model_0.pt",
+  "sha256": "bb1bf713119b7980cfac4c1f43eb0d415bc32abe97a54509ee45d13061e858bd",
+  "parent": "logs\\rsl_rl\\physical_ai_g1_flat_run\\2026-07-17_21-40-39_stage2_1024_750\\model_4246.pt",
+  "parent_sha256": "734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621",
+  "effective_updates": 1,
+  "role": "PRODUCTION_DIRECTIONAL_TRANSITION_EXPERT"
+}

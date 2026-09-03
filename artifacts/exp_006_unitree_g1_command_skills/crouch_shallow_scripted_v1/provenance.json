@@ -1,0 +1,15 @@
+{
+  "parent_checkpoint": "artifacts/exp_006_unitree_g1_command_skills/crouch_standing_option_stage2_model4246/model_0.pt",
+  "parent_checkpoint_sha256": "aaf7f266075253f61686c6b6dc6f79fd6d25e8df57ae188be37f8ae36018f3da",
+  "parent_ancestry": "logs/rsl_rl/physical_ai_g1_command_skills/2026-07-20_14-34-35_pilot_stop_stage_a_braking/model_31.pt",
+  "standing_base_checkpoint": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-17_21-40-39_stage2_1024_750/model_4246.pt",
+  "standing_base_checkpoint_sha256": "734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621",
+  "scripted_controller_source": "experiments/isaaclab/exp_006_unitree_g1_command_skills/src/g1_command_skills/scripted_crouch.py",
+  "scripted_controller_source_sha256": "3f3df1b10c26c77779e12c19e2c93152ca777f548197c48a7ba5c268440d140d",
+  "checkpoint_copied": false,
+  "checkpoint_copy_policy": "reference existing immutable standing-option artifact",
+  "ppo_training_performed": false,
+  "formal_evaluation": "results/exp_006_unitree_g1_command_skills/crouch_shallow_scripted_v1/formal_50/supported/summary.json",
+  "unsupported_evaluation": "results/exp_006_unitree_g1_command_skills/crouch_shallow_scripted_v1/formal_50/unsupported/safety_summary.json",
+  "gate": "results/exp_006_unitree_g1_command_skills/crouch_shallow_scripted_v1/formal_50/gate.json"
+}

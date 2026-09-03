@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "transitions": {
+    "STAND_TO_WALK": {
+      "source_state": "STAND",
+      "target_state": "WALK",
+      "entry_preconditions": "STAND hold valid and requested WALK speed is supported",
+      "completion_condition": "WALK expert acceptance: sustained support switching, target acquisition, upright posture, bounded heading/slip/saturation",
+      "abort_condition": "fall, unsafe contact, saturation, timeout, or target acceptance impossible",
+      "timeout_s": 4.0,
+      "supported_source_range": "STAND contract",
+      "supported_target_range": {"target_speed_mps_discrete": [0.6, 0.8, 1.0, 1.2]},
+      "owning_transition_expert": "stand_to_walk_transition_v1",
+      "status": "PASS"
+    },
+    "WALK_TO_STAND": {
+      "source_state": "WALK",
+      "target_state": "STAND",
+      "entry_preconditions": "WALK hold valid and STOP path resolves through this edge",
+      "completion_condition": "for 0.4 s: horizontal speed <=0.08 m/s, abs vertical speed <=0.05 m/s, heading error <=0.12 rad, abs roll/pitch <=0.10 rad, double support, no flight, and no support switch for 0.4 s",
+      "abort_condition": "fall, reverse motion, support loss, saturation, or timeout",
+      "timeout_s": 4.0,
+      "supported_source_range": {"target_speed_mps_discrete": [0.6, 0.8, 1.0, 1.2]},
+      "supported_target_range": "STAND contract",
+      "owning_transition_expert": "walk_to_stand_transition_v1",
+      "controller_type": "LEARNED_TRANSITION_EXPERT",
+      "status": "PASS"
+    },
+    "WALK_TO_RUN": {
+      "source_state": "WALK",
+      "target_state": "RUN_LOW",
+      "entry_preconditions": "WALK@1.2 held >=1.0 s with speed error <=0.20 m/s, heading error <=0.12 rad, and no safety failure",
+      "completion_condition": "speed ratio >=0.75, speed error <=0.20 m/s, heading <=0.12 rad, >=4 flights, >=3 consecutive safe cycles, >=80% alternating and valid landings, mean flight 0.04-0.16 s, and no safety failure",
+      "abort_condition": "fall, torso contact, dangerous slip, impact failure, long-dwell saturation, invalid action, or timeout",
+      "timeout_s": 5.0,
+      "supported_source_range": {"target_speed_mps_discrete": [1.2]},
+      "supported_target_range": {"target_speed_mps_discrete": [2.6, 2.8]},
+      "unsupported_target_range": {"target_speed_mps_discrete": [2.4], "reason": "COMPLETION_SAFETY_TRADEOFF_AFTER_TWO_PILOTS"},
+      "owning_transition_expert": "walk_to_run_transition_v1",
+      "controller_type": "LEARNED_TRANSITION_EXPERT_152D",
+      "status": "PASS_LIMITED"
+    },
+    "RUN_TO_WALK": {
+      "source_state": "RUN",
+      "target_state": "WALK",
+      "entry_preconditions": "RUN and WALK steady-state contracts are formally available",
+      "completion_condition": "WALK expert acceptance distribution reached",
+      "abort_condition": "safety failure or timeout",
+      "timeout_s": "TO_BE_FROZEN_STAGE_8",
+      "supported_source_range": "TO_BE_FROZEN_STAGE_8",
+      "supported_target_range": {"target_speed_mps": [0.6, 1.2]},
+      "owning_transition_expert": "run_to_walk_expert_pending",
+      "status": "NOT_IMPLEMENTED"
+    },
+    "STAND_TO_CROUCH": {
+      "source_state": "STAND",
+      "target_state": "CROUCH_HOLD",
+      "entry_preconditions": "STAND hold valid",
+      "completion_condition": "CROUCH_HOLD acceptance distribution reached",
+      "abort_condition": "safety failure or timeout",
+      "timeout_s": "TO_BE_FROZEN_STAGE_11",
+      "supported_source_range": "STAND contract",
+      "supported_target_range": {"crouch_depth_m": [0.08, 0.1]},
+      "owning_transition_expert": "stand_to_crouch_expert_pending",
+      "status": "NOT_IMPLEMENTED"
+    },
+    "CROUCH_TO_STAND": {
+      "source_state": "CROUCH_HOLD",
+      "target_state": "STAND",
+      "entry_preconditions": "CROUCH_HOLD valid",
+      "completion_condition": "STAND expert acceptance distribution reached",
+      "abort_condition": "safety failure or timeout",
+      "timeout_s": "TO_BE_FROZEN_STAGE_11",
+      "supported_source_range": {"crouch_depth_m": [0.08, 0.1]},
+      "supported_target_range": "STAND contract",
+      "owning_transition_expert": "crouch_to_stand_expert_pending",
+      "status": "NOT_IMPLEMENTED"
+    }
+  }
+}

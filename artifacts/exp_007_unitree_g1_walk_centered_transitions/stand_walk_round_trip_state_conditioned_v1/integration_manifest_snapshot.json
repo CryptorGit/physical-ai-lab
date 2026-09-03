@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "name": "modular_state_graph_v1",
+  "state_graph": "transition_graph.json",
+  "routing": {
+    "policy": "MANIFEST_PATH_HARD_SWITCH",
+    "runtime_action_blend": false,
+    "global_previous_action": "ACTUAL_PREVIOUS_FINAL_ACTION",
+    "completion_required_before_route_advance": true,
+    "timeout_forces_target_switch": false
+  },
+  "supported_external_commands": {
+    "WALK": {
+      "speeds_mps": [0.6, 0.8, 1.0, 1.2],
+      "target_state": "WALK"
+    },
+    "STOP": {
+      "target_state": "STAND",
+      "stand_behavior": "SUPPORTED_NO_OP"
+    }
+  },
+  "controllers": {
+    "stage2_model_4246": {
+      "kind": "STEADY_STATE",
+      "checkpoint": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-17_21-40-39_stage2_1024_750/model_4246.pt",
+      "sha256": "734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621"
+    },
+    "stand_to_walk_transition_v1": {
+      "kind": "TRANSITION",
+      "checkpoint": "logs/rsl_rl/physical_ai_g1_walk_centered/2026-07-23_23-47-23_stage3_stand_to_walk_pilot1_validrun_1024_100/model_0.pt",
+      "sha256": "511b3c832e2c7bc54f348391db79d4ac57d1ceda10a6907549a50da093a9c36e"
+    },
+    "walk_steady_state_expert_v1": {
+      "kind": "STEADY_STATE",
+      "checkpoint": "logs/rsl_rl/physical_ai_g1_walk_centered/2026-07-23_23-18-22_stage2wb_stabilization_pilot2_1024_100/model_100.pt",
+      "sha256": "9098eaea68d1e5f818b87a499f53c17ccc97c3dbb1afa7a7604ed3dcaa3ef7fa"
+    },
+    "walk_to_stand_transition_v1": {
+      "kind": "TRANSITION",
+      "checkpoint": "logs/rsl_rl/physical_ai_g1_walk_centered/2026-07-24_06-37-46_stage4_walk_to_stand_pilot1_1024_100/model_0.pt",
+      "sha256": "bb1bf713119b7980cfac4c1f43eb0d415bc32abe97a54509ee45d13061e858bd"
+    }
+  }
+}

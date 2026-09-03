@@ -1,0 +1,38 @@
+{
+  "observation_dimension": 123,
+  "layout": {
+    "base_linear_velocity": [
+      0,
+      3
+    ],
+    "base_angular_velocity": [
+      3,
+      6
+    ],
+    "projected_gravity": [
+      6,
+      9
+    ],
+    "velocity_command": [
+      9,
+      12
+    ],
+    "joint_position": [
+      12,
+      49
+    ],
+    "joint_velocity": [
+      49,
+      86
+    ],
+    "previous_action": [
+      86,
+      123
+    ]
+  },
+  "world_xy_in_observation": false,
+  "absolute_heading_in_observation": false,
+  "action_dimension": 37,
+  "action_scale": 0.5,
+  "semantics": "default_joint_position + 0.5 * normalized_position_action"
+}

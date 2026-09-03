@@ -1,0 +1,14 @@
+{
+  "order_fixed": true,
+  "phases": [
+    {"phase": 0, "contacts": ["left", "right"], "purpose": "initial double support / settle"},
+    {"phase": 1, "contacts": ["right"], "swing": "left", "purpose": "lead crossing"},
+    {"phase": 2, "contacts": ["left", "right"], "purpose": "lead touchdown and transfer"},
+    {"phase": 3, "contacts": ["left"], "swing": "right", "purpose": "trail crossing"},
+    {"phase": 4, "contacts": ["left", "right"], "purpose": "trail touchdown"},
+    {"phase": 5, "contacts": ["left", "right"], "purpose": "standing recovery"}
+  ],
+  "duration_bounds_s": [0.3, 2.0],
+  "candidate_total_duration_s": 6.6,
+  "contact_order_changed": false
+}

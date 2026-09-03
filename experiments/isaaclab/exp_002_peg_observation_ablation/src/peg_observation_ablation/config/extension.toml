@@ -1,0 +1,8 @@
+[core]
+# Isaac Lab extension metadata.
+name = "peg_observation_ablation"
+version = "0.1.0"
+description = "Peg insertion observation ablation experiment"
+
+[python]
+packages = ["peg_observation_ablation"]

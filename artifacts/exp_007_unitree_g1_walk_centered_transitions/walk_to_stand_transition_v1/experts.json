@@ -1,0 +1,8 @@
+{
+  "source": "logs\\rsl_rl\\physical_ai_g1_walk_centered\\2026-07-23_23-18-22_stage2wb_stabilization_pilot2_1024_100\\model_100.pt",
+  "source_sha256": "9098eaea68d1e5f818b87a499f53c17ccc97c3dbb1afa7a7604ed3dcaa3ef7fa",
+  "target": "logs\\rsl_rl\\physical_ai_g1_flat_run\\2026-07-17_21-40-39_stage2_1024_750\\model_4246.pt",
+  "target_sha256": "734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621",
+  "source_generator": "logs\\rsl_rl\\physical_ai_g1_walk_centered\\2026-07-23_23-47-23_stage3_stand_to_walk_pilot1_validrun_1024_100\\model_0.pt",
+  "source_generator_sha256": "511b3c832e2c7bc54f348391db79d4ac57d1ceda10a6907549a50da093a9c36e"
+}

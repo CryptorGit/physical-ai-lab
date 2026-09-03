@@ -1,0 +1,8 @@
+{
+  "starting_head": "2795ec858f9390aeec3994f7fdd5dd97e3cd9cc5",
+  "exp007_status": "PARTIAL_SUCCESS_ASYMMETRIC_STATE_GRAPH",
+  "exp008_observability": "BREAK_NOT_PREDICTABLE",
+  "exp008_controllability": "NO_LOCAL_CORRECTION_FOUND",
+  "exp008_decision": "UNIFIED_WALK_RUN_DISTILLATION",
+  "capability_manifest_mutable": false
+}

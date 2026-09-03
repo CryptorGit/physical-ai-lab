@@ -1,0 +1,29 @@
+baseline_name: qmini_walk_only
+source_policy: QMINI_NATIVE_OR_ROBOTAMER_REFERENCE_ONLY
+g1_checkpoint_allowed: false
+training_allowed_in_stage_0_1: QMINI_WALK_ONLY_SHORT_IF_NO_COMPATIBLE_REFERENCE
+training_scope: BASELINE_WALK_ONLY
+long_horizon_ppo: false
+formal_episodes_minimum: 50
+fall_rate_max: 0.02
+finite_state_fraction_required: 1.0
+velocity_range: MEASURED_AFTER_SWEEP
+command_velocity_values: UNKNOWN
+task:
+  type: velocity_tracking
+  directions: forward_only_initial
+  speed: measured_not_copied
+  jump: false
+  run: false
+  omnidirectional: false
+metrics:
+  - velocity_tracking_error
+  - slip
+  - torque
+  - action_rate
+  - saturation_dwell
+  - contact_pattern
+  - joint_limit
+  - body_orientation
+  - power
+  - mechanical_work

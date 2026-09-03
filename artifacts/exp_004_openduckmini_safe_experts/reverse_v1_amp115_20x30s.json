@@ -1,0 +1,726 @@
+{
+  "policy": "/mnt/c/Users/user/workspace/physical-ai-lab/.openduck_runtime_source_review/calibrated_hybrid_policy_v22.onnx",
+  "scene": "/mnt/c/Users/user/workspace/physical-ai-lab/experiments/mujoco/exp_004_openduckmini_safe_gait_experts/artifacts/generated_playground/playground/open_duck_mini_v2/xmls/scene_flat_terrain_backlash_hardware_safe_calibrated.xml",
+  "control_dt": 0.02,
+  "sim_dt": 0.002,
+  "action_scale": 0.25,
+  "episodes_per_command": 20,
+  "initial_joint_noise": 0.03,
+  "initial_base_speed": 0.1,
+  "lock_head_targets": true,
+  "backward_amplitude_scale": 1.15,
+  "results": [
+    {
+      "seed": 0,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -0.42421330649299693,
+        -0.9368646529636502,
+        0.013776023948165184
+      ],
+      "mean_velocity_xyz": [
+        -0.05352607658612388,
+        0.024878907372610667,
+        -0.003182604104574718
+      ],
+      "mean_yaw_rate": 0.10128420615443996,
+      "minimum_height": 0.18200310282939722,
+      "minimum_upright": 0.9876468251548763,
+      "mean_left_contact": 0.734666645526886,
+      "mean_right_contact": 0.8019999861717224,
+      "single_support_rate": 0.4633333333333333,
+      "flight_rate": 0.0,
+      "action_rms": 0.2411886304616928,
+      "action_peak": 0.8213073015213013,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 1,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -1.1261230256155952,
+        -0.6018168882270776,
+        0.015329854195998638
+      ],
+      "mean_velocity_xyz": [
+        -0.05094029095475534,
+        0.024548927645753747,
+        -0.003034603194451307
+      ],
+      "mean_yaw_rate": 0.0935541056424096,
+      "minimum_height": 0.18208253596176432,
+      "minimum_upright": 0.9898930827799657,
+      "mean_left_contact": 0.7360000014305115,
+      "mean_right_contact": 0.8046666383743286,
+      "single_support_rate": 0.45266666666666666,
+      "flight_rate": 0.0033333333333333335,
+      "action_rms": 0.24133054912090302,
+      "action_peak": 0.8493340015411377,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 2,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -1.142244433991276,
+        -0.29033222059256847,
+        0.014044986678556637
+      ],
+      "mean_velocity_xyz": [
+        -0.05115638093133381,
+        0.02869553227738381,
+        -0.0027287665334821453
+      ],
+      "mean_yaw_rate": 0.10298870767623441,
+      "minimum_height": 0.18223404602090618,
+      "minimum_upright": 0.9900635234392867,
+      "mean_left_contact": 0.75,
+      "mean_right_contact": 0.8106666803359985,
+      "single_support_rate": 0.438,
+      "flight_rate": 0.0006666666666666666,
+      "action_rms": 0.23960921168327332,
+      "action_peak": 0.8295826315879822,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 3,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -0.6612053053262377,
+        -0.7159848035836487,
+        0.014954641302187849
+      ],
+      "mean_velocity_xyz": [
+        -0.05103383381243398,
+        0.025472642029234275,
+        -0.00300114283586866
+      ],
+      "mean_yaw_rate": 0.11106859485318032,
+      "minimum_height": 0.18191658709931896,
+      "minimum_upright": 0.9896718232597388,
+      "mean_left_contact": 0.7360000014305115,
+      "mean_right_contact": 0.7900000214576721,
+      "single_support_rate": 0.4713333333333333,
+      "flight_rate": 0.0013333333333333333,
+      "action_rms": 0.24235792458057404,
+      "action_peak": 0.7935987114906311,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 4,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -1.1983927444498212,
+        -0.7227871987514324,
+        0.014030679118228029
+      ],
+      "mean_velocity_xyz": [
+        -0.05063563777907363,
+        0.02739376904391199,
+        -0.002698445654575993
+      ],
+      "mean_yaw_rate": 0.0822523396226977,
+      "minimum_height": 0.18204422621031324,
+      "minimum_upright": 0.9872302933013359,
+      "mean_left_contact": 0.7353333234786987,
+      "mean_right_contact": 0.8040000200271606,
+      "single_support_rate": 0.4593333333333333,
+      "flight_rate": 0.0006666666666666666,
+      "action_rms": 0.23971757292747498,
+      "action_peak": 0.7715701460838318,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 5,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -0.6254387188681151,
+        -0.8731022468753707,
+        0.01397608387925589
+      ],
+      "mean_velocity_xyz": [
+        -0.052693551929750025,
+        0.02794034242024687,
+        -0.0027154968942706774
+      ],
+      "mean_yaw_rate": 0.11222227342355663,
+      "minimum_height": 0.18238620662979582,
+      "minimum_upright": 0.9907840899879201,
+      "mean_left_contact": 0.746666669845581,
+      "mean_right_contact": 0.7773333191871643,
+      "single_support_rate": 0.472,
+      "flight_rate": 0.002,
+      "action_rms": 0.23957395553588867,
+      "action_peak": 0.8713886737823486,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 6,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -0.6079008209713942,
+        -0.7968339240098722,
+        0.01580605171202465
+      ],
+      "mean_velocity_xyz": [
+        -0.05377415942641103,
+        0.026039964156237484,
+        -0.0030673022768036243
+      ],
+      "mean_yaw_rate": 0.1229247354671812,
+      "minimum_height": 0.18242002676507824,
+      "minimum_upright": 0.9891222690188911,
+      "mean_left_contact": 0.731333315372467,
+      "mean_right_contact": 0.8033333420753479,
+      "single_support_rate": 0.4653333333333333,
+      "flight_rate": 0.0,
+      "action_rms": 0.23969076573848724,
+      "action_peak": 0.7560515999794006,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 7,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -0.2475925031266128,
+        -1.1509942834591338,
+        0.013523772530419642
+      ],
+      "mean_velocity_xyz": [
+        -0.05462306201168162,
+        0.024066168992142357,
+        -0.0030063336601208208
+      ],
+      "mean_yaw_rate": 0.1088379882651365,
+      "minimum_height": 0.18222801607210504,
+      "minimum_upright": 0.9877910925909048,
+      "mean_left_contact": 0.7293333411216736,
+      "mean_right_contact": 0.7846666574478149,
+      "single_support_rate": 0.4846666666666667,
+      "flight_rate": 0.0006666666666666666,
+      "action_rms": 0.23939238488674164,
+      "action_peak": 0.7543526291847229,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 8,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -0.6812520730135558,
+        -0.8149033763350791,
+        0.015258045707001622
+      ],
+      "mean_velocity_xyz": [
+        -0.04923943833754259,
+        0.025096503097924872,
+        -0.0029706455280767213
+      ],
+      "mean_yaw_rate": 0.10984138774442165,
+      "minimum_height": 0.18269013977440127,
+      "minimum_upright": 0.9884349503373101,
+      "mean_left_contact": 0.7366666793823242,
+      "mean_right_contact": 0.7993333339691162,
+      "single_support_rate": 0.46266666666666667,
+      "flight_rate": 0.0006666666666666666,
+      "action_rms": 0.24160143733024597,
+      "action_peak": 0.7825448513031006,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 9,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -0.7108684130333158,
+        -0.9656110385673835,
+        0.01500623374670329
+      ],
+      "mean_velocity_xyz": [
+        -0.04991688578524797,
+        0.025953973583681723,
+        -0.0028459643210893932
+      ],
+      "mean_yaw_rate": 0.10230111109974656,
+      "minimum_height": 0.1824494119374581,
+      "minimum_upright": 0.987943843798877,
+      "mean_left_contact": 0.7440000176429749,
+      "mean_right_contact": 0.8040000200271606,
+      "single_support_rate": 0.45066666666666666,
+      "flight_rate": 0.0006666666666666666,
+      "action_rms": 0.24078837037086487,
+      "action_peak": 0.7240902781486511,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 10,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -0.554968011849436,
+        -0.9364967856217512,
+        0.012990166211120896
+      ],
+      "mean_velocity_xyz": [
+        -0.05054033150319191,
+        0.025316709745210848,
+        -0.0029032366372016556
+      ],
+      "mean_yaw_rate": 0.10751779291777062,
+      "minimum_height": 0.18203684368923972,
+      "minimum_upright": 0.9897462119456804,
+      "mean_left_contact": 0.737333357334137,
+      "mean_right_contact": 0.8066666722297668,
+      "single_support_rate": 0.44666666666666666,
+      "flight_rate": 0.004666666666666667,
+      "action_rms": 0.2410852462053299,
+      "action_peak": 0.7995554804801941,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 11,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -1.0300827159439303,
+        -0.7609056122248031,
+        0.013995573249885679
+      ],
+      "mean_velocity_xyz": [
+        -0.04737556029073708,
+        0.027182240695476603,
+        -0.002630611097050093
+      ],
+      "mean_yaw_rate": 0.09645590577155112,
+      "minimum_height": 0.18210650163068218,
+      "minimum_upright": 0.9907158621213422,
+      "mean_left_contact": 0.7480000257492065,
+      "mean_right_contact": 0.8086666464805603,
+      "single_support_rate": 0.442,
+      "flight_rate": 0.0006666666666666666,
+      "action_rms": 0.23993052542209625,
+      "action_peak": 0.7798802256584167,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 12,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -0.552825421694219,
+        -0.8180751814518907,
+        0.014163094706024837
+      ],
+      "mean_velocity_xyz": [
+        -0.051699267975404826,
+        0.025295281194169985,
+        -0.0030537221682693477
+      ],
+      "mean_yaw_rate": 0.11610798416307866,
+      "minimum_height": 0.182448176842646,
+      "minimum_upright": 0.9875766677786765,
+      "mean_left_contact": 0.7386666536331177,
+      "mean_right_contact": 0.8040000200271606,
+      "single_support_rate": 0.4533333333333333,
+      "flight_rate": 0.002,
+      "action_rms": 0.24016623198986053,
+      "action_peak": 0.7830393314361572,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 13,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -0.8759220216370741,
+        -0.7955720346797557,
+        0.014167864237006167
+      ],
+      "mean_velocity_xyz": [
+        -0.04871877220118227,
+        0.027482678567035478,
+        -0.002769391862077431
+      ],
+      "mean_yaw_rate": 0.09866069104899726,
+      "minimum_height": 0.18230038697833623,
+      "minimum_upright": 0.9859851516886449,
+      "mean_left_contact": 0.7379999756813049,
+      "mean_right_contact": 0.8059999942779541,
+      "single_support_rate": 0.4533333333333333,
+      "flight_rate": 0.0013333333333333333,
+      "action_rms": 0.23987333476543427,
+      "action_peak": 0.7870475649833679,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 14,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -1.1007415998055474,
+        -0.7465322091296961,
+        0.012897393017876957
+      ],
+      "mean_velocity_xyz": [
+        -0.0522848570459984,
+        0.027080546845062482,
+        -0.0030855375814426564
+      ],
+      "mean_yaw_rate": 0.09145656672863607,
+      "minimum_height": 0.1822748530439672,
+      "minimum_upright": 0.9907214307184565,
+      "mean_left_contact": 0.7419999837875366,
+      "mean_right_contact": 0.8059999942779541,
+      "single_support_rate": 0.4493333333333333,
+      "flight_rate": 0.0013333333333333333,
+      "action_rms": 0.24095375835895538,
+      "action_peak": 0.7781742811203003,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 15,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -1.3875164492093786,
+        -0.17573354229857363,
+        0.014589301106671476
+      ],
+      "mean_velocity_xyz": [
+        -0.053070649558170216,
+        0.025965505175429858,
+        -0.002949040740826741
+      ],
+      "mean_yaw_rate": 0.07468327978712211,
+      "minimum_height": 0.1821018225843638,
+      "minimum_upright": 0.9888909526206735,
+      "mean_left_contact": 0.7366666793823242,
+      "mean_right_contact": 0.7913333177566528,
+      "single_support_rate": 0.4693333333333333,
+      "flight_rate": 0.0013333333333333333,
+      "action_rms": 0.24046283960342407,
+      "action_peak": 0.8250832557678223,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 16,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -1.180682708408506,
+        -0.5325081314154498,
+        0.014487929757183243
+      ],
+      "mean_velocity_xyz": [
+        -0.048314948123690526,
+        0.02473953202944454,
+        -0.003063081665672771
+      ],
+      "mean_yaw_rate": 0.06430446883954506,
+      "minimum_height": 0.1822074083698653,
+      "minimum_upright": 0.9894486600380735,
+      "mean_left_contact": 0.734000027179718,
+      "mean_right_contact": 0.8019999861717224,
+      "single_support_rate": 0.46,
+      "flight_rate": 0.002,
+      "action_rms": 0.24301739037036896,
+      "action_peak": 0.7460231184959412,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 17,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -1.1033284438428865,
+        -0.7267778075054065,
+        0.013896892484603879
+      ],
+      "mean_velocity_xyz": [
+        -0.049732268032995415,
+        0.02595389233016156,
+        -0.002999034409261939
+      ],
+      "mean_yaw_rate": 0.08670992636675076,
+      "minimum_height": 0.18204317803060438,
+      "minimum_upright": 0.9874466123391775,
+      "mean_left_contact": 0.7353333234786987,
+      "mean_right_contact": 0.7900000214576721,
+      "single_support_rate": 0.472,
+      "flight_rate": 0.0013333333333333333,
+      "action_rms": 0.24301928281784058,
+      "action_peak": 0.7980547547340393,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 18,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 30.0,
+      "completed_steps": 1500,
+      "fell": false,
+      "displacement_xyz": [
+        -1.2446883537063795,
+        -0.5601144556961363,
+        0.015133309109500587
+      ],
+      "mean_velocity_xyz": [
+        -0.04896703161352819,
+        0.02710882997713057,
+        -0.0028677324206477493
+      ],
+      "mean_yaw_rate": 0.08157166842586495,
+      "minimum_height": 0.18244215267537148,
+      "minimum_upright": 0.9897872385882389,
+      "mean_left_contact": 0.7526666522026062,
+      "mean_right_contact": 0.8059999942779541,
+      "single_support_rate": 0.43866666666666665,
+      "flight_rate": 0.0013333333333333333,
+      "action_rms": 0.24124452471733093,
+      "action_peak": 0.7579963207244873,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 19,
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "requested_seconds": 30.0,
+      "completed_seconds": 22.22,
+      "completed_steps": 1111,
+      "fell": true,
+      "displacement_xyz": [
+        -1.099459862048555,
+        -0.09179536235356935,
+        -0.07570857815611101
+      ],
+      "mean_velocity_xyz": [
+        -0.05917978605643633,
+        0.029130322594409563,
+        0.002717027083934033
+      ],
+      "mean_yaw_rate": 0.07678604778295718,
+      "minimum_height": 0.103411351843889,
+      "minimum_upright": 0.20339105983878542,
+      "mean_left_contact": 0.7173717617988586,
+      "mean_right_contact": 0.7920792102813721,
+      "single_support_rate": 0.48694869486948694,
+      "flight_rate": 0.0018001800180018,
+      "action_rms": 0.24311792850494385,
+      "action_peak": 0.8838939666748047,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    }
+  ],
+  "summaries": [
+    {
+      "command": [
+        -0.1,
+        0.0,
+        0.0
+      ],
+      "episode_count": 20,
+      "fall_rate": 0.05,
+      "minimum_upright": 0.20339105983878542,
+      "minimum_height": 0.103411351843889,
+      "mean_velocity_xyz": [
+        -0.051371139497784456,
+        0.02626711348863296,
+        -0.0026427833250915207
+      ],
+      "mean_yaw_rate": 0.09707648908906391,
+      "maximum_primary_velocity_error": 0.05262443970926293,
+      "maximum_orthogonal_velocity": 0.029130322594409563,
+      "maximum_yaw_rate_error": 0.0,
+      "maximum_stop_drift": 0.0,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0,
+      "minimum_single_support_rate": 0.438,
+      "maximum_flight_rate": 0.004666666666666667
+    }
+  ],
+  "acceptance": {
+    "criteria": "/mnt/c/Users/user/workspace/physical-ai-lab/experiments/mujoco/exp_003_openduckmini_calibrated_walk/acceptance_criteria.json",
+    "checks": [
+      {
+        "command": [
+          -0.1,
+          0.0,
+          0.0
+        ],
+        "enough_episodes": true,
+        "fall_rate": false,
+        "minimum_upright": false,
+        "minimum_height": false,
+        "primary_velocity_error": false,
+        "orthogonal_velocity": true,
+        "yaw_rate_error": true,
+        "stop_drift": true,
+        "joint_limits": true,
+        "head_locked": true,
+        "genuine_single_support": true,
+        "bounded_flight": true
+      }
+    ],
+    "passed": false
+  }
+}

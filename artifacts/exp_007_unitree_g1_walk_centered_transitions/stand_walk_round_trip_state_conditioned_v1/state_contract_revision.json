@@ -1,0 +1,17 @@
+{
+  "revision": "RESET/startup separated from production state graph",
+  "startup_layer": [
+    "RESET",
+    "UNINITIALIZED",
+    "valid STAND source state"
+  ],
+  "production_graph": [
+    "STAND",
+    "STAND_TO_WALK",
+    "WALK",
+    "WALK_TO_STAND",
+    "STAND"
+  ],
+  "selection_rule": "first preregistered source-contract-valid candidates per speed, before graph outcome",
+  "post_outcome_exclusion": false
+}

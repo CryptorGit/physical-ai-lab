@@ -1,0 +1,29 @@
+{
+  "finite_difference_and_pose_candidates": 346,
+  "stable_static_candidates": 91,
+  "viable_weight_shift_candidates": 19,
+  "weight_shift_search_candidates": 1024,
+  "positive_hip_pitch_sequence_candidates": 1024,
+  "negative_hip_pitch_sequence_candidates": 1024,
+  "complete_collision_free_pose_chains": 0,
+  "required_sole_clearance_m": 0.075,
+  "required_forward_displacement_m": 0.36,
+  "fully_safe_forward_displacement_observed_m": null,
+  "near_threshold_forward_displacement_m": 0.0382,
+  "near_threshold_violation": "torque saturation fraction 0.0533 exceeded 0.05",
+  "unsafe_forward_displacement_observed_m": 0.4899,
+  "unsafe_forward_case": "support loss, obstacle collision, and torque saturation",
+  "adopted_pose": {
+    "support_weight_shift": "candidate poses found for both lead directions",
+    "lead_lift": null,
+    "lead_swing": null,
+    "lead_place": null,
+    "weight_transfer": null,
+    "trail_chain": null,
+    "final_stand": "standing base only"
+  },
+  "condition_1_left_5cm": {"episodes": 10, "skill_success_rate": 0.0, "safe_rejection_rate": 1.0, "failure": "unsupported_obstacle"},
+  "condition_2_right_5cm": {"episodes": 10, "skill_success_rate": 0.0, "safe_rejection_rate": 1.0, "failure": "unsupported_obstacle"},
+  "condition_3_random_4_to_6cm_executed": false,
+  "condition_3_reason": "both fixed-lead prerequisites failed"
+}

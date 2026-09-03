@@ -1,0 +1,15 @@
+{
+  "controller": "scripted_step_over_v0_guarded",
+  "status": "NOT_SUPPORTED",
+  "supported_obstacle_height_range_m": null,
+  "unsupported_reason": "KINEMATIC_POSE_CHAIN_UNRESOLVED",
+  "failure_class": "unsupported_obstacle",
+  "base_option": "frozen stage2_fastwalk_model4246",
+  "running_base_enabled": false,
+  "learned_step_over_residual_enabled": false,
+  "phase_api": ["SETTLE", "WEIGHT_SHIFT_TO_SUPPORT", "LEAD_FOOT_LIFT", "LEAD_FOOT_SWING", "LEAD_FOOT_PLACE", "WEIGHT_TRANSFER", "TRAIL_FOOT_LIFT", "TRAIL_FOOT_SWING", "TRAIL_FOOT_PLACE", "STAND_RECOVERY", "STAND_HOLD"],
+  "active_phase": "SETTLE",
+  "primitive_started": false,
+  "scripted_offset": "bitwise zero",
+  "next_required_structure": "dedicated quasi-static stepping base or offline optimized whole-body motion primitive"
+}

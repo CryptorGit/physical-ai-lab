@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "seed": 20260722,
+  "episodes_per_height": 10,
+  "drop_definition": "minimum toe/sole/heel clearance relative to the per-episode settled USD collision contact plane",
+  "evaluator_corrections": {
+    "legacy_keypoint_world_z_used_as_ground": false,
+    "settled_keypoint_collision_offset_calibrated": true,
+    "teleport_stale_contact_rejected": true,
+    "joint_limit_scope": "legs_and_torso_only",
+    "dangerous_slip_definition": "contact foot speed above 0.5 m/s for more than 0.06 s; touchdown spike retained as a metric but is not alone a failure"
+  },
+  "baseline": {
+    "results": "results/exp_006_unitree_g1_command_skills/land_shallow/baseline_final",
+    "0.02": {"success_rate": 1.0, "fall_rate": 0.0, "stand_hold_rate": 1.0, "saturation_failure_rate": 0.0, "impact_p95_n": 465.4016, "impulse_p95_ns": 71.1627, "rebound_p95_m": 0.00468},
+    "0.04": {"success_rate": 0.8, "fall_rate": 0.1, "stand_hold_rate": 0.8, "saturation_failure_rate": 0.2, "impact_p95_n": 601.0255, "impulse_p95_ns": 77.1994, "rebound_p95_m": 0.57783},
+    "0.06": {"success_rate": 0.0, "fall_rate": 0.3, "stand_hold_rate": 0.1, "saturation_failure_rate": 1.0, "impact_p95_n": 684.2957, "impulse_p95_ns": 86.0947, "rebound_p95_m": 0.61275}
+  },
+  "parameter_audit": {
+    "validated_configurations": 72,
+    "episodes": 216,
+    "heights_m": [0.04, 0.06],
+    "preflex_depth_m": [0.02, 0.04, 0.06],
+    "absorption_depth_m": [0.02, 0.04],
+    "absorption_duration_s": [0.25, 0.4, 0.6],
+    "recovery_duration_s": [0.8, 1.2],
+    "authority_constraint": "preflex plus absorption no greater than 0.10 m; CROUCH return-safe calibration only",
+    "result": "No configuration passed at 0.06 m; 0.04 m shortlist reduced impact but did not justify a broad supported range."
+  },
+  "scripted_pilot": {
+    "results": "results/exp_006_unitree_g1_command_skills/land_shallow/pilot_final",
+    "0.02": {"success_rate": 0.8, "fall_rate": 0.0, "stand_hold_rate": 0.8, "saturation_failure_rate": 0.0, "impact_p95_n": 448.0295, "impulse_p95_ns": 70.0561, "rebound_p95_m": 0.06662},
+    "0.04": {"success_rate": 0.7, "fall_rate": 0.0, "stand_hold_rate": 0.7, "saturation_failure_rate": 0.2, "impact_p95_n": 574.3607, "impulse_p95_ns": 76.9694, "rebound_p95_m": 0.06864},
+    "0.06": {"success_rate": 0.0, "fall_rate": 0.8, "stand_hold_rate": 0.0, "saturation_failure_rate": 1.0, "impact_p95_n": 621.5825, "impulse_p95_ns": 86.1758, "rebound_p95_m": 0.61665},
+    "0.08": {"executed": false, "reason": "0.06 m did not pass"}
+  },
+  "dominant_limits": {
+    "effort": "ankle joints; baseline mean ankle saturation dwell was 0%, 5.20%, and 23.14% at 0.02/0.04/0.06 m",
+    "velocity": "no knee velocity saturation was observed",
+    "joint_limit": "leg/torso proximity reached the limit in failure tails at 0.04 and 0.06 m"
+  },
+  "classification": "SCRIPTED_LANDING_PILOT_NO_GO",
+  "land_shallow_status": "NOT_SUPPORTED",
+  "baseline_tolerance_point_m": 0.02,
+  "supported_drop_height_range_m": null,
+  "ppo_executed": false
+}

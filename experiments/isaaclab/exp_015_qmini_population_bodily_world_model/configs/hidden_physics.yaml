@@ -1,0 +1,19 @@
+hidden_factors:
+  - floor_friction
+  - wind_xy
+  - left_leg_actuator_fatigue
+  - right_leg_actuator_fatigue
+policy_observation_leak: false
+calibration_status: PENDING
+friction_range: UNKNOWN
+wind_x_range: UNKNOWN
+wind_y_range: UNKNOWN
+fatigue:
+  alpha: UNKNOWN
+  beta: UNKNOWN
+  effectiveness_coefficient: UNKNOWN
+  power_normalization_reference: UNKNOWN
+worst_condition_fall_rate_max: 0.10
+factor_relevance:
+  minimum_effective_metric_count: 1
+  status: PENDING

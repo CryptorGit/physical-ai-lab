@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "contract_id": "openduckmini-v2-hardware-safe-gait-experts-2026-08-07",
+  "captured_at": "2026-08-07",
+  "units": {
+    "angle": "radian",
+    "encoder": "STS3215 raw count in [0, 4095]",
+    "linear_velocity": "meter/second",
+    "angular_velocity": "radian/second"
+  },
+  "provenance": {
+    "authoritative_pose_source": ".openduck_runtime_source_review/mini_bdx_runtime/mini_bdx_runtime/calibrated_poses.py",
+    "authoritative_pose_source_sha256": "433b69b02bf220829a184d8d5311018d6ea875a7fee1c8039282f3b4a0ccd4fd",
+    "authoritative_runtime_config": ".openduck_runtime_source_review/.duck_config.json",
+    "authoritative_runtime_config_sha256": "8c9d7e2abbb17eadde19d007087c5f93829736000c44fd5a9063b20920d0c622",
+    "encoder_steps": 4096,
+    "offset_formula": "(raw - encoder_steps / 2) * (2*pi / encoder_steps)"
+  },
+  "actuator_joint_order": [
+    "left_hip_yaw",
+    "left_hip_roll",
+    "left_hip_pitch",
+    "left_knee",
+    "left_ankle",
+    "neck_pitch",
+    "head_pitch",
+    "head_yaw",
+    "head_roll",
+    "right_hip_yaw",
+    "right_hip_roll",
+    "right_hip_pitch",
+    "right_knee",
+    "right_ankle"
+  ],
+  "head_joint_names": [
+    "neck_pitch",
+    "head_pitch",
+    "head_yaw",
+    "head_roll"
+  ],
+  "calibration": {
+    "zero_raw": {
+      "left_hip_yaw": 3832,
+      "left_hip_roll": 365,
+      "left_hip_pitch": 340,
+      "left_knee": 342,
+      "left_ankle": 2711,
+      "neck_pitch": 52,
+      "head_pitch": 247,
+      "head_yaw": 277,
+      "head_roll": 2793,
+      "right_hip_yaw": 115,
+      "right_hip_roll": 259,
+      "right_hip_pitch": 3137,
+      "right_knee": 627,
+      "right_ankle": 3252
+    },
+    "zero_offset_rad": {
+      "left_hip_yaw": 2.736621725587984,
+      "left_hip_roll": -2.5816896660115343,
+      "left_hip_pitch": -2.6200391857086753,
+      "left_knee": -2.6169712241329037,
+      "left_ankle": 1.01702926236818,
+      "neck_pitch": -3.06182565261974,
+      "head_pitch": -2.76269939898204,
+      "head_yaw": -2.7166799753454707,
+      "head_roll": 1.1428156869748027,
+      "right_hip_yaw": -2.9651848629829445,
+      "right_hip_roll": -2.744291629527412,
+      "right_hip_pitch": 1.6705050780074633,
+      "right_knee": -2.179786699585496,
+      "right_ankle": 1.846912868614312
+    },
+    "joint_direction": {
+      "left_hip_yaw": 1.0,
+      "left_hip_roll": 1.0,
+      "left_hip_pitch": 1.0,
+      "left_knee": -1.0,
+      "left_ankle": -1.0,
+      "neck_pitch": 1.0,
+      "head_pitch": 1.0,
+      "head_yaw": 1.0,
+      "head_roll": 1.0,
+      "right_hip_yaw": 1.0,
+      "right_hip_roll": 1.0,
+      "right_hip_pitch": 1.0,
+      "right_knee": 1.0,
+      "right_ankle": 1.0
+    }
+  },
+  "safe_joint_limits_rad": {
+    "left_hip_yaw": [-0.523599, 0.35435],
+    "left_hip_roll": [-0.436332, 0.436332],
+    "left_hip_pitch": [-0.472466, 0.240835],
+    "left_knee": [-0.28532, 0.475534],
+    "left_ankle": [-0.45099, 0.401903],
+    "right_hip_yaw": [-0.12732, 0.523599],
+    "right_hip_roll": [-0.348214, 0.436332],
+    "right_hip_pitch": [-0.193282, 1.22173],
+    "right_knee": [-0.526155, 0.562971],
+    "right_ankle": [-0.412641, 0.435651]
+  },
+  "target_safety": {
+    "leg_margin_rad": 0.015,
+    "head_target_rad": 0.0,
+    "rule": "clip every applied leg actuator target to [safe_lower + leg_margin_rad, safe_upper - leg_margin_rad] while keeping every head target exactly zero",
+    "qpos_acceptance": "measured leg qpos must remain inside the original safe_joint_limits_rad with zero violation samples"
+  },
+  "hardware_safe_home_scale": 0.34395760233918127,
+  "safe_init_pos_rad": {
+    "left_hip_yaw": 0.0006879152046783626,
+    "left_hip_roll": 0.018229752923976605,
+    "left_hip_pitch": -0.2166932894736842,
+    "left_knee": 0.470534,
+    "left_ankle": -0.2696627602339181,
+    "neck_pitch": 0.0,
+    "head_pitch": 0.0,
+    "head_yaw": 0.0,
+    "head_roll": 0.0,
+    "right_hip_yaw": -0.0010318728070175438,
+    "right_hip_roll": -0.022357244152046783,
+    "right_hip_pitch": 0.2184130774853801,
+    "right_knee": 0.474317533625731,
+    "right_ankle": -0.2737902514619883
+  },
+  "head_lock": {
+    "enabled": true,
+    "command_rad": 0.0,
+    "action_residual_rad": 0.0,
+    "qpos_noise_scale_rad": 0.0,
+    "requirements": [
+      "mask all four policy action channels to zero",
+      "keep all four command/default-target channels at zero",
+      "exclude all four head joints from qpos/reset noise",
+      "keep physical head torque disabled"
+    ]
+  },
+  "model_names": {
+    "floor_geom": "floor",
+    "root_body": "trunk_assembly"
+  },
+  "qpos_noise_scale_rad": {
+    "hip": 0.03,
+    "knee": 0.05,
+    "ankle": 0.08,
+    "head": 0.0
+  },
+  "domain_randomization": {
+    "floor_friction_range": [0.5, 1.0],
+    "dof_friction_scale_range": [0.9, 1.1],
+    "armature_scale_range": [1.0, 1.05],
+    "root_com_delta_range_m": [-0.05, 0.05],
+    "positive_body_mass_scale_range": [0.9, 1.1],
+    "root_payload_delta_range_kg": [-0.1, 0.1],
+    "actuator_gain_scale_range": [0.9, 1.1],
+    "rules": [
+      "resolve floor geom and root body by name on the MuJoCo CPU model",
+      "pass the resolved IDs into the MJX randomizer",
+      "multiplicative scaling must preserve zero-mass bodies at exactly zero",
+      "never add payload mass or COM jitter to a massless root body"
+    ]
+  },
+  "tracking_reward": {
+    "form": "weighted mean of exp(-((actual-command)/sigma)^2)",
+    "axes": ["vx", "vy", "yaw_rate"],
+    "sigma": [0.05, 0.05, 0.2],
+    "weight": [1.0, 1.0, 1.0],
+    "range": [0.0, 1.0],
+    "unique_argmax": "actual == command"
+  },
+  "deployment": {
+    "hardware_status": "PROHIBITED",
+    "simulation_training_status": "ALLOWED",
+    "reason": "This contract and any resulting policy are simulation research artifacts, not hardware acceptance evidence.",
+    "required_gates": [
+      "regenerate and hash an exact SAFE_INIT/SAFE_JOINT_LIMITS calibrated scene",
+      "fix and verify model-space velocity signs for left_knee and left_ankle in the runtime HWI",
+      "pass deterministic CPU and batch-1 MJX parity checks",
+      "pass primitive, compound-command, transition, perturbation, fall, and joint-target-limit acceptance suites",
+      "perform torque-off, low-torque tethered, emergency-stop, thermal, current, and boundary-crossing hardware validation",
+      "record explicit human approval for hardware promotion"
+    ]
+  }
+}

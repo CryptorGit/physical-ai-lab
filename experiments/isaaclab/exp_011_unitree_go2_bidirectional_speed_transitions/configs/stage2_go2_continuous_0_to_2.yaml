@@ -1,0 +1,44 @@
+experiment: exp_011_unitree_go2_bidirectional_speed_transitions
+stage: STAGE_2_CONTINUOUS_0_TO_2
+task_id: Isaac-Exp011-Go2-Bidirectional-0To2-v0
+parent_task_id: Isaac-Velocity-Flat-Unitree-Go2-v0
+parent_checkpoint_sha256: 32039715f0892650691aa8d5c50233e7c4b858469d87114ef92794e2c65b59c0
+policy:
+  count: 1
+  observation_dimension: 48
+  action_dimension: 12
+  architecture: [48, 128, 128, 128, 12]
+  action_scale: 0.25
+warmstart:
+  actor: true
+  critic: true
+  log_std: true
+  observation_normalizer: true
+  optimizer: false
+curriculum:
+  cohort_fractions:
+    ZERO_HOLD: 0.25
+    STEADY_SPEED: 0.25
+    ACCELERATION: 0.25
+    DECELERATION: 0.25
+  steady_speeds_mps: [0.4, 0.6, 0.8, 1.0, 1.2, 1.5, 2.0]
+  acceleration_pairs: [[0.0, 0.6], [0.0, 1.2], [0.6, 1.2], [0.6, 2.0], [1.2, 2.0]]
+  deceleration_pairs: [[2.0, 1.2], [2.0, 0.6], [1.2, 0.6], [1.2, 0.0], [0.6, 0.0]]
+  source_hold_range_s: [2.0, 3.0]
+  ramp_duration_s: 1.5
+training:
+  num_envs: 2048
+  iterations: 300
+  seed: 20260911
+  save_iterations: [0, 25, 50, 75, 100, 150, 200, 250, 300]
+validation_seed_root: 20261901
+formal_seed_root: 20262901
+frozen:
+  reward: true
+  observation: true
+  action: true
+  network: true
+  physics: true
+  terrain: true
+  friction: true
+  termination: true

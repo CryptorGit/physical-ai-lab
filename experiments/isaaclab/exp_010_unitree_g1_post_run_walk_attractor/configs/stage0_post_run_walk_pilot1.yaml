@@ -1,0 +1,119 @@
+protocol_version: 1
+experiment:
+  name: stage0_post_run_walk_pilot1
+  run_name: stage1-post-run-walk-pilot1-seed20270201
+  training_seed: 20270201
+  physical_envs: 1024
+  cohort_size: 512
+  iterations: 100
+  device: cuda:0
+  maximum_pilots: 2
+source:
+  state: RUN_LOW
+  speeds_mps: [2.6, 2.8]
+  probabilities: [0.5, 0.5]
+  graph_route: [RESET, STAND, STAND_TO_WALK, WALK, WALK_TO_RUN, RUN_LOW, RUN_TO_WALK_MODEL_10, FIRST_WALK_COMPATIBLE_CONTACT]
+  run_hold_seconds: 1.0
+  speed_error_max_mps: 0.20
+  heading_error_max_rad: 0.12
+  preparation_timeout_seconds: 30.0
+  source_preparation_gradients: false
+  source_preparation_storage: false
+  natural_contact_phase_distribution: true
+target:
+  state: POST_RUN_WALK
+  speed_mps: 1.2
+  acquisition_hold_seconds: 0.4
+  success_hold_seconds: 8.0
+  speed_error_max_mps: 0.20
+  heading_error_max_rad: 0.12
+  periodic_run_allowed: false
+  excessive_flight_allowed: false
+  stable_alternating_or_single_support_required: true
+  original_walk_action_match_required: false
+  original_walk_contact_trace_required: false
+rollout:
+  control_timestep_seconds: 0.02
+  horizon_steps: 450
+  horizon_seconds: 9.0
+  timeout_steps: 450
+  success_terminal: true
+  failure_terminal: true
+  timeout_truncation: true
+  terminal_bootstrap: zero
+ppo:
+  gamma: 0.99
+  gae_lambda: 0.95
+  learning_rate: 0.001
+  entropy_coefficient: 0.008
+  clip_parameter: 0.2
+  value_loss_coefficient: 1.0
+  max_gradient_norm: 1.0
+  epochs: 5
+  minibatches: 4
+  schedule: fixed
+  optimizer: adam
+  use_clipped_value_loss: true
+  normalize_advantage: true
+actor:
+  class_name: PostRunWalkExpert152
+  observation_dimension: 152
+  action_dimension: 37
+  action_scale: 0.5
+  initialization: strict_deep_copy
+  parent_checkpoint: results/exp_007_unitree_g1_walk_centered_transitions/stage8c_run_to_walk_pilot1_execution/checkpoints/model_10.pt
+  parent_sha256: f54ead0da2a192e238e1fd6dbcb48670fb785f7ef7e7766c64d0dfbf06eba263
+  trainable: all_post_run_walk_actor_parameters
+  forbidden_parameterizations: [residual, walk_run_blend, base_morph]
+critic:
+  initialization: new
+  initialization_seed: 20270202
+  architecture: [152, 256, 128, 1]
+  activation: elu
+exploration:
+  policy: reset_trainable
+  initial_std: 0.20
+  abort_min: 0.05
+  abort_max: 0.75
+reward:
+  speed_tracking: 2.0
+  heading_tracking: 1.0
+  upright: 1.0
+  stable_support: 0.5
+  excessive_flight: -1.0
+  dangerous_slip: -2.0
+  impact: -1.0
+  long_dwell_saturation: -1.0
+  fall: -200.0
+  action_rate: -0.005
+reward_thresholds:
+  speed_tracking_scale_mps: 0.30
+  heading_tracking_scale_rad: 0.12
+  upright_scale_rad: 0.20
+  excessive_flight_seconds: 0.16
+  slip_speed_mps: 0.8
+  slip_dwell_seconds: 0.20
+  impact_force_newtons: 3500.0
+  saturation_ratio: 0.95
+  saturation_dwell_seconds: 0.20
+  stable_support_min_seconds: 0.12
+candidate_gate:
+  acquisition_min: 0.90
+  eight_second_hold_min: 0.90
+  fall_max: 0.05
+  heading_p95_max_rad: 0.12
+  saturation_max: 0.10
+  dangerous_slip_max: 0.10
+  impact_failure_max: 0.10
+runtime:
+  in_place_env_id_cohort: true
+  explicit_selected_env_ids: true
+  state_copy_allowed: false
+  setter_allowed: false
+  teleport_allowed: false
+  preserve_previous_action: true
+  preserve_contact_history: true
+  preserve_sensor_history: true
+  cli_overrides_allowed: false
+  environment_overrides_allowed: false
+  production_enablement: false

@@ -1,0 +1,7 @@
+seed_root: 20263021
+episodes_per_condition: 50
+deterministic: true
+stand: [0.0]
+walk: [0.6, 0.8, 1.0, 1.2]
+run_low: [2.4, 2.6]
+diagnostic_2p8_only_after_all_gates: true

@@ -1,0 +1,30 @@
+stage: 11
+task_id: Isaac-Exp011-Go2-Tangential-Slip-v0
+parent:
+  checkpoint: results/exp_011_unitree_go2_bidirectional_speed_transitions/stage7_low_speed_gait_stabilization/checkpoints/model_50.pt
+  sha256: d6bb5b7be94f0a827576256b6ae420cdc5b2267c389c7ba92951801f9e2899bd
+heading_controller:
+  name: PhaseGatedFixedHeadingController
+  kp: 1.0
+  yaw_rate_limit_rad_s: 0.10
+curriculum:
+  ZERO_HOLD: 0.15
+  LOW_SPEED_STEADY: 0.35
+  LOW_SPEED_TRANSITION: 0.30
+  CAPABILITY_ANCHOR: 0.20
+reward:
+  name: go2_contact_tangential_slip
+  normal_force_threshold_n: 5.0
+  minimum_contact_age_steps: 3
+  onset_exclusion_steps: 2
+  force_reference_n: 100.0
+  v_free_m_s: 0.20
+  v_scale_m_s: 0.30
+  huber_cap: 5.0
+  weight: CALIBRATED_ONCE_FROM_PREFLIGHT
+training:
+  num_envs: 2048
+  iterations: 200
+  seed: 20261001
+validation_seed_root: 20270901
+formal_seed_root: 20271901

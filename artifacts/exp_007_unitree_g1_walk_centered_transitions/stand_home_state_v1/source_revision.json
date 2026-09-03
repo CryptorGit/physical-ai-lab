@@ -1,0 +1,11 @@
+{
+  "evaluation_parent_git_revision": "feb2bc10ecefa37dbd407c81d2e2b5d158da69a5",
+  "stage1_commit_message": "Formalize exp_007 STAND home state",
+  "evaluated_worktree_files": {
+    "experiments/isaaclab/exp_007_unitree_g1_walk_centered_transitions/scripts/evaluate_stand.py": "112bb9a8a5863d013e899a6a2d56b782079aea0e46563e358c5841b277af84e3",
+    "experiments/isaaclab/exp_007_unitree_g1_walk_centered_transitions/src/g1_walk_centered/experts/adapters.py": "f2b91879f8cca323a61fe1bc46ced413ef781e19d99d05d17cf65f5f293b75b9",
+    "experiments/isaaclab/exp_007_unitree_g1_walk_centered_transitions/src/g1_walk_centered/experts/walk_expert.py": "eeaf0538b99bc5cb7e734fb13be94488fbe39a5a2ac73df4f33c4b667982671b",
+    "experiments/isaaclab/exp_007_unitree_g1_walk_centered_transitions/src/g1_walk_centered/tasks/evaluation.py": "d5e3533ee47d66d1cf8b03fa7e96b355f6e7fa63e9cdc18d51d050c274c54c56"
+  },
+  "note": "Formal evaluation ran from these exact worktree file hashes before the PASS-only commit."
+}

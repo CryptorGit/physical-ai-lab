@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "states": {
+    "STAND": {
+      "entry_condition": "Stage 1 settle contract satisfied",
+      "hold_condition": "stable upright double support under zero velocity command",
+      "exit_condition": "a supported outgoing transition is planned and its entry preconditions pass",
+      "failure_condition": "fall, torso contact, flight, dangerous support loss, or sustained saturation",
+      "supported_command_range": {
+        "target_speed_mps": [0.0, 0.0]
+      },
+      "owning_expert": "stage2_model_4246",
+      "status": "PASS"
+    },
+    "WALK": {
+      "entry_condition": "incoming transition completion contract satisfied and WALK expert acceptance gate passes",
+      "hold_condition": "sustained walking, speed/heading tracking, stable contacts, bounded slip/flight/saturation",
+      "exit_condition": "a supported outgoing transition is planned and its entry preconditions pass",
+      "failure_condition": "fall, tracking loss, path drift, dangerous slip/flight, or long-dwell saturation",
+      "supported_command_range": {
+        "target_speed_mps": [0.6, 1.2],
+        "target_body_vy_mps": [0.0, 0.0]
+      },
+      "owning_expert": "walk_steady_state_expert_v1",
+      "status": "PASS"
+    },
+    "RUN": {
+      "entry_condition": "incoming transition completion contract satisfied and RUN expert acceptance gate passes",
+      "hold_condition": "formal RUN steady-state contract to be defined in Stage 6",
+      "exit_condition": "a supported outgoing transition is planned",
+      "failure_condition": "formal RUN failure contract to be defined in Stage 6",
+      "supported_command_range": "FORMAL_EVALUATION_PENDING",
+      "owning_expert": "run_steady_state_expert_pending",
+      "status": "FORMAL_EVALUATION_PENDING"
+    },
+    "CROUCH_HOLD": {
+      "entry_condition": "STAND_TO_CROUCH completion and stable crouch acceptance",
+      "hold_condition": "bounded posture depth with stable support",
+      "exit_condition": "CROUCH_TO_STAND is planned and entry preconditions pass",
+      "failure_condition": "fall, support loss, posture error, or saturation",
+      "supported_command_range": {
+        "crouch_depth_m": [0.08, 0.1]
+      },
+      "owning_expert": "crouch_hold_controller_pending",
+      "status": "FORMAL_EVALUATION_PENDING"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "state": "RUN_LOW",
+  "startup_state": "UNINITIALIZED_FOR_RUN",
+  "entry": {
+    "periodic_running": {
+      "source": "exp_005/exp_006 formal classifier",
+      "flight_events_min": 4,
+      "consecutive_safe_cycles_min": 3,
+      "alternating_landing_ratio_min": 0.8,
+      "valid_landing_ratio_min": 0.8,
+      "mean_flight_duration_s": [
+        0.04,
+        0.16
+      ]
+    },
+    "speed_error_max_mps": 0.2,
+    "heading_error_max_rad": 0.12,
+    "upright_max_rad": 0.2,
+    "continuous_hold_s": 0.4
+  },
+  "hold": {
+    "duration_s": 8,
+    "finite": true,
+    "fall": false,
+    "dangerous_slip": false,
+    "long_dwell_saturation": false
+  },
+  "exit": {
+    "edges_implemented": false
+  },
+  "supported_command_points_mps": [
+    2.4,
+    2.6,
+    2.8
+  ]
+}

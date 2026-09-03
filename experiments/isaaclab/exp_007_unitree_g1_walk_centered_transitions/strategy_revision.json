@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "revision": "MODULAR_LOCOMOTION_STATE_GRAPH",
+  "supersedes": "SHARED_STAND_WALK_EXPERT",
+  "effective_after": {
+    "stage2a": "FAIL",
+    "stage2b": "HEADING_CONTROLLER_UNSTABLE",
+    "stage2r": "NO_GO_RETRAIN"
+  },
+  "formal_objective": "Build independent sustainable-state experts and directed transition experts, then integrate them through a command planner, manifest-driven state graph, hard-switch router, transition completion contracts, and safety gate.",
+  "integrated_model_definition": [
+    "specialized steady-state experts",
+    "directed transition experts",
+    "state graph",
+    "command planner",
+    "expert router",
+    "transition completion checks",
+    "safety gate"
+  ],
+  "steady_state_experts": [
+    "STAND",
+    "WALK",
+    "RUN",
+    "CROUCH_HOLD"
+  ],
+  "transition_experts": [
+    "STAND_TO_WALK",
+    "WALK_TO_STAND",
+    "WALK_TO_RUN",
+    "RUN_TO_WALK",
+    "STAND_TO_CROUCH",
+    "CROUCH_TO_STAND"
+  ],
+  "principles": {
+    "default_routing": "hard controller switching",
+    "parameter_soft_mixture": false,
+    "target_switch": "only after transition completion contract passes",
+    "unsupported_edge": "fail_closed_keep_current_controller",
+    "steady_state_gate_scope": "only the state owned by that expert",
+    "directional_edges_are_distinct_skills": true
+  },
+  "roadmap": [
+    "Stage 0 Expert provenance COMPLETE",
+    "Stage 1 STAND steady-state expert PASS",
+    "Stage 2A/B/R Shared STAND/WALK feasibility NO_GO",
+    "Stage 2W Independent WALK steady-state expert",
+    "Stage 3 STAND_TO_WALK transition expert",
+    "Stage 4 WALK_TO_STAND transition expert",
+    "Stage 5 STAND-WALK-STAND integration",
+    "Stage 6 RUN steady-state expert formalization",
+    "Stage 7 WALK_TO_RUN transition expert",
+    "Stage 8 RUN_TO_WALK transition expert",
+    "Stage 9 Graph-based STOP",
+    "Stage 10 TURN integration",
+    "Stage 11 CROUCH integration",
+    "Stage 12 Integrated motion sequence",
+    "Stage 13 OOD transition timing and initial-phase evaluation",
+    "Stage 14 Limited robustness"
+  ]
+}

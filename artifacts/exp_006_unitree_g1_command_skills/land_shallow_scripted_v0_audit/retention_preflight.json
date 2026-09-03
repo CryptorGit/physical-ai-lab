@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "production_route_modified": false,
+  "stage2_checkpoint_sha256": "734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621",
+  "command_skills_parent_sha256": "2326db6d8c68b6f495af5f2054b39a783f144850a6877b74097a8c4af03d61e1",
+  "prior_bitwise_proof": "results/exp_006_unitree_g1_command_skills/step_over_shallow/retention_preflight.json",
+  "run_action_unchanged": true,
+  "turn_left_right_45_90_action_unchanged": true,
+  "stop_action_unchanged": true,
+  "crouch_shallow_action_unchanged": true,
+  "step_over_guarded_action_unchanged": true,
+  "landing_offset_outside_land": "not reachable because LAND was not connected to the production route",
+  "crouch_or_step_over_offset_in_land": false,
+  "stage2_or_stage4_actor_tensor_modified": false,
+  "auto_reset_exercised": true,
+  "mutable_inference_tensor_error": false
+}

@@ -1,0 +1,86 @@
+{
+  "task_registered": true,
+  "observation_dim": 152,
+  "repeated_reset_success": true,
+  "auto_reset_success": true,
+  "mutable_tensors_are_normal": true,
+  "phase_sequence": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    0
+  ],
+  "phase_rows": [
+    {
+      "phase": 0,
+      "time_s": 0.0,
+      "entry_height_fixed": false,
+      "entry_height_m": 0.7400000095367432,
+      "target_height_m": 0.7400000095367432,
+      "return_progress": 0.0,
+      "base_crossfade_progress": 1.0
+    },
+    {
+      "phase": 1,
+      "time_s": 0.8799996972084045,
+      "entry_height_fixed": true,
+      "entry_height_m": 0.6592502593994141,
+      "target_height_m": 0.6592502593994141,
+      "return_progress": 0.0,
+      "base_crossfade_progress": 1.0
+    },
+    {
+      "phase": 2,
+      "time_s": 1.939998745918274,
+      "entry_height_fixed": true,
+      "entry_height_m": 0.6592502593994141,
+      "target_height_m": 0.5279391407966614,
+      "return_progress": 0.0,
+      "base_crossfade_progress": 1.0
+    },
+    {
+      "phase": 3,
+      "time_s": 2.999997854232788,
+      "entry_height_fixed": true,
+      "entry_height_m": 0.6592502593994141,
+      "target_height_m": 0.5279709100723267,
+      "return_progress": 0.009003331884741783,
+      "base_crossfade_progress": 1.0
+    },
+    {
+      "phase": 4,
+      "time_s": 4.3199968338012695,
+      "entry_height_fixed": true,
+      "entry_height_m": 0.6592502593994141,
+      "target_height_m": 0.6592502593994141,
+      "return_progress": 1.0,
+      "base_crossfade_progress": 1.0
+    },
+    {
+      "phase": 0,
+      "time_s": 0.0,
+      "entry_height_fixed": false,
+      "entry_height_m": 0.7400000095367432,
+      "target_height_m": 0.7400000095367432,
+      "return_progress": 0.0,
+      "base_crossfade_progress": 1.0
+    }
+  ],
+  "settle_success": true,
+  "entry_height_fixed_exactly_once": true,
+  "stand_base_gate_min": 1.0,
+  "stand_base_gate_max": 1.0,
+  "standing_base_exclusive": true,
+  "action_joint_names": [
+    "left_hip_pitch_joint",
+    "right_hip_pitch_joint",
+    "left_knee_joint",
+    "right_knee_joint",
+    "left_ankle_pitch_joint",
+    "right_ankle_pitch_joint"
+  ],
+  "return_target_is_entry_height": true,
+  "passed": true
+}

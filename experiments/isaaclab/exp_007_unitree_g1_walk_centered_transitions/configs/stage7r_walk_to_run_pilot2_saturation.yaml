@@ -1,0 +1,110 @@
+protocol_version: 1
+experiment:
+  experiment_name: stage7r8_walk_to_run_pilot2_saturation
+  training_seed: 20261208
+  physical_envs: 1024
+  cohort_size: 512
+  iterations: 100
+  device: cuda:0
+source_preparation:
+  source_state: WALK
+  source_speed_mps: 1.2
+  source_hold_seconds: 1.0
+  source_speed_error_max_mps: 0.20
+  source_heading_error_max_rad: 0.12
+  source_preparation_timeout_seconds: 15.0
+targets:
+  target_run_commands_mps: [2.4, 2.6, 2.8]
+  target_probabilities: [0.50, 0.30, 0.20]
+rollout:
+  control_timestep_seconds: 0.02
+  rollout_horizon_control_steps: 256
+  transition_timeout_seconds: 5.0
+  transition_timeout_control_steps: 250
+  minimum_jerk_duration_seconds: 1.4
+  terminal_bootstrap: zero
+  success_terminal: true
+  failure_terminal: true
+  timeout_truncation: true
+ppo:
+  gamma: 0.99
+  gae_lambda: 0.95
+  learning_rate: 0.001
+  clip_parameter: 0.2
+  value_loss_coefficient: 1.0
+  entropy_coefficient: 0.008
+  max_gradient_norm: 1.0
+  ppo_epochs: 5
+  num_minibatches: 4
+  use_clipped_value_loss: true
+  normalize_advantage: true
+  normalize_advantage_per_minibatch: false
+  use_adaptive_learning_rate: false
+  desired_kl: 0.0
+  schedule: fixed
+  optimizer: adam
+actor:
+  class_name: WalkToRunTransitionActor152
+  observation_dimension: 152
+  action_dimension: 37
+  action_scale: 0.5
+  parent_checkpoint: results/exp_007_unitree_g1_walk_centered_transitions/stage7r7_frozen_pilot1_execution/checkpoints/model_75.pt
+  parent_sha256: 0dbb8a095dd6ea71140b9c843dff5dcdbde92d1a7b247fa4ba068d084f0a70ed
+  trainable_routes: [command_encoder, state_adapter, residual_head]
+  frozen_routes: [running_base, other_skill_routes]
+critic:
+  critic_initialization: new
+  critic_architecture: [152, 256, 128, 1]
+  activation: elu
+  critic_learning_rate: 0.001
+exploration:
+  exploration_std_policy: reset_trainable
+  initial_std: 0.25
+  std_trainable: true
+  std_min_abort_threshold: 0.05
+  std_max_abort_threshold: 0.75
+reward:
+  speed_progress: 1.0
+  speed_tracking: 2.0
+  heading_tracking: 1.0
+  lateral_velocity: -0.5
+  upright: -1.0
+  safe_liftoff: 0.05
+  safe_flight: 0.25
+  valid_landing: 1.0
+  alternating_landing: 2.0
+  consecutive_periodic_cycle: 2.0
+  dangerous_slip: -0.25
+  impact: -0.10
+  ankle_effort_dwell: -0.20
+  knee_velocity_dwell: -0.10
+  excessive_flight: -0.25
+  fall: -200.0
+  torso_contact: -200.0
+  joint_limit: -1.0
+  action_rate: -0.005
+  source_action_alignment: -0.02
+  target_action_alignment: -0.02
+  run_acceptance_bonus: 10.0
+reward_thresholds:
+  speed_tracking_scale_mps: 0.30
+  heading_tracking_scale_rad: 0.12
+  lateral_velocity_scale_mps: 0.20
+  safe_flight_min_seconds: 0.04
+  safe_flight_max_seconds: 0.16
+  precursor_event_cap: 0.75
+  slip_speed_mps: 0.8
+  impact_force_newtons: 3500.0
+  saturation_ratio: 0.95
+  saturation_dwell_seconds: 0.20
+  completion_hold_seconds: 0.40
+  source_alignment_window_steps: 5
+  target_alignment_speed_error_mps: 0.30
+runtime:
+  cli_overrides_allowed: false
+  environment_variable_overrides_allowed: false
+  runtime_defaults_allowed: false
+  runtime_action_blend: false
+  config_validation_required: true
+  run_name: stage7r8-pilot2-saturation
+  output_path: results/exp_007_unitree_g1_walk_centered_transitions/stage7r8_walk_to_run_pilot2_saturation

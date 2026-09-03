@@ -1,0 +1,70 @@
+﻿# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# Local agent, audit, scratch, and device state
+.codex/
+.serena/
+tmp/
+.openduck_*
+openduck_setup_report.md
+
+# Models and large results
+results/
+runs/
+logs/
+checkpoints/
+*.pt
+*.pth
+*.onnx
+*.ckpt
+*.pkl
+
+# Simulation caches
+.cache/
+omni_cache/
+isaac-sim/
+
+# Videos
+*.mp4
+*.avi
+*.mov
+
+# OpenDuckMini generated research artifacts (keep source/config/report manifests explicit)
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/*.npz
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/*.pkl
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/*.onnx
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/*.zip
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/*.gz
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/*.tar
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/update_telemetry.json
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/*.ocdbt
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/*.log
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/*.jsonl
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/*.png
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/raw_logs/
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/episode_snapshots/
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/checkpoints/
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/outputs/
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/inputs/
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/failed_runs/
+experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/**/plots/
+
+# Generated backups
+*.blend1
+*.bak
+
+# Binary authoring outputs may embed workstation/user metadata
+shared/models/pathfinder/source/*.blend
+shared/models/pathfinder/usd/*.usd
+
+# Generated logs and high-volume experiment evidence. Curated artifact
+# documentation may be force-added explicitly after privacy review.
+*.log
+experiments/**/artifacts/**

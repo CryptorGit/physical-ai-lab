@@ -1,0 +1,5 @@
+{
+  "failure_rate": 0.0,
+  "threshold_n": 3500,
+  "p95_p99_max": "no threshold exceedance; raw formal evaluator retained per-episode failure flags"
+}

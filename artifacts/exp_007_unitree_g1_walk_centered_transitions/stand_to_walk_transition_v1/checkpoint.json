@@ -1,0 +1,7 @@
+{
+  "path": "logs\\rsl_rl\\physical_ai_g1_walk_centered\\2026-07-23_23-47-23_stage3_stand_to_walk_pilot1_validrun_1024_100\\model_0.pt",
+  "artifact_copy": "model_0.pt",
+  "sha256": "511b3c832e2c7bc54f348391db79d4ac57d1ceda10a6907549a50da093a9c36e",
+  "effective_updates": 1,
+  "role": "PRODUCTION_DIRECTIONAL_TRANSITION_EXPERT"
+}

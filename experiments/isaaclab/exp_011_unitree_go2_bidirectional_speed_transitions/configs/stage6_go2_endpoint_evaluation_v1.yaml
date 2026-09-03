@@ -1,0 +1,104 @@
+protocol_name: GO2_ENDPOINT_EVALUATION_V1
+protocol_version: 1
+freeze:
+  must_precede_formal_rollout: true
+  results_may_not_change_definition: true
+  training_allowed: false
+environment:
+  id: Isaac-Velocity-Flat-Unitree-Go2-v0
+  physics_backend: physx
+  physics_dt_s: 0.005
+  control_dt_s: 0.020
+  decimation: 4
+policy:
+  selected_checkpoint_sha256: e2a3de144984683efcc7b4fe451898c3d2b450a7ae3696ad6784a027a9756bea
+  parent_checkpoint_sha256: 32039715f0892650691aa8d5c50233e7c4b858469d87114ef92794e2c65b59c0
+  deterministic: true
+quaternion:
+  source: robot.data.root_quat_w.torch
+  order: xyzw
+  common_helper: go2_bidirectional.stage6_endpoint_protocol
+windows:
+  zero:
+    episode_s: 8.0
+    quality_start_s: 1.0
+    quality_end_s: 8.0
+  steady:
+    episode_s: 8.0
+    quality_start_s: 2.0
+    quality_end_s: 8.0
+  transition:
+    source_hold_s: 3.0
+    ramp_s: 1.5
+    target_hold_s: 5.0
+    source_quality_last_s: 1.0
+    target_quality_last_s: 4.0
+heading:
+  zero_and_steady_reference: quality_window_start_yaw
+  transition_reference: circular_median_source_hold_last_1s
+  error: atan2_sin_cos
+  yaw_rate_source: robot.data.root_ang_vel_w.torch_z
+contact_point:
+  source: physx_actual_contact_point_world
+  sensor_topology: one_read_only_filtered_sensor_per_foot
+  ground_filter: /World/ground/terrain/GroundPlane/CollisionPlane
+  multiple_contact_points: force_weighted_world_centroid
+  force_threshold_n: 5.0
+  minimum_contact_steps: 3
+  exclude_onset_steps: 2
+  exclude_release_steps: 2
+  anchor_steps: 3
+slip:
+  displacement_threshold_m: 0.03
+  speed_threshold_mps: 0.30
+  minimum_speed_steps: 5
+  minimum_speed_duration_s: 0.10
+  episode_gate_rate_max: 0.05
+stand_gate:
+  hold_success_min: 0.95
+  fall_max: 0.02
+  speed_mean_max_mps: 0.05
+  speed_p95_max_mps: 0.10
+  yaw_rate_p95_max_radps: 0.10
+  absolute_roll_p95_max_rad: 0.15
+  absolute_pitch_p95_max_rad: 0.15
+  gravity_tilt_p95_max_rad: 0.15
+  base_height_range_p95_max_m: 0.05
+  dangerous_slip_rate_max: 0.05
+  long_dwell_saturation_rate_max: 0.05
+steady_gate:
+  success_min: 0.90
+  fall_max: 0.02
+  heading_error_p95_max_rad: 0.12
+  gravity_tilt_p95_max_rad: 0.20
+  dangerous_slip_rate_max: 0.05
+  long_dwell_saturation_rate_max: 0.05
+  speed_mae_max_mps:
+    0.4_to_1.5: 0.20
+    "2.0": 0.25
+transition_gate:
+  completion_min: 0.90
+  acquisition_min: 0.90
+  target_hold_min: 0.90
+  fall_max: 0.05
+  heading_error_p95_max_rad: 0.12
+  dangerous_slip_rate_max: 0.05
+  long_dwell_saturation_rate_max: 0.05
+  timeout_max: 0.05
+  stand_target_final_speed_max_mps: 0.08
+  stand_target_final_hold_min: 0.95
+formal:
+  seed_root: 20264901
+  episodes_per_condition: 50
+  steady_speeds_mps: [0.4, 0.6, 0.8, 1.0, 1.2, 1.5, 2.0]
+  transitions:
+    - [0.0, 1.2]
+    - [1.2, 2.0]
+    - [2.0, 1.2]
+    - [1.2, 0.0]
+low_speed_diagnostic:
+  episodes_per_condition: 20
+  speeds_mps: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
+gait:
+  protocol: GO2_GAIT_CLASSIFIER_V1
+  diagnostic_only: true

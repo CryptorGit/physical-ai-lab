@@ -1,0 +1,11 @@
+{
+  "implementation": "manifest-driven shortest path",
+  "supported_external_commands": [
+    "WALK(0.6)",
+    "WALK(0.8)",
+    "WALK(1.0)",
+    "WALK(1.2)",
+    "STOP"
+  ],
+  "unsupported_commands": "FAIL_CLOSED"
+}

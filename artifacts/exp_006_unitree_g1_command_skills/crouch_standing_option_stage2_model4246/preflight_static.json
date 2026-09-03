@@ -1,0 +1,30 @@
+{
+  "run_turn_stop_actions": {
+    "RUN": {
+      "bitwise_equal": true,
+      "max_abs_difference": 0.0
+    },
+    "TURN": {
+      "bitwise_equal": true,
+      "max_abs_difference": 0.0
+    },
+    "STOP": {
+      "bitwise_equal": true,
+      "max_abs_difference": 0.0
+    }
+  },
+  "run_turn_stop_bitwise_preserved": true,
+  "protected_parent_tensors_equal": true,
+  "standing_checkpoint_weights_equal": true,
+  "standing_parameters_frozen": true,
+  "standing_and_existing_routes_frozen_after_5_synthetic_updates": true,
+  "crouch_stand_base_gate_min": 1.0,
+  "crouch_stand_base_gate_max": 1.0,
+  "crouch_selected_base_equals_standing_bitwise": true,
+  "crouch_selected_base_differs_from_running": true,
+  "crouch_initial_residual_bitwise_zero": true,
+  "crossfade_endpoint_zero_is_running": true,
+  "crossfade_endpoint_one_is_standing": true,
+  "crossfade_midpoint_correct": true,
+  "pass": true
+}

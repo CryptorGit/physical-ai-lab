@@ -1,0 +1,6 @@
+{
+  "isaac_lab_replay_executed": false,
+  "attempts": 0,
+  "reason": "TRAJECTORY_FEASIBLE precondition failed: 4 proxy mesh collision knots, max effort utilization 1.7836, and max floating-base dynamics residual 66.70N",
+  "production_route_connected": false
+}

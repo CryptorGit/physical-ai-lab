@@ -1,0 +1,16 @@
+seed: 20261021
+num_envs: 1024
+iterations: 300
+cohorts:
+  ZERO_HOLD: 0.20
+  WALK_STEADY: 0.20
+  RUN_HOLD: 0.20
+  BIDIRECTIONAL_SEQUENCE: 0.40
+walk_speeds: [0.6, 0.8, 1.0, 1.2]
+run_targets: [2.4, 2.6]
+yaw_training_contract:
+  yaw_rate_command: 0.0
+  external_heading_controller: false
+  speed_conditioned_yaw_canceller: false
+  phase_gated_heading_controller: false
+  parent_yaw_tracking_reward: unchanged

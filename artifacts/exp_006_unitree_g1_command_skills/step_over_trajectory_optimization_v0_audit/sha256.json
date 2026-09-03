@@ -1,0 +1,21 @@
+{
+  "external": {
+    "stage2_checkpoint": "734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621",
+    "mujoco_scene_xml": "2555bd5a50ab873df02a258562f370f8a0441caf8bb45deb947cd4d8878651c3"
+  },
+  "artifact_files": {
+    "candidate_trajectory.json": "6a71ada06efcaf16fd6cb9778cca65ad8f2af995ac00be185b85e26da3748950",
+    "classification.json": "732cee935bd0f5cc71c2570215bdcb548d9e7dd06681b0716ae89af976d12a41",
+    "constraint_residuals.json": "7daad0b42b43e31ee6d14e46ac92da89e7cfa380216823f55b8c1ab6d37e8002",
+    "contact_schedule.json": "16abfe02e1914f064ab2e59730c02574831f651b1696da0fa746efe8af44347f",
+    "convergence_diagnostics.json": "161a701e815f6c423a502dbb6fe690d6622988b5faa2e70fb470b8204f73128f",
+    "environment_inventory.json": "dd1a43f821f9b9dcb1f091e9059b0e9e34e1f909f02f034e0342a1b540e98594",
+    "failure_examples.json": "28dc117cfabcc105844ce8ad17a04f98d895c1385c986ee3a1f92e66151566da",
+    "initial_guess_provenance.json": "bae91ae8a6d8efe834904c5470ed46696a030a33bd600e787f952e70fff31a64",
+    "problem_specification.json": "8e4d008e3a78fbaae5cc931c702b57042de0622ed24d6a75f1fb288028602f70",
+    "replay_results.json": "fbb0c7cb74e279297836e0a92db1fcb5a296e3ecd112e28ca7e2da318e219dd2",
+    "robot_model_provenance.json": "ee74752cecadb63ff6aca6d04fb78151e62f9047652c4bfc4eece9c10c5497a7",
+    "robot_state_isaac.json": "b8e72a7e2ff70c6e5978fc8b9741d7165c66da407264aca13d3d7193d354d100",
+    "solver_configuration.json": "3d4844b351ab334ae889e0bcd69a8856b7644f5a4b407c4dbbaff2f3a0ed83bb"
+  }
+}

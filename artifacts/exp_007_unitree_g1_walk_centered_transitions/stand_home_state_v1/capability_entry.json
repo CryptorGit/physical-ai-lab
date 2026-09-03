@@ -1,0 +1,8 @@
+{
+  "STAND": {
+    "status": "PASS",
+    "role": "HOME_STATE",
+    "expert": "stage2_model_4246",
+    "artifact": "stand_home_state_v1"
+  }
+}

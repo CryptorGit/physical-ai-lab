@@ -1,0 +1,66 @@
+protocol_version: 1
+seed: 20270201
+device: cuda:0
+checkpoint: results/exp_007_unitree_g1_walk_centered_transitions/stage8c_run_to_walk_pilot1_execution/checkpoints/model_10.pt
+checkpoint_sha256: f54ead0da2a192e238e1fd6dbcb48670fb785f7ef7e7766c64d0dfbf06eba263
+dataset:
+  physical_envs: 1024
+  cohort_size: 512
+  diagnostic_cohorts: 4
+  source_speeds_mps: [2.6, 2.8]
+  source_probabilities: [0.5, 0.5]
+  policy_sampling: mixed_frozen_mean_and_stochastic
+  deterministic_cohorts: 3
+  stochastic_cohorts: 1
+  pre_window_steps: 16
+  post_window_steps: 8
+  required_walk_valid_steps: 20
+  successful_segment_target: 200
+  failed_segment_target: 2000
+split:
+  train_fraction: 0.60
+  validation_fraction: 0.20
+  test_fraction: 0.20
+  unit: episode
+  group_fields: [evaluation_seed, source_speed_mps, checkpoint]
+labels:
+  break_horizons_steps: [1, 3, 5]
+  break_reasons: [contact, speed, heading, flight, safety, none]
+features:
+  full_152: [0, 152]
+  legacy_123: [0, 123]
+  timing_absolute_indices: [145, 146, 147, 148]
+  history_steps: [4, 8, 16]
+probes:
+  epochs: 40
+  batch_size: 512
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  mlp_hidden: [128, 64]
+  gru_hidden: 64
+counterfactual:
+  branch_streak_ages: [4, 5, 6]
+  rollout_steps_after_branch: 20
+  max_branches_per_source_phase: 4
+  perturbation_delta: 0.05
+  joint_groups: [hip_pitch, knee, ankle_pitch, ankle_roll]
+  candidates: [baseline, walk_expert, run_expert, bounded_joint_group, target_walk_alignment]
+  state_match_root_position_tolerance_m: 0.0001
+  state_match_joint_position_tolerance_rad: 0.0001
+  state_match_velocity_tolerance: 0.001
+classification:
+  static_auroc_min: 0.85
+  static_auprc_lift_min: 0.25
+  regression_mae_steps_max: 1.5
+  history_auroc_improvement_min: 0.10
+  history_mae_improvement_fraction_min: 0.30
+  bounded_correction_success_min: 0.60
+runtime:
+  ppo_training: false
+  ppo_optimizer_update: false
+  transition_actor_optimizer_update: false
+  diagnostic_probe_training: true
+  actor_update: false
+  reward_change: false
+  state_copy: false
+  production_capability: false

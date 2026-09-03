@@ -1,0 +1,48 @@
+{
+  "name": "Exp014DedicatedStandSpecialistV1",
+  "observation_dim": 141,
+  "action_dim": 37,
+  "actor_hidden_dims": [256, 128, 128],
+  "critic_hidden_dims": [256, 128, 128],
+  "action_scale": 0.5,
+  "control_dt": 0.02,
+  "rollout_steps": 24,
+  "num_envs": 476,
+  "learning_rate": 1.5e-5,
+  "adaptive_learning_rate": false,
+  "pilot_seed": 20278901,
+  "formal_seed": 20278911,
+  "reward_v2_seed": 20278912,
+  "pilot_updates": 20,
+  "formal_max_updates": 200,
+  "reward_v2_max_updates": 80,
+  "severity_weights": {
+    "xy_speed": 0.30,
+    "yaw_rate": 0.25,
+    "roll_pitch": 0.15,
+    "joint_velocity": 0.15,
+    "contact_support": 0.15
+  },
+  "curriculum": [
+    {"name": "C1_EASY", "updates": [1, 30], "severity_fraction": 0.40},
+    {"name": "C2_MEDIUM", "updates": [31, 70], "severity_fraction": 0.70},
+    {"name": "C3_FULL", "updates": [71, 160], "severity_fraction": 1.00},
+    {"name": "C4_BALANCED_FAILURE", "updates": [161, 200], "severity_fraction": 1.00}
+  ],
+  "authorized_contexts": [
+    "RESET_STAND_STEP_0",
+    "RESET_STAND_STEP_1",
+    "RESET_STAND_STEP_2",
+    "RESET_STAND_STEP_3",
+    "STAND_HOLD",
+    "STAND_AFTER_STOP"
+  ],
+  "unsupported_contexts": [
+    "STOP_TRANSITION",
+    "WALK_TO_STAND_DECELERATION",
+    "WALK_TO_STAND_RECOVERY",
+    "moving_to_stop",
+    "WALK",
+    "RUN"
+  ]
+}

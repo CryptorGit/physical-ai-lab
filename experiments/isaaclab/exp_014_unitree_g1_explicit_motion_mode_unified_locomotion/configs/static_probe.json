@@ -1,0 +1,21 @@
+{
+  "seed": 20260803,
+  "optimizer": "Adam",
+  "learning_rates": [5e-05, 2e-05, 1e-05],
+  "gradient_clipping": [10, 5],
+  "maximum_steps": 30000,
+  "checkpoints": [0, 1000, 2500, 5000, 10000, 15000, 20000, 25000, 30000],
+  "architectures": {
+    "S0": [141, 256, 128, 128, 37],
+    "S1": [141, 512, 512, 256, 37],
+    "S2": [141, 1024, 512, 512, 37]
+  },
+  "group_sampling": {
+    "STAND_HOLD": 0.15,
+    "STAND_TO_WALK": 0.25,
+    "WALK_STEADY": 0.20,
+    "WALK_YAW": 0.15,
+    "WALK_TO_STAND": 0.20,
+    "STAND_AFTER_STOP": 0.05
+  }
+}

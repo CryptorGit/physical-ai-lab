@@ -1,0 +1,25 @@
+{
+  "protocol": "DIRECTIONAL_EDGE_REVALIDATION",
+  "seeds": [
+    20260941,
+    20260942,
+    20260943
+  ],
+  "episodes": 150,
+  "metrics": {
+    "episodes": 150,
+    "stand_to_walk_completion_rate": 1.0,
+    "walk_takeover_rate": 1.0,
+    "walk_hold_rate": 1.0,
+    "full_success_rate": 0.96,
+    "fall_rate": 0.0,
+    "long_dwell_saturation_failure_rate": 0.04,
+    "dangerous_slip_rate": 0.0,
+    "excessive_flight_rate": 0.0,
+    "action_discontinuity_failure_rate": 0.0,
+    "walk_heading_p95_rad": 0.047892834804952156,
+    "previous_action_mismatch_rate": 0.0
+  },
+  "gate_pass": true,
+  "decision": "RETAIN_0P6"
+}

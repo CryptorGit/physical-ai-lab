@@ -1,0 +1,24 @@
+stage: 4
+task: Isaac-Exp011-Go2-Bidirectional-0To2-v0
+parent_task: Isaac-Velocity-Flat-Unitree-Go2-v0
+seed: 20260911
+num_envs: 2048
+local_iterations: 300
+source_checkpoint_iteration: 999
+resume:
+  actor: true
+  critic: true
+  optimizer: true
+  iteration: true
+  normalizer: true
+  strict: true
+single_allowed_difference_from_stage2:
+  optimizer: official_checkpoint_state
+frozen:
+  environment: true
+  reward: true
+  curriculum: true
+  policy_architecture: true
+  ppo_hyperparameters: true
+  training_budget: true
+  evaluation_protocol: true

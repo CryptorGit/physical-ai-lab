@@ -1,0 +1,6 @@
+$ErrorActionPreference="Stop"
+$repo=(Resolve-Path (Join-Path $PSScriptRoot "../../../..")).Path;$python="C:\Users\user\workspace\IsaacLab\env_isaaclab\Scripts\python.exe"
+$env:PYTHONPATH=@((Join-Path $repo "experiments/isaaclab/exp_005_unitree_g1_flat_run/src"),(Join-Path $repo "experiments/isaaclab/exp_012_unitree_g1_single_policy_bidirectional_locomotion/src"),(Join-Path $repo "experiments/isaaclab/exp_013_unitree_g1_single_policy_omnidirectional_locomotion/src"))-join";"
+$e=Join-Path $PSScriptRoot "evaluate_w1a2.py";$o=Join-Path $repo "results/exp_013_unitree_g1_single_policy_omnidirectional_locomotion";$selected=Join-Path $o "phase_w1a2_walk_speed_envelope_expansion/checkpoints/model_160.pt";$parent=Join-Path $o "phase_w1a_all_direction_translation_walk/checkpoints/model_120.pt"
+$jobs=@([pscustomobject]@{m="formal";c=$selected;t="selected"},[pscustomobject]@{m="formal";c=$parent;t="parent"},[pscustomobject]@{m="envelope";c=$selected;t="selected"},[pscustomobject]@{m="envelope";c=$parent;t="parent"},[pscustomobject]@{m="continuous";c=$selected;t="selected"},[pscustomobject]@{m="run";c=$selected;t="selected"})
+foreach($j in $jobs){&$python $e --mode $j.m --checkpoint $j.c --tag $j.t;if($LASTEXITCODE-ne 0){throw "$($j.m) failed"}}

@@ -1,0 +1,8 @@
+{
+  "thresholds": {
+    "p95_n": 3500,
+    "over_3500_rate_max": 0.05
+  },
+  "overall_p95_n": 726.696471710205,
+  "failure_rate": 0.0
+}

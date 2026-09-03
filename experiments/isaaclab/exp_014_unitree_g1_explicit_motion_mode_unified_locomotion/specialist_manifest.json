@@ -1,0 +1,99 @@
+{
+  "schema": "Exp014SpecialistManifestV1",
+  "runtime_teacher_count": 0,
+  "specialists": [
+    {
+      "name": "S_STOP_PRACTICAL_STAND",
+      "checkpoint_path": "results/exp_012_unitree_g1_single_policy_bidirectional_locomotion/stage2q_final_sequence_integration/raw/dagger_round_2_student.pt",
+      "sha256": "66ca45753aa6175109bfea90b5a8d751c49888f04a69e9ce0a8ec963ac750698",
+      "actor_architecture": [
+        124,
+        256,
+        128,
+        128,
+        37
+      ],
+      "observation_contract": "EXP012 123D policy + scalar legacy gait",
+      "action_contract": "37D deterministic Gaussian mean",
+      "formal_capability_range": [
+        "zero-command practical stand maintenance",
+        "moving to practical stop",
+        "stop recovery"
+      ],
+      "unsupported_range": [
+        "strict contact-static STAND",
+        "omnidirectional WALK",
+        "omnidirectional RUN"
+      ],
+      "source_experiment": "exp_012 Stage 2Q",
+      "formal_result_paths": [
+        "results/exp_012_unitree_g1_single_policy_bidirectional_locomotion/stage2q_final_sequence_integration"
+      ]
+    },
+    {
+      "name": "W_OMNI_WALK",
+      "checkpoint_path": "results/exp_013_unitree_g1_single_policy_omnidirectional_locomotion/phase_w1b_r2_pending_mirror_queue_repair_rerun/checkpoints/model_200.pt",
+      "sha256": "61dd37f9f1fb7036357d54975c1120c66c30650ed7d5f2e1d4de91174fdca27d",
+      "actor_architecture": [
+        124,
+        256,
+        128,
+        128,
+        37
+      ],
+      "observation_contract": "EXP013 calibrated 123D policy + scalar legacy gait",
+      "action_contract": "37D deterministic Gaussian mean",
+      "formal_capability_range": [
+        "16-direction WALK at 0.3m/s",
+        "pure yaw +/-0.3rad/s",
+        "moving yaw for registered cardinal/diagonal directions"
+      ],
+      "unsupported_range": [
+        "formal practical stop",
+        "RUN",
+        "A7/A8/A9 start-oracle labels"
+      ],
+      "source_experiment": "exp_013 W1B-R2 iteration 200",
+      "formal_result_paths": [
+        "results/exp_013_unitree_g1_single_policy_omnidirectional_locomotion/phase_w1b_c2_shared_yaw_endpoint_evaluator"
+      ]
+    },
+    {
+      "name": "G_FORWARD_WALK_RUN",
+      "checkpoint_path": "results/exp_012_unitree_g1_single_policy_bidirectional_locomotion/stage2q_final_sequence_integration/raw/dagger_round_2_student.pt",
+      "sha256": "66ca45753aa6175109bfea90b5a8d751c49888f04a69e9ce0a8ec963ac750698",
+      "actor_architecture": [
+        124,
+        256,
+        128,
+        128,
+        37
+      ],
+      "observation_contract": "EXP012 123D policy + scalar legacy gait",
+      "action_contract": "37D deterministic Gaussian mean",
+      "formal_capability_range": [
+        "forward WALK 0.6/0.8/1.0/1.2m/s",
+        "forward RUN 1.2/2.4/2.6m/s",
+        "WALK-RUN transitions",
+        "acceleration/deceleration",
+        "practical stop"
+      ],
+      "unsupported_range": [
+        "360-degree RUN",
+        "lateral/diagonal RUN"
+      ],
+      "source_experiment": "exp_012 Stage 2Q",
+      "formal_result_paths": [
+        "results/exp_012_unitree_g1_single_policy_bidirectional_locomotion/stage2q_final_sequence_integration"
+      ]
+    }
+  ],
+  "prohibited_formal_teachers": [
+    "A7-R2 update10",
+    "A7-R2 update75",
+    "A7-R2 update150",
+    "A7-R3 candidates",
+    "A8 multi-checkpoint oracle",
+    "A9 diagnostic probes"
+  ]
+}

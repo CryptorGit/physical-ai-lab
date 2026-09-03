@@ -1,0 +1,13 @@
+{
+  "classes": [
+    "fall",
+    "walk_not_sustained",
+    "speed_tracking_failure",
+    "heading_failure",
+    "path_drift_failure",
+    "ankle_torque_saturation",
+    "dangerous_slip_failure",
+    "excessive_flight_failure",
+    "unsupported_walk_speed"
+  ]
+}

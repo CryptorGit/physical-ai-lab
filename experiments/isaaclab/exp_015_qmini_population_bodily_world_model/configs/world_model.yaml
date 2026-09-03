@@ -1,0 +1,11 @@
+stage: 1
+schema_only: true
+training_enabled: false
+training_steps: 0
+model_type: NOT_IN_SCOPE
+recurrent_history_audit: EVALUATION_ONLY
+teacher_id_input: false
+teacher_reward_input: false
+hidden_state_input: false
+canonical_observation_dim: 41
+action_dim: 10

@@ -1,0 +1,7 @@
+{
+  "state": "WALK",
+  "command_mps": 1.2,
+  "hold_seconds": 1.0,
+  "speed_error_max_mps": 0.2,
+  "heading_error_max_rad": 0.12
+}

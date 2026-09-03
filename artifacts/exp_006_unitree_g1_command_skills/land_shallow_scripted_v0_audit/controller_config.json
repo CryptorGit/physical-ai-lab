@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "NOT_SUPPORTED",
+  "controller": "audit_only_scripted_landing_v0",
+  "production_integrated": false,
+  "base": {
+    "type": "frozen_stage2_standing_actor",
+    "checkpoint": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-17_21-40-39_stage2_1024_750/model_4246.pt",
+    "sha256": "734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621"
+  },
+  "phases": ["PREPARE", "AIRBORNE", "FIRST_CONTACT", "IMPACT_ABSORPTION", "DOUBLE_SUPPORT_RECOVERY", "RETURN_TO_STAND", "STAND_HOLD"],
+  "phase_transition_basis": ["collision-calibrated foot clearance", "vertical velocity", "first contact", "double support", "pelvis velocity", "roll/pitch", "standing stability"],
+  "offset_joints": ["left_hip_pitch_joint", "right_hip_pitch_joint", "left_knee_joint", "right_knee_joint", "left_ankle_pitch_joint", "right_ankle_pitch_joint"],
+  "selected_pilot_parameters": {
+    "prepare_duration_s": 0.5,
+    "preflex_depth_m": 0.02,
+    "absorption_additional_depth_m": 0.04,
+    "absorption_duration_s": 0.6,
+    "recovery_duration_s": 1.2,
+    "interpolation": "minimum_jerk",
+    "pose_lookup_provenance": "artifacts/exp_006_unitree_g1_command_skills/crouch_shallow_scripted_v1/pose_lookup.json"
+  },
+  "command_contract": {
+    "supported_drop_height_m": null,
+    "command_supported": false,
+    "primitive_started": false,
+    "failure_class": "unsupported_drop_height",
+    "clamping_allowed": false
+  },
+  "notes": "Stage-2-only 0.02 m is an observed baseline tolerance point, not an accepted scripted LAND range."
+}

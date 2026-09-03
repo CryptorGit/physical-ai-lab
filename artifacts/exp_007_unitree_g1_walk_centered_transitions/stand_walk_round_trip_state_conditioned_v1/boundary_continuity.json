@@ -1,0 +1,30 @@
+{
+  "formal_thresholds_frozen_before_runs": true,
+  "by_boundary": {
+    "stage2_model_4246->stand_to_walk_transition_v1": {
+      "samples": 330,
+      "action_l2_jump_p95": 0.8607522398233414,
+      "action_l2_jump_max": 0.8706123232841492,
+      "previous_action_bitwise_match_rate": 1.0
+    },
+    "stand_to_walk_transition_v1->walk_steady_state_expert_v1": {
+      "samples": 330,
+      "action_l2_jump_p95": 1.7178944408893586,
+      "action_l2_jump_max": 1.805773138999939,
+      "previous_action_bitwise_match_rate": 1.0
+    },
+    "walk_steady_state_expert_v1->walk_to_stand_transition_v1": {
+      "samples": 180,
+      "action_l2_jump_p95": 1.9967843532562257,
+      "action_l2_jump_max": 2.189357280731201,
+      "previous_action_bitwise_match_rate": 1.0
+    },
+    "walk_to_stand_transition_v1->stage2_model_4246": {
+      "samples": 180,
+      "action_l2_jump_p95": 0.1217588372528553,
+      "action_l2_jump_max": 0.12346868962049484,
+      "previous_action_bitwise_match_rate": 1.0
+    }
+  },
+  "action_discontinuity_failure_rate": 0.0
+}

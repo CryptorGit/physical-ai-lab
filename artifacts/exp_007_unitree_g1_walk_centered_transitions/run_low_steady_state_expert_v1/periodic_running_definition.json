@@ -1,0 +1,11 @@
+{
+  "source": "exp_005/exp_006 formal classifier",
+  "flight_events_min": 4,
+  "consecutive_safe_cycles_min": 3,
+  "alternating_landing_ratio_min": 0.8,
+  "valid_landing_ratio_min": 0.8,
+  "mean_flight_duration_s": [
+    0.04,
+    0.16
+  ]
+}

@@ -1,0 +1,73 @@
+protocol_version: 1
+experiment:
+  name: exp_009_stage2_dynamics_sensitive_distillation
+  seed: 20270320
+  device: cuda:0
+  ppo_training: false
+  reward_optimization: false
+teachers:
+  walk:
+    path: logs/rsl_rl/physical_ai_g1_walk_centered/2026-07-23_23-18-22_stage2wb_stabilization_pilot2_1024_100/model_100.pt
+    sha256: 9098eaea68d1e5f818b87a499f53c17ccc97c3dbb1afa7a7604ed3dcaa3ef7fa
+  run:
+    path: logs/rsl_rl/physical_ai_g1_command_skills/2026-07-19_22-02-41_pilot_turn90_right_residual_from_model0/model_0.pt
+    sha256: 60675a79187ef00935069f3bf85293e72477fa1d408b80d3325232d805b0d266
+  walk_to_run:
+    path: results/exp_007_unitree_g1_walk_centered_transitions/stage7r8_walk_to_run_pilot2_saturation/checkpoints/model_100.pt
+    sha256: d94a94409ed9651734ae8ebc85313b827a809de139135115e833c76ca3bb9fd0
+student:
+  input_dim: 123
+  hidden_dims: [256, 128, 128]
+  output_dim: 37
+  activation: elu
+  action_scale: 0.5
+  parameters: 85925
+sensitivity:
+  physical_envs: 1024
+  cycles_per_regime: 3
+  horizons_steps: [1, 2, 4, 8]
+  primary_horizon_steps: 8
+  perturbation_delta: 0.02
+  locality_deltas: [0.01, 0.04]
+  state_match_root_tolerance_m: 0.0001
+  state_match_joint_tolerance_rad: 0.0001
+  state_match_velocity_tolerance: 0.001
+  continuous_weight_p99_clip: 25.0
+  contact_weight_p99_clip: 5.0
+  maximum_joint_weight: 10.0
+  critical_joint_tokens: [hip_pitch, hip_roll, hip_yaw, knee, ankle_pitch, ankle_roll]
+  include_waist: false
+dataset:
+  source_path: results/exp_009_unitree_g1_unified_walk_run_student/stage0_multiteacher_distillation/teacher_dataset.parquet
+  split: stage0_grouped_episode_seed_trajectory
+training:
+  optimizer: adamw
+  batch_size: 8192
+  learning_rate: 0.0003
+  epochs: 20
+  action_huber_delta: 0.1
+  action_loss_weight: 1.0
+  action_delta_loss_weight: 0.25
+  weight_decay: 0.00001
+  gradient_clip_norm: 1.0
+  early_stopping_patience_epochs: 4
+  early_stopping_min_delta: 0.000001
+  early_stopping_minimum_epoch: 15
+  checkpoint_epochs: [1, 5, 10, 15, 20]
+calibration:
+  action_target_median: 1.0
+  dynamic_target_median: 0.5
+  contact_target_median: 0.5
+  epsilon: 0.000000000001
+  lambda_dynamic_max: 100.0
+  lambda_contact_max: 2000.0
+gate:
+  walk_overall_success_min: 0.95
+  walk_each_speed_success_min: 0.90
+  fall_max: 0.02
+  heading_p95_max_rad: 0.12
+  speed_error_mean_max_mps: 0.20
+  path_drift_failure_max: 0.05
+  saturation_max: 0.05
+  slip_max: 0.05
+  excessive_flight_max: 0.05

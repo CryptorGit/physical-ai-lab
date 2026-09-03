@@ -1,0 +1,131 @@
+{
+  "stand": {
+    "candidate": "stage2_fastwalk_model4246",
+    "checkpoint": "C:\\Users\\user\\workspace\\physical-ai-lab\\logs\\rsl_rl\\physical_ai_g1_flat_run\\2026-07-17_21-40-39_stage2_1024_750\\model_4246.pt",
+    "primitive": "none",
+    "episodes": 50,
+    "seed": 20260723,
+    "settle_success_rate": 0.98,
+    "standing_hold_success_rate": 0.98,
+    "fall_rate": 0.02,
+    "actual_speed_mean_mps": 0.006718055695095973,
+    "actual_speed_p95_mps": 0.01334766335785389,
+    "actual_speed_max_mps": 0.06290072202682495,
+    "yaw_rate_abs_mean_rps": 0.00440769381254371,
+    "yaw_rate_p95_rps": 0.01476135866716504,
+    "yaw_rate_max_rps": 0.051934096962213516,
+    "pelvis_height_range_mean_m": 0.0018034660816192627,
+    "vertical_velocity_p95_mps": 0.02027402922511101,
+    "vertical_velocity_max_mps": 0.03055240586400032,
+    "roll_abs_p95_rad": 0.032407349944114684,
+    "pitch_abs_p95_rad": 0.0629142726957798,
+    "double_support_fraction": 0.98,
+    "single_support_fraction": 0.0,
+    "flight_fraction": 0.0,
+    "support_switch_count_mean": 0.0,
+    "prolonged_single_support_rate": 0.0,
+    "dangerous_support_failure_rate": 0.0,
+    "final_double_support_rate": 0.98,
+    "ankle_torque_saturation_failure_rate": 0.0,
+    "joint_velocity_saturation_failure_rate": 0.0,
+    "standing_height_m": 0.6448290368318559,
+    "action_magnitude_mean": 2.7615056422472004,
+    "action_magnitude_p95": 2.7662809801101687,
+    "action_magnitude_max": 2.9580705165863037,
+    "left_right_sagittal_asymmetry_rad": 0.03576830293089151,
+    "gate_thresholds": {
+      "standing_hold_success_rate_min": 0.95,
+      "fall_rate_max": 0.05,
+      "actual_speed_mean_mps_max": 0.05,
+      "actual_speed_p95_mps_max": 0.1,
+      "pelvis_height_range_mean_m_max": 0.04,
+      "flight_fraction_max": 0.001,
+      "prolonged_single_support_rate_max": 0.05,
+      "dangerous_support_failure_rate_max": 0.05,
+      "final_double_support_rate_min": 0.95,
+      "ankle_torque_saturation_failure_rate_max": 0.05,
+      "joint_velocity_saturation_failure_rate_max": 0.05
+    },
+    "gate_pass": true
+  },
+  "run_turn_run": {
+    "schema_version": 1,
+    "checkpoint": "C:\\Users\\user\\workspace\\physical-ai-lab\\logs\\rsl_rl\\physical_ai_g1_command_skills\\2026-07-20_14-34-35_pilot_stop_stage_a_braking\\model_31.pt",
+    "task": "RUN_TURN_RUN",
+    "episodes": 50,
+    "seed": 20260723,
+    "run_duration_range_s": [
+      2.5,
+      3.0
+    ],
+    "recovery_duration_range_s": [
+      2.5,
+      3.2
+    ],
+    "sequence_success_rate": 0.92,
+    "run_pre_success_rate": 1.0,
+    "turn_success_rate": 1.0,
+    "run_recovery_success_rate": 1.0,
+    "fall_rate": 0.0,
+    "saturation_failure_rate": 0.08,
+    "pre_run_speed_error_mps": 0.04508054765065511,
+    "pre_run_lateral_velocity_p95_mps": 0.4469229280948639,
+    "recovery_speed_error_mps": 0.03460462598800659,
+    "final_heading_error_rad": 0.011489689350128174,
+    "path_lateral_error_p95_m": 0.07143819332122803,
+    "action_discontinuity_l2_p95": 3.527385711669922,
+    "action_discontinuity_max": 2.8257298469543457,
+    "transition_stabilization_time_s": 1.0545999879837038,
+    "unsupported_transition_count": 0,
+    "turn_categories": {
+      "left_45": {
+        "count": 13,
+        "success_rate": 1.0,
+        "heading_error_rad": 0.009132316479316125
+      },
+      "right_45": {
+        "count": 13,
+        "success_rate": 1.0,
+        "heading_error_rad": 0.01221532546556913
+      },
+      "left_90": {
+        "count": 12,
+        "success_rate": 1.0,
+        "heading_error_rad": 0.008596718311309814
+      },
+      "right_90": {
+        "count": 12,
+        "success_rate": 1.0,
+        "heading_error_rad": 0.016150375207265217
+      }
+    },
+    "gate_pass": true,
+    "failure_counts": {
+      "saturation": 4
+    }
+  },
+  "stand_crouch_stand": {
+    "schema_version": 1,
+    "task": "STAND_CROUCH_STAND",
+    "episodes": 50,
+    "seed": 20260722,
+    "source_summary": "results\\exp_006_unitree_g1_command_skills\\crouch_shallow_scripted_v1\\formal_50\\supported\\summary.json",
+    "source_reused": true,
+    "initial_stand_settle_rate": 1.0,
+    "crouch_success_rate": 1.0,
+    "depth_error_mean_m": 0.0006010128557682037,
+    "depth_error_p95_m": 0.0013368278741836548,
+    "return_success_rate": 1.0,
+    "final_stand_hold_success_rate": 1.0,
+    "total_sequence_success_rate": 1.0,
+    "fall_rate": 0.0,
+    "dangerous_contact_failure_rate": 0.0,
+    "saturation_failure_rate": 0.0,
+    "action_discontinuity_l2_p95": 2.101781185135097,
+    "action_discontinuity_l2_max": 2.131709139407472,
+    "base_option_consistency_rate": 1.0,
+    "standing_base_option_id": "stage2_fastwalk_model4246",
+    "controller": "scripted_shallow_v1",
+    "gate_pass": true
+  }
+}

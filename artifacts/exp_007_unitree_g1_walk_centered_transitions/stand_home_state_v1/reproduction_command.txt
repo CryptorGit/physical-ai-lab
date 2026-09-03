@@ -1,0 +1,2 @@
+cd "$HOME\workspace\physical-ai-lab"
+.\experiments\isaaclab\exp_007_unitree_g1_walk_centered_transitions\scripts\evaluate_stand.ps1

@@ -1,0 +1,15 @@
+stage: 7
+task_id: Isaac-Exp011-Go2-LowSpeed-Stabilization-v0
+parent_checkpoint_sha256: e2a3de144984683efcc7b4fe451898c3d2b450a7ae3696ad6784a027a9756bea
+evaluation_protocol: GO2_ENDPOINT_EVALUATION_V1
+evaluation_protocol_sha256: d10f0bf7809046afa1b72e663a861acc53e45f9460aec18365c687de140c0908
+single_change: low_speed_command_curriculum
+seed: 20260921
+num_envs: 2048
+iterations: 200
+cohorts:
+  ZERO_HOLD: 0.15
+  LOW_SPEED_STEADY: 0.35
+  LOW_SPEED_TRANSITION: 0.30
+  CAPABILITY_ANCHOR: 0.20
+reward_semantic_difference: 0

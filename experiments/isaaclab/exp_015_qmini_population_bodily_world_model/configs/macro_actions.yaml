@@ -1,0 +1,14 @@
+source: FORMAL_QMINI_BASELINE_SWEEP_REQUIRED
+safe_velocity_range_mps: UNKNOWN
+macro_actions:
+  - slow_walk
+  - nominal_walk
+  - fast_walk
+policy_horizons:
+  - 1
+  - 5
+  - 10
+  - 25
+speed_values_mps: UNKNOWN
+action_vectors: UNKNOWN
+precondition: baseline_walk_formal_pass

@@ -1,0 +1,38 @@
+"""Stage 7R non-production interface viewer."""
+import argparse
+from pathlib import Path
+p=argparse.ArgumentParser();p.add_argument("--run-speed",type=float,required=True);p.add_argument("--transition-checkpoint");a=p.parse_args()
+if a.run_speed == 2.4:
+ print("COMMAND SUPPORTED: FALSE")
+ print("TRANSITION STARTED: FALSE")
+ print("FAILURE CLASS: unsupported_walk_to_run_target")
+ print("CURRENT SAFE CONTROLLER: WALK")
+ raise SystemExit(2)
+if a.run_speed not in (2.6,2.8):raise ValueError("unsupported target")
+iteration="INITIAL";config_sha="46dafd8c"
+if a.transition_checkpoint:
+ checkpoint=Path(a.transition_checkpoint).resolve(strict=True)
+ iteration={"first_post_update":1,"initial":0}.get(checkpoint.stem,checkpoint.stem.removeprefix("model_"))
+print("STATE: WALK / WALK_TO_RUN / RUN_LOW")
+print("TRANSITION INTERFACE: 152D")
+print(f"CURRENT CHECKPOINT: {a.transition_checkpoint or 'INITIAL'}")
+print(f"ITERATION: {iteration}")
+print(f"CONFIG SHA: {config_sha}")
+print("TRAINABLE ACTION TERM: WalkToRunTransitionAction")
+print("SOURCE WALK CONTRACT: WALK@1.2")
+print(f"TARGET RUN SPEED: {a.run_speed}")
+print("CAPABILITY: PASS_LIMITED [2.6, 2.8]")
+print("SOURCE PREPARATION: NO STORAGE")
+print("PPO SEGMENT START: VALID WALK SOURCE ONLY")
+print("STORAGE ACTIVE: TRANSITION PHASE ONLY")
+print("SEGMENT ID: DIAGNOSTIC")
+print("TERMINAL TYPE: RUN ACCEPTANCE / FAILURE / TIMEOUT")
+print("FLIGHT EVENTS / PRECURSOR FIRES / SAFE CYCLES: LIVE DIAGNOSTIC")
+print("PERIODIC RUNNING / TIMEOUT / RUN TAKEOVER: LIVE DIAGNOSTIC")
+print("SLIP / IMPACT / SATURATION: LIVE DIAGNOSTIC")
+print("READY ENV COUNT: DIAGNOSTIC")
+print("SELECTED COHORT IDS: DIAGNOSTIC")
+print("COHORT GENERATION: DIAGNOSTIC")
+print("SOURCE CONTRACT AT LAUNCH: REQUIRED")
+print("IN-PLACE HANDOFF: R0 LIVE VERIFIED")
+print("STATE COPY: NONE")

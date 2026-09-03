@@ -1,0 +1,111 @@
+{
+  "embodiment": "Unitree Qmini",
+  "reference_repository": "https://github.com/vsislab/RoboTamer4Qmini",
+  "reference_commit": "1aed648115fbaf49b86751edd293d94dbb2b3fc5",
+  "deployment_repository": "https://github.com/vsislab/RoboTamerSdk4Qmini",
+  "deployment_commit": "f4cfb4c96d8649480d0cc7da63a10fb9ff302589",
+  "reference_license": "MIT",
+  "reference_simulator": "Isaac Gym Preview 1.0rc3+",
+  "reference_stack_status": "README_SAYS_NOT_MAINTAINED",
+  "reference_asset": {
+    "urdf": "assets/q1/urdf/q1.urdf",
+    "urdf_sha256": "b1d41e4b26caa5146ecf7a67b1f50f1eddcf72ba75ef905451983a5be1164f0a",
+    "compatibility_status": "DIFFERS_FROM_CURRENT_OFFICIAL_QMINI_URDF"
+  },
+  "reference_control": {
+    "sim_dt_s": 0.001,
+    "decimation": 15,
+    "policy_dt_s": 0.015,
+    "deployment_dt_s": 0.015,
+    "observation_per_stack": 43,
+    "observation_stack_count": 3,
+    "policy_observation_dim": 129,
+    "action_dim": 12,
+    "action_semantics": "2_PHASE_FREQUENCY_PLUS_10_JOINT_POSITION_INCREMENTS",
+    "observation_fields_per_stack": [
+      "command_vx", "command_yaw_rate",
+      "base_roll", "base_pitch", "base_angular_velocity[3]x0.5",
+      "joint_position_minus_reference[10]",
+      "joint_velocity[10]x0.1",
+      "joint_position_error[10]",
+      "phase_sin_cos[4]",
+      "phase_frequency[2]"
+    ],
+    "pd_target": "position_target",
+    "reference_joint_position": [0.4, -0.1, -1.5, 1.0, -1.3, -0.4, 0.1, 1.5, -1.0, 1.3],
+    "reference_pd_kp": [55.0, 105.0, 75.0, 45.0, 30.0, 55.0, 105.0, 75.0, 45.0, 30.0],
+    "reference_pd_kd": [0.3, 2.5, 0.3, 0.5, 0.25, 0.3, 2.5, 0.3, 0.5, 0.25],
+    "reference_joint_position_limits": {
+      "low": [-0.1, -0.3, -2.1, 0.0, -2.5, -0.7, -0.6, 0.0, -2.1, 0.0],
+      "high": [0.7, 0.6, 0.0, 2.1, 0.0, 0.1, 0.3, 2.1, 0.0, 2.5]
+    },
+    "command_ranges": {
+      "vx_mps": [-0.3, 0.7],
+      "lateral_mps": [0.0, 0.0],
+      "yaw_rate_rads": [-1.0, 1.0],
+      "resample_s": 5.0
+    },
+    "reward_terms": "TASK_SPECIFIC_VECTOR_AUDITED_NOT_CANONICAL",
+    "reward_term_names": [
+      "constant", "base_heit", "balance", "fwd_vel", "yaw_rat",
+      "lateral_vel", "vertical_vel", "ang_vel", "twist", "base_acc",
+      "foot_clr", "foot_supt", "foot_heit", "leg_width_rew", "act_const",
+      "sa_const", "foot_phase", "jnt_pos_err", "act_smo", "net_smo",
+      "net_out_val", "foot_slip", "foot_vz", "foot_acc", "foot_sft",
+      "jnt_vel", "feet_py", "feet_frc", "joint_tor", "pmf"
+    ],
+    "foot_force_thresholds": {
+      "support_n": 10.0,
+      "swing_n": 1.0,
+      "desired_contact_n": 55.0
+    },
+    "domain_randomization": [
+      "friction", "mass_inertia", "damping", "torque", "gains",
+      "pushes", "observation_delays"
+    ],
+    "domain_randomization_ranges": {
+      "friction": [0.2, 1.5],
+      "mass_inertia": [0.5, 1.5],
+      "damping": [0.8, 1.2],
+      "torque": [0.8, 1.2],
+      "gains": [0.8, 1.2],
+      "push_max_xy_velocity_mps": 0.5,
+      "push_rate_hz": 0.5,
+      "push_interval_s": 3.0,
+      "joint_observation_delay_steps": [10, 40],
+      "command_observation_delay_steps": [20, 50],
+      "angle_observation_delay_steps": [20, 50]
+    },
+    "terrain": {
+      "type": "trimesh",
+      "horizontal_scale_m": 0.1,
+      "vertical_scale_m": 0.01,
+      "slope_threshold": 0.0,
+      "static_friction": 1.0,
+      "dynamic_friction": 1.0,
+      "restitution": 0.05
+    },
+    "export": "ONNX",
+    "deployment": "C++_ONNX_RUNTIME_LINUX_EDGE"
+  },
+  "deployment_interface": {
+    "format": "policy.onnx",
+    "runtime": "ONNX Runtime",
+    "hardware_feedback": ["10 motor states", "IMU roll/pitch/yaw", "IMU angular velocity", "IMU acceleration"],
+    "command_output": ["q_target[10]", "kp[10]", "kd[10]", "dq_target=0", "tau_ff=0"],
+    "control_loop_dt_s": 0.015,
+    "sdk_legacy_identifiers": ["unitree/g1 headers", "GO_M8010_6", "hardcoded serial paths"],
+    "exp015_use": false
+  },
+  "compatibility_findings": [
+    "RoboTamer q1 URDF names/origins/limits/dynamics differ from current official Unitree Qmini URDF.",
+    "RoboTamer policy has 12 actions and phase variables; exp_015 canonical action is 10 Qmini joint targets.",
+    "RoboTamer reference includes a fixed IMU link absent from current official Qmini URDF.",
+    "RoboTamer SDK contains legacy G1-named interfaces and hardcoded hardware identifiers; it is not imported into exp_015.",
+    "RoboTamer PD gains are reference values, not official Qmini motor specifications."
+  ],
+  "selected_baseline": "NOT_IMPORTED_UNTIL_EXACT_ASSET_ENVIRONMENT_AUDIT",
+  "g1_checkpoint_used": false,
+  "formal_episodes": 0,
+  "formal_status": "NO_GO_QMINI_BASELINE"
+}

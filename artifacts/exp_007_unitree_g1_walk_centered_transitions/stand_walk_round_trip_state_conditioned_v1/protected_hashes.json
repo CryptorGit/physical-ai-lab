@@ -1,0 +1,12 @@
+{
+  "checkpoint_hashes": {
+    "stage2_model_4246": "734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621",
+    "stand_to_walk_transition_v1": "511b3c832e2c7bc54f348391db79d4ac57d1ceda10a6907549a50da093a9c36e",
+    "walk_steady_state_expert_v1": "9098eaea68d1e5f818b87a499f53c17ccc97c3dbb1afa7a7604ed3dcaa3ef7fa",
+    "walk_to_stand_transition_v1": "bb1bf713119b7980cfac4c1f43eb0d415bc32abe97a54509ee45d13061e858bd"
+  },
+  "all_verified": true,
+  "weights_changed": false,
+  "stage5_unchanged": true,
+  "stage5d_unchanged": true
+}

@@ -1,0 +1,38 @@
+{
+  "candidates": [
+    {
+      "name": "parent",
+      "k_heading": 0.0,
+      "k_yaw_rate": 0.0
+    },
+    {
+      "name": "current",
+      "k_heading": 0.095,
+      "k_yaw_rate": 0.09,
+      "alpha": 0.5,
+      "max_delta_per_step": 0.0025,
+      "braking_scale": 1.0,
+      "hold_scale": 1.0,
+      "single_support_scale": 0.5,
+      "flight_scale": 0.0,
+      "yaw_soft_threshold": 1.2,
+      "yaw_hard_threshold": 2.5,
+      "hard_guard_mode": "damping_only"
+    },
+    {
+      "name": "flight_zero",
+      "k_heading": 0.095,
+      "k_yaw_rate": 0.09,
+      "alpha": 0.5,
+      "max_delta_per_step": 0.0025,
+      "braking_scale": 1.0,
+      "hold_scale": 1.0,
+      "single_support_scale": 0.5,
+      "flight_scale": 0.0,
+      "yaw_soft_threshold": 1.2,
+      "yaw_hard_threshold": 2.5,
+      "hard_guard_mode": "damping_only",
+      "flight_hard_zero": true
+    }
+  ]
+}

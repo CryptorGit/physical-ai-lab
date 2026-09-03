@@ -1,0 +1,16 @@
+{
+  "schema_version": "exp015.transition.v1",
+  "unit_of_split": "source_snapshot_id",
+  "split_method": "stable_sha256_group_hash",
+  "ratios": {"train": 0.70, "dev": 0.15, "test": 0.15},
+  "seed": 15015,
+  "leakage_rules": [
+    "all branches from one source_snapshot_id stay in one split",
+    "all horizons from one branch stay in one split",
+    "near-duplicate temporal windows from one episode stay in one split",
+    "hidden ground truth is analysis-only and not a model input",
+    "teacher_id is not a schema field or split key"
+  ],
+  "status": "FROZEN_BEFORE_COLLECTION",
+  "data_present": false
+}

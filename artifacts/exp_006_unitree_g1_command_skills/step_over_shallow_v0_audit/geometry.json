@@ -1,0 +1,24 @@
+{
+  "source": "git commit 1ae8462 and current instantiated G1 scene",
+  "source_usd": "g1_minimal.usd",
+  "foot_body": "left/right_ankle_roll_link",
+  "keypoints_body_m": {
+    "toe_bottom": [0.0638388096, 0.0, -0.0258071800],
+    "sole_center": [0.0432121324, 0.0, -0.0258071800],
+    "heel_bottom": [0.0225854551, 0.0, -0.0258071800]
+  },
+  "obstacle": {
+    "shape": "kinematic cuboid",
+    "height_m": 0.05,
+    "depth_m": 0.06,
+    "width_m": 2.20,
+    "center_x_m": 0.32,
+    "front_x_m": 0.29,
+    "rear_x_m": 0.35
+  },
+  "clearance_target_m": 0.07,
+  "clearance_margin_above_obstacle_m": 0.02,
+  "lead_landing_target_x_m": 0.41,
+  "landing_margin_behind_rear_edge_m": 0.06,
+  "link_origin_used_as_sole": false
+}

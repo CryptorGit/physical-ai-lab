@@ -1,0 +1,82 @@
+protocol_version: 1
+experiment:
+  name: exp_009_stage4_frozen_walk_speed_residual
+  training_seed: 20270220
+  device: cuda:0
+teachers:
+  walk:
+    path: logs/rsl_rl/physical_ai_g1_walk_centered/2026-07-23_23-18-22_stage2wb_stabilization_pilot2_1024_100/model_100.pt
+    sha256: 9098eaea68d1e5f818b87a499f53c17ccc97c3dbb1afa7a7604ed3dcaa3ef7fa
+    frozen: true
+  run:
+    path: logs/rsl_rl/physical_ai_g1_command_skills/2026-07-19_22-02-41_pilot_turn90_right_residual_from_model0/model_0.pt
+    sha256: 60675a79187ef00935069f3bf85293e72477fa1d408b80d3325232d805b0d266
+    frozen: true
+  walk_to_run:
+    path: results/exp_007_unitree_g1_walk_centered_transitions/stage7r8_walk_to_run_pilot2_saturation/checkpoints/model_100.pt
+    sha256: d94a94409ed9651734ae8ebc85313b827a809de139135115e833c76ca3bb9fd0
+    frozen: true
+controller:
+  name: FrozenWalkSpeedResidualController123
+  observation_dim: 123
+  action_dim: 37
+  action_scale: 0.5
+  base_command_forward_cap_mps: 1.2
+  speed_gate:
+    lower_mps: 1.2
+    upper_mps: 2.4
+    formula: smoothstep_3x2_minus_2x3
+    learned: false
+  residual:
+    name: ContinuousSpeedResidual123
+    hidden_dims: [256, 128, 128]
+    activation: elu
+    final_layer_initialization: exact_zero
+    parameterization: per_joint_bound_times_tanh
+    bound_source: exp_006_formal_run_residual_scale
+    per_joint_bounds: [0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]
+dataset:
+  path: results/exp_009_unitree_g1_unified_walk_run_student/stage0_multiteacher_distillation/teacher_dataset.parquet
+  split: {train: 0.70, validation: 0.15, test: 0.15}
+  split_unit: episode_seed_trajectory
+  use_dagger: false
+  expected_steps: {walk: 594360, run: 543000, walk_to_run: 743300}
+training:
+  optimizer: adamw
+  batch_size: 8192
+  learning_rate: 0.0003
+  epochs: 20
+  action_huber_delta: 0.1
+  action_loss_weight: 1.0
+  action_delta_loss_weight: 0.25
+  walk_zero_anchor_weight: 0.00001
+  weight_decay: 0.00001
+  gradient_clip_norm: 1.0
+  early_stopping_patience_epochs: 4
+  early_stopping_min_delta: 0.000001
+  early_stopping_minimum_epoch: 15
+  checkpoint_epochs: [1, 5, 10, 15, 20]
+  joint_weights: uniform
+feasibility_gate:
+  train_coverage_min: 0.995
+  validation_coverage_min: 0.99
+  test_coverage_min: 0.99
+  non_finite_max: 0
+evaluation:
+  seed: 20270221
+  physical_envs: 512
+  episodes_per_supported_condition: 50
+  intermediate_episodes_per_speed: 20
+  walk_speeds_mps: [0.6, 0.8, 1.0, 1.2]
+  run_speeds_mps: [2.4, 2.6, 2.8]
+  walk_to_run_targets_mps: [2.6, 2.8]
+  intermediate_speeds_mps: [1.4, 1.6, 1.8, 2.0, 2.2]
+  reverse_sources_mps: [2.6, 2.8]
+  command_ramp_seconds: 1.4
+runtime:
+  ppo_training: false
+  reward_optimization: false
+  dagger: false
+  teacher_updates: false
+  production_capability_update: false
+  runtime_expert_switch: false

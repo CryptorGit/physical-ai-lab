@@ -1,0 +1,8 @@
+{
+  "velocity_threshold_utilization": 0.95,
+  "velocity_dwell_s": 0.05,
+  "effort_threshold_utilization": 0.95,
+  "effort_dwell_s": 0.2,
+  "failure_rate": 0.0,
+  "ankle_pitch_effort_utilization_p95": 1.0
+}

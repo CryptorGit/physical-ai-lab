@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "action_space": "normalized policy action offset",
+  "environment_joint_target_scale_rad_per_action": 0.5,
+  "symmetric_joint_pairs": ["hip_pitch", "knee", "ankle_pitch"],
+  "calibration": [
+    {"calibration_depth_m": 0.0, "hip_pitch_offset": 0.0, "knee_offset": 0.0, "ankle_pitch_offset": 0.0, "actual_joint_target_delta_rad": [0.0, 0.0, 0.0], "measured_actual_depth_m": 0.0},
+    {"calibration_depth_m": 0.0752927383, "hip_pitch_offset": -0.20, "knee_offset": 0.60, "ankle_pitch_offset": -0.80, "actual_joint_target_delta_rad": [-0.10, 0.30, -0.40], "measured_actual_depth_m": 0.0752927383},
+    {"calibration_depth_m": 0.1010949334, "hip_pitch_offset": -0.25, "knee_offset": 0.80, "ankle_pitch_offset": -1.00, "actual_joint_target_delta_rad": [-0.125, 0.40, -0.50], "measured_actual_depth_m": 0.1010949334}
+  ],
+  "production_samples": [
+    {"depth_m": 0.08, "normalized_offset": [-0.2091218241, 0.6364872964, -0.8364872964]},
+    {"depth_m": 0.09, "normalized_offset": [-0.2285000203, 0.7140000813, -0.9140000813]},
+    {"depth_m": 0.10, "normalized_offset": [-0.2478782166, 0.7915128663, -0.9915128663]}
+  ],
+  "authority_limit": {"production_command_max_m": 0.10, "deepest_return_safe_calibration_m": 0.1010949334},
+  "boundary_continuity": "piecewise-linear lookup is continuous; minimum-jerk phase blend has zero endpoint velocity and acceleration",
+  "provenance": "results/exp_006_unitree_g1_command_skills/crouch_scripted_primitive/2026-07-22_stage_a_final_safe"
+}

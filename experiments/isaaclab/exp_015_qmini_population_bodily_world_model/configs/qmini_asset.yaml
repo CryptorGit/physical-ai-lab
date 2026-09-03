@@ -1,0 +1,26 @@
+experiment: exp_015_qmini_population_bodily_world_model
+embodiment: Unitree Qmini
+asset_source: UNITREE_OFFICIAL_QMINI
+urdf: assets/qmini_official/urdf/Qmini.urdf
+urdf_sha256: 4d1454510bf403fb0740a7a682fc1883ada0ecbdced844530dd98d484a618215
+locomotion_joint_count: 10
+locomotion_joint_order:
+  - LL-joint1
+  - LL-joint2
+  - LL-joint3
+  - LL-joint4
+  - LL-joint5
+  - RL-joint1
+  - RL-joint2
+  - RL-joint3
+  - RL-joint4
+  - RL-joint5
+neck_joint_in_current_urdf: null
+neck_motor_documented_by_diy: true
+neck_action_policy: EXCLUDED_UNTIL_OFFICIAL_URDF_MAPPING
+default_joint_pose: DERIVED_URDF_LIMIT_MIDPOINT
+root_height_m: 0.45
+root_height_source: ROBOTAMER_REFERENCE_PROVISIONAL
+root_orientation: UNKNOWN_SIMULATOR_CONVENTION_TO_VERIFY
+collision_from_visuals: false
+contact_sensor: true

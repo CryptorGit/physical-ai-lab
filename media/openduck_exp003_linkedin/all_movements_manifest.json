@@ -1,0 +1,17 @@
+{
+  "title": "OpenDuckMini all 19 movements",
+  "output": "media/openduck_exp003_linkedin/openduck_all_19_movements_linkedin.mp4",
+  "output_sha256": "d992ad5a3de3e7efe6cb65b487a11c5dc03cb1b04ec6f5a4219270a2ce99e0c1",
+  "source": "experiments/mujoco/exp_003_openduckmini_calibrated_walk/artifacts/videos_v59_omnidirectional_diagnostic_not_qualified/all_19_directions_v59_diagnostic_not_qualified.mp4",
+  "duration_seconds": 114.0,
+  "width": 1080,
+  "height": 1080,
+  "fps": 30,
+  "video_codec": "h264",
+  "audio_codec": "aac_silence",
+  "movement_count": 19,
+  "interstitial_cards": false,
+  "simulation_only": true,
+  "policy_status": "diagnostic_not_qualified",
+  "real_hardware_allowed": false
+}

@@ -1,0 +1,37 @@
+{
+  "overall_failure_rate": 0.0033333333333333335,
+  "per_target": {
+    "2.6": 0.0,
+    "2.8": 0.006666666666666667
+  },
+  "joint_events": [
+    {
+      "seed": "20261221",
+      "episode": "96",
+      "target_speed_mps": "2.8",
+      "joint_name": "left_ankle_roll_joint",
+      "side": "left",
+      "limit_type": "effort",
+      "utilization": "1.0",
+      "dwell_above_90_s": "0.21999996900558472",
+      "dwell_above_95_s": "0.21999996900558472",
+      "longest_continuous_dwell_s": "0.21999996900558472",
+      "event_start_s": "0.3400000035762787",
+      "event_end_s": "5.259995937347412",
+      "active_transition_phase": "RUN_TAKEOVER",
+      "support_foot": "left",
+      "contact_state": "10",
+      "flight_state": "False",
+      "transition_elapsed_s": "5.259995937347412",
+      "target_speed_error_mps": "0.28525471687316895",
+      "heading_error_rad": "0.5452343821525574",
+      "action_target": "-2.773132085800171",
+      "joint_position": "-0.2617931663990021",
+      "joint_position_error": "-1.1247728765010834",
+      "contact_force_n": "14.013964653015137",
+      "remaining_to_run_acceptance_s": "0.0"
+    }
+  ],
+  "ankle_effort_dwell_definition_s": 0.2,
+  "knee_velocity_dwell_failures": 0
+}

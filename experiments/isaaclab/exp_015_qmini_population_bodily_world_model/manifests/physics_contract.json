@@ -1,0 +1,803 @@
+{
+  "experiment": "exp_015_qmini_population_bodily_world_model",
+  "status": "PASS",
+  "source": {
+    "repository_url": "https://github.com/unitreerobotics/Qmini",
+    "commit": "f6f3fef723f8bb434f9d2679dfb6053b0aca93a8",
+    "urdf": "urdf/Qmini.urdf",
+    "urdf_sha256": "4d1454510bf403fb0740a7a682fc1883ada0ecbdced844530dd98d484a618215",
+    "source_of_truth": true
+  },
+  "root": {
+    "link": "base_link",
+    "orientation": "UNKNOWN",
+    "simulator_root_height_m": 0.45,
+    "simulator_root_height_source": "ROBOTAMER_REFERENCE_PROVISIONAL"
+  },
+  "joints": [
+    {
+      "name": "LL-joint1",
+      "joint_type": "revolute",
+      "parent": "base_link",
+      "child": "LL_hip_yaw",
+      "axis_xyz": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "origin_xyz": [
+        0.0,
+        0.055,
+        0.0
+      ],
+      "origin_rpy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lower": -0.349,
+      "upper": 0.525,
+      "effort": 20.0,
+      "velocity": 1.0
+    },
+    {
+      "name": "LL-joint2",
+      "joint_type": "revolute",
+      "parent": "LL_hip_yaw",
+      "child": "LL_hip_roll",
+      "axis_xyz": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz": [
+        0.0,
+        0.054,
+        -0.1073
+      ],
+      "origin_rpy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lower": -0.275,
+      "upper": 0.698,
+      "effort": 60.0,
+      "velocity": 0.3
+    },
+    {
+      "name": "LL-joint3",
+      "joint_type": "revolute",
+      "parent": "LL_hip_roll",
+      "child": "LL_hip_pitch",
+      "axis_xyz": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "origin_xyz": [
+        0.0165,
+        0.028,
+        0.0
+      ],
+      "origin_rpy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lower": -0.61,
+      "upper": 1.483,
+      "effort": 20.0,
+      "velocity": 1.0
+    },
+    {
+      "name": "LL-joint4",
+      "joint_type": "revolute",
+      "parent": "LL_hip_pitch",
+      "child": "LL_knee",
+      "axis_xyz": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "origin_xyz": [
+        -0.081317,
+        -0.0003,
+        -0.081317
+      ],
+      "origin_rpy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lower": -1.117,
+      "upper": 1.047,
+      "effort": 20.0,
+      "velocity": 1.0
+    },
+    {
+      "name": "LL-joint5",
+      "joint_type": "revolute",
+      "parent": "LL_knee",
+      "child": "LL_ankle",
+      "axis_xyz": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "origin_xyz": [
+        0.053013,
+        0.0228,
+        -0.14565
+      ],
+      "origin_rpy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lower": -1.396,
+      "upper": 1.221,
+      "effort": 20.0,
+      "velocity": 1.0
+    },
+    {
+      "name": "RL-joint1",
+      "joint_type": "revolute",
+      "parent": "base_link",
+      "child": "RL_hip_yaw",
+      "axis_xyz": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "origin_xyz": [
+        0.0,
+        -0.055,
+        0.0
+      ],
+      "origin_rpy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lower": -0.525,
+      "upper": 0.349,
+      "effort": 20.0,
+      "velocity": 1.0
+    },
+    {
+      "name": "RL-joint2",
+      "joint_type": "revolute",
+      "parent": "RL_hip_yaw",
+      "child": "RL_hip_roll",
+      "axis_xyz": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "origin_xyz": [
+        0.0,
+        -0.054,
+        -0.1073
+      ],
+      "origin_rpy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lower": -0.698,
+      "upper": 0.275,
+      "effort": 60.0,
+      "velocity": 0.3
+    },
+    {
+      "name": "RL-joint3",
+      "joint_type": "revolute",
+      "parent": "RL_hip_roll",
+      "child": "RL_hip_pitch",
+      "axis_xyz": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "origin_xyz": [
+        0.0165,
+        -0.028,
+        0.0
+      ],
+      "origin_rpy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lower": -0.61,
+      "upper": 1.483,
+      "effort": 20.0,
+      "velocity": 1.0
+    },
+    {
+      "name": "RL-joint4",
+      "joint_type": "revolute",
+      "parent": "RL_hip_pitch",
+      "child": "RL_knee",
+      "axis_xyz": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "origin_xyz": [
+        -0.081317,
+        0.0003,
+        -0.081317
+      ],
+      "origin_rpy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lower": -1.117,
+      "upper": 1.047,
+      "effort": 20.0,
+      "velocity": 1.0
+    },
+    {
+      "name": "RL-joint5",
+      "joint_type": "revolute",
+      "parent": "RL_knee",
+      "child": "RL_ankle",
+      "axis_xyz": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "origin_xyz": [
+        0.053013,
+        -0.0228,
+        -0.14565
+      ],
+      "origin_rpy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "lower": -1.396,
+      "upper": 1.221,
+      "effort": 20.0,
+      "velocity": 1.0
+    }
+  ],
+  "joint_order": [
+    "LL-joint1",
+    "LL-joint2",
+    "LL-joint3",
+    "LL-joint4",
+    "LL-joint5",
+    "RL-joint1",
+    "RL-joint2",
+    "RL-joint3",
+    "RL-joint4",
+    "RL-joint5"
+  ],
+  "joint_count": 10,
+  "links": [
+    {
+      "name": "base_link",
+      "inertial": {
+        "mass": 4.7754,
+        "origin_xyz": [
+          -0.014456,
+          5.6e-05,
+          -0.041502
+        ],
+        "origin_rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "ixx": 0.026652,
+        "ixy": -6e-06,
+        "ixz": -0.006659,
+        "iyy": 0.04973,
+        "iyz": -9e-06,
+        "izz": 0.049037
+      },
+      "visual_meshes": [
+        "meshes/base_link.STL"
+      ],
+      "collision_meshes": [
+        "meshes/base_link.STL"
+      ]
+    },
+    {
+      "name": "LL_hip_yaw",
+      "inertial": {
+        "mass": 0.73407,
+        "origin_xyz": [
+          0.001558,
+          0.000796,
+          -0.10656
+        ],
+        "origin_rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "ixx": 0.001096,
+        "ixy": 1e-06,
+        "ixz": 7e-06,
+        "iyy": 0.000691,
+        "iyz": 4e-06,
+        "izz": 0.000544
+      },
+      "visual_meshes": [
+        "meshes/LL_hip_yaw.STL"
+      ],
+      "collision_meshes": []
+    },
+    {
+      "name": "LL_hip_roll",
+      "inertial": {
+        "mass": 0.072409,
+        "origin_xyz": [
+          0.028723,
+          -0.018625,
+          1.5e-05
+        ],
+        "origin_rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "ixx": 0.000148,
+        "ixy": 1.6e-05,
+        "ixz": 0.0,
+        "iyy": 5.7e-05,
+        "iyz": 0.0,
+        "izz": 0.000112
+      },
+      "visual_meshes": [
+        "meshes/LL_hip_roll.STL"
+      ],
+      "collision_meshes": []
+    },
+    {
+      "name": "LL_hip_pitch",
+      "inertial": {
+        "mass": 1.4071,
+        "origin_xyz": [
+          -0.040715,
+          0.019181,
+          -0.04067
+        ],
+        "origin_rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "ixx": 0.003407,
+        "ixy": -6e-06,
+        "ixz": -0.002303,
+        "iyy": 0.006531,
+        "iyz": -4e-06,
+        "izz": 0.00343
+      },
+      "visual_meshes": [
+        "meshes/LL_hip_pitch.STL"
+      ],
+      "collision_meshes": [
+        "meshes/LL_hip_pitch.STL"
+      ]
+    },
+    {
+      "name": "LL_knee",
+      "inertial": {
+        "mass": 0.76749,
+        "origin_xyz": [
+          0.048081,
+          0.002331,
+          -0.13228
+        ],
+        "origin_rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "ixx": 0.001333,
+        "ixy": -2.6e-05,
+        "ixz": 0.000282,
+        "iyy": 0.001852,
+        "iyz": 7e-05,
+        "izz": 0.000662
+      },
+      "visual_meshes": [
+        "meshes/LL_knee.STL"
+      ],
+      "collision_meshes": [
+        "meshes/LL_knee.STL"
+      ]
+    },
+    {
+      "name": "LL_ankle",
+      "inertial": {
+        "mass": 0.2038,
+        "origin_xyz": [
+          0.013735,
+          -0.006344,
+          -0.045775
+        ],
+        "origin_rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "ixx": 0.000225,
+        "ixy": 1.1e-05,
+        "ixz": 0.0,
+        "iyy": 0.000653,
+        "iyz": -4e-05,
+        "izz": 0.000505
+      },
+      "visual_meshes": [
+        "meshes/LL_ankle.STL"
+      ],
+      "collision_meshes": [
+        "meshes/LL_ankle.STL"
+      ]
+    },
+    {
+      "name": "RL_hip_yaw",
+      "inertial": {
+        "mass": 0.73407,
+        "origin_xyz": [
+          0.001558,
+          -0.000796,
+          -0.10656
+        ],
+        "origin_rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "ixx": 0.001096,
+        "ixy": -1e-06,
+        "ixz": 7e-06,
+        "iyy": 0.000691,
+        "iyz": -4e-06,
+        "izz": 0.000544
+      },
+      "visual_meshes": [
+        "meshes/RL_hip_yaw.STL"
+      ],
+      "collision_meshes": []
+    },
+    {
+      "name": "RL_hip_roll",
+      "inertial": {
+        "mass": 0.072409,
+        "origin_xyz": [
+          0.028723,
+          0.018625,
+          1.5e-05
+        ],
+        "origin_rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "ixx": 0.000148,
+        "ixy": -1.6e-05,
+        "ixz": 0.0,
+        "iyy": 5.7e-05,
+        "iyz": 0.0,
+        "izz": 0.000112
+      },
+      "visual_meshes": [
+        "meshes/RL_hip_roll.STL"
+      ],
+      "collision_meshes": []
+    },
+    {
+      "name": "RL_hip_pitch",
+      "inertial": {
+        "mass": 1.4071,
+        "origin_xyz": [
+          -0.040715,
+          -0.019181,
+          -0.04067
+        ],
+        "origin_rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "ixx": 0.003407,
+        "ixy": 6e-06,
+        "ixz": -0.002303,
+        "iyy": 0.006531,
+        "iyz": 4e-06,
+        "izz": 0.00343
+      },
+      "visual_meshes": [
+        "meshes/RL_hip_pitch.STL"
+      ],
+      "collision_meshes": [
+        "meshes/RL_hip_pitch.STL"
+      ]
+    },
+    {
+      "name": "RL_knee",
+      "inertial": {
+        "mass": 0.76749,
+        "origin_xyz": [
+          0.048081,
+          -0.002331,
+          -0.13228
+        ],
+        "origin_rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "ixx": 0.001333,
+        "ixy": 2.6e-05,
+        "ixz": 0.000282,
+        "iyy": 0.001852,
+        "iyz": -7e-05,
+        "izz": 0.000662
+      },
+      "visual_meshes": [
+        "meshes/RL_knee.STL"
+      ],
+      "collision_meshes": [
+        "meshes/RL_knee.STL"
+      ]
+    },
+    {
+      "name": "RL_ankle",
+      "inertial": {
+        "mass": 0.2038,
+        "origin_xyz": [
+          0.013735,
+          0.006344,
+          -0.045775
+        ],
+        "origin_rpy": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "ixx": 0.000225,
+        "ixy": -1.1e-05,
+        "ixz": 0.0,
+        "iyy": 0.000653,
+        "iyz": 4e-05,
+        "izz": 0.000505
+      },
+      "visual_meshes": [
+        "meshes/RL_ankle.STL"
+      ],
+      "collision_meshes": [
+        "meshes/RL_ankle.STL"
+      ]
+    }
+  ],
+  "visual_meshes": {
+    "base_link": [
+      "meshes/base_link.STL"
+    ],
+    "LL_hip_yaw": [
+      "meshes/LL_hip_yaw.STL"
+    ],
+    "LL_hip_roll": [
+      "meshes/LL_hip_roll.STL"
+    ],
+    "LL_hip_pitch": [
+      "meshes/LL_hip_pitch.STL"
+    ],
+    "LL_knee": [
+      "meshes/LL_knee.STL"
+    ],
+    "LL_ankle": [
+      "meshes/LL_ankle.STL"
+    ],
+    "RL_hip_yaw": [
+      "meshes/RL_hip_yaw.STL"
+    ],
+    "RL_hip_roll": [
+      "meshes/RL_hip_roll.STL"
+    ],
+    "RL_hip_pitch": [
+      "meshes/RL_hip_pitch.STL"
+    ],
+    "RL_knee": [
+      "meshes/RL_knee.STL"
+    ],
+    "RL_ankle": [
+      "meshes/RL_ankle.STL"
+    ]
+  },
+  "collision_meshes": {
+    "base_link": [
+      "meshes/base_link.STL"
+    ],
+    "LL_hip_pitch": [
+      "meshes/LL_hip_pitch.STL"
+    ],
+    "LL_knee": [
+      "meshes/LL_knee.STL"
+    ],
+    "LL_ankle": [
+      "meshes/LL_ankle.STL"
+    ],
+    "RL_hip_pitch": [
+      "meshes/RL_hip_pitch.STL"
+    ],
+    "RL_knee": [
+      "meshes/RL_knee.STL"
+    ],
+    "RL_ankle": [
+      "meshes/RL_ankle.STL"
+    ]
+  },
+  "foot_collision_links": [
+    "LL_ankle",
+    "RL_ankle"
+  ],
+  "links_without_collision_geometry": [
+    "LL_hip_roll",
+    "LL_hip_yaw",
+    "RL_hip_roll",
+    "RL_hip_yaw"
+  ],
+  "transmission_count": 0,
+  "actuator_assignment": {
+    "source": "UNITREE_OFFICIAL_URDF",
+    "joint_effort_limits_are": "URDF_JOINT_LIMITS_NOT_MOTOR_NOMINAL",
+    "joint_velocity_limits_are": "URDF_JOINT_LIMITS_NOT_MOTOR_NOMINAL",
+    "torque_limit": "UNKNOWN_MOTOR_NOMINAL",
+    "velocity_limit": "UNKNOWN_MOTOR_NOMINAL",
+    "reduction": "UNKNOWN",
+    "motor_model": "UNKNOWN"
+  },
+  "simulator": {
+    "isaac_lab_version": "v3.0.0-beta2.patch1",
+    "isaac_lab_commit": "ffff603eafc6b74264a5261cc0183d6a65390d78",
+    "simulation_dt_s": 0.001,
+    "simulation_dt_source": "ROBOTAMER_REFERENCE",
+    "control_dt_s": 0.015,
+    "control_dt_source": "ROBOTAMER_REFERENCE",
+    "gravity_mps2": [
+      0.0,
+      0.0,
+      -9.81
+    ],
+    "friction_baseline": 1.0,
+    "friction_baseline_source": "ROBOTAMER_REFERENCE_PROVISIONAL",
+    "official_qmini_friction": "UNKNOWN",
+    "official_qmini_root_orientation": "UNKNOWN"
+  },
+  "default_pose": {
+    "values": {
+      "LL-joint1": 0.08800000000000002,
+      "LL-joint2": 0.21149999999999997,
+      "LL-joint3": 0.43650000000000005,
+      "LL-joint4": -0.03500000000000003,
+      "LL-joint5": -0.08749999999999991,
+      "RL-joint1": -0.08800000000000002,
+      "RL-joint2": -0.21149999999999997,
+      "RL-joint3": 0.43650000000000005,
+      "RL-joint4": -0.03500000000000003,
+      "RL-joint5": -0.08749999999999991
+    },
+    "source": "DERIVED_FROM_OFFICIAL_URDF_LIMIT_MIDPOINT",
+    "official_named_standing_pose": "UNKNOWN"
+  },
+  "isaaclab_import": {
+    "version": "v3.0.0-beta2.patch1",
+    "observed_imported_joint_order": [
+      "tn__LLjoint1_ZC",
+      "tn__RLjoint1_ZC",
+      "tn__LLjoint2_ZC",
+      "tn__RLjoint2_ZC",
+      "tn__LLjoint3_ZC",
+      "tn__RLjoint3_ZC",
+      "tn__LLjoint4_ZC",
+      "tn__RLjoint4_ZC",
+      "tn__LLjoint5_ZC",
+      "tn__RLjoint5_ZC"
+    ],
+    "official_to_imported_index": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      1,
+      3,
+      5,
+      7,
+      9
+    ],
+    "control_schema_order": [
+      "LL-joint1",
+      "LL-joint2",
+      "LL-joint3",
+      "LL-joint4",
+      "LL-joint5",
+      "RL-joint1",
+      "RL-joint2",
+      "RL-joint3",
+      "RL-joint4",
+      "RL-joint5"
+    ],
+    "mapping_required": true,
+    "asset_import_smoke_status": "RECORDED_SEPARATELY"
+  },
+  "mesh_hashes": [
+    {
+      "path": "urdf/meshes/base_link.STL",
+      "sha256": "9c12f0d0f42b99033b665bd90b70b7c70bdbd8ce46b977f60467923ab917f7e5",
+      "bytes": 7872984
+    },
+    {
+      "path": "urdf/meshes/LL_ankle.STL",
+      "sha256": "2bcbc3d32fbd422303c2d613740e8ab7515e9bcf4807b83eaf80330f00b4b42a",
+      "bytes": 809984
+    },
+    {
+      "path": "urdf/meshes/LL_hip_pitch.STL",
+      "sha256": "9781019259bbc5402895d8b921c5acf2e80f1affc58949040cce8ffbb81cfcd7",
+      "bytes": 3429284
+    },
+    {
+      "path": "urdf/meshes/LL_hip_roll.STL",
+      "sha256": "295d22664df7a7c1c12ad2700814c058ce5c7986f2045326e602e222034c18f6",
+      "bytes": 326784
+    },
+    {
+      "path": "urdf/meshes/LL_hip_yaw.STL",
+      "sha256": "de3b44d683da0be84b8b1b50d3828ba21ded74a5a86f41c10c2f2f74d8a4f537",
+      "bytes": 1724084
+    },
+    {
+      "path": "urdf/meshes/LL_knee.STL",
+      "sha256": "d142856a8eadfd376edc521b09ec5f199ad35a7614bc0f8d87df7445e125cf9f",
+      "bytes": 1515084
+    },
+    {
+      "path": "urdf/meshes/RL_ankle.STL",
+      "sha256": "869aa0c582386243f409604f66d6c8763b66a00a78162057dc74d3bca6906648",
+      "bytes": 809884
+    },
+    {
+      "path": "urdf/meshes/RL_hip_pitch.STL",
+      "sha256": "afbff5e72a186706481229d8063da02eb9b43f617b04a76bc075025c02ca1492",
+      "bytes": 3435384
+    },
+    {
+      "path": "urdf/meshes/RL_hip_roll.STL",
+      "sha256": "9ff2557060f6d8fb3c55040db10b58e76ff6428ace0e9ab2afce0dbf01e3855f",
+      "bytes": 327784
+    },
+    {
+      "path": "urdf/meshes/RL_hip_yaw.STL",
+      "sha256": "d78a5080bc2b68fbe9d6887dea934a335b35f2cd6f6cef8e88d6b717d8641ee4",
+      "bytes": 1727684
+    },
+    {
+      "path": "urdf/meshes/RL_knee.STL",
+      "sha256": "a6e09a7054538b848bb19b2d5c6f9d016b64dedab2a93de9ab236c4163c90fcc",
+      "bytes": 1517584
+    }
+  ],
+  "unknowns": [
+    "8010 nominal continuous torque",
+    "8010 nominal velocity",
+    "gear/reduction",
+    "motor model",
+    "official PD gains",
+    "official friction baseline",
+    "official root orientation convention",
+    "official simulator dt/control dt"
+  ]
+}

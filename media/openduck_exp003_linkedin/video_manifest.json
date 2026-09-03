@@ -1,0 +1,111 @@
+{
+  "title": "OpenDuckMini exp_003 LinkedIn research retrospective",
+  "output": "media\\openduck_exp003_linkedin\\openduck_exp003_linkedin_research_retrospective.mp4",
+  "output_sha256": "95327b4314c9df6f092ddfc58a9758e69c4530a2dd7d913ce36c232a24efdc23",
+  "cover": "media\\openduck_exp003_linkedin\\openduck_exp003_linkedin_cover.png",
+  "cover_sha256": "eb8ba6b97eff0f9da695ec875890ce94770a8f4ce2f1b26d4ed7704733b813d6",
+  "source_commit": "8bf5dd71f9046019b1c1a1b284ba9e52d5394012",
+  "disclosure": {
+    "simulation_only": true,
+    "real_hardware_allowed": false,
+    "v52_status": "adopted simulation parent",
+    "v59_status": "diagnostic_not_qualified"
+  },
+  "sources": [
+    {
+      "kind": "card",
+      "path": "media\\openduck_exp003_linkedin\\build\\title.png",
+      "sha256": "f5c6f781e6a1b9d99049d904f60b0b4477c85d0c48c8a640645b87080c9b0b5e",
+      "start_seconds": 0.0,
+      "duration_seconds": 3.2,
+      "footer": ""
+    },
+    {
+      "kind": "clip",
+      "path": "media\\openduck_exp003_linkedin\\source_clips\\basic\\basic_03_backward.mp4",
+      "sha256": "645b228c1af740d5e757c4da4bef244db983ef450db041f0143b8f048006d526",
+      "start_seconds": 0.35,
+      "duration_seconds": 3.7,
+      "footer": "v52 hybrid controller | adopted simulation parent"
+    },
+    {
+      "kind": "clip",
+      "path": "experiments\\mujoco\\exp_003_openduckmini_calibrated_walk\\artifacts\\videos_v59_omnidirectional_diagnostic_not_qualified\\basic_02_forward.mp4",
+      "sha256": "334ba68ed2b2a9dadb725b6398bb55c1768d8e48c914f4a64e18a6502a5306ab",
+      "start_seconds": 0.35,
+      "duration_seconds": 4.2,
+      "footer": "v59 omnidirectional diagnostic | not qualified"
+    },
+    {
+      "kind": "clip",
+      "path": "experiments\\mujoco\\exp_003_openduckmini_calibrated_walk\\artifacts\\videos_v59_omnidirectional_diagnostic_not_qualified\\basic_06_yaw_left.mp4",
+      "sha256": "08d7bbd1db4bb86b0d87c0f82327980c1f6fd5488d8adfbe3122787b35bb1653",
+      "start_seconds": 0.35,
+      "duration_seconds": 3.8,
+      "footer": "yaw left | diagnostic policy"
+    },
+    {
+      "kind": "clip",
+      "path": "experiments\\mujoco\\exp_003_openduckmini_calibrated_walk\\artifacts\\videos_v59_omnidirectional_diagnostic_not_qualified\\basic_07_yaw_right.mp4",
+      "sha256": "a388b1620d2ae2e2280a5fca352e93f82be316ff71f8c21038990b69e5615008",
+      "start_seconds": 0.35,
+      "duration_seconds": 3.8,
+      "footer": "yaw right | diagnostic policy"
+    },
+    {
+      "kind": "card",
+      "path": "media\\openduck_exp003_linkedin\\build\\finding.png",
+      "sha256": "cc5803b1b31f099a74eced51fd73b7d5290e697e67202af064277a8e3fd5ab97",
+      "start_seconds": 0.0,
+      "duration_seconds": 3.8,
+      "footer": ""
+    },
+    {
+      "kind": "clip",
+      "path": "experiments\\mujoco\\exp_003_openduckmini_calibrated_walk\\artifacts\\videos_v59_omnidirectional_diagnostic_not_qualified\\compound_03_forward_yaw_left.mp4",
+      "sha256": "ce78992e513f6d793f4d9a24fe334938e41292c321afe23943117f31c194975d",
+      "start_seconds": 0.35,
+      "duration_seconds": 4.2,
+      "footer": "forward + yaw left | diagnostic policy"
+    },
+    {
+      "kind": "clip",
+      "path": "experiments\\mujoco\\exp_003_openduckmini_calibrated_walk\\artifacts\\videos_v59_omnidirectional_diagnostic_not_qualified\\compound_04_forward_yaw_right.mp4",
+      "sha256": "5d1c03ddac1b66f8174c9496259ee726f63e2b5b15d910c0cff9203165767d4f",
+      "start_seconds": 0.35,
+      "duration_seconds": 4.2,
+      "footer": "forward + yaw right | diagnostic policy"
+    },
+    {
+      "kind": "card",
+      "path": "media\\openduck_exp003_linkedin\\build\\close.png",
+      "sha256": "a8a2a9ddb713b267a9204189e04938785492d58791f51a352404eec12f9b6182",
+      "start_seconds": 0.0,
+      "duration_seconds": 4.5,
+      "footer": ""
+    }
+  ],
+  "ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1080,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1"
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "r_frame_rate": "0/0"
+      }
+    ],
+    "format": {
+      "duration": "35.366016",
+      "size": "3295293"
+    }
+  }
+}

@@ -1,0 +1,1385 @@
+{
+  "title": "OpenDuckMini exp_004 H3 motion-verified showcase V2",
+  "video": "media/openduck_exp004_h3_release/openduckmini_h3_motion_verified_showcase_v2_final.mp4",
+  "video_sha256": "1b2c2eb046dfbea4b3519acf40796432864c7fc6ce7856c627d8feb97b615fbc",
+  "video_size_bytes": 13607747,
+  "cover": "media/openduck_exp004_h3_release/openduckmini_h3_motion_verified_showcase_v2_final_cover.png",
+  "cover_sha256": "a15779d01c54d2a9458ff4f3d56af8e90a0f10ebdeab01a43b405053155c913f",
+  "render": {
+    "width": 1280,
+    "height": 720,
+    "fps": 25,
+    "simulation_seconds": 72.0,
+    "title_and_close_seconds": 20.2,
+    "simulation_frame_count": 1800,
+    "offscreen_backend": "egl",
+    "camera_reference": "world_fixed_at_exact_home_reset"
+  },
+  "disclosure": {
+    "simulation_only": true,
+    "release_status": "ADOPTED_SIMULATION_ONLY",
+    "hardware_deployment": "PROHIBITED",
+    "not_new_qualification_evidence": true,
+    "independent_exact_home_reset_per_motion": true,
+    "joint_noise_scale": 0.0,
+    "initial_base_speed": 0.0,
+    "metric_warmup_seconds": 1.5,
+    "formal_policy_observation_mapping_used": true,
+    "continuous_transition_claimed": false
+  },
+  "package": {
+    "path": "experiments/mujoco/exp_004_openduckmini_safe_gait_experts/artifacts/router_packages/exp004-safe-gait-router-h3-release-20260808-v1",
+    "package_id": "exp004-safe-gait-router-h3-release-20260808-v1",
+    "manifest_sha256": "44b64ad794d83c518ec7deeac14b18d6afcbcccafa235359c3d8075cd25334fd",
+    "formal_release_evidence_sha256": "95819b5bc1d0827a5ad779542a6f98c4aaebacf5f55a8303c0b5a14fba501674",
+    "base_v22_sha256": "f7a2731330cd3be52858989b021423a5f363cc4a8f9850512281da745a7617c0",
+    "verified_before_render": true
+  },
+  "showcase_audit": {
+    "segments": 12,
+    "central_motion_acceptance_passed": 12,
+    "control_samples": 3600,
+    "physics_substeps": 36000,
+    "leg_joint_samples": 360000,
+    "minimum_signed_progress_ratio": 0.3539416006835209,
+    "qpos_limit_violations": 0,
+    "target_limit_violations": 0,
+    "unauthorized_target_margin_violations": 0,
+    "target_slew_violations": 0,
+    "nonfinite_samples": 0,
+    "fall_samples": 0,
+    "prohibited_route_steps": 0,
+    "command_clip_events": 0,
+    "maximum_qpos_excess_rad": 0.0,
+    "reset_audits_passed": 12,
+    "control_first_startup_audits_passed": 12,
+    "backward_exit_recovery_audits_passed": 12
+  },
+  "segments": [
+    {
+      "name": "forward",
+      "label": "\u524d\u9032 / FORWARD",
+      "physical_command": [
+        0.05,
+        0.0,
+        0.0
+      ],
+      "policy_observation_command": [
+        0.1,
+        0.0,
+        0.0
+      ],
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "forward",
+      "expected_policy_role": "forward",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          0.05,
+          0.0,
+          0.0
+        ],
+        "physical_command": [
+          0.05,
+          0.0,
+          0.0
+        ],
+        "mean_effective_command": [
+          0.050000000000000114,
+          0.0,
+          0.0
+        ],
+        "mean_policy_observation_command": [
+          0.10000000000000023,
+          0.0,
+          0.0
+        ],
+        "mean_local_velocity_xyz": [
+          0.03863633532531915,
+          0.017948285680969706,
+          0.00031743349431191653
+        ],
+        "mean_local_yaw_rate": 0.13226408838511844,
+        "commanded_linear_speed": 0.05,
+        "projected_primary_velocity": 0.03863633532531915,
+        "primary_velocity_error": 0.011363664674680855,
+        "signed_orthogonal_velocity": 0.017948285680969706,
+        "absolute_orthogonal_velocity": 0.017948285680969706,
+        "yaw_rate_error": 0.13226408838511844,
+        "uncommanded_yaw_rate": 0.13226408838511844,
+        "displacement_xyz": [
+          0.17337809132082818,
+          0.16856736732757865,
+          0.017108618970859718
+        ],
+        "planar_displacement": 0.24181588011916064,
+        "minimum_height_m": 0.18201165144698575,
+        "minimum_upright": 0.9858820293352463,
+        "single_support_rate": 0.3233333333333333,
+        "flight_rate": 0.0,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.3466666666666667,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    },
+    {
+      "name": "reverse",
+      "label": "\u5f8c\u9032 / REVERSE",
+      "physical_command": [
+        -0.05,
+        0.0,
+        0.0
+      ],
+      "policy_observation_command": null,
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "reverse",
+      "expected_policy_role": "reverse",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          -0.05,
+          0.0,
+          0.0
+        ],
+        "physical_command": [
+          -0.05,
+          0.0,
+          0.0
+        ],
+        "mean_effective_command": [
+          -0.050000000000000114,
+          0.0,
+          0.0
+        ],
+        "mean_policy_observation_command": [
+          -0.050000000000000114,
+          0.0,
+          0.0
+        ],
+        "mean_local_velocity_xyz": [
+          -0.02589133299759426,
+          0.013067138309545095,
+          -0.0013317959669809176
+        ],
+        "mean_local_yaw_rate": -0.013624870871916009,
+        "commanded_linear_speed": 0.05,
+        "projected_primary_velocity": 0.02589133299759426,
+        "primary_velocity_error": 0.024108667002405743,
+        "signed_orthogonal_velocity": -0.013067138309545095,
+        "absolute_orthogonal_velocity": 0.013067138309545095,
+        "yaw_rate_error": 0.013624870871916009,
+        "uncommanded_yaw_rate": 0.013624870871916009,
+        "displacement_xyz": [
+          -0.12244227053944655,
+          0.0838276104685349,
+          0.017501563994683333
+        ],
+        "planar_displacement": 0.14838860431892822,
+        "minimum_height_m": 0.1820682153614258,
+        "minimum_upright": 0.9893514037964719,
+        "single_support_rate": 0.322,
+        "flight_rate": 0.0003333333333333333,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.3511111111111111,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    },
+    {
+      "name": "lateral_left",
+      "label": "\u5de6\u6a2a\u6b69\u304d / LATERAL LEFT",
+      "physical_command": [
+        0.0,
+        0.06,
+        0.0
+      ],
+      "policy_observation_command": [
+        0.0,
+        0.1,
+        0.0
+      ],
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "lateral_left",
+      "expected_policy_role": "lateral_left",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          0.0,
+          0.06,
+          0.0
+        ],
+        "physical_command": [
+          0.0,
+          0.06,
+          0.0
+        ],
+        "mean_effective_command": [
+          0.0,
+          0.0600000000000001,
+          0.0
+        ],
+        "mean_policy_observation_command": [
+          0.0,
+          0.10000000000000023,
+          0.0
+        ],
+        "mean_local_velocity_xyz": [
+          0.00949546955299089,
+          0.06688397960235341,
+          -0.0006688455353498482
+        ],
+        "mean_local_yaw_rate": -0.0007618284567105091,
+        "commanded_linear_speed": 0.06,
+        "projected_primary_velocity": 0.06688397960235341,
+        "primary_velocity_error": 0.0068839796023534156,
+        "signed_orthogonal_velocity": -0.00949546955299089,
+        "absolute_orthogonal_velocity": 0.00949546955299089,
+        "yaw_rate_error": 0.0007618284567105091,
+        "uncommanded_yaw_rate": 0.0007618284567105091,
+        "displacement_xyz": [
+          0.05780451415173588,
+          0.40978335376927805,
+          0.025305625998254117
+        ],
+        "planar_displacement": 0.41384025768732974,
+        "minimum_height_m": 0.18207714307669398,
+        "minimum_upright": 0.991884556722171,
+        "single_support_rate": 0.38333333333333336,
+        "flight_rate": 0.0003333333333333333,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.4177777777777778,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    },
+    {
+      "name": "lateral_right",
+      "label": "\u53f3\u6a2a\u6b69\u304d / LATERAL RIGHT",
+      "physical_command": [
+        0.0,
+        -0.06,
+        0.0
+      ],
+      "policy_observation_command": [
+        0.0,
+        -0.1,
+        0.0
+      ],
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "lateral_right",
+      "expected_policy_role": "lateral_right",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          0.0,
+          -0.06,
+          0.0
+        ],
+        "physical_command": [
+          0.0,
+          -0.06,
+          0.0
+        ],
+        "mean_effective_command": [
+          0.0,
+          -0.0600000000000001,
+          0.0
+        ],
+        "mean_policy_observation_command": [
+          0.0,
+          -0.10000000000000023,
+          0.0
+        ],
+        "mean_local_velocity_xyz": [
+          0.009540564858283638,
+          -0.06310628881417499,
+          -0.003975058396168218
+        ],
+        "mean_local_yaw_rate": 0.026569895735395584,
+        "commanded_linear_speed": 0.06,
+        "projected_primary_velocity": 0.06310628881417499,
+        "primary_velocity_error": 0.00310628881417499,
+        "signed_orthogonal_velocity": 0.009540564858283638,
+        "absolute_orthogonal_velocity": 0.009540564858283638,
+        "yaw_rate_error": 0.026569895735395584,
+        "uncommanded_yaw_rate": 0.026569895735395584,
+        "displacement_xyz": [
+          0.10618933094211025,
+          -0.38093226697624916,
+          0.013631631219950452
+        ],
+        "planar_displacement": 0.3954561493131664,
+        "minimum_height_m": 0.18206559588985297,
+        "minimum_upright": 0.9857924632045413,
+        "single_support_rate": 0.3466666666666667,
+        "flight_rate": 0.0,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.36444444444444446,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    },
+    {
+      "name": "yaw_left",
+      "label": "\u5de6\u65cb\u56de / YAW LEFT",
+      "physical_command": [
+        0.0,
+        0.0,
+        0.3
+      ],
+      "policy_observation_command": [
+        0.0,
+        -0.06,
+        0.6
+      ],
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "yaw_left",
+      "expected_policy_role": "yaw_left",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          0.0,
+          0.0,
+          0.3
+        ],
+        "physical_command": [
+          0.0,
+          0.0,
+          0.3
+        ],
+        "mean_effective_command": [
+          0.0,
+          0.0,
+          0.2999999999999987
+        ],
+        "mean_policy_observation_command": [
+          0.0,
+          -0.0600000000000001,
+          0.5999999999999974
+        ],
+        "mean_local_velocity_xyz": [
+          0.014200408050976695,
+          -0.002613797943024695,
+          -0.0006154325720240902
+        ],
+        "mean_local_yaw_rate": 0.38323996079995487,
+        "commanded_linear_speed": 0.0,
+        "projected_primary_velocity": 0.0,
+        "primary_velocity_error": 0.0,
+        "signed_orthogonal_velocity": 0.014438958705571667,
+        "absolute_orthogonal_velocity": 0.014438958705571667,
+        "yaw_rate_error": 0.08323996079995488,
+        "uncommanded_yaw_rate": 0.0,
+        "displacement_xyz": [
+          0.04140059893088724,
+          0.06174659568720016,
+          0.017862318324068538
+        ],
+        "planar_displacement": 0.07434145324645428,
+        "minimum_height_m": 0.1820843039746031,
+        "minimum_upright": 0.986592629984657,
+        "single_support_rate": 0.29033333333333333,
+        "flight_rate": 0.0,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.3244444444444444,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    },
+    {
+      "name": "yaw_right",
+      "label": "\u53f3\u65cb\u56de / YAW RIGHT",
+      "physical_command": [
+        0.0,
+        0.0,
+        -0.3
+      ],
+      "policy_observation_command": [
+        0.0,
+        0.0,
+        -0.8
+      ],
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "yaw_right",
+      "expected_policy_role": "yaw_right",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          0.0,
+          0.0,
+          -0.3
+        ],
+        "physical_command": [
+          0.0,
+          0.0,
+          -0.3
+        ],
+        "mean_effective_command": [
+          0.0,
+          0.0,
+          -0.2999999999999987
+        ],
+        "mean_policy_observation_command": [
+          0.0,
+          0.0,
+          -0.8000000000000018
+        ],
+        "mean_local_velocity_xyz": [
+          0.022390364077225597,
+          -0.006687827640160391,
+          -0.0029513094459035884
+        ],
+        "mean_local_yaw_rate": -0.2933573186900604,
+        "commanded_linear_speed": 0.0,
+        "projected_primary_velocity": 0.0,
+        "primary_velocity_error": 0.0,
+        "signed_orthogonal_velocity": 0.023367829211443834,
+        "absolute_orthogonal_velocity": 0.023367829211443834,
+        "yaw_rate_error": 0.006642681309939613,
+        "uncommanded_yaw_rate": 0.0,
+        "displacement_xyz": [
+          0.015617337563910674,
+          -0.13170635124944696,
+          0.017124297638911823
+        ],
+        "planar_displacement": 0.1326290473162943,
+        "minimum_height_m": 0.18201111693809946,
+        "minimum_upright": 0.9864469200565349,
+        "single_support_rate": 0.18533333333333332,
+        "flight_rate": 0.0,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.18666666666666668,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    },
+    {
+      "name": "reverse_turn_left",
+      "label": "\u5f8c\u9032\u5de6\u65cb\u56de / REVERSE TURN LEFT",
+      "physical_command": [
+        -0.03,
+        0.0,
+        0.2
+      ],
+      "policy_observation_command": null,
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "reverse_turn_left",
+      "expected_policy_role": "compound",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          -0.03,
+          0.0,
+          0.2
+        ],
+        "physical_command": [
+          -0.03,
+          0.0,
+          0.2
+        ],
+        "mean_effective_command": [
+          -0.03000000000000005,
+          0.0,
+          0.20000000000000046
+        ],
+        "mean_policy_observation_command": [
+          -0.03000000000000005,
+          0.0,
+          0.20000000000000046
+        ],
+        "mean_local_velocity_xyz": [
+          -0.015515113555458006,
+          -0.009174963540517512,
+          -0.0061997044345408
+        ],
+        "mean_local_yaw_rate": 0.2616824464052355,
+        "commanded_linear_speed": 0.03,
+        "projected_primary_velocity": 0.015515113555458006,
+        "primary_velocity_error": 0.014484886444541992,
+        "signed_orthogonal_velocity": 0.009174963540517512,
+        "absolute_orthogonal_velocity": 0.009174963540517512,
+        "yaw_rate_error": 0.061682446405235514,
+        "uncommanded_yaw_rate": 0.0,
+        "displacement_xyz": [
+          -0.01957149240163766,
+          -0.03961616830930473,
+          0.019617898779703324
+        ],
+        "planar_displacement": 0.04418692234517495,
+        "minimum_height_m": 0.18201904478107864,
+        "minimum_upright": 0.9902606463657048,
+        "single_support_rate": 0.37733333333333335,
+        "flight_rate": 0.0003333333333333333,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.4888888888888889,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    },
+    {
+      "name": "reverse_turn_right",
+      "label": "\u5f8c\u9032\u53f3\u65cb\u56de / REVERSE TURN RIGHT",
+      "physical_command": [
+        -0.04,
+        0.0,
+        -0.2
+      ],
+      "policy_observation_command": null,
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "reverse_turn_right",
+      "expected_policy_role": "compound",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          -0.04,
+          0.0,
+          -0.2
+        ],
+        "physical_command": [
+          -0.04,
+          0.0,
+          -0.2
+        ],
+        "mean_effective_command": [
+          -0.03999999999999993,
+          0.0,
+          -0.20000000000000046
+        ],
+        "mean_policy_observation_command": [
+          -0.03999999999999993,
+          0.0,
+          -0.20000000000000046
+        ],
+        "mean_local_velocity_xyz": [
+          -0.014157664027340835,
+          0.00010277622370731577,
+          0.0003646714701561549
+        ],
+        "mean_local_yaw_rate": -0.11923120388523743,
+        "commanded_linear_speed": 0.04,
+        "projected_primary_velocity": 0.014157664027340835,
+        "primary_velocity_error": 0.025842335972659166,
+        "signed_orthogonal_velocity": -0.00010277622370731577,
+        "absolute_orthogonal_velocity": 0.00010277622370731577,
+        "yaw_rate_error": 0.08076879611476258,
+        "uncommanded_yaw_rate": 0.0,
+        "displacement_xyz": [
+          -0.06451929582436657,
+          0.03220175095850316,
+          0.024007681482782595
+        ],
+        "planar_displacement": 0.07210889195144787,
+        "minimum_height_m": 0.18205996639714372,
+        "minimum_upright": 0.9926368001240117,
+        "single_support_rate": 0.233,
+        "flight_rate": 0.0,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.2577777777777778,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    },
+    {
+      "name": "forward_turn_left",
+      "label": "\u524d\u9032\u5de6\u65cb\u56de / FORWARD TURN LEFT",
+      "physical_command": [
+        0.04,
+        0.0,
+        0.3
+      ],
+      "policy_observation_command": [
+        0.08,
+        0.0,
+        0.3
+      ],
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "compound",
+      "expected_policy_role": "compound",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          0.04,
+          0.0,
+          0.3
+        ],
+        "physical_command": [
+          0.04,
+          0.0,
+          0.3
+        ],
+        "mean_effective_command": [
+          0.03999999999999993,
+          0.0,
+          0.2999999999999987
+        ],
+        "mean_policy_observation_command": [
+          0.07999999999999986,
+          0.0,
+          0.2999999999999987
+        ],
+        "mean_local_velocity_xyz": [
+          0.041122210990741495,
+          0.023619922482868747,
+          0.00036287983299767066
+        ],
+        "mean_local_yaw_rate": 0.2910250390065019,
+        "commanded_linear_speed": 0.04,
+        "projected_primary_velocity": 0.041122210990741495,
+        "primary_velocity_error": 0.0011222109907414943,
+        "signed_orthogonal_velocity": 0.023619922482868747,
+        "absolute_orthogonal_velocity": 0.023619922482868747,
+        "yaw_rate_error": 0.008974960993498093,
+        "uncommanded_yaw_rate": 0.0,
+        "displacement_xyz": [
+          0.03892314953640598,
+          0.2211483902399169,
+          0.017733900784561052
+        ],
+        "planar_displacement": 0.22454759423235865,
+        "minimum_height_m": 0.1820485755418668,
+        "minimum_upright": 0.9848801400313107,
+        "single_support_rate": 0.33166666666666667,
+        "flight_rate": 0.0,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.3688888888888889,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    },
+    {
+      "name": "forward_turn_right",
+      "label": "\u524d\u9032\u53f3\u65cb\u56de / FORWARD TURN RIGHT",
+      "physical_command": [
+        0.04,
+        0.0,
+        -0.22
+      ],
+      "policy_observation_command": [
+        0.08,
+        0.0,
+        -0.45
+      ],
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "compound",
+      "expected_policy_role": "compound",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          0.04,
+          0.0,
+          -0.22
+        ],
+        "physical_command": [
+          0.04,
+          0.0,
+          -0.22
+        ],
+        "mean_effective_command": [
+          0.03999999999999993,
+          0.0,
+          -0.21999999999999933
+        ],
+        "mean_policy_observation_command": [
+          0.07999999999999986,
+          0.0,
+          -0.4500000000000018
+        ],
+        "mean_local_velocity_xyz": [
+          0.015092101025752275,
+          -0.0011266554960348144,
+          -0.0003731854333064796
+        ],
+        "mean_local_yaw_rate": -0.16338805898333464,
+        "commanded_linear_speed": 0.04,
+        "projected_primary_velocity": 0.015092101025752275,
+        "primary_velocity_error": 0.024907898974247725,
+        "signed_orthogonal_velocity": -0.0011266554960348144,
+        "absolute_orthogonal_velocity": 0.0011266554960348144,
+        "yaw_rate_error": 0.05661194101666536,
+        "uncommanded_yaw_rate": 0.0,
+        "displacement_xyz": [
+          0.08276958828205444,
+          -0.06140880485427902,
+          0.014703872692359954
+        ],
+        "planar_displacement": 0.10306234063910893,
+        "minimum_height_m": 0.18199865894893005,
+        "minimum_upright": 0.9912153211742953,
+        "single_support_rate": 0.13266666666666665,
+        "flight_rate": 0.0,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.13777777777777778,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    },
+    {
+      "name": "forward_lateral_left_turn",
+      "label": "\u524d\u9032\u5de6\u659c\u884c\u65cb\u56de / FORWARD LATERAL LEFT TURN",
+      "physical_command": [
+        0.04,
+        0.05,
+        0.17
+      ],
+      "policy_observation_command": [
+        0.06,
+        0.05,
+        0.2
+      ],
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "compound",
+      "expected_policy_role": "compound",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          0.04,
+          0.05,
+          0.17
+        ],
+        "physical_command": [
+          0.04,
+          0.05,
+          0.17
+        ],
+        "mean_effective_command": [
+          0.03999999999999993,
+          0.050000000000000114,
+          0.17000000000000096
+        ],
+        "mean_policy_observation_command": [
+          0.0600000000000001,
+          0.050000000000000114,
+          0.20000000000000046
+        ],
+        "mean_local_velocity_xyz": [
+          0.030913972388871582,
+          0.055319776677440466,
+          0.0010637249464869702
+        ],
+        "mean_local_yaw_rate": 0.17067228748107371,
+        "commanded_linear_speed": 0.06403124237432849,
+        "projected_primary_velocity": 0.06250929360432955,
+        "primary_velocity_error": 0.0015219487699989348,
+        "signed_orthogonal_velocity": 0.010418233707760936,
+        "absolute_orthogonal_velocity": 0.010418233707760936,
+        "yaw_rate_error": 0.0006722874810737023,
+        "uncommanded_yaw_rate": 0.0,
+        "displacement_xyz": [
+          -0.021326328255075383,
+          0.3411604153667386,
+          0.018228011855205145
+        ],
+        "planar_displacement": 0.3418263320606662,
+        "minimum_height_m": 0.18206012987238332,
+        "minimum_upright": 0.9875070375786252,
+        "single_support_rate": 0.352,
+        "flight_rate": 0.0,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.39555555555555555,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    },
+    {
+      "name": "forward_lateral_right_turn",
+      "label": "\u524d\u9032\u53f3\u659c\u884c\u65cb\u56de / FORWARD LATERAL RIGHT TURN",
+      "physical_command": [
+        0.04,
+        -0.03,
+        -0.15
+      ],
+      "policy_observation_command": [
+        0.06,
+        -0.05,
+        -0.35
+      ],
+      "duration_seconds": 6.0,
+      "metric_warmup_seconds": 1.5,
+      "expected_route": "compound",
+      "expected_policy_role": "compound",
+      "central_acceptance": {
+        "passed": true,
+        "checks": {
+          "completed": true,
+          "no_fall": true,
+          "minimum_upright": true,
+          "minimum_height": true,
+          "primary_velocity": true,
+          "signed_linear_progress": true,
+          "orthogonal_velocity": true,
+          "yaw_rate": true,
+          "signed_yaw_progress": true,
+          "moving_single_support": true,
+          "flight_rate": true,
+          "contact_rates_from_all_physics_substeps": true,
+          "reverse_entry_phase_audit": true,
+          "backward_exit_recovery_audit": true,
+          "stop_drift": true,
+          "head_applied_action_locked": true,
+          "head_target_locked": true,
+          "preclip_targets_safe": true,
+          "applied_targets_safe": true,
+          "desired_targets_inside_margin": true,
+          "startup_margin_transition_authorized": true,
+          "target_slew_safe": true,
+          "joint_qpos_safe": true,
+          "finite": true,
+          "all_physics_substeps_audited": true,
+          "completed_physics_substep_count": true,
+          "substep_joint_qpos_safe": true,
+          "substep_finite": true,
+          "substep_no_fall": true,
+          "substep_minimum_height": true,
+          "substep_minimum_upright": true,
+          "steady_route_expected_expert": true,
+          "steady_route_expected_policy_role": true,
+          "steady_route_sample_count": true,
+          "prohibited_experts_absent": true,
+          "atomic_endpoint_exact": true,
+          "command_not_clipped": true
+        }
+      },
+      "metrics": {
+        "sample_count": 225,
+        "command": [
+          0.04,
+          -0.03,
+          -0.15
+        ],
+        "physical_command": [
+          0.04,
+          -0.03,
+          -0.15
+        ],
+        "mean_effective_command": [
+          0.03999999999999993,
+          0.0,
+          -0.14999999999999936
+        ],
+        "mean_policy_observation_command": [
+          0.0600000000000001,
+          -0.050000000000000114,
+          -0.34999999999999976
+        ],
+        "mean_local_velocity_xyz": [
+          0.020237616871127892,
+          -0.026566726080761868,
+          -0.002769936068101921
+        ],
+        "mean_local_yaw_rate": -0.13427829234644462,
+        "commanded_linear_speed": 0.05,
+        "projected_primary_velocity": 0.03213012914535943,
+        "primary_velocity_error": 0.01786987085464057,
+        "signed_orthogonal_velocity": -0.009110810741932759,
+        "absolute_orthogonal_velocity": 0.009110810741932759,
+        "yaw_rate_error": 0.015721707653555378,
+        "uncommanded_yaw_rate": 0.0,
+        "displacement_xyz": [
+          0.044691485070161865,
+          -0.22199184910469197,
+          0.013803633994051961
+        ],
+        "planar_displacement": 0.22644582112880077,
+        "minimum_height_m": 0.18201468157496725,
+        "minimum_upright": 0.9889590784404243,
+        "single_support_rate": 0.262,
+        "flight_rate": 0.0,
+        "contact_sample_count": 3000,
+        "contact_rate_sample_source": "physics_substeps_after_mj_step",
+        "diagnostic_control_endpoint_single_support_rate": 0.26222222222222225,
+        "diagnostic_control_endpoint_flight_rate": 0.0,
+        "diagnostic_control_endpoint_contact_sample_count": 225
+      }
+    }
+  ],
+  "source": {
+    "builder": "media/openduck_exp004_h3_release/build_h3_release_showcase.py",
+    "builder_sha256": "56bbe91618e6241f038270ec9e5fa112eb857dbd0ae7a4804c611072a89095f7",
+    "git_head": "a61f451ecbf86bb35baca45b68a403d26790070f"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "episodes": 55,
+  "pass_rate": 1.0,
+  "all_actions_bitwise_unchanged": true,
+  "maximum_action_discontinuity": 0.0,
+  "failure_counts": {},
+  "case_results": {
+    "CROUCH_SHALLOW_TO_RUN": {
+      "count": 10,
+      "pass_rate": 1.0
+    },
+    "RUN_TO_CROUCH_SHALLOW": {
+      "count": 10,
+      "pass_rate": 1.0
+    },
+    "STAND_TO_CROUCH_DEEP": {
+      "count": 5,
+      "pass_rate": 1.0
+    },
+    "STAND_TO_LAND": {
+      "count": 5,
+      "pass_rate": 1.0
+    },
+    "STAND_TO_RUN": {
+      "count": 10,
+      "pass_rate": 1.0
+    },
+    "STAND_TO_STEP_OVER": {
+      "count": 5,
+      "pass_rate": 1.0
+    },
+    "TURN_TO_STAND": {
+      "count": 10,
+      "pass_rate": 1.0
+    }
+  }
+}

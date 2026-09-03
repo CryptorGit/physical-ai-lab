@@ -1,0 +1,13 @@
+{
+  "algorithm": "SHA-256",
+  "files": {
+    "parent_model_0.pt": "aaf7f266075253f61686c6b6dc6f79fd6d25e8df57ae188be37f8ae36018f3da",
+    "standing_model_4246.pt": "734123839e4a3648e4f9b3b64c8aa7fa10cc161111021aa5de7355605a135621",
+    "scripted_crouch.py": "3f3df1b10c26c77779e12c19e2c93152ca777f548197c48a7ba5c268440d140d",
+    "residual_actor.py": "36ab9dea21e8d661098a7b25442199012db1a14f6de2021ceb72b952eff8b070",
+    "command_mdp.py": "5ce5c114bfcfaccec4e58b4c77f9f972299c4ecbad2f8e9bed1404f87df15572",
+    "formal_supported_summary.json": "ebad6f694ad6119e20ffa823d0c5edd5cf82814c07c45503018a2d02eeae7b1c",
+    "unsupported_summary.json": "4ba2d252a57e953b56e7903f31f001dcd5227bfa49813b238314816816dafe64",
+    "formal_gate.json": "e603555ab29f2c17679a3b10de627c9d00014ffcbc6501ef91b22af43e5c5aec"
+  }
+}

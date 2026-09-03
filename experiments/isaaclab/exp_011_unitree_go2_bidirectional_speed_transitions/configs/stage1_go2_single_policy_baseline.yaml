@@ -1,0 +1,56 @@
+experiment: exp_011_unitree_go2_bidirectional_speed_transitions
+stage: STAGE_1_BASELINE
+controller: single_continuous_speed_conditioned_policy
+task_id: Isaac-Velocity-Flat-Unitree-Go2-v0
+checkpoint_selection_priority:
+  - official_Isaac_Lab_Go2_flat_velocity
+  - exact_same_registered_task_local
+  - broadest_documented_forward_command_range
+  - highest_completed_iteration
+  - strict_load
+formal:
+  seed_root: 20260901
+  episodes_per_condition: 50
+  deterministic_policy: true
+  steady_state_duration_s: 8.0
+  speeds_mps: [0.0, 0.4, 0.6, 0.8, 1.0, 1.2, 1.5, 2.0, 2.5]
+  transition_source_hold_s: 3.0
+  transition_ramp_s: 1.5
+  transition_target_hold_s: 5.0
+  transition_pairs:
+    - [0.0, 1.2]
+    - [1.2, 2.0]
+    - [2.0, 1.2]
+    - [1.2, 0.0]
+  conditional_2p5_pairs:
+    - [1.2, 2.5]
+    - [2.5, 1.2]
+diagnostic_ramp_durations_s: [0.75, 3.0]
+commands:
+  lateral_mps: 0.0
+  yaw_rate_radps: 0.0
+  heading_controller_added: false
+prohibited:
+  - multiple_experts
+  - transition_policy
+  - runtime_checkpoint_switch
+  - action_blending
+  - residual_controller
+  - base_morphing
+  - PPO_training
+  - reward_change
+  - scripted_leg_motion
+  - state_setter
+  - teleport
+  - root_state_injection
+  - transition_reset
+fail_closed:
+  - no_valid_checkpoint
+  - observation_action_mismatch
+  - joint_order_mismatch
+  - unknown_contact_mapping
+  - NaN_or_Inf
+  - checkpoint_switch_required
+  - environment_crash
+  - physics_mismatch
+

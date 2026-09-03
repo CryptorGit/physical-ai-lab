@@ -1,0 +1,19 @@
+{
+  "available": {
+    "Isaac_Lab_forward_kinematics": true,
+    "Isaac_Lab_body_link_jacobian": true,
+    "Isaac_Lab_mass_matrix": true,
+    "Isaac_Lab_contact_sensor": true,
+    "Isaac_Lab_collision_simulation": true,
+    "MuJoCo_forward_kinematics": true,
+    "MuJoCo_jacobian": true,
+    "MuJoCo_mass_matrix_inverse_dynamics": true,
+    "MuJoCo_collision_query": true,
+    "SciPy_nonlinear_optimization": true,
+    "PyTorch_automatic_differentiation": true
+  },
+  "installed_versions": {"MuJoCo": "3.8.0", "SciPy": "1.17.0"},
+  "not_installed": ["CasADi", "Pinocchio", "cyipopt", "NLopt", "JAX"],
+  "new_dependency_installed": false,
+  "selected_minimum_stack": ["Isaac Lab capture", "MuJoCo dynamics proxy", "SciPy least_squares"]
+}

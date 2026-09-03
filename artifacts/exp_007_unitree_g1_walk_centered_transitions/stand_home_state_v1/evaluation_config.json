@@ -1,0 +1,79 @@
+{
+  "task": "Isaac-Velocity-Flat-G1-Run-Eval-v0",
+  "terrain": "plane",
+  "episodes": 50,
+  "seed": 20260723,
+  "physics_timestep_s": 0.005,
+  "decimation": 4,
+  "control_timestep_s": 0.02,
+  "settle": {
+    "horizontal_speed_max_mps": 0.08,
+    "vertical_speed_max_mps": 0.05,
+    "roll_abs_max_rad": 0.1,
+    "pitch_abs_max_rad": 0.1,
+    "double_support_required": true,
+    "hold_duration_s": 0.4,
+    "timeout_s": 2.0
+  },
+  "stand_hold_s": 8.0,
+  "command": {
+    "vx_mps": 0.0,
+    "vy_mps": 0.0,
+    "yaw_rate_radps": 0.0
+  },
+  "external_disturbance": false,
+  "reset_base": {
+    "pose_range": {
+      "x": [
+        -0.5,
+        0.5
+      ],
+      "y": [
+        -0.5,
+        0.5
+      ],
+      "yaw": [
+        -3.14,
+        3.14
+      ]
+    },
+    "velocity_range": {
+      "x": [
+        -0.5,
+        0.5
+      ],
+      "y": [
+        -0.5,
+        0.5
+      ],
+      "z": [
+        -0.5,
+        0.5
+      ],
+      "roll": [
+        -0.5,
+        0.5
+      ],
+      "pitch": [
+        -0.5,
+        0.5
+      ],
+      "yaw": [
+        -0.5,
+        0.5
+      ]
+    }
+  },
+  "reset_robot_joints": {
+    "position_range": [
+      1.0,
+      1.0
+    ],
+    "velocity_range": [
+      0.0,
+      0.0
+    ]
+  },
+  "reset_comparison_to_exp006": "IDENTICAL_TASK_CONFIG_AND_SEED",
+  "parallel_episode_independence": "one reset episode per environment; terminal environments excluded immediately"
+}

@@ -1,0 +1,97 @@
+{
+  "name": "Unitree G1 Stage 9 5.0 m/s reference",
+  "frozen_at": "2026-07-18T12:49:54+09:00",
+  "policy_is_unchanged": true,
+  "source_checkpoint": {
+    "path": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-18_10-51-47_stage9_5mps_cycle_knee010_1024_150/model_5840.pt",
+    "bytes": 2027701,
+    "sha256": "ce3eeef50b588f457bf1fe2b89189bf4323b7bc31086fb90b0573aada1be19ba"
+  },
+  "reference_copy": {
+    "path": "artifacts/exp_005_unitree_g1_flat_run/unitree_g1_5mps_stage9_reference_model_5840.pt",
+    "git_ignored_by": "*.pt",
+    "bytes": 2027701,
+    "sha256": "ce3eeef50b588f457bf1fe2b89189bf4323b7bc31086fb90b0573aada1be19ba"
+  },
+  "evaluation": {
+    "path": "results/exp_005_unitree_g1_flat_run/stage9_knee010_5mps_eval_50ep",
+    "summary_path": "results/exp_005_unitree_g1_flat_run/stage9_knee010_5mps_eval_50ep/summary.json",
+    "summary_sha256": "4ceda5f9f0bcc96a1dae7ccb97f27cb3a477a1cb0910e4a5776c21a3bb50cc52",
+    "task": "Isaac-Velocity-Flat-G1-Run-Stage9-Eval-v0",
+    "command_speed_mps": 5.0,
+    "episodes": 50,
+    "parallel_envs": 10,
+    "seed": 42,
+    "steady_state_start_s": 2.0
+  },
+  "robustness_evaluation": {
+    "path": "results/exp_005_unitree_g1_flat_run/stage9_robustness_5mps",
+    "conditions": 18,
+    "episodes_per_condition": 20,
+    "command_speed_mps": 5.0,
+    "summary_csv": {
+      "path": "results/exp_005_unitree_g1_flat_run/stage9_robustness_5mps/robustness_summary.csv",
+      "bytes": 6128,
+      "sha256": "62deaeff576b55d45f2afd6075645619cf8d8037ce6245bf436e148e3e7f9c24"
+    },
+    "summary_json": {
+      "path": "results/exp_005_unitree_g1_flat_run/stage9_robustness_5mps/robustness_summary.json",
+      "bytes": 20257,
+      "sha256": "0e616242da5f45c0d9305f9ac84bd8ded7f0baf2e7a633e3ca10d6a7410e7927"
+    }
+  },
+  "training": {
+    "seed": 42,
+    "num_envs": 1024,
+    "iterations": 150,
+    "parent_checkpoint": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-18_08-36-14_stage8_excess_slip_track015_1024_150/model_5691.pt"
+  },
+  "timing": {
+    "physics_step_s": 0.005,
+    "control_decimation": 4,
+    "control_step_s": 0.02,
+    "episode_length_s": 20.0,
+    "episode_control_steps": 1000
+  },
+  "configuration": [
+    {
+      "path": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-18_10-51-47_stage9_5mps_cycle_knee010_1024_150/params/agent.yaml",
+      "sha256": "741f6af11bcd7c79ec4022a7b3b34cbcc7be92715680bf76e37f2bc4ff303e98"
+    },
+    {
+      "path": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-18_10-51-47_stage9_5mps_cycle_knee010_1024_150/params/env.yaml",
+      "sha256": "ffe46a557ac58122273e0e0719a915a004e2b041dc0556b079600e83242b4901"
+    }
+  ],
+  "exports": [
+    {
+      "path": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-18_10-51-47_stage9_5mps_cycle_knee010_1024_150/exported/policy.pt",
+      "sha256": "96968a6eaa51cff925398eb793fa458f135ead9c711c3ee8166cab9fb3faa678"
+    },
+    {
+      "path": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-18_10-51-47_stage9_5mps_cycle_knee010_1024_150/exported/policy.onnx",
+      "sha256": "aee999a2a731cb3409dfa57276477f5ad0f0ae42d1e53c9982c14861cca7a164"
+    }
+  ],
+  "video": {
+    "path": "logs/rsl_rl/physical_ai_g1_flat_run/2026-07-18_10-51-47_stage9_5mps_cycle_knee010_1024_150/videos/play/rl-video-step-0.mp4",
+    "bytes": 138573,
+    "sha256": "5fcea3f0542e9f72a4712ad80e0416d34eb47a3460ed297e068af01d07914a68"
+  },
+  "software": {
+    "isaac_lab": "6.1.14",
+    "isaac_lab_tasks": "1.10.9",
+    "rsl_rl_lib": "5.0.1",
+    "pytorch": "2.10.0+cu128",
+    "python": "3.12.13",
+    "cuda_runtime_from_pytorch": "12.8",
+    "cuda_toolkit_nvcc": "not installed on PATH",
+    "physical_ai_lab_base_commit": "974b010990bea7df02c65516d05547a3f7901c11",
+    "isaac_lab_commit": "ffff603eafc6b74264a5261cc0183d6a65390d78"
+  },
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 5090 Laptop GPU",
+    "gpu_memory_mib": 24463,
+    "nvidia_driver": "610.62"
+  }
+}

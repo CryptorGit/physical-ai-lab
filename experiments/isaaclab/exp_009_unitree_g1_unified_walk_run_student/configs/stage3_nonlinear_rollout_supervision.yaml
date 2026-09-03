@@ -1,0 +1,99 @@
+protocol_version: 1
+experiment:
+  name: exp_009_stage3_nonlinear_rollout_supervision
+  seed: 20270330
+  device: cuda:0
+  control_timestep_seconds: 0.02
+sources:
+  teacher_dataset: results/exp_009_unitree_g1_unified_walk_run_student/stage0_multiteacher_distillation/teacher_dataset.parquet
+  dagger_dataset: results/exp_009_unitree_g1_unified_walk_run_student/stage0_multiteacher_distillation/dagger_dataset.parquet
+  stage2_counterfactual: results/exp_009_unitree_g1_unified_walk_run_student/stage2_dynamics_sensitive_distillation/dynamic_sensitivity_samples.npz
+  student_rollout_dataset: results/exp_009_unitree_g1_unified_walk_run_student/stage3_nonlinear_rollout_supervision/student_rollouts.parquet
+  stage0_student: results/exp_009_unitree_g1_unified_walk_run_student/stage0_multiteacher_distillation/checkpoints/epoch_10.pt
+  stage1_student: results/exp_009_unitree_g1_unified_walk_run_student/stage1_single_head_interference_diagnosis/checkpoints/single_walk_steady.pt
+  stage2_student: results/exp_009_unitree_g1_unified_walk_run_student/stage2_dynamics_sensitive_distillation/checkpoints/walk_only/epoch_5.pt
+dataset:
+  split: {train: 0.70, validation: 0.15, test: 0.15}
+  split_unit: episode_reset_seed_speed_checkpoint_trajectory_family
+  maximum_teacher_pairs: 900000
+  maximum_dagger_pairs: 100000
+  maximum_student_pairs: 150000
+  same_branch_perturbations_same_split: true
+  state_setter: false
+  teleport: false
+  snapshot_injection: false
+observation:
+  total_dim: 123
+  physical_indices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85]
+  command_indices: [9, 10, 11]
+  previous_action_indices: [86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122]
+  physical_dim: 83
+  action_dim: 37
+surrogate:
+  name: NonlinearLocomotionDynamicsSurrogate
+  ensemble_members: 3
+  member_seeds: [20270331, 20270332, 20270333]
+  hidden_dims: [512, 512, 256]
+  activation: elu
+  residual_prediction: true
+  optimizer: adamw
+  learning_rate: 0.0003
+  batch_size: 8192
+  epochs: 12
+  weight_decay: 0.00001
+  gradient_clip_norm: 1.0
+  continuous_huber_delta: 1.0
+  continuous_loss_weight: 1.0
+  contact_loss_weight: 1.0
+  support_loss_weight: 1.0
+  landing_loss_weight: 0.25
+  gait_loss_weight: 1.0
+  early_stopping_patience_epochs: 3
+  early_stopping_minimum_epoch: 8
+  horizons: [1, 2, 4, 8]
+  primary_horizon: 8
+gates:
+  one_step_normalized_physical_mae_max: 0.05
+  one_step_contact_macro_f1_min: 0.95
+  one_step_support_accuracy_min: 0.90
+  one_step_gait_accuracy_min: 0.90
+  eight_step_normalized_physical_rmse_max: 0.25
+  eight_step_contact_accuracy_min: 0.90
+  eight_step_support_accuracy_min: 0.85
+  eight_step_gait_agreement_min: 0.85
+  action_ranking_spearman_min: 0.70
+  action_ranking_pairwise_accuracy_min: 0.80
+  unsafe_ranking_inversion_max: 0.10
+  uncertainty_threshold_quantile: 0.95
+student:
+  name: UnifiedWalkRunStudent123
+  architecture: [123, 256, 128, 128, 37]
+  activation: elu
+  parameters: 85925
+  action_scale: 0.5
+  initialization: strict_walk_teacher_copy
+  optimizer: adamw
+  learning_rate: 0.0003
+  batch_size: 8192
+  epochs: 20
+  action_huber_delta: 0.1
+  action_loss_weight: 1.0
+  action_delta_loss_weight: 0.25
+  weight_decay: 0.00001
+  gradient_clip_norm: 1.0
+  rollout_horizons: [1, 2, 4, 8]
+  rollout_primary_horizon: 8
+  calibrated_target_contributions: {action: 1.0, action_delta: 0.25, rollout_state: 0.5, contact_gait: 0.5}
+evaluation:
+  seed: 20270401
+  episodes_per_speed: 50
+  walk_speeds_mps: [0.6, 0.8, 1.0, 1.2]
+  mixed_walk_speeds_mps: [0.6, 0.8, 1.0, 1.2]
+  mixed_run_speeds_mps: [2.4, 2.6, 2.8]
+  mixed_walk_to_run_targets_mps: [2.6, 2.8]
+runtime:
+  ppo_training: false
+  reward_optimization: false
+  teacher_updates: false
+  production_controller_update: false
+  isaac_backpropagation: false

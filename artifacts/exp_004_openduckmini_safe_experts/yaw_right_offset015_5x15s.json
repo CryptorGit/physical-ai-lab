@@ -1,0 +1,231 @@
+{
+  "policy": "/mnt/c/Users/user/workspace/physical-ai-lab/.openduck_runtime_source_review/calibrated_hybrid_policy_v22.onnx",
+  "scene": "/mnt/c/Users/user/workspace/physical-ai-lab/experiments/mujoco/exp_004_openduckmini_safe_gait_experts/artifacts/generated_playground/playground/open_duck_mini_v2/xmls/scene_flat_terrain_backlash_hardware_safe_calibrated.xml",
+  "control_dt": 0.02,
+  "sim_dt": 0.002,
+  "action_scale": 0.25,
+  "episodes_per_command": 5,
+  "initial_joint_noise": 0.03,
+  "initial_base_speed": 0.1,
+  "lock_head_targets": true,
+  "backward_amplitude_scale": 1.0,
+  "results": [
+    {
+      "seed": 0,
+      "command": [
+        0.0,
+        0.0,
+        -0.6
+      ],
+      "requested_seconds": 15.0,
+      "completed_seconds": 15.0,
+      "completed_steps": 750,
+      "fell": false,
+      "displacement_xyz": [
+        -0.025196827836446393,
+        -0.05699278850203131,
+        0.01871942005260313
+      ],
+      "mean_velocity_xyz": [
+        -0.0009233209619493432,
+        -0.02285827633512475,
+        -0.000706618161672011
+      ],
+      "mean_yaw_rate": -0.4767291824912593,
+      "minimum_height": 0.18200310282939722,
+      "minimum_upright": 0.9893314023022084,
+      "mean_left_contact": 0.8493333458900452,
+      "mean_right_contact": 0.8373333215713501,
+      "single_support_rate": 0.31333333333333335,
+      "flight_rate": 0.0,
+      "action_rms": 0.27380165457725525,
+      "action_peak": 0.8581764698028564,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 1,
+      "command": [
+        0.0,
+        0.0,
+        -0.6
+      ],
+      "requested_seconds": 15.0,
+      "completed_seconds": 15.0,
+      "completed_steps": 750,
+      "fell": false,
+      "displacement_xyz": [
+        -0.02406481246238436,
+        -0.03811394830202816,
+        0.018197894269076725
+      ],
+      "mean_velocity_xyz": [
+        -0.00011528322919253019,
+        -0.022202742106687854,
+        -0.0007710912277064741
+      ],
+      "mean_yaw_rate": -0.4682440173369458,
+      "minimum_height": 0.18208253596176432,
+      "minimum_upright": 0.9910394584526341,
+      "mean_left_contact": 0.8586666584014893,
+      "mean_right_contact": 0.843999981880188,
+      "single_support_rate": 0.29733333333333334,
+      "flight_rate": 0.0,
+      "action_rms": 0.27365052700042725,
+      "action_peak": 0.8582662343978882,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 2,
+      "command": [
+        0.0,
+        0.0,
+        -0.6
+      ],
+      "requested_seconds": 15.0,
+      "completed_seconds": 15.0,
+      "completed_steps": 750,
+      "fell": false,
+      "displacement_xyz": [
+        -0.016236067559455118,
+        -0.039411326193120766,
+        0.018418143538422138
+      ],
+      "mean_velocity_xyz": [
+        -1.266851990824994e-05,
+        -0.02226088994462618,
+        -0.000766336850347993
+      ],
+      "mean_yaw_rate": -0.4696686576648887,
+      "minimum_height": 0.18223404602090618,
+      "minimum_upright": 0.9890607725601376,
+      "mean_left_contact": 0.8666666746139526,
+      "mean_right_contact": 0.8386666774749756,
+      "single_support_rate": 0.2946666666666667,
+      "flight_rate": 0.0,
+      "action_rms": 0.2739284336566925,
+      "action_peak": 0.8608106970787048,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 3,
+      "command": [
+        0.0,
+        0.0,
+        -0.6
+      ],
+      "requested_seconds": 15.0,
+      "completed_seconds": 15.0,
+      "completed_steps": 750,
+      "fell": false,
+      "displacement_xyz": [
+        -0.002378355380733844,
+        -0.03009537951095124,
+        0.018502880976835
+      ],
+      "mean_velocity_xyz": [
+        4.651448446531973e-05,
+        -0.021404168151249965,
+        -0.000823186290621126
+      ],
+      "mean_yaw_rate": -0.4594954127647791,
+      "minimum_height": 0.18191658709931896,
+      "minimum_upright": 0.9905663583097339,
+      "mean_left_contact": 0.8653333187103271,
+      "mean_right_contact": 0.8346666693687439,
+      "single_support_rate": 0.3,
+      "flight_rate": 0.0,
+      "action_rms": 0.2741405665874481,
+      "action_peak": 0.8645976185798645,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    },
+    {
+      "seed": 4,
+      "command": [
+        0.0,
+        0.0,
+        -0.6
+      ],
+      "requested_seconds": 15.0,
+      "completed_seconds": 15.0,
+      "completed_steps": 750,
+      "fell": false,
+      "displacement_xyz": [
+        0.018280663166897804,
+        -0.036575053657655746,
+        0.018567375990189677
+      ],
+      "mean_velocity_xyz": [
+        -0.0006202191202303427,
+        -0.020915320887652508,
+        -0.0006916740184851275
+      ],
+      "mean_yaw_rate": -0.4496755879854965,
+      "minimum_height": 0.18204422621031324,
+      "minimum_upright": 0.9906177837413375,
+      "mean_left_contact": 0.8653333187103271,
+      "mean_right_contact": 0.8386666774749756,
+      "single_support_rate": 0.296,
+      "flight_rate": 0.0,
+      "action_rms": 0.274856299161911,
+      "action_peak": 0.8599042296409607,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0
+    }
+  ],
+  "summaries": [
+    {
+      "command": [
+        0.0,
+        0.0,
+        -0.6
+      ],
+      "episode_count": 5,
+      "fall_rate": 0.0,
+      "minimum_upright": 0.9890607725601376,
+      "minimum_height": 0.18191658709931896,
+      "mean_velocity_xyz": [
+        -0.00032499546936302925,
+        -0.02192827948506825,
+        -0.0007517813097665463
+      ],
+      "mean_yaw_rate": -0.4647625716486739,
+      "maximum_primary_velocity_error": 0.0,
+      "maximum_orthogonal_velocity": 0.022876916719953747,
+      "maximum_yaw_rate_error": 0.15032441201450347,
+      "maximum_stop_drift": 0.0,
+      "joint_target_limit_violations": 0,
+      "head_target_peak": 0.0,
+      "minimum_single_support_rate": 0.2946666666666667,
+      "maximum_flight_rate": 0.0
+    }
+  ],
+  "acceptance": {
+    "criteria": "/mnt/c/Users/user/workspace/physical-ai-lab/experiments/mujoco/exp_003_openduckmini_calibrated_walk/acceptance_criteria.json",
+    "checks": [
+      {
+        "command": [
+          0.0,
+          0.0,
+          -0.6
+        ],
+        "enough_episodes": false,
+        "fall_rate": true,
+        "minimum_upright": true,
+        "minimum_height": true,
+        "primary_velocity_error": true,
+        "orthogonal_velocity": true,
+        "yaw_rate_error": true,
+        "stop_drift": true,
+        "joint_limits": true,
+        "head_locked": true,
+        "genuine_single_support": true,
+        "bounded_flight": true
+      }
+    ],
+    "passed": false
+  }
+}
